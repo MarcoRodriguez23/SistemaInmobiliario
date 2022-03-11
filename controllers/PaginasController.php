@@ -3,9 +3,6 @@
 namespace Controllers;
 
 use MVC\Router;
-// use Model\Inmueble;
-// use Model\Departamento;
-// use Model\Terreno;
 
 use Model\Propiedad;
 use Model\Direccion;
@@ -25,19 +22,14 @@ use PHPMailer\PHPMailer\PHPMailer as PHPMailer;
 class PaginasController{
 
     public static function index(Router $router){
-        // $propiedades =Propiedad::get(3);
-        // $inmuebles = Inmueble::all();
-        // $departamentos = Departamento::all();
-        // $terrenos = Terreno::all();
         $propiedades=Propiedad::all();
-        // $inicio = true;
+        $direcciones=Direccion::all();
+        $fotos=Foto::all();
+        
         $router->view('/paginas/index',[
-            // 'propiedades'=>$propiedades
-            // 'inicio'=>$inicio
-            // 'inmuebles' =>$inmuebles,
-            // 'departamentos' =>$departamentos,
-            // 'terrenos' =>$terrenos
-            'propiedades'=>$propiedades
+            'propiedades'=>$propiedades,
+            'direcciones'=>$direcciones,
+            'fotos'=>$fotos
         ]);
     }
 
@@ -64,9 +56,13 @@ class PaginasController{
     }
 
     public static function inmuebles(Router $router){
-        // $inmuebles = Inmueble::all();
+        $propiedades=Propiedad::all();
+        $direcciones=Direccion::all();
+        $fotos=Foto::all();
         $router->view('/paginas/inmuebles',[
-            // 'inmuebles'=>$inmuebles
+            'propiedades'=>$propiedades,
+            'direcciones'=>$direcciones,
+            'fotos'=>$fotos
         ]);
     }
 
@@ -80,9 +76,13 @@ class PaginasController{
     }
 
     public static function departamentos(Router $router){
-        // $departamentos = Departamento::all();
+        $propiedades=Propiedad::all();
+        $direcciones=Direccion::all();
+        $fotos=Foto::all();
         $router->view('/paginas/departamentos',[
-            // 'departamentos'=>$departamentos
+            'propiedades'=>$propiedades,
+            'direcciones'=>$direcciones,
+            'fotos'=>$fotos
         ]);
     }
 
@@ -96,9 +96,13 @@ class PaginasController{
     }
 
     public static function terrenos(Router $router){
-        // $terrenos = Terreno::all();
+        $propiedades=Propiedad::all();
+        $direcciones=Direccion::all();
+        $fotos=Foto::all();
         $router->view('/paginas/terrenos',[
-            // 'terrenos'=>$terrenos
+            'propiedades'=>$propiedades,
+            'direcciones'=>$direcciones,
+            'fotos'=>$fotos
         ]);
     }
 
@@ -112,15 +116,15 @@ class PaginasController{
     }
 
     public static function blog(Router $router){
-        // $blog=blog::all();
+        $blog=blog::all();
         $router->view('/paginas/blog',[
-            // 'blog'=>$blog
+            'blog'=>$blog
         ]);
     }
 
     public static function entrada(Router $router){
         $id = validarORedireccionar('/blog');
-        // $entrada = Blog::find($id);
+        $entrada = Blog::find($id);
 
         $router->view('/paginas/articulo',[
             'entrada'=>$entrada

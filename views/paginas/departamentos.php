@@ -1,77 +1,56 @@
-<?php
-    // require 'templates/config/conexion.php';
-    // $db = conectarDB();
-    // //obteniendo los departamentos
-    // $query = "SELECT * FROM departamentos";
-    // $departamentos = mysqli_query($db, $query);
-
-    // include 'templates/header.php';
-
-?>
-
-    <main>
-        <div class="banner" id="bannerDepartamentos">
+<main>
+    <div class="banner" id="bannerDepartamentos">
+    </div>
+    <div class="contenedor principal-der">
+        <div class="imagen-principal">
+            <img loading="lazy" src="build/img/departamentos.svg" alt="departamentos">
         </div>
-        <div class="contenedor principal-der">
-            <div class="imagen-principal">
-                <img loading="lazy" src="build/img/departamentos.svg" alt="departamentos">
-            </div>
-            <div class="texto-principal">
-                <p>
-                    Tu siguiente departamento espera por ti, recuerda que uno de nuestros asesores especializados en venta o renta de departamentos siempre estará disponible para brindarte la mejor ayuda personalizada.
-                </p>
-            </div>
-            
+        <div class="texto-principal">
+            <p>
+                Tu siguiente departamento espera por ti, recuerda que uno de nuestros asesores especializados en venta o renta de departamentos siempre estará disponible para brindarte la mejor ayuda personalizada.
+            </p>
         </div>
-        <div class="anuncios anunciosD">
-            <!-- aqui se va ir generando los anuncios de los departamentos -->
-            <?php
-            foreach($departamentos as $row): ?>
-                <div class="anuncio">
-                    <a href="/departamento?id=<?php echo $row->id; ?>">
-                        <?php
-                        $unaImagen=true;
-                            foreach (glob("build/img/depG/$row->id/*.webp") as $filename): ?>
-                                <?php if($unaImagen===true) : ?>
-                                    <img loading="lazy" src="<?php echo $filename; ?>" alt="departamento <?php echo $row->id; ?>">
-                                <?php
-                                    $unaImagen=false;
-                                endif; ?> 
-                        <?php endforeach;?>
-                        <div class="info-anuncio">
-                            <p class="precio">
-                                <?php echo  "$ ".$row->precio; ?>
-                            </p>
-                            <h2>
-                                <?php echo $row->calle.", ".$row->colonia.", ".$row->delegacion ; ?>
-                            </h2>
-                            
-                        </div>
-                        <div class="beneficios">
-                            <div class="beneficio">
-                                <img src="build/img/icono_dormitorio.svg" alt="beneficio1">
-                                <p><?php echo $row->habitaciones; ?> rec</p>
+        
+    </div>
+    <div class="anuncios anunciosD">
+        <!-- aqui se va ir generando los anuncios de los departamentos -->
+        <?php foreach($propiedades as $propiedad): ?>
+            <?php foreach($direcciones as $direccion): ?>
+                <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
+                    <div class="anuncio">
+                        <a href="/departamento?id=<?php echo $propiedad->idPropiedad; ?>">
+                            <img loading="lazy" src="" alt="departamento <?php echo $propiedad->idPropiedad; ?>">
+                            <div class="info-anuncio">
+                                <p class="precio">
+                                    <?php echo  "$ ".$propiedad->precio; ?>
+                                </p>
+                                <h2>
+                                    <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion ; ?>
+                                </h2>
+                                
                             </div>
-                            <div class="beneficio">
-                                <img src="build/img/icono_wc.svg" alt="beneficio1">
-                                <p><?php echo $row->baños; ?> wc</p>
+                            <div class="beneficios">
+                                <div class="beneficio">
+                                    <img src="build/img/icono_dormitorio.svg" alt="beneficio1">
+                                    <p><?php echo $propiedad->habitaciones; ?> rec</p>
+                                </div>
+                                <div class="beneficio">
+                                    <img src="build/img/icono_wc.svg" alt="beneficio1">
+                                    <p><?php echo $propiedad->baños; ?> wc</p>
+                                </div>
+                                <div class="beneficio">
+                                    <img src="build/img/icono_estacionamiento.svg" alt="beneficio1">
+                                    <p><?php echo $propiedad->estacionamientos; ?> est</p>
+                                </div>
+                                <div class="beneficio">
+                                    <img src="build/img/medida.svg" alt="beneficio1">
+                                    <p><?php echo $propiedad->mt2; ?> m2</p>
+                                </div>   
                             </div>
-                            <div class="beneficio">
-                                <img src="build/img/icono_estacionamiento.svg" alt="beneficio1">
-                                <p><?php echo $row->estacionamientos; ?> est</p>
-                            </div>
-                            <div class="beneficio">
-                                <img src="build/img/medida.svg" alt="beneficio1">
-                                <p><?php echo $row->mt2; ?> m2</p>
-                            </div>   
-                        </div>
-                    </a> 
-                </div>
+                        </a> 
+                    </div>
+                <?php endif; ?>
             <?php endforeach; ?>
-        </div>
-    </main>
-
-
-<?php
-    // mysqli_close($db);
-    // include 'templates/footer.php';
+        <?php endforeach; ?>
+    </div>
+</main>

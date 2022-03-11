@@ -52,6 +52,14 @@ class Propiedad extends activeRecord{
         $this->tipoPropiedad=$args['tipoPropiedad']??'';
     }
 
+     //buscar una registro por su tipo de propiedad
+    //  public static function tipoPropiedad($num){
+    //     //obteniendo la propiedad
+    //     $query = "SELECT * FROM ". static::$tabla ." WHERE tipoPropiedad=${num}";
+    //     $resultado=self::consultarSQL($query);
+    //     return array_shift($resultado);
+    // }
+
     // public function validar(){
     //     if(!$this->titulo){
     //         self::$errores[]="debes de añadir un titulo";

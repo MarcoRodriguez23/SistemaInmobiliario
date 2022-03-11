@@ -1,17 +1,3 @@
-<?php
-    // require 'templates/config/conexion.php';
-    // $db = conectarDB();
-    // //obteniendo los departamentos
-    // $ConsultaD = "SELECT id,calle,delegacion,colonia FROM departamentos";
-    // $ConsultaT = "SELECT id,calle,delegacion,colonia FROM terrenos";
-    // $ConsultaI = "SELECT id,calle,delegacion,colonia FROM inmuebles";
-    // $dep = mysqli_query($db, $ConsultaD);
-    // $inm = mysqli_query($db, $ConsultaD);
-    // $terr = mysqli_query($db, $ConsultaD);
-
-    // include 'templates/header.php';
-?>
-
     <main id="index">
         <div class="banner" id="bannerIndex">
         </div>
@@ -43,20 +29,16 @@
             </button>
             <div class="carrousel-items" id="C-inmuebles">
                 <!-- <aqui se van a ir agregando las imagenes -->
-                    <?php foreach($inmuebles as $row): ?>
-                        <?php
-                            $unaImagen=true;
-                                foreach (glob("build/img/depG/$row->id/*.webp") as $filename): ?>
-                                    <?php if($unaImagen===true) : ?>
-                                        <div class="imagen-texto">
-                                            <img loading="lazy" src="<?php echo $filename; ?>" alt="departamento <?php echo $row->id; ?>">
-                                            <p><?php echo "Departamento en venta en CDMX, " . $row->delegacion; ?></p>
-                                        </div>
-                                    <?php
-                                        $unaImagen=false;
-                                    endif; ?> 
-                        <?php endforeach;?>
+                <?php foreach($propiedades as $propiedad): ?>
+                    <?php foreach($direcciones as $direccion): ?>
+                        <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
+                            <div class="imagen-texto">
+                                <img loading="lazy" src="" alt="inmueble <?php echo $propiedad->idPropiedad; ?>">
+                                <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
+                            </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
+                <?php endforeach; ?> 
             </div>
             <button aria-label="Siguiente" class="carrousel__siguiente" id="siguiente1">
                 <img src="build/img/flecha-correcta.png" alt="">
@@ -80,20 +62,17 @@
             </button>
             <div class="carrousel-items" id="C-departamentos">
                 <!-- <aqui se van a ir agregando las imagenes -->
-                <?php foreach($departamentos as $row): ?>
-                    <?php
-                        $unaImagen=true;
-                            foreach (glob("build/img/depG/$row->id/*.webp") as $filename): ?>
-                                <?php if($unaImagen===true) : ?>
-                                    <div class="imagen-texto">
-                                        <img loading="lazy" src="<?php echo $filename; ?>" alt="departamento <?php echo $row->id; ?>">
-                                        <p><?php echo "Departamento en venta en CDMX, " . $row->delegacion; ?></p>
-                                    </div>
-                                <?php
-                                    $unaImagen=false;
-                                endif; ?> 
-                    <?php endforeach;?>
+                <?php foreach($propiedades as $propiedad): ?>
+                    <?php foreach($direcciones as $direccion): ?>
+                        <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
+                            <div class="imagen-texto">
+                                <img loading="lazy" src="" alt="departamento <?php echo $propiedad->idPropiedad; ?>">
+                                <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 <?php endforeach; ?>
+                
             </div>
             <button aria-label="Siguiente" class="carrousel__siguiente" id="siguiente2">
                 <img src="build/img/flecha-correcta.png" alt="">
@@ -117,20 +96,16 @@
             </button>
             <div class="carrousel-items" id="C-terrenos">
                 <!-- <aqui se van a ir agregando las imagenes -->
-                    <?php foreach($terrenos as $row): ?>
-                        <?php
-                            $unaImagen=true;
-                                foreach (glob("build/img/depG/$row->id/*.webp") as $filename): ?>
-                                    <?php if($unaImagen===true) : ?>
-                                        <div class="imagen-texto">
-                                            <img loading="lazy" src="<?php echo $filename; ?>" alt="departamento <?php echo $row->id; ?>">
-                                            <p><?php echo "Departamento en venta en CDMX, " . $row->delegacion; ?></p>
-                                        </div>
-                                    <?php
-                                        $unaImagen=false;
-                                    endif; ?> 
-                        <?php endforeach;?>
+                <?php foreach($propiedades as $propiedad): ?>
+                    <?php foreach($direcciones as $direccion): ?>
+                        <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
+                            <div class="imagen-texto">
+                                <img loading="lazy" src="" alt="terreno <?php echo $propiedad->idPropiedad; ?>">
+                                <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
+                            </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
             <button aria-label="Siguiente" class="carrousel__siguiente" id="siguiente3">
                 <img src="build/img/flecha-correcta.png" alt="">

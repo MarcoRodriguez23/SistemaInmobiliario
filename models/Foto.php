@@ -17,6 +17,14 @@ class Foto extends activeRecord{
         $this->idPropiedad=$args['idPropiedad']??'';
     }
 
+     //buscando las fotos que le pertenecen a una propiedad en especifico
+     public static function idPropiedad($num){
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idPropiedad=${num}";
+        $resultado=self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+
     // public function validar(){
     //     if(!$this->titulo){
     //         self::$errores[]="debes de añadir un titulo";
