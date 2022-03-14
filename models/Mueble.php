@@ -26,6 +26,14 @@ class Mueble extends activeRecord{
         $this->roperos=$args['roperos']??'';
     }
 
+    //buscar una registro por su ID
+    public static function find($id){
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idPropiedad=${id}";
+        $resultado=self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+
     // public function validar(){
     //     if(!$this->titulo){
     //         self::$errores[]="debes de añadir un titulo";

@@ -52,6 +52,14 @@ class Propiedad extends activeRecord{
         $this->tipoPropiedad=$args['tipoPropiedad']??'';
     }
 
+    //buscar una registro por su ID
+    public static function find($id){
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idPropiedad=${id}";
+        $resultado=self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+
      //buscar una registro por su tipo de propiedad
     //  public static function tipoPropiedad($num){
     //     //obteniendo la propiedad

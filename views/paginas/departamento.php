@@ -23,12 +23,13 @@
 
 ?>
 
-<!-- <div class="opcion-superior contenedor">
-    <a href="/departamentos" class="boton-volver">Volver</a>
-</div> -->
 <main class="contenedor">
     <section class="datos-propiedad">
-        <h3><?php echo $departamento->calle.", ".$departamento->colonia.", ".$departamento->delegacion; ?></h3>
+        <h3>
+            <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
+        <br>
+            <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
+        </h3>
     </section>
     
     <div class="carrousel-contenedor sombra carrousel-individual">
@@ -37,10 +38,11 @@
         </button>
         <div class="carrousel-items" id="C-seleccion">
             <!-- <aqui se van a ir agregando las imagenes -->
-                <?php
-                    foreach (glob("build/img/depG/$departamento->id/*.webp") as $filename): ?>
-                            <img loading="lazy" src="<?php echo $filename; ?>" alt="inmueble">
-                <?php endforeach;?>
+            <?php
+                foreach ($fotos as $foto) {
+                    echo "<img class='carrousel-item' src=build/img/depG/$propiedad->idPropiedad/$foto->foto></img>";
+                }
+            ?>
         </div>
         <button aria-label="Siguiente" class="carrousel__siguiente" id="siguiente-seleccion">
             <img src="build/img/flecha-correcta.png" alt="">
@@ -49,7 +51,24 @@
     </div>
 
     <section class="datos-propiedad">
-        <h4 class="precio">$ <?php echo $departamento->precio; ?></h4>
+        <h4 class="precio"> <?php echo "$".$propiedad->precio;?> </h4>    
+
+        <p> <?php echo $propiedad->año;?> </p>
+        <p> <?php echo $estacionamiento->tipo;?> </p>
+        <p> <?php echo $propiedad->numEstacionamientos;?> </p>
+        <p> <?php echo $propiedad->numPisos;?> </p>
+        <p> <?php echo $propiedad->piso;?> </p>
+        <p> <?php echo $propiedad->numDepartamento;?> </p>
+        <p> <?php echo $propiedad->numElevadores;?> </p>
+        <p> <?php echo $propiedad->habitaciones;?> </p>
+        <p> <?php echo $propiedad->baños;?> </p>
+        <p> <?php echo $propiedad->servicioH;?> </p>
+        <p> <?php echo $propiedad->servicioP;?> </p>
+        
+        <p> <?php echo $escritura->tipo;?> </p>
+        <p> <?php echo $metodoVenta->tipo;?> </p>
+
+        
     </section>
 
     <section class="info-propiedad sombra">
@@ -61,28 +80,42 @@
             <div class="beneficios">
                 <div class="beneficio">
                     <img src="/build/img/icono_dormitorio.svg" alt="beneficio1">
-                    <p><?php echo $departamento->habitaciones ?> rec</p>
+                    <p><?php echo $propiedad->habitaciones; ?> rec</p>
                 </div>
                 <div class="beneficio">
                     <img src="/build/img/icono_estacionamiento.svg" alt="beneficio1">
-                    <p>2 est</p>
+                    <p><?php echo $propiedad->numEstacionamientos; ?> est</p>
                 </div>
                 <div class="beneficio">
                     <img src="/build/img/icono_wc.svg" alt="beneficio1">
-                    <p>2 wc</p>
+                    <p><?php echo $propiedad->baños; ?> wc</p>
                 </div>
                 <div class="beneficio">
                     <img src="/build/img/medida.svg" alt="beneficio1">
-                    <p>72 m2</p>
+                    <p><?php echo $propiedad->mt2; ?> mt2</p>
                 </div>
             </div>
         </div>
         <h4>Amenidades</h4>
         <div>
             <ul>
-                <li>amenidad 1</li>
-                <li>amenidad 2</li>
-                <li>amenidad 3</li>
+            <?php foreach ($amenidad as $clave => $val) {
+                if($val==1 && $clave!="idPropiedad"){
+                    echo "<li>".$clave."</li>";
+                }
+            }
+            ?>
+            </ul>
+        </div>
+        <h4>muebles</h4>
+        <div>
+            <ul>
+            <?php foreach ($mueble as $clave => $val) {
+                if($val==1 && $clave!="idPropiedad"){
+                    echo "<li>".$clave."</li>";
+                }
+            }
+            ?>
             </ul>
         </div>
     </section>
@@ -99,3 +132,4 @@
 
 
 </section>
+

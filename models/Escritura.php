@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Esctritura extends activeRecord{
+class Escritura extends activeRecord{
     protected static $tabla='escritura';
     protected static $columnas_DB=['idEscritura','tipo'];
 
@@ -14,6 +14,15 @@ class Esctritura extends activeRecord{
         $this->idEscritura=$args['idEscritura']??null;
         $this->tipo=$args['tipo']??'';
     }
+
+    //buscar una registro por su ID
+    public static function find($id){
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idEscritura=${id}";
+        $resultado=self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+
 
     // public function validar(){
     //     if(!$this->titulo){

@@ -9,7 +9,7 @@ use Model\Direccion;
 use Model\Amenidad;
 use Model\Mueble;
 use Model\TipoPropiedad;
-use Model\MetodoVenta;
+use Model\MetodosVenta;
 use Model\Foto;
 use Model\Escritura;
 use Model\Estacionamiento;
@@ -88,10 +88,26 @@ class PaginasController{
 
     public static function departamento(Router $router){
         $id = validarORedireccionar('/departamentos');
-        // $departamento = Departamento::find($id);
+        $propiedad = Propiedad::find($id);
+        $direccion = Direccion::find($id);
+        $mueble = Mueble::find($id);
+        $amenidad = Amenidad::find($id);
+        $fotos = Foto::find($id);
+        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
+        $escritura = Escritura::find($propiedad->idEscritura);
+        $metodoVenta = MetodosVenta::find($id);
+        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
         $router->view('/paginas/departamento',[
-            // 'departamento'=>$departamento
+            'propiedad'=>$propiedad,
+            'direccion'=>$direccion,
+            'mueble'=>$mueble,
+            'amenidad'=>$amenidad,
+            'fotos'=>$fotos,
+            'estacionamiento'=>$estacionamiento,
+            'escritura'=>$escritura,
+            'metodoVenta'=>$metodoVenta,
+            'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 

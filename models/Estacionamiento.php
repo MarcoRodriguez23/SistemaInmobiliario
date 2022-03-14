@@ -14,6 +14,13 @@ class Estacionamiento extends activeRecord{
         $this->idEstacionamiento=$args['idEstacionamiento']??null;
         $this->tipo=$args['tipo']??'';
     }
+    //buscar una registro por su ID
+    public static function find($id){
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idEstacionamiento=${id}";
+        $resultado=self::consultarSQL($query);
+        return array_shift($resultado);
+    }
 
     // public function validar(){
     //     if(!$this->titulo){

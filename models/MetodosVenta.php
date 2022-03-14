@@ -4,16 +4,24 @@ namespace Model;
 
 class MetodosVenta extends activeRecord{
     protected static $tabla='metodosventa';
-    protected static $columnas_DB=['idMetodo','tipo'];
+    protected static $columnas_DB=['id','tipo'];
 
     public $idMetodo;
     public $tipo;
 
     public function __construct($args=[])
     {
-        $this->idMetodo=$args['idMetodo']??null;
+        $this->idMetodo=$args['id']??null;
         $this->tipo=$args['tipo']??'';
     }
+
+    // //buscar una registro por su ID
+    // public static function find($id){
+    //     //obteniendo la propiedad
+    //     $query = "SELECT * FROM ". static::$tabla ." WHERE id=${id}";
+    //     $resultado=self::consultarSQL($query);
+    //     return array_shift($resultado);
+    // }
 
     // public function validar(){
     //     if(!$this->titulo){
