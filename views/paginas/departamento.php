@@ -1,13 +1,13 @@
 <?php
     // debuguear($propiedad);
 ?>
-<main class="contenedor">
+<main>
     <section class="datos-propiedad">
-        <h3>
+        <h2>
             <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
         <br>
             <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
-        </h3>
+        </h2>
     </section>
     <section class="carrousel contenedor">
         <div class="carrousel-contenedor">
@@ -70,42 +70,43 @@
             </ul>         
         </div>
     </section>
-    <section  class="extra-propiedad">
+    <section  class="extra-propiedad contenedor">
     <h2>Info. y características extra</h2>
 
-    <div>
+    <div class="extra-elementos">
         <ul>
             <li>
-                <img src="" alt="icono">
+                <img src="build/img/departamentos.svg" alt="icono">
                 <p>Año de construcción: <?php echo $propiedad->año; ?></p>
             </li>
             <li>
-                <img src="" alt="icono">
+                <img src="build/img/departamentos.svg" alt="icono">
                 <p>Núm. exterior: <?php echo $propiedad->numExterior; ?></p>
             </li>
             <li>
-                <img src="" alt="icono">
+                <img src="build/img/departamentos.svg" alt="icono">
                 <p>Núm. interior: <?php echo $propiedad->numInterior; ?></p>
             </li>
             <li>
-                <img src="" alt="icono">
+                <img src="build/img/departamentos.svg" alt="icono">
                 <p>Número de departamento: <?php echo $propiedad->numDepartamento; ?></p>
             </li>
             <li>
-                <img src="" alt="icono">
+                <img src="build/img/departamentos.svg" alt="icono">
                 <p>Número de piso: <?php echo $propiedad->piso; ?></p>
             </li>
             <li>
-                <img src="" alt="icono">
+                <img src="build/img/departamentos.svg" alt="icono">
                 <p>Elevador: <?php echo $propiedad->numElevadores; ?></p>
             </li>
         </ul>       
     </div>
     </section>
 
-    <div class="boton">
-        <a target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
+    <div class="contenedor enlace-google">
+        <a class="boton" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
     </div>
+    
 
     <div class="muebles-amenidades">
         <div>
@@ -138,7 +139,7 @@
         
     </div>
 
-    <div class="opciones-compra">
+    <div class="opciones-compra contenedor">
         <div>
             <h3>
                 Opciones de Compra
