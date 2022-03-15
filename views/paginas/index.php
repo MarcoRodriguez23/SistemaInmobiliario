@@ -33,7 +33,7 @@
                     <?php foreach($direcciones as $direccion): ?>
                         <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
                             <div class="imagen-texto">
-                                <img loading="lazy" src="" alt="inmueble <?php echo $propiedad->idPropiedad; ?>">
+                                <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->idPropiedad."/1.webp"; ?>" alt="inmueble <?php echo $propiedad->idPropiedad; ?>">
                                 <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
                             </div>
                         <?php endif; ?>
@@ -66,7 +66,7 @@
                     <?php foreach($direcciones as $direccion): ?>
                         <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
                             <div class="imagen-texto">
-                                <img loading="lazy" src="" alt="departamento <?php echo $propiedad->idPropiedad; ?>">
+                                <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->idPropiedad."/1.webp"; ?>" alt="departamento <?php echo $propiedad->idPropiedad; ?>">
                                 <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
                             </div>
                         <?php endif; ?>
@@ -100,7 +100,7 @@
                     <?php foreach($direcciones as $direccion): ?>
                         <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
                             <div class="imagen-texto">
-                                <img loading="lazy" src="" alt="terreno <?php echo $propiedad->idPropiedad; ?>">
+                                <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->idPropiedad."/1.webp"; ?>" alt="terreno <?php echo $propiedad->idPropiedad; ?>">
                                 <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
                             </div>
                         <?php endif; ?>
