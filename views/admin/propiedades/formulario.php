@@ -1,4 +1,4 @@
-<fieldset id="paso-1" class="seccion mostrar-seccion">
+<!-- <fieldset id="paso-1" class="seccion mostrar-seccion">
     <legend>Dirección</legend>
 
     <label for="est">Estado</label>
@@ -108,7 +108,7 @@
     min="0" 
     value="<?php echo $propiedad->patiosServicio; ?>">
   
-</fieldset>
+</fieldset> -->
 
 <!-- <fieldset id="paso-5" class="seccion">
     <legend>Departamento</legend>
@@ -122,7 +122,7 @@
     <label for="elevador">Elevador</label>
     <input type="number" placeholder="ejem: 2" id="elevador" min="0">
 </fieldset> -->
-
+<!-- 
 <fieldset class="seccion" id="paso-5">
     <legend>Estacionamiento</legend>
 
@@ -234,4 +234,98 @@
         <label for="">Cesión de derechos</label>
     </div>
     
+</fieldset> -->
+
+<fieldset>
+    <legend>Ubicación</legend>
+    <div>
+        <label for="estado">Estado</label>
+        <input type="text" placeholder="Ej: CDMX" name="direccion[estado]" id="estado">
+    </div>
+
+    <div>
+        <label for="municipioDelegacion">Municipio / Alcaldía</label>
+        <input type="text" placeholder="Ej: Iztacalco" name="direccion[municipioDelegacion]" id="municipioDelegacion">
+    </div>
+
+    <div>
+        <label for="calle">Calle</label>
+        <input type="text" placeholder="Ej: Avenida Patria" name="direccion[calle]" id="calle">
+    </div>
+
+    <div>
+        <label for="colonia">Colonia</label>
+        <input type="text" placeholder="Ej: Solidaridad" name="direccion[colonia]" id="colonia">
+    </div>
+
+    <div>
+        <label for="numInterior">Número interior</label>
+        <input type="number" placeholder="Ej: 325" min="0" name="propiedad[numInterior]" id="numInterior">
+    </div>
+
+    <div>
+        <label for="numExterior">Número exterior</label>
+        <input type="number" placeholder="Ej: 230" min="0" name="propiedad[numExterior]" id="numExterior">
+    </div>
+
+    <div>
+        <label for="enlaceGoogle">Enlace de Google Maps</label>
+        <input type="text" placeholder="Link de Google Maps" name="direccion[enlaceGoogle]" id="enlaceGoogle">
+    </div>
+
+    <div>
+        <label for="mt2">Metros Caudrados</label>
+        <input type="number" placeholder="Ej: 58.30" min="0" name="propiedad[mt2]" id="mt2" step=".10">
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>
+        Descripción de la propiedad
+    </legend>
+    <div>
+        <label for="numPisos">Pisos</label>
+        <input type="number" placeholder="Ej: 3" min="0" name="propiedad[numPisos]" id="numPisos">
+    </div>
+
+    <div>
+        <label for="año">Año de construcción</label>
+        <input type="number" placeholder="Ej: 2020" min="1800" name="propiedad[año]" id="año">
+    </div>
+
+    <div>
+        <label for="habitaciones">Habitaciones</label>
+        <input type="number" placeholder="Ej: 4" min="1" name="propiedad[habitaciones]" id="habitaciones">
+    </div>
+
+    <div>
+        <label for="baños">Baños</label>
+        <input type="number" placeholder="Ej: 3" min="1" name="propiedad[baños]" id="baños">
+    </div>
+
+    <div>
+        <label for="idEstacionamiento">Tipo de estacionamiento</label>
+        <select name="propiedad[idEstacionamiento]" id="idEstacionamiento">
+            <option value="1">Sin techar</option>
+            <option value="2">Techado</option>
+            <option value="3">Mecánico</option>
+            <option value="4">Calle</option>
+            <option value="5">Sin Estacionamiento</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="numEstacionamientos">Número de estacionamientos</label>
+        <input type="number" placeholder="Ej: 2" min="0" name="propiedad[numEstacionamientos]" id="numEstacionamientos">
+    </div>
+
+    <div>
+        <label for="servicioH">Habitaciones de servicio</label>
+        <input type="number" placeholder="Ej: 1" min="0" name="propiedad[servicioH]" id="servicioH">
+    </div>
+
+    <div>
+        <label for="servicioP">Patio de servicio</label>
+        <input type="number" placeholder="Ej: 1" min="0" name="propiedad[servicioP]" id="servicioP">
+    </div>
 </fieldset>

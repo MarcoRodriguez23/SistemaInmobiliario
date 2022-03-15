@@ -2,12 +2,12 @@
     // debuguear($propiedad);
 ?>
 <main>
-    <section class="datos-propiedad">
-        <h2>
+    <section class="datos-propiedad contenedor">
+        <h3>
             <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
         <br>
             <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
-        </h2>
+        </h3>
     </section>
     <section class="carrousel contenedor">
         <div class="carrousel-contenedor">
