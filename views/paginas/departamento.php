@@ -1,6 +1,3 @@
-<?php
-    // debuguear($propiedad);
-?>
 <main>
     <section class="datos-propiedad contenedor">
         <h3>

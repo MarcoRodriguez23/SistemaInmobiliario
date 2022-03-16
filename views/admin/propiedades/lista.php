@@ -43,6 +43,7 @@
             <button type="submit">Buscar</button>
         </form>
     </section>
+    
     <div class="inmuebles contenedor">
     <?php
         for($i=0;$i<8;$i++){

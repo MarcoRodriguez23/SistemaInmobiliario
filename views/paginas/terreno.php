@@ -1,28 +1,3 @@
-<?php
-    // require 'templates/config/conexion.php';    
-    
-    // $id=$_GET['id'];
-    // $id=filter_var($id,FILTER_VALIDATE_INT);
-    // // var_dump($id);
-
-    // if(!$id){
-    //     header('Location: /');
-    // }
-    
-    // $db = conectarDB();
-    // $query = "SELECT * FROM terrenos WHERE id= ${id}";
-    // $resultado = mysqli_query($db, $query);
-    // $terreno = mysqli_fetch_assoc($resultado);
-
-    // if($resultado->num_rows === 0){
-    //     header('Location: /');
-    // }
-
-    // include 'templates/header.php';
-
-
-?>
-
 <main class="contenedor carrousel ">
         <h2 id="tituloDep"><?php echo $terreno->calle.", ".$terreno->colonia.", ".$terreno->delegacion; ?></h2>
         <div class="carrousel-contenedor sombra carrousel-individual">
@@ -64,8 +39,3 @@
         </div>
     <a href="terrenos.php" class="boton">Volver</a>
 </main>
-
-
-<?php
-mysqli_close($db);
-include 'templates/footer.php';
