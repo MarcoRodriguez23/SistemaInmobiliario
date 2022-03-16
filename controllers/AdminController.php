@@ -3,6 +3,8 @@
 namespace Controllers;
 use MVC\Router;
 
+require_once '../Router.php';
+
 class AdminController{
     
     //funciones para las paginas de las propiedades

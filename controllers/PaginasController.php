@@ -19,6 +19,17 @@ use Model\Servicio;
 
 use PHPMailer\PHPMailer\PHPMailer as PHPMailer;
 
+require_once '../Router.php';
+require_once '../models/Propiedad.php';
+require_once '../models/Direccion.php';
+require_once '../models/Amenidad.php';
+require_once '../models/Mueble.php';
+require_once '../models/TipoPropiedad.php';
+require_once '../models/MetodosVenta.php';
+require_once '../models/Foto.php';
+require_once '../models/Escritura.php';
+require_once '../models/Estacionamiento.php';
+
 class PaginasController{
 
     public static function index(Router $router){
@@ -68,7 +79,7 @@ class PaginasController{
 
     public static function inmueble(Router $router){
         $id = validarORedireccionar('/inmuebles');
-        // $inmueble = Inmueble::find($id);
+        $inmueble = Propiedad::find($id);
 
         $router->view('/paginas/inmueble',[
             'inmueble'=>$inmueble
