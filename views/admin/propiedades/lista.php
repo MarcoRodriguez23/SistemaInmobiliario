@@ -46,9 +46,13 @@
     
     <div class="inmuebles contenedor">
     <?php
-        for($i=0;$i<8;$i++){
-            require 'propiedad.php';
-        } 
-        ?>
+        foreach ($propiedades as $propiedad) {
+            foreach ($direcciones as $direccion) {
+                if($propiedad->idPropiedad === $direccion->idPropiedad){
+                    include 'propiedad.php';
+                }
+            }
+        }
+    ?>
     </div><!--fin de inmubles -->
 </main>

@@ -35,34 +35,31 @@ class Direccion extends activeRecord{
         return array_shift($resultado);
     }
 
-    // public function validar(){
-    //     if(!$this->titulo){
-    //         self::$errores[]="debes de añadir un titulo";
-    //     }
-    //     if(!$this->precio){
-    //         self::$errores[] = "debes agregar un precio";
-    //     }
-    //     if(strlen($this->descripcion)<50){
-    //         self::$errores[] = "la descripcion es obligatoria y debe tener al menos 50 caracteres";
-    //     }
-    //     if(!$this->habitaciones){
-    //         self::$errores[] = "El numero de habitaciones es obligatorio";
-    //     }
-    //     if(!$this->wc){
-    //         self::$errores[] = "El numero de wc es obligatorio";
-    //     }
-    //     if(!$this->estacionamiento){
-    //         self::$errores[] = "El numero de estacionamiento es obligatorio";
-    //     }
-    //     if (!$this->vendedorId) {
-    //         self::$errores[] = "elige un vendedor";
-    //     }
-    //     if (!$this->imagen) {
-    //         self::$errores[] = "La imagen es obligatoria";
-    //     }
+    public function validar(){
+        if(!$this->estado){
+            self::$errores['estado'] = "El estado es obligatorio";
+        }
+        if(!$this->municipioDelegacion){
+            self::$errores['municipioDelegacion'] = "El municipio/Delegación es obligatorio";
+        }
+        if(!$this->calle){
+            self::$errores['calle'] = "La calle es obligatoria";
+        }
+        if(!$this->colonia){
+            self::$errores['colonia'] = "La colonia es obligatoria";
+        }
+        if(!$this->numExterior){
+            self::$errores['numExterior'] = "El número exterior es obligatorio";
+        }
+        if(!$this->numInterior){
+            self::$errores['numInterior'] = "El número interior es obligatorio";
+        }
+        if(!$this->linkGoogle){
+            self::$errores['linkGoogle'] = "El link de google Maps es obligatorio";
+        }
     
-    //     return self::$errores;
-    // }
+        return self::$errores;
+    }
 }
 
 

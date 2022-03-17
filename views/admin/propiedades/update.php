@@ -13,10 +13,10 @@
     <button type="button" data-paso="8" class="">Opciones de venta</button>
     <button type="button" data-paso="9" class="">Papeles</button>
 </nav>
-<form action="" class="contenedor formulario contenido-centrado" type="POST" enctype="multipart/form-data">
+<form action="" class="contenedor formulario contenido-centrado" method="POST" enctype="multipart/form-data">
     <?php
-        require 'formulario.php';
+        include __DIR__. '/formulario.php';
     ?>
-    
-    <button class="boton-azul" type="submit">Actualizar</button>
+        
+    <input type="submit" value="Actualizar Propiedad" class="boton-azul">  
 </form>

@@ -6,12 +6,12 @@ class MetodosVenta extends activeRecord{
     protected static $tabla='metodosventa';
     protected static $columnas_DB=['id','tipo'];
 
-    public $idMetodo;
+    public $id;
     public $tipo;
 
     public function __construct($args=[])
     {
-        $this->idMetodo=$args['id']??null;
+        $this->id=$args['id']??null;
         $this->tipo=$args['tipo']??'';
     }
 

@@ -3,8 +3,8 @@
 namespace MVC;
 
 class Router{
-    public $rutasGET=[];
-    public $rutasPOST=[];
+    public array $rutasGET=[];
+    public array $rutasPOST=[];
     
     public function get($url, $fn){
         $this->rutasGET[$url]=$fn;
@@ -16,11 +16,12 @@ class Router{
 
     public function comprobarRutas(){
         session_start();
-
         $auth= $_SESSION['login']??null;
-
+        
         //arreglo de rutas protegidas
         $rutas_protegidas=['/admin','propiedades/crear','propiedades/actualizar','propiedades/eliminar','vendedores/crear','vendedores/actualizar','vendedores/eliminar'];
+
+        
         
         //CAMBIAR PATH_INFO POR REQUEST_URI AL PASAR A HEROKU
         $urlActual =  ($_SERVER['REQUEST_URI']==='')?'/': $_SERVER['REQUEST_URI'];

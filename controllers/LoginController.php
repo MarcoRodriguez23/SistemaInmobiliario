@@ -5,8 +5,8 @@ namespace Controllers;
 use MVC\Router;
 use Model\Admin;
 
-require '../Router.php';
-require '../models/Admin.php';
+require_once '../Router.php';
+require_once '../models/Admin.php';
 
 class LoginController{
 
