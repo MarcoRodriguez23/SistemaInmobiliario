@@ -1,53 +1,51 @@
-<?php
-    foreach ($erroresPropiedad as $errorPropiedad) {
-        echo $erroresPropiedad;
-    }
-?>
-<?php
-    foreach ($erroresDireccion as $errorDireccion) {
-        echo $erroresDireccion;
-    }
-?>
 <fieldset>
     <legend>Ubicación</legend>
     <div>
         <label for="estado">Estado</label>
         <input type="text" placeholder="Ej: CDMX" name="direccion[estado]" id="estado">
+        <?php echo $erroresDireccion["estado"]; ?>
     </div>
 
     <div>
         <label for="municipioDelegacion">Municipio / Alcaldía</label>
         <input type="text" placeholder="Ej: Iztacalco" name="direccion[municipioDelegacion]" id="municipioDelegacion">
+        <?php echo $erroresDireccion["municipioDelegacion"]; ?>
     </div>
 
     <div>
         <label for="calle">Calle</label>
         <input type="text" placeholder="Ej: Avenida Patria" name="direccion[calle]" id="calle">
+        <?php echo $erroresDireccion["calle"]; ?>
     </div>
 
     <div>
         <label for="colonia">Colonia</label>
         <input type="text" placeholder="Ej: Solidaridad" name="direccion[colonia]" id="colonia">
+        <?php echo $erroresDireccion["colonia"]; ?>
     </div>
 
     <div>
         <label for="numInterior">Número interior</label>
         <input type="number" placeholder="Ej: 325" min="0" name="direccion[numInterior]" id="numInterior">
+        <?php echo $erroresDireccion["numInterior"]; ?>
     </div>
 
     <div>
         <label for="numExterior">Número exterior</label>
         <input type="number" placeholder="Ej: 230" min="0" name="direccion[numExterior]" id="numExterior">
+        <?php echo $erroresDireccion["numExterior"]; ?>
     </div>
 
     <div>
         <label for="enlaceGoogle">Enlace de Google Maps</label>
         <input type="text" placeholder="Link de Google Maps" name="direccion[enlaceGoogle]" id="enlaceGoogle">
+        <?php echo $erroresDireccion["linkGoogle"]; ?>
     </div>
 
     <div>
         <label for="mt2">Metros Caudrados</label>
         <input type="number" placeholder="Ej: 58.30" min="0" name="propiedad[mt2]" id="mt2" step=".10">
+        <?php echo $erroresPropiedad["mt2"]; ?>
     </div>
 </fieldset>
 
@@ -58,21 +56,25 @@
     <div>
         <label for="numPisos">Pisos</label>
         <input type="number" placeholder="Ej: 3" min="0" name="propiedad[numPisos]" id="numPisos">
+        <?php echo $erroresPropiedad["numPisos"]; ?>
     </div>
 
     <div>
         <label for="año">Año de construcción</label>
         <input type="number" placeholder="Ej: 2020" min="1800" name="propiedad[año]" id="año">
+        <?php echo $erroresPropiedad["año"]; ?>
     </div>
 
     <div>
         <label for="habitaciones">Habitaciones</label>
         <input type="number" placeholder="Ej: 4" min="1" name="propiedad[habitaciones]" id="habitaciones">
+        <?php echo $erroresPropiedad["habitaciones"]; ?>
     </div>
 
     <div>
         <label for="baños">Baños</label>
         <input type="number" placeholder="Ej: 3" min="1" name="propiedad[baños]" id="baños">
+        <?php echo $erroresPropiedad["baños"]; ?>
     </div>
 
     <div>
@@ -88,16 +90,19 @@
     <div>
         <label for="numEstacionamientos">Número de estacionamientos</label>
         <input type="number" placeholder="Ej: 2" min="0" name="propiedad[numEstacionamientos]" id="numEstacionamientos">
+        <?php echo $erroresPropiedad["numEstacionamientos"]; ?>
     </div>
 
     <div>
         <label for="servicioH">Habitaciones de servicio</label>
         <input type="number" placeholder="Ej: 1" min="0" name="propiedad[servicioH]" id="servicioH">
+        <?php echo $erroresPropiedad["servicioH"]; ?>
     </div>
 
     <div>
         <label for="servicioP">Patio de servicio</label>
         <input type="number" placeholder="Ej: 1" min="0" name="propiedad[servicioP]" id="servicioP">
+        <?php echo $erroresPropiedad["servicioP"]; ?>
     </div>
 </fieldset>
 
@@ -106,16 +111,19 @@
     <div>
         <label for="numDepartamento">Número de departamento</label>
         <input type="number" placeholder="Ej: 1" min="0" name="propiedad[numDepartamento]" id="numDepartamento">
+        <?php echo $erroresPropiedad["numDepartamento"]; ?>
     </div>
 
     <div>
         <label for="piso">Número de piso</label>
         <input type="number" placeholder="Ej: 1" min="0" name="propiedad[piso]" id="piso">
+        <?php echo $erroresPropiedad["piso"]; ?>
     </div>
 
     <div>
         <label for="numElevadores">Elevadores</label>
         <input type="number" placeholder="Ej: 1" min="0" name="propiedad[numElevadores]" id="numElevadores">
+        <?php echo $erroresPropiedad["numElevadores"]; ?>
     </div>
 </fieldset>
 

@@ -51,59 +51,44 @@ class AdminController{
 
             //creando nueva instancia
             $propiedad = new Propiedad($_POST['propiedad']);        
-            $direccion = new Propiedad($_POST['direccion']);        
-            $muebles = new Propiedad($_POST['muebles']);        
-            $amenidades = new Propiedad($_POST['amenidades']);        
-            $metodoVenta = new Propiedad($_POST['metodoVenta']);        
+            $direccion = new Direccion($_POST['direccion']);        
+            $muebles = new  Mueble($_POST['muebles']);        
+            $amenidades = new Amenidad($_POST['amenidades']);        
+            $metodoVenta = new MetodosVenta($_POST['metodoVenta']);        
     
-            //generando un nombre unico
-            // $nombreImagen = md5(uniqid(rand(),true)).".jpg";
             
-            //seteando la imagen
-            //haciendo un resize a la imagen
-            // if($_FILES['propiedad']['tmp_name']['imagen']){
-            //     $img = Image::make($_FILES['propiedad']['tmp_name']['imagen'])->fit(800,600);
-            //     $propiedad->setImagen($nombreImagen);
-                
-            // }
+            $erroresPropiedad = $propiedad->validar();
+            $erroresDireccion = $direccion->validar();
             
-            // $erroresPropiedad = $propiedad->validar();
-            // $erroresDireccion = $direccion->validar();
-            // debuguear($erroresDireccion);
     
-            if(empty($erroresPropiedad) && empty($erroresDireccion)){
+            if(empty($erroresPropiedad)){
     
-                //si la carpeta no existe, crearla
-                // if (!is_dir(CARPETA_IMAGENES)) {
-                //     mkdir(CARPETA_IMAGENES);
-                // }
-                
-                //guardando la imagen en el servidor
-                // $img->save(CARPETA_IMAGENES . $nombreImagen);
     
                 //GUARDANDO EN LA BD
-                $guardarPropiedad=$propiedad->guardar();
-                if($guardarPropiedad){
-                    $guardarDireccion=$direccion->guardar();
-                    if($guardarDireccion){
-                        $guardarMuebles=$muebles->guardar();
-                        if($guardarMuebles){
-                            $guardarAmenidades=$amenidades->guardar();
-                            if($guardarAmenidades){
-                                $guardarMetodoVenta=$metodoVenta->guardar();
-                                if($guardarMetodoVenta){
-                                    header("Location: /admin?mensaje=1");
-                                }
-                            }
-                        }
-                    }
+                // $guardarPropiedad=$propiedad->guardar();
+                // if($guardarPropiedad){
+                //     $guardarDireccion=$direccion->guardar();
+                //     if($guardarDireccion){
+                //         $guardarMuebles=$muebles->guardar();
+                //         if($guardarMuebles){
+                //             $guardarAmenidades=$amenidades->guardar();
+                //             if($guardarAmenidades){
+                //                 $guardarMetodoVenta=$metodoVenta->guardar();
+                //                 if($guardarMetodoVenta){
+                //                     header("Location: /admin?mensaje=1");
+                //                 }
+                //             }
+                //         }
+                //     }
                     
-                }
+                // }
             }        
         }
         $router->view('admin/propiedades/create',[
             'estacionamientos'=>$estacionamientos,
-            'escrituras'=>$escrituras
+            'escrituras'=>$escrituras,
+            'erroresPropiedad'=>$erroresPropiedad,
+            'erroresDireccion'=>$erroresDireccion
         ]);
 
     }

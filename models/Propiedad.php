@@ -91,10 +91,10 @@ class Propiedad extends activeRecord{
             self::$errores['baños'] = "El número de baños es obligatorio";
         }
         if(!$this->servicioH){
-            self::$errores['año'] = "El número de habitaciones de servicio es obligatorio";
+            self::$errores['servicioH'] = "El número de habitaciones de servicio es obligatorio";
         }
         if(!$this->servicioP){
-            self::$errores['año'] = "El número de patios de servicio es obligatorio";
+            self::$errores['servicioP'] = "El número de patios de servicio es obligatorio";
         }
     
         return self::$errores;
