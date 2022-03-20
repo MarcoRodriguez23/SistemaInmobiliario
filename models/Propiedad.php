@@ -10,7 +10,6 @@ class Propiedad extends activeRecord{
     public $precio;
     public $año;
     public $mt2;
-    public $idOpcionesCompra;
     public $idEscritura;
     public $idEstacionamiento;
     public $numEstacionamientos;

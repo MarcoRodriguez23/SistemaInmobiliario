@@ -35,6 +35,7 @@ class AdminController{
         ]);
     }
 
+
     public static function createHouse(Router $router){
         $propiedad = new Propiedad();
         $direccion = new Direccion();
@@ -65,23 +66,24 @@ class AdminController{
     
     
                 //GUARDANDO EN LA BD
-                // $guardarPropiedad=$propiedad->guardar();
-                // if($guardarPropiedad){
-                //     $guardarDireccion=$direccion->guardar();
-                //     if($guardarDireccion){
-                //         $guardarMuebles=$muebles->guardar();
-                //         if($guardarMuebles){
-                //             $guardarAmenidades=$amenidades->guardar();
-                //             if($guardarAmenidades){
-                //                 $guardarMetodoVenta=$metodoVenta->guardar();
-                //                 if($guardarMetodoVenta){
-                //                     header("Location: /admin?mensaje=1");
-                //                 }
-                //             }
-                //         }
-                //     }
+                $guardarPropiedad=$propiedad->guardar();
+                
+                if($guardarPropiedad){
+                    $guardarDireccion=$direccion->guardar();
+                    if($guardarDireccion){
+                        $guardarMuebles=$muebles->guardar();
+                        if($guardarMuebles){
+                            $guardarAmenidades=$amenidades->guardar();
+                            if($guardarAmenidades){
+                                $guardarMetodoVenta=$metodoVenta->guardar();
+                                if($guardarMetodoVenta){
+                                    header("Location: /admin?mensaje=1");
+                                }
+                            }
+                        }
+                    }
                     
-                // }
+                }
             }        
         }
         $router->view('admin/propiedades/create',[
@@ -90,12 +92,48 @@ class AdminController{
             'erroresPropiedad'=>$erroresPropiedad,
             'erroresDireccion'=>$erroresDireccion
         ]);
-
     }
 
-    public static function updateHouse(Router $router){
-        $router->view('admin/propiedades/update',[
 
+    public static function updateHouse(Router $router){
+        $id = validarORedireccionar('/admin');
+        $propiedad = new Propiedad($_POST['propiedad']);        
+        $direccion = new Direccion($_POST['direccion']);        
+        $muebles = new  Mueble($_POST['muebles']);        
+        $amenidades = new Amenidad($_POST['amenidades']);        
+        $metodoVenta = new MetodosVenta($_POST['metodoVenta']);        
+    
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+
+            //asignar atributos
+            $argsPropiedad=$_POST['propiedad'];
+            $argsDireccion=$_POST['direccion'];
+
+            
+            $propiedad->sincronizar($argsPropiedad);
+            $direccion->sincronizar($argsDireccion);
+            // debuguear($propiedad);
+
+    
+            $erroresPropiedad = $propiedad->validar();
+            $erroresDireccion = $direccion->validar();
+            
+    
+            if(empty($erroresPropiedad)){
+
+                $resultado = $propiedad->guardar();
+
+    
+                if($resultado){
+                    header("Location: /admin?mensaje=2");
+                }
+            }
+        }
+        $router->view('admin/propiedades/update',[
+            'propiedad'=>$propiedad,
+            'direccion'=>$direccion,
+            'erroresPropiedad'=>$erroresPropiedad,
+            'erroresDireccion'=>$erroresDireccion
         ]);
     }
 
