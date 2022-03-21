@@ -34,6 +34,7 @@ class activeRecord{
             //crear
             $resultado=$this->crear();
         }
+        // debuguear($resultado);
         return $resultado;        
     }
 
@@ -61,14 +62,14 @@ class activeRecord{
     public function crear(){
         //sanitizando los datos
         $atributos= $this->sanitizarAtributos();
-        debuguear($atributos);
 
         //insertando informacion a la base de datos
         $insert = "INSERT INTO ". static::$tabla ." ( ";
         $insert .=  join(', ',array_keys($atributos)); 
-        $insert .= " ) values (' ";
+        $insert .= " ) values ('";
         $insert .=  join("', '",array_values($atributos)); 
         $insert .= " ') ";
+        debuguear($insert);
 
         $resultado = self::$db->query($insert);
         

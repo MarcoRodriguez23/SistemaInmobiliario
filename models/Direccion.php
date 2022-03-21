@@ -4,9 +4,9 @@ namespace Model;
 
 class Direccion extends activeRecord{
     protected static $tabla='direccion';
-    protected static $columnas_DB=['idPropiedad','estado','municipioDelegacion','calle','colonia','numExterior','numInterior','linkGoogle'];
+    protected static $columnas_DB=['id','estado','municipioDelegacion','calle','colonia','numExterior','numInterior','linkGoogle'];
 
-    public $idPropiedad;
+    public $id;
     public $estado;
     public $municipioDelegacion;
     public $calle;
@@ -17,7 +17,7 @@ class Direccion extends activeRecord{
 
     public function __construct($args=[])
     {
-        $this->idPropiedad=$args['idPropiedad']??null;
+        $this->id=$args['id']??null;
         $this->estado=$args['estado']??'';
         $this->municipioDelegacion=$args['municipioDelegacion']??'';
         $this->calle=$args['calle']??'';
@@ -25,14 +25,6 @@ class Direccion extends activeRecord{
         $this->numExterior=$args['numExterior']??'';
         $this->numInterior=$args['numInterior']??'';
         $this->linkGoogle=$args['linkGoogle']??'';
-    }
-
-    //buscar una registro por su ID
-    public static function find($id){
-        //obteniendo la propiedad
-        $query = "SELECT * FROM ". static::$tabla ." WHERE idPropiedad=${id}";
-        $resultado=self::consultarSQL($query);
-        return array_shift($resultado);
     }
 
     public function validar(){
