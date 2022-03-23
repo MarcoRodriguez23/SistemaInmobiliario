@@ -30,13 +30,13 @@ class Propiedad extends activeRecord{
         $this->precio=$args['precio']??'';
         $this->año=$args['año']??'';
         $this->mt2=$args['mt2']??'';
-        $this->idEscritura=$args['idEscritura']??'4';
+        $this->idEscritura=$args['idEscritura']??'';
         $this->idEstacionamiento=$args['idEstacionamiento']??'';
         $this->numEstacionamientos=$args['numEstacionamientos']??'';
         $this->numPisos=$args['numPisos']??'';
-        $this->piso=$args['piso']??'0';
-        $this->numDepartamento=$args['numDepartamento']??'0';
-        $this->numElevadores=$args['numElevadores']??'0';
+        $this->piso=$args['piso']??'';
+        $this->numDepartamento=$args['numDepartamento']??'';
+        $this->numElevadores=$args['numElevadores']??'';
         $this->habitaciones=$args['habitaciones']??'';
         $this->baños=$args['baños']??'';
         $this->servicioH=$args['servicioH']??'';

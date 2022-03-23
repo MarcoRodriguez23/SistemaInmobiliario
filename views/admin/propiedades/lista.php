@@ -1,3 +1,12 @@
+<div>
+<?php 
+    if($mensaje){
+        $msn = mostrarNotificacion(intval($mensaje));
+        if($msn){ ?>
+            <p class="alerta exito"><?php echo s($msn); ?></p>
+        <?php }
+        } ?>
+</div>
 <div class="opcion-superior contenedor">
     <a href="/admin/propiedades/create" class="boton-superior"><img src="/build/img/inmueble.svg" alt="inmueble"></a>
 </div>
@@ -48,7 +57,7 @@
     <?php
         foreach ($propiedades as $propiedad) {
             foreach ($direcciones as $direccion) {
-                if($propiedad->idPropiedad === $direccion->idPropiedad){
+                if($propiedad->id === $direccion->id){
                     include 'propiedad.php';
                 }
             }

@@ -69,7 +69,7 @@ class activeRecord{
         $insert .= " ) values ('";
         $insert .=  join("', '",array_values($atributos)); 
         $insert .= " ') ";
-        debuguear($insert);
+        // debuguear($insert);
 
         $resultado = self::$db->query($insert);
         

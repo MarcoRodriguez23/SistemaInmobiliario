@@ -16,7 +16,6 @@ class Amenidad extends activeRecord{
     public function __construct($args=[])
     {
         $this->id=$args['id']??null;
-        $this->tipo=$args['tipo']??'';
         $this->roffGarden=$args['roffGarden']??'';
         $this->salaDeUsosMultiples=$args['salaDeUsosMultiples']??'';
         $this->gimnasio=$args['gimnasio']??'';

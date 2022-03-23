@@ -1,3 +1,5 @@
+
+<!--PARTE DONDE SE ESCOGE EL TIPO DE PROPIEDAD-->
 <fieldset>
     <legend>Tipo de propiedad</legend>
     <div>
@@ -12,7 +14,9 @@
     <?php echo "<p>".$erroresPropiedad["tipoPropiedad"]."</p>"; ?>
     </div>
 </fieldset>
-<fieldset>
+
+<!--PARTE DONDE SE AGREGA INFORMACION SOBRE LA UBICACION DE LA PROPIEDAD-->
+<fieldset class="dosColumnas">
     <legend>Ubicación</legend>
     <div>
         <label for="estado">Estado</label>
@@ -115,7 +119,8 @@
     </div>
 </fieldset>
 
-<fieldset>
+<!--PARTE DONDE SE DESCRIBE LA PROPIEDAD-->
+<fieldset class="dosColumnas">
     <legend>
         Descripción de la propiedad
     </legend>
@@ -229,6 +234,7 @@
     </div>
 </fieldset>
 
+<!--PRECIO DE LA PROPIEDAD-->
 <fieldset>
     <legend>Precio</legend>
     <div>
@@ -245,7 +251,8 @@
     </div>
 </fieldset>
 
-<fieldset>
+<!--INFORMACION ADICIONAL EN CASO DE QUE SEA DEPARTAMENTO-->
+<fieldset class="dosColumnas">
     <legend>Departamento</legend>
     <div>
         <label for="numDepartamento">Número de departamento</label>
@@ -287,67 +294,68 @@
     </div>
 </fieldset>
 
+<!--PARTE DONDE SE AGREGAN LOS MUEBLES Y AMENIDADES QUE TIENE LA PROPIEDAD-->
 <fieldset>
     <legend>Muebles y amenidades</legend>
     <div>
         <div class="opciones"><!--Div para tener las opciones de los muebles-->
-            <!-- <div>
-                <input type="checkbox" name="mueble[sala]" value="1">
+            <div>
+                <input type="checkbox" name="muebles[sala]" value="1">
                 <label>Sala</label>
             </div>
 
             <div>
-                <input type="checkbox" name="mueble[lavadora]" value="1">
+                <input type="checkbox" name="muebles[lavadora]" value="1">
                 <label>Lavadora</label>
             </div>    
 
             <div>
-                <input type="checkbox" name="mueble[cocina]" value="1">
+                <input type="checkbox" name="muebles[cocina]" value="1">
                 <label>Cocina</label>
             </div>  
 
             <div>
-                <input type="checkbox" name="mueble[boiler]" value="1">
+                <input type="checkbox" name="muebles[boiler]" value="1">
                 <label>Boiler</label>
             </div>  
 
             <div>
-                <input type="checkbox" name="mueble[camas]" value="1">
+                <input type="checkbox" name="muebles[camas]" value="1">
                 <label>Camas</label>
             </div>  
 
             <div>
-                <input type="checkbox" name="mueble[roperos]" value="1">
+                <input type="checkbox" name="muebles[roperos]" value="1">
                 <label>Roperos</label>
-            </div>   -->
+            </div>  
         </div>
         
         <div class="opciones"><!--Div para tener las opciones de las amenidades-->
-            <!-- <div>
-                <input type="checkbox" name="amenidad[roffGarden]" value="1">
+            <div>
+                <input type="checkbox" name="amenidades[roffGarden]" value="1">
                 <label>Roff Garden</label>
             </div>     
             <div>
-                <input type="checkbox" name="amenidad[salaDeUsosMultiples]" value="1">
+                <input type="checkbox" name="amenidades[salaDeUsosMultiples]" value="1">
                 <label>Sala de usos multiples</label>
             </div>   
             <div>
-                <input type="checkbox" name="amenidad[gimnasio]" value="1">
+                <input type="checkbox" name="amenidades[gimnasio]" value="1">
                 <label>Gimnasio</label>
             </div>   
             <div>
-                <input type="checkbox" name="amenidad[cancha]" value="1">
+                <input type="checkbox" name="amenidades[cancha]" value="1">
                 <label>Cancha</label>
             </div>   
             <div>
-                <input type="checkbox" name="amenidad[calentadorSolar]" value="1">
+                <input type="checkbox" name="amenidades[calentadorSolar]" value="1">
                 <label>Calentador Solar</label>
-            </div>    -->
+            </div>   
         </div>
     </div>
 </fieldset>
 
-<!-- REVISAR COMO INTEGRAR -->
+<!--PARTE DONDE SE AGREGAN LAS OPCIONES DE VENTA Y EL PAPEL DE LA PROPIEDAD-->
 <fieldset>
     <legend>Escritura y opciones de venta</legend>
     <div>
@@ -364,8 +372,8 @@
     
     
     <div class="opciones">
-        <!-- <div>
-            <input type="checkbox" name="metodosventa[fovissste]" value="1">
+        <div>
+            <input type="checkbox" name="metodosventa[fovissste]" value="<?php echo s($metodosventa->fovissste); ?>">
             <label>FOVISSSTE</label>
         </div> 
         <div>
@@ -380,6 +388,6 @@
             <input type="checkbox" name="metodosventa[efectivo]" value="1">
             <label>Efectivo</label>
         </div> 
-    </div> -->
-    <p>(puede marcar más de una opción)</p>
+    </div>
+    <p style="color:black">(puede marcar más de una opción)</p>
 </fieldset>

@@ -41,9 +41,9 @@ class AdminController{
     public static function createHouse(Router $router){
         $propiedad = new Propiedad();
         $direccion = new Direccion();
-        // $muebles = new Mueble();
-        // $amenidades = new Amenidad();
-        // $metodoVenta = new MetodosVenta();
+        $metodosVenta = new MetodosVenta();
+        $muebles = new Mueble();
+        $amenidades = new Amenidad();
 
         $estacionamientos = Estacionamiento::all();
         $escrituras = Escritura::all();
@@ -55,22 +55,12 @@ class AdminController{
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             // debuguear($_POST);
 
-            if($_POST['propiedad']['numDepartamento']===''){
-                $_POST['propiedad']['numDepartamento']='0';
-            }
-            if($_POST['propiedad']['numPiso']===''){
-                $_POST['propiedad']['numPiso']='0';
-            }
-            if($_POST['propiedad']['numElevadores']===''){
-                $_POST['propiedad']['numElevadores']='0';
-            }
-
             //creando nueva instancia
             $propiedad = new Propiedad($_POST['propiedad']);        
             $direccion = new Direccion($_POST['direccion']);        
-            // $muebles = new  Mueble($_POST['muebles']);        
-            // $amenidades = new Amenidad($_POST['amenidades']);        
-            // $metodoVenta = new MetodosVenta($_POST['metodoVenta']);        
+            $muebles = new  Mueble($_POST['muebles']);
+            $amenidades = new Amenidad($_POST['amenidades']);                 
+            $metodosVenta = new MetodosVenta($_POST['metodosventa']);                 
     
             
             $erroresPropiedad = $propiedad->validar();
@@ -81,25 +71,24 @@ class AdminController{
     
     
                 //GUARDANDO EN LA BD
-                // $guardarPropiedad=$propiedad->guardar();
-                $guardar=$propiedad->guardar();
+                $guardarPropiedad=$propiedad->guardar();
                 
-                // if($guardarPropiedad){
-                //     $guardarDireccion=$direccion->guardar();
-                //     if($guardarDireccion){
-                //         $guardarMuebles=$muebles->guardar();
-                //         if($guardarMuebles){
-                //             $guardarAmenidades=$amenidades->guardar();
-                //             if($guardarAmenidades){
-                //                 $guardarMetodoVenta=$metodoVenta->guardar();
-                //                 if($guardarMetodoVenta){
-                //                     header("Location: /admin?mensaje=1");
-                //                 }
-                //             }
-                //         }
-                //     }
+                if($guardarPropiedad){
+                    // $guardarDireccion=$direccion->guardar();
+                    // if($guardarDireccion){
+                    //     $guardarMuebles=$muebles->guardar();
+                    //     if($guardarMuebles){
+                    //         $guardarAmenidades=$amenidades->guardar();
+                    //         if($guardarAmenidades){
+                    //             $guardarMetodoVenta=$metodosVenta->guardar();
+                    //             if($guardarMetodoVenta){
+                                    header("Location: /admin?mensaje=1");
+                    //             }
+                    //         }
+                    //     }
+                    // }
                     
-                // }
+                }
             }        
         }
         $router->view('admin/propiedades/create',[

@@ -1,4 +1,4 @@
-<div class="opcion-superior contenedor contenido-centrado">
+<div class="opcion-superior contenedor">
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
 <h1>Actualizar inmueble</h1>
@@ -13,7 +13,7 @@
     <button type="button" data-paso="8" class="">Opciones de venta</button>
     <button type="button" data-paso="9" class="">Papeles</button>
 </nav>
-<form action="" class="contenedor formulario contenido-centrado" method="POST" enctype="multipart/form-data">
+<form action="" class="contenedor formulario" method="POST" enctype="multipart/form-data">
     <?php
         include __DIR__. '/formulario.php';
     ?>
