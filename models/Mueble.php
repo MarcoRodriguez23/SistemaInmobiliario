@@ -18,12 +18,12 @@ class Mueble extends activeRecord{
     public function __construct($args=[])
     {
         $this->id=$args['id']??null;
-        $this->sala=$args['sala']??'';
-        $this->lavadora=$args['lavadora']??'';
-        $this->boiler=$args['boiler']??'';
-        $this->cocina=$args['cocina']??'';
-        $this->camas=$args['camas']??'';
-        $this->roperos=$args['roperos']??'';
+        $this->sala=$args['sala']??0;
+        $this->lavadora=$args['lavadora']??0;
+        $this->boiler=$args['boiler']??0;
+        $this->cocina=$args['cocina']??0;
+        $this->camas=$args['camas']??0;
+        $this->roperos=$args['roperos']??0;
     }
 }
 

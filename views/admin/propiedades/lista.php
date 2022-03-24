@@ -1,9 +1,9 @@
 <div>
-<?php 
+<?php
     if($mensaje){
         $msn = mostrarNotificacion(intval($mensaje));
         if($msn){ ?>
-            <p class="alerta exito"><?php echo s($msn); ?></p>
+            <p class="alerta exito contenedor"><?php echo s($msn); ?></p>
         <?php }
         } ?>
 </div>
@@ -11,8 +11,8 @@
     <a href="/admin/propiedades/create" class="boton-superior"><img src="/build/img/inmueble.svg" alt="inmueble"></a>
 </div>
 <main>
-    <h1>Inmuebles en lista</h1>
-    <section>
+    <h1>Propiedades en lista</h1>
+    <!-- <section>
         <form action="" method="post" class="contenedor filtro contenido-centrado">
             <select name="ubicacion" id="ubicacion">
                 <option value="" selected disabled>Ubicación</option>
@@ -51,7 +51,7 @@
             </select>
             <button type="submit">Buscar</button>
         </form>
-    </section>
+    </section> -->
     
     <div class="inmuebles contenedor">
     <?php

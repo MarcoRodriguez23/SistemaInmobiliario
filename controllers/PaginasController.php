@@ -106,7 +106,8 @@ class PaginasController{
         $fotos = Foto::find($id);
         $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
         $escritura = Escritura::find($propiedad->idEscritura);
-        $metodoVenta = MetodosVenta::find($id);
+        $metodosVenta = MetodosVenta::find($id);
+        // debuguear($metodosVenta);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
         $router->view('/paginas/departamento',[
@@ -117,7 +118,7 @@ class PaginasController{
             'fotos'=>$fotos,
             'estacionamiento'=>$estacionamiento,
             'escritura'=>$escritura,
-            'metodoVenta'=>$metodoVenta,
+            'metodosVenta'=>$metodosVenta,
             'tipoPropiedad'=>$tipoPropiedad
         ]);
     }

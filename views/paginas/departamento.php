@@ -15,7 +15,7 @@
                 <!-- <aqui se van a ir agregando las imagenes -->
                 <?php
                     foreach ($fotos as $foto) {
-                        echo "<img class='carrousel-item' src=build/img/depG/$propiedad->idPropiedad/$foto->foto></img>";
+                        echo "<img class='carrousel-item' src=build/img/depG/$propiedad->id/$foto->foto></img>";
                     }
                 ?>
             </div>
@@ -78,11 +78,11 @@
             </li>
             <li>
                 <img src="build/img/departamentos.svg" alt="icono">
-                <p>Núm. exterior: <?php echo $propiedad->numExterior; ?></p>
+                <p>Núm. exterior: <?php echo $direccion->numExterior; ?></p>
             </li>
             <li>
                 <img src="build/img/departamentos.svg" alt="icono">
-                <p>Núm. interior: <?php echo $propiedad->numInterior; ?></p>
+                <p>Núm. interior: <?php echo $direccion->numInterior; ?></p>
             </li>
             <li>
                 <img src="build/img/departamentos.svg" alt="icono">
@@ -112,8 +112,8 @@
             </h3>
             <ul>
                 <?php foreach ($mueble as $clave => $val) {
-                    if($val==1 && $clave!="idPropiedad"){
-                        echo "<li>".$clave."</li>";
+                    if($val==1 && $clave!="id"){
+                        echo "<li>".ucfirst($clave)."</li>";
                     }
                 }
                 ?>
@@ -126,9 +126,25 @@
             </h3>
             <ul>
                 <?php foreach ($amenidad as $clave => $val) {
-                    if($val==1 && $clave!="idPropiedad"){
-                        echo "<li>".$clave."</li>";
+                    if($val==1 && $clave!="id"){
+                        
+                        if($clave==="roffGarden"){
+                            echo "<li>Roff Garden</li>";
+                        }
+                        if($clave==="salaDeUsosMultiples"){
+                            echo "<li>Sala de usos Multiples</li>";
+                        }
+                        if($clave==="calentadorSolar"){
+                            echo "<li>Calentador Solar</li>";
+                        }
+                        if($clave==="gimnasio"){
+                            echo "<li>".ucfirst($clave)."</li>";
+                        }
+                        if($clave==="cancha"){
+                            echo "<li>".ucfirst($clave)."</li>";
+                        }
                     }
+                    
                 }
                 ?>
             </ul>
@@ -142,10 +158,18 @@
                 Opciones de Compra
             </h3>
             <ul>
-            <li>
-                <img src="" alt="icono">
-                <p><?php echo $metodoVenta->tipo; ?></p>
-            </li>
+                <!-- <img src="" alt="icono"> -->
+                <?php foreach ($metodosVenta as $clave => $val) {
+                    if($val==1 && $clave!="id"){
+                        if($clave === "credito"){
+                            echo "<li>CRÉDITO BANCARIO</li>";
+                        }
+                        else{
+                            echo "<li>".strtoupper($clave)."</li>";
+                        }
+                    }
+                }
+                ?>
         </ul>  
         </div>
         <img src="build/img/conocenos.jpg" alt="opciones venta">

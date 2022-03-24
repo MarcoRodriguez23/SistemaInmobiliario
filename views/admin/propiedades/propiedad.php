@@ -1,4 +1,3 @@
-
 <div class="plantilla">
     <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
         <div class="inmueble">
@@ -7,7 +6,7 @@
                 <p class="direccion"><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?></p>
                 <p class="precio" class="precio">$ <?php echo $propiedad->precio; ?></p>
                 <p class="pago"></p>
-                <p class="estado"><?php echo $propiedad->id;?></p>
+                <p class="estado"><?php echo $propiedad->status==0 ? "En venta": "Vendida";?></p>
                 <div class="beneficios">
                     <div class="beneficio">
                         <img src="build/img/icono_dormitorio.svg" alt="beneficio1">

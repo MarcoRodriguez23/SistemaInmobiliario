@@ -1,6 +1,7 @@
 <div class="opcion-superior contenedor">
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
+<h1>Crear propiedad</h1>
 <main>
     <!-- <h1>Nuevo inmueble</h1>
     <nav class="tabs contenedor contenido-centrado">

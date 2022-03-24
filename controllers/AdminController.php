@@ -28,123 +28,172 @@ class AdminController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
+        $mensaje=$_GET['mensaje']??null;
         
         
         $router->view('admin/propiedades/lista',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
+            'mensaje'=>$mensaje
         ]);
     }
 
 
     public static function createHouse(Router $router){
+        //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
         $propiedad = new Propiedad();
         $direccion = new Direccion();
         $metodosVenta = new MetodosVenta();
         $muebles = new Mueble();
         $amenidades = new Amenidad();
 
+        //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
         $estacionamientos = Estacionamiento::all();
         $escrituras = Escritura::all();
         $tipoPropiedad = TipoPropiedad::all();
 
+        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad = Propiedad::getErrores();
         $erroresDireccion = Direccion::getErrores();
+        $erroresMetodosVenta = MetodosVenta::getErrores();
 
+        //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             // debuguear($_POST);
 
-            //creando nueva instancia
+            //creando nueva instancia de cada clase
             $propiedad = new Propiedad($_POST['propiedad']);        
             $direccion = new Direccion($_POST['direccion']);        
             $muebles = new  Mueble($_POST['muebles']);
             $amenidades = new Amenidad($_POST['amenidades']);                 
             $metodosVenta = new MetodosVenta($_POST['metodosventa']);                 
     
-            
+            //validando la existencia de erroes en el formulario
             $erroresPropiedad = $propiedad->validar();
             $erroresDireccion = $direccion->validar();
+            $erroresMetodosVenta = $metodosVenta->validar();
             
-    
-            if(empty($erroresPropiedad)){
-    
-    
-                //GUARDANDO EN LA BD
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
+                
+                // GUARDANDO EN LA BD
                 $guardarPropiedad=$propiedad->guardar();
                 
                 if($guardarPropiedad){
-                    // $guardarDireccion=$direccion->guardar();
-                    // if($guardarDireccion){
-                    //     $guardarMuebles=$muebles->guardar();
-                    //     if($guardarMuebles){
-                    //         $guardarAmenidades=$amenidades->guardar();
-                    //         if($guardarAmenidades){
-                    //             $guardarMetodoVenta=$metodosVenta->guardar();
-                    //             if($guardarMetodoVenta){
+                    $guardarDireccion=$direccion->guardar();
+                    if($guardarDireccion){
+                        $guardarMuebles=$muebles->guardar();
+                        if($guardarMuebles){
+                            $guardarAmenidades=$amenidades->guardar();
+                            if($guardarAmenidades){
+                                $guardarMetodoVenta=$metodosVenta->guardar();
+                                if($guardarMetodoVenta){
+                                    //mensaje que indica que se creo exitosamente
                                     header("Location: /admin?mensaje=1");
-                    //             }
-                    //         }
-                    //     }
-                    // }
+                                }
+                            }
+                        }
+                    }
                     
                 }
             }        
         }
         $router->view('admin/propiedades/create',[
-            // 'estacionamientos'=>$estacionamientos,
-            
-            // 'erroresPropiedad'=>$erroresPropiedad,
             'direccion'=>$direccion,
             'erroresDireccion'=>$erroresDireccion,
             'propiedad'=>$propiedad,
             'erroresPropiedad'=>$erroresPropiedad,
             'estacionamientos'=>$estacionamientos,
             'escrituras'=>$escrituras,
-            'tipoPropiedad'=>$tipoPropiedad
+            'tipoPropiedad'=>$tipoPropiedad,
+            "muebles"=>$muebles,
+            "amenidades"=>$amenidades,
+            "metodosVenta"=>$metodosVenta,
+            "erroresMetodosVenta"=>$erroresMetodosVenta
         ]);
     }
 
 
     public static function updateHouse(Router $router){
+
+        //buscando en todas las tablas la propiedad
         $id = validarORedireccionar('/admin');
-        $propiedad = new Propiedad($_POST['propiedad']);        
-        $direccion = new Direccion($_POST['direccion']);        
-        $muebles = new  Mueble($_POST['muebles']);        
-        $amenidades = new Amenidad($_POST['amenidades']);        
-        $metodoVenta = new MetodosVenta($_POST['metodoVenta']);        
+        $propiedad = Propiedad::find($id);        
+        $direccion = Direccion::find($id);        
+        $muebles =  Mueble::find($id);        
+        $amenidades = Amenidad::find($id);        
+        $metodosVenta = MetodosVenta::find($id);    
+        
+        //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
+        $estacionamientos = Estacionamiento::all();
+        $escrituras = Escritura::all();
+        $tipoPropiedad = TipoPropiedad::all();
+
+        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
+        $erroresPropiedad= $propiedad->validar();
+        $erroresDireccion = $direccion->validar();
+        $erroresMetodosVenta=$metodosVenta->validar();
     
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
 
             //asignar atributos
-            $argsPropiedad=$_POST['propiedad'];
-            $argsDireccion=$_POST['direccion'];
+            $argsPropiedad = $_POST['propiedad'];        
+            $argsDireccion = $_POST['direccion'];        
+            $argsMuebles = $_POST['muebles'];
+            $argsAmenidades = $_POST['amenidades'];                 
+            $argsMetodosVenta = $_POST['metodosventa']; 
+            // debuguear($argsMetodosVenta);
 
-            
-            $propiedad->sincronizar($argsPropiedad);
-            $direccion->sincronizar($argsDireccion);
-            // debuguear($propiedad);
+            $metodosVenta->sincronizar($argsMetodosVenta) ;
+            $propiedad->sincronizar($argsPropiedad) ;        
+            $direccion->sincronizar($argsDireccion) ;        
+            $muebles->sincronizar($argsMuebles) ;
+            $amenidades->sincronizar($argsAmenidades) ;                 
+            debuguear($metodosVenta);
 
-    
-            $erroresPropiedad = $propiedad->validar();
+            $erroresPropiedad= $propiedad->validar();
             $erroresDireccion = $direccion->validar();
+            $erroresMetodosVenta=$metodosVenta->validar();
             
     
-            if(empty($erroresPropiedad)){
-
-                $resultado = $propiedad->guardar();
-
-    
-                if($resultado){
-                    header("Location: /admin?mensaje=2");
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
+                
+                // GUARDANDO EN LA BD
+                $guardarPropiedad=$metodosVenta->guardar();
+                exit;
+                
+                if($guardarPropiedad){
+                    $guardarDireccion=$direccion->guardar();
+                    if($guardarDireccion){
+                        $guardarMuebles=$muebles->guardar();
+                        if($guardarMuebles){
+                            $guardarAmenidades=$amenidades->guardar();
+                            if($guardarAmenidades){
+                                $guardarMetodoVenta=$metodosVenta->guardar();
+                                if($guardarMetodoVenta){
+                                    //mensaje que indica que se actualizo exitosamente
+                                    header("Location: /admin?mensaje=2");
+                                }
+                            }
+                        }
+                    }   
                 }
-            }
+            }   
         }
         $router->view('admin/propiedades/update',[
-            'propiedad'=>$propiedad,
             'direccion'=>$direccion,
+            'erroresDireccion'=>$erroresDireccion,
+            'propiedad'=>$propiedad,
             'erroresPropiedad'=>$erroresPropiedad,
-            'erroresDireccion'=>$erroresDireccion
+            'estacionamientos'=>$estacionamientos,
+            'escrituras'=>$escrituras,
+            'tipoPropiedad'=>$tipoPropiedad,
+            "muebles"=>$muebles,
+            "amenidades"=>$amenidades,
+            "metodosVenta"=>$metodosVenta,
+            "erroresMetodosVenta"=>$erroresMetodosVenta
         ]);
     }
 

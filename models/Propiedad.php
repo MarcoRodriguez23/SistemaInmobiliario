@@ -4,7 +4,7 @@ namespace Model;
 
 class Propiedad extends activeRecord{
     protected static $tabla='propiedad';
-    protected static $columnas_DB=['id','precio','año','mt2','idEscritura','idEstacionamiento','numEstacionamientos','numPisos','piso','numDepartamento','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad'];
+    protected static $columnas_DB=['id','precio','año','mt2','idEscritura','idEstacionamiento','numEstacionamientos','numPisos','piso','numDepartamento','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status'];
 
     public $id;
     public $precio;
@@ -22,6 +22,7 @@ class Propiedad extends activeRecord{
     public $servicioH;
     public $servicioP;
     public $tipoPropiedad;
+    public $status;
 
 
     public function __construct($args=[])
@@ -34,14 +35,15 @@ class Propiedad extends activeRecord{
         $this->idEstacionamiento=$args['idEstacionamiento']??'';
         $this->numEstacionamientos=$args['numEstacionamientos']??'';
         $this->numPisos=$args['numPisos']??'';
-        $this->piso=$args['piso']??'';
-        $this->numDepartamento=$args['numDepartamento']??'';
-        $this->numElevadores=$args['numElevadores']??'';
+        $this->piso=$args['piso']??0;
+        $this->numDepartamento=$args['numDepartamento']??0;
+        $this->numElevadores=$args['numElevadores']??0;
         $this->habitaciones=$args['habitaciones']??'';
         $this->baños=$args['baños']??'';
         $this->servicioH=$args['servicioH']??'';
         $this->servicioP=$args['servicioP']??'';
         $this->tipoPropiedad=$args['tipoPropiedad']??'';
+        $this->status=$args['status']??0;
     }
 
     public function validar(){

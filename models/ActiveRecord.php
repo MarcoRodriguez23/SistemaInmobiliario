@@ -51,6 +51,7 @@ class activeRecord{
         $query .= join(', ', $valores);
         $query .= " WHERE id = '" . self::$db->escape_string($this->id). "' ";
         $query .= " LIMIT 1";
+        debuguear($query);
         
 
         $resultado=self::$db->query($query);
@@ -178,6 +179,7 @@ class activeRecord{
     }
     //sincronizar el objeto en memoria con los cambios realizados por el usuario
     public function sincronizar($args=[]){
+        debuguear($args);
         foreach ($args as $key => $value) {
             if(property_exists($this,$key) && !is_null($value)){
                 $this->$key=$value;

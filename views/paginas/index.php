@@ -31,9 +31,9 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
+                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id): ?>
                         <div class="imagen-texto">
-                            <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->idPropiedad."/1.webp"; ?>" alt="inmueble <?php echo $propiedad->idPropiedad; ?>">
+                            <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="inmueble <?php echo $propiedad->id; ?>">
                             <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
                         </div>
                     <?php endif; ?>
@@ -64,9 +64,9 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
+                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id): ?>
                         <div class="imagen-texto">
-                            <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->idPropiedad."/1.webp"; ?>" alt="departamento <?php echo $propiedad->idPropiedad; ?>">
+                            <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="departamento <?php echo $propiedad->id; ?>">
                             <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
                         </div>
                     <?php endif; ?>
@@ -98,9 +98,9 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->idPropiedad === $direccion->idPropiedad): ?>
+                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id): ?>
                         <div class="imagen-texto">
-                            <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->idPropiedad."/1.webp"; ?>" alt="terreno <?php echo $propiedad->idPropiedad; ?>">
+                            <img loading="lazy" src="build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="terreno <?php echo $propiedad->id; ?>">
                             <p><?php echo "Departamento en venta en CDMX, " . $direccion->municipioDelegacion; ?></p>
                         </div>
                     <?php endif; ?>

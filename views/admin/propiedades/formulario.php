@@ -112,7 +112,7 @@
             min="0" 
             name="propiedad[mt2]" 
             id="mt2" 
-            step=".10"
+            step=".01"
             value="<?php echo s($propiedad->mt2); ?>"
             >
         <?php echo "<p>".$erroresPropiedad["mt2"]."</p>"; ?>
@@ -300,55 +300,110 @@
     <div>
         <div class="opciones"><!--Div para tener las opciones de los muebles-->
             <div>
-                <input type="checkbox" name="muebles[sala]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="muebles[sala]" 
+                    value="1"
+                    <?php echo $muebles->sala==1 ? 'checked' : ''; ?>
+                    >
                 <label>Sala</label>
             </div>
 
             <div>
-                <input type="checkbox" name="muebles[lavadora]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="muebles[lavadora]" 
+                    value="1"
+                    <?php echo $muebles->lavadora==1 ? 'checked' : ''; ?>
+                    >
                 <label>Lavadora</label>
             </div>    
 
             <div>
-                <input type="checkbox" name="muebles[cocina]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="muebles[cocina]" 
+                    value="1"
+                    <?php echo $muebles->cocina==1 ? 'checked' : ''; ?>
+                    >
                 <label>Cocina</label>
             </div>  
 
             <div>
-                <input type="checkbox" name="muebles[boiler]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="muebles[boiler]" 
+                    value="1"
+                    <?php echo $muebles->boiler==1 ? 'checked' : ''; ?>
+                    >
                 <label>Boiler</label>
             </div>  
 
             <div>
-                <input type="checkbox" name="muebles[camas]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="muebles[camas]" 
+                    value="1"
+                    <?php echo $muebles->camas==1 ? 'checked' : ''; ?>
+                    >
                 <label>Camas</label>
             </div>  
 
             <div>
-                <input type="checkbox" name="muebles[roperos]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="muebles[roperos]" 
+                    value="1"
+                    <?php echo $muebles->roperos==1 ? 'checked' : ''; ?>
+                    >
                 <label>Roperos</label>
             </div>  
         </div>
         
         <div class="opciones"><!--Div para tener las opciones de las amenidades-->
             <div>
-                <input type="checkbox" name="amenidades[roffGarden]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="amenidades[roffGarden]" 
+                    value="1"
+                    <?php echo $amenidades->roffGarden==1 ? 'checked' : ''; ?>
+                    >
                 <label>Roff Garden</label>
             </div>     
             <div>
-                <input type="checkbox" name="amenidades[salaDeUsosMultiples]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="amenidades[salaDeUsosMultiples]" 
+                    value="1"
+                    <?php echo $amenidades->salaDeUsosMultiples==1 ? 'checked' : ''; ?>
+                    >
                 <label>Sala de usos multiples</label>
             </div>   
             <div>
-                <input type="checkbox" name="amenidades[gimnasio]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="amenidades[gimnasio]" 
+                    value="1"
+                    <?php echo $amenidades->gimnasio==1 ? 'checked' : ''; ?>
+                    >
                 <label>Gimnasio</label>
             </div>   
             <div>
-                <input type="checkbox" name="amenidades[cancha]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="amenidades[cancha]" 
+                    value="1"
+                    <?php echo $amenidades->cancha==1 ? 'checked' : ''; ?>
+                    >
                 <label>Cancha</label>
             </div>   
             <div>
-                <input type="checkbox" name="amenidades[calentadorSolar]" value="1">
+                <input 
+                    type="checkbox" 
+                    name="amenidades[calentadorSolar]" 
+                    value="1"
+                    <?php echo $amenidades->calentadorSolar==1 ? 'checked' : ''; ?>
+                    >
                 <label>Calentador Solar</label>
             </div>   
         </div>
@@ -373,21 +428,42 @@
     
     <div class="opciones">
         <div>
-            <input type="checkbox" name="metodosventa[fovissste]" value="<?php echo s($metodosventa->fovissste); ?>">
+            <input 
+                type="checkbox" 
+                name="metodosventa[fovissste]" 
+                value="1"
+                <?php echo $metodosVenta->fovissste==1 ? 'checked' : '' ; ?>
+                >
             <label>FOVISSSTE</label>
         </div> 
         <div>
-            <input type="checkbox" name="metodosventa[cofinavit]" value="1">
+            <input 
+                type="checkbox" 
+                name="metodosventa[cofinavit]" 
+                value="1"
+                <?php echo $metodosVenta->cofinavit==1 ? 'checked' : '' ; ?>
+                >
             <label>COFINAVIT</label>
         </div> 
         <div>
-            <input type="checkbox" name="metodosventa[credito]" value="1">
+            <input 
+                type="checkbox" 
+                name="metodosventa[credito]" 
+                value="1"
+                <?php echo $metodosVenta->credito==1 ? 'checked' : '' ; ?>
+                >
             <label>Credito bancario</label>
         </div> 
         <div>
-            <input type="checkbox" name="metodosventa[efectivo]" value="1">
+            <input 
+                type="checkbox" 
+                name="metodosventa[efectivo]" 
+                value="1"
+                <?php echo $metodosVenta->efectivo==1 ? 'checked' : '' ; ?>
+                >
             <label>Efectivo</label>
         </div> 
+        <?php echo "<p>".$erroresMetodosVenta["metodosVenta"]."</p>"; ?>
     </div>
     <p style="color:black">(puede marcar más de una opción)</p>
 </fieldset>
