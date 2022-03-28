@@ -31,7 +31,7 @@ function s($html){
 }
 
 function validarTipoContenido($tipo){
-    $tipos=['vendedor','propiedad'];
+    $tipos=['propiedad','vendedor','agente'];
 
     return in_array($tipo,$tipos);
 }
@@ -50,6 +50,10 @@ function mostrarNotificacion($codigo){
 
         case 3:
             $mensaje = "Eliminado Correctamente";
+            break;
+
+        case 4:
+            $mensaje = "Cita creada correctamente";
             break;
 
         default:

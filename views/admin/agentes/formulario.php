@@ -2,19 +2,51 @@
     <legend>Información Personal</legend>
     <div>
         <label for="nombre">Nombre(s)</label>
-        <input type="text" placeholder="Tu nombre" id="nombre">
+        <input 
+            type="text" 
+            placeholder="Tu nombre" 
+            id="nombre"
+            name="agente[nombres]"
+            value="<?php echo s($agente->nombres); ?>"
+            >
+        <?php echo "<p>".$erroresAgente["nombres"]."</p>"; ?>
     </div>
     <div>
         <label for="apellido">Apellidos</label>
-        <input type="text" placeholder="apellidos" id="apellido">
+        <input 
+            type="text" 
+            placeholder="apellidos" 
+            id="apellido"
+            name="agente[apellidos]"
+            value="<?php echo s($agente->apellidos); ?>"
+            >
+        <?php echo "<p>".$erroresAgente["apellidos"]."</p>"; ?>
     </div>
     <div>
         <label for="edad">Edad</label>
-        <input type="number" placeholder="ejem: 30" id="residencia" min="15">
+        <input 
+            type="number" 
+            placeholder="ejem: 30" 
+            id="residencia" 
+            min="15"
+            name="agente[edad]"
+            value="<?php echo s($agente->edad); ?>"
+            >
+        <?php echo "<p>".$erroresAgente["edad"]."</p>"; ?>
     </div>
     <div>
         <label for="telefono">Teléfono</label>
-        <input type="number" placeholder="ejem: 5546782345" id="telefono">
+        <input 
+            type="number" 
+            placeholder="ejem: 5546782345" 
+            id="telefono"
+            name="agente[telefono]"
+            max="5599999999"
+            min="5500000000"
+            value="<?php echo s($agente->telefono); ?>"
+            >
+        <?php echo "<p>".$erroresAgente["telefono"]."</p>"; ?>
+        <?php echo "<p>".$erroresAgente["formatoTelefono"]."</p>"; ?>
     </div>
 </fieldset>
 
@@ -25,7 +57,8 @@
         <input 
             type="text" 
             placeholder="Ej: CDMX" 
-            name="direccion[estado]" id="estado" 
+            name="direccion[estado]" 
+            id="estado" 
             value="<?php echo s($direccion->estado); ?>"
         >
         <?php echo "<p>".$erroresDireccion["estado"]."</p>"; ?>
@@ -73,7 +106,16 @@
     <legend>Comisión</legend>
     <div>
         <label for="comision">Porcentaje de comisión</label>
-        <input type="number" placeholder="ejem: 30" id="comision" min="1" max="100">
+        <input 
+            type="number" 
+            placeholder="ejem: 30" 
+            id="comision" 
+            min="1" 
+            name="agente[comision]"
+            max="100"
+            value="<?php echo s($agente->comision); ?>"
+            >
+        <?php echo "<p>".$erroresAgente["comision"]."</p>"; ?>
     </div>
 </fieldset>
 
@@ -81,11 +123,16 @@
     <legend>Asignar rol</legend>
     <div>
         <label for="rol">Rol</label>
-        <select name="rol" id="rol">
+        <select name="agente[rol]" id="rol">
             <option value="0" selected disabled>--Seleccione un rol--</option>
-            <option value="1">rol 1</option>
-            <option value="2">rol 2</option>
-            <option value="3">rol 3</option>
+            <?php foreach($roles as $rol): ?>
+                <option 
+                    <?php echo $agente->rol===$rol->id ? 'selected': ''; ?>
+                    value="<?php echo $rol->id; ?>"
+                >
+                <?php echo s($rol->tipo); ?></option>
+            <?php endforeach; ?>
         </select>
+        <?php echo "<p>".$erroresAgente["rol"]."</p>"; ?>
     </div>
 </fieldset>

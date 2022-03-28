@@ -3,7 +3,7 @@
         <div class="inmueble">
             <img src="build/img/1.jpg" alt="foto del inmueble">
             <div class="info-inmueble">
-                <p class="direccion"><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?></p>
+                <p class="direccion"><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>
                 <p class="precio" class="precio">$ <?php echo $propiedad->precio; ?></p>
                 <p class="pago"></p>
                 <p class="estado"><?php echo $propiedad->status==0 ? "En venta": "Vendida";?></p>
@@ -32,6 +32,10 @@
         <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton boton-amarillo">Actualizar</a>
         <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton boton-verde">Vender</a>
         <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton boton-azul">Agendar</a>
-        <a href="#" class="boton boton-rojo">Eliminar</a>
+        <form method="POST" class="w-100" action="/admin/propiedades/delete">
+            <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
+            <input type="hidden" name="tipo" value="propiedad">
+            <input type="submit" value="Eliminar" class="boton-rojo" onclick="return ConfirmDelete()">
+        </form>
     </div>
 </div><!--plantilla -->

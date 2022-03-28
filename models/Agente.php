@@ -2,9 +2,9 @@
 
 namespace Model;
 
-class Vendedor extends activeRecord{
-    protected static $tabla='vendedor';
-    protected static $columnas_DB=['id','nombres','apellidos','edad','telefono','comision'];
+class Agente extends activeRecord{
+    protected static $tabla='agente';
+    protected static $columnas_DB=['id','nombres','apellidos','edad','telefono','comision','rol'];
 
     public $id;
     public $nombres;
@@ -12,6 +12,7 @@ class Vendedor extends activeRecord{
     public $edad;
     public $telefono;
     public $comision;
+    public $rol;
 
     public function __construct($args=[])
     {
@@ -21,6 +22,7 @@ class Vendedor extends activeRecord{
         $this->edad=$args['edad']??'';
         $this->telefono=$args['telefono']??'';
         $this->comision=$args['comision']??'';
+        $this->rol=$args['rol']??'';
     }
 
     public function validar(){
@@ -34,7 +36,10 @@ class Vendedor extends activeRecord{
             self::$errores["edad"]="Debe añadir su edad";
         }
         if(!$this->comision){
-            self::$errores["comision"]="Debe añadir su edad";
+            self::$errores["comision"]="Debe añadir la comisión";
+        }
+        if(!$this->rol){
+            self::$errores["rol"]="Debe seleccionar un rol";
         }
         if(!$this->telefono){
             self::$errores["telefono"]="debes de añadir un teléfono";

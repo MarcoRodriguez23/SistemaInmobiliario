@@ -1,13 +1,18 @@
 <div class="plantilla">
     <div class="trabajador">
-        <p>Nombre y apellido</p>
-        <p>Edad</p>
-        <p>Residencia</p>
-        <p>Teléfono</p>
-        <p>Comisión: %</p>
+        <p><?php echo $vendedor->nombres." ".$vendedor->apellidos; ?></p>
+        <p><?php echo $vendedor->edad; ?> Años</p>
+        <p>Domicilio: <?php echo $direccion->estado.", ".$direccion->calle.", ".$direccion->municipioDelegacion.", ".$direccion->colonia; ?></p>
+        <p>Teléfono: <?php echo $vendedor->telefono; ?></p>
+        <p>Comisión: <?php echo $vendedor->comision; ?>%</p>
+
     </div>
     <div class="opciones">
-        <a href="/admin/vendedores/update?id=<?php echo $row['id']; ?>" class="boton boton-amarillo">Actualizar</a>
-        <a href="#" class="boton boton-rojo">Eliminar</a>
+        <a href="/admin/vendedores/update?id=<?php echo $vendedor->id; ?>" class="boton boton-amarillo">Actualizar</a>
+        <form method="POST" class="w-100" action="/admin/agentes/delete">
+            <input type="hidden" name="id" value="<?php echo $vendedor->id; ?>">
+            <input type="hidden" name="tipo" value="vendedor">
+            <input type="submit" value="Eliminar" class="boton-rojo" onclick="return ConfirmDelete()">
+        </form>
     </div>
 </div>

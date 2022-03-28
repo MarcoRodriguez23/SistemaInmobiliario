@@ -54,6 +54,7 @@
     $router->get('/entrada',[PaginasController::class,'entrada']);
     $router->get('/contacto',[PaginasController::class,'contacto']);
     $router->post('/contacto',[PaginasController::class,'contacto']);
+    $router->get('/excel',[PaginasController::class,'excel']);
 
     //login y autenticacion
     $router->get('/login',[LoginController::class,'login']);

@@ -4,15 +4,15 @@ namespace Model;
 
 class Foto extends activeRecord{
     protected static $tabla='foto';
-    protected static $columnas_DB=['idFoto','foto','idPropiedad'];
+    protected static $columnas_DB=['id','foto','idPropiedad'];
 
-    public $idFoto;
+    public $id;
     public $foto;
     public $idPropiedad;
 
     public function __construct($args=[])
     {
-        $this->idFoto=$args['idFoto']??null;
+        $this->id=$args['id']??null;
         $this->foto=$args['foto']??'';
         $this->idPropiedad=$args['idPropiedad']??'';
     }

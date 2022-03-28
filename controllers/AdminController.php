@@ -2,8 +2,9 @@
 
 namespace Controllers;
 
-use Model\Amenidad;
 use MVC\Router;
+
+use Model\Amenidad;
 use Model\Propiedad;
 use Model\Direccion;
 use Model\Estacionamiento;
@@ -12,7 +13,17 @@ use Model\Escritura;
 use Model\Mueble;
 use Model\TipoPropiedad;
 
+use Model\Agente;
+use Model\Rol;
+use Model\DireccionAgente;
+
+use Model\Vendedor;
+use Model\DireccionVendedor;
+
+use Model\Citas;
+
 require_once '../Router.php';
+
 require_once '../models/Propiedad.php';
 require_once '../models/Direccion.php';
 require_once '../models/Estacionamiento.php';
@@ -21,9 +32,19 @@ require_once '../models/Escritura.php';
 require_once '../models/Mueble.php';
 require_once '../models/TipoPropiedad.php';
 
+require_once '../models/Agente.php';
+require_once '../models/Rol.php';
+require_once '../models/DireccionAgente.php';
+
+require_once '../models/Vendedor.php';
+require_once '../models/DireccionVendedor.php';
+
+require_once '../models/Citas.php';
+
 class AdminController{
     
     //funciones para las paginas de las propiedades
+    //VERIFICAR FOTOGRAFIAS
     public static function index(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
@@ -39,7 +60,7 @@ class AdminController{
         ]);
     }
 
-
+    //VERIFICAR FOTOGRAFIAS
     public static function createHouse(Router $router){
         //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
         $propiedad = new Propiedad();
@@ -67,7 +88,8 @@ class AdminController{
             $direccion = new Direccion($_POST['direccion']);        
             $muebles = new  Mueble($_POST['muebles']);
             $amenidades = new Amenidad($_POST['amenidades']);                 
-            $metodosVenta = new MetodosVenta($_POST['metodosventa']);                 
+            $metodosVenta = new MetodosVenta($_POST['metodosventa']);
+                        
     
             //validando la existencia de erroes en el formulario
             $erroresPropiedad = $propiedad->validar();
@@ -114,7 +136,7 @@ class AdminController{
         ]);
     }
 
-
+    //VERIFICAR CHECKBOXES
     public static function updateHouse(Router $router){
 
         //buscando en todas las tablas la propiedad
@@ -143,14 +165,13 @@ class AdminController{
             $argsMuebles = $_POST['muebles'];
             $argsAmenidades = $_POST['amenidades'];                 
             $argsMetodosVenta = $_POST['metodosventa']; 
-            // debuguear($argsMetodosVenta);
+                          
 
             $metodosVenta->sincronizar($argsMetodosVenta) ;
             $propiedad->sincronizar($argsPropiedad) ;        
             $direccion->sincronizar($argsDireccion) ;        
             $muebles->sincronizar($argsMuebles) ;
-            $amenidades->sincronizar($argsAmenidades) ;                 
-            debuguear($metodosVenta);
+            $amenidades->sincronizar($argsAmenidades) ; 
 
             $erroresPropiedad= $propiedad->validar();
             $erroresDireccion = $direccion->validar();
@@ -161,8 +182,7 @@ class AdminController{
             if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
                 
                 // GUARDANDO EN LA BD
-                $guardarPropiedad=$metodosVenta->guardar();
-                exit;
+                $guardarPropiedad=$propiedad->guardar();
                 
                 if($guardarPropiedad){
                     $guardarDireccion=$direccion->guardar();
@@ -197,11 +217,25 @@ class AdminController{
         ]);
     }
 
-    // public static function deleteHouse(Router $router){
-    //     $router->view('admin/propiedades/create',[
-
-    //     ]);
-    // }
+    //TODO BIEN
+    public static function deleteHouse(Router $router){
+        if ($_SERVER['REQUEST_METHOD']==='POST') {
+            //validar ID
+            $id = $_POST['id'];
+            $id = filter_var($id, FILTER_VALIDATE_INT);
+        
+            if($id){
+                
+                $tipo=$_POST['tipo'];
+        
+                if(validarTipoContenido($tipo)){
+                    //eliminando objeto
+                    $Propiedad= Propiedad::find($id);
+                    $Propiedad->eliminar();
+                }
+            }
+        }
+    }
 
     public static function infoHouse(Router $router){
         $router->view('admin/propiedades/info',[
@@ -210,8 +244,42 @@ class AdminController{
     }
 
     public static function dateHouse(Router $router){
-        $router->view('admin/propiedades/visita',[
 
+        $id = validarORedireccionar('/admin');
+        $direccion = Direccion::find($id);
+        $cita = new Citas();
+
+        $vendedores = Vendedor::all();
+
+        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
+        $erroresCita = Citas::getErrores();
+
+        //COMENZANDO EL METODO POST
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+
+            //creando nueva instancia de cada clase
+            $cita = new Citas($_POST['cita']);        
+   
+            //validando la existencia de erroes en el formulario
+            $erroresCita = $cita->validar();
+            
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresCita)){
+                
+                // GUARDANDO EN LA BD
+                $guardarCita=$cita->guardar();
+                
+                if($guardarCita){
+                    header("Location: /admin?mensaje=4");                    
+                }
+            }        
+        }
+
+        $router->view('admin/propiedades/visita',[
+            "direccion"=>$direccion,
+            "cita"=>$cita,
+            "vendedores"=>$vendedores,
+            "erroresCita"=>$erroresCita
         ]);
     }
 
@@ -222,46 +290,254 @@ class AdminController{
     }
 
     //funciones para las paginas de los agentes inmobiliarios
+    //TODO BIEN
     public static function agents(Router $router){
+        $agentes = Agente::all();
+        $direcciones = DireccionAgente::all();
+        $roles = Rol::all();
+        $mensaje=$_GET['mensaje']??null;
+
         $router->view('admin/agentes/lista',[
-
+            "agentes"=>$agentes,
+            "direcciones"=>$direcciones,
+            "roles"=>$roles,
+            "mensaje"=>$mensaje
         ]);
     }
 
+    //TODO BIEN
     public static function createAgent(Router $router){
+        //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
+        $agente = new Agente();
+        $direccion = new DireccionAgente();
+
+        //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
+        $roles = Rol::all();
+
+        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
+        $erroresAgente = Agente::getErrores();
+        $erroresDireccion = DireccionAgente::getErrores();
+
+        //COMENZANDO EL METODO POST
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
+
+            //creando nueva instancia de cada clase
+            $agente = new Agente($_POST['agente']);    
+            $direccion = new DireccionAgente($_POST['direccion']);        
+                        
+    
+            //validando la existencia de erroes en el formulario
+            $erroresAgente = $agente->validar();
+            $erroresDireccion = $direccion->validar();
+            
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresAgente)){
+                
+                // GUARDANDO EN LA BD
+                $guardarAgente=$agente->guardar();
+                
+                if($guardarAgente){
+                    $guardarDireccion=$direccion->guardar();
+                    if($guardarDireccion){
+                        header("Location: /admin/agentes?mensaje=1");
+                    }
+                    
+                }
+            }        
+        }
+
         $router->view('admin/agentes/create',[
-
+            "agente"=>$agente,
+            "erroresAgente"=>$erroresAgente,
+            "direccion"=>$direccion,
+            "erroresDireccion"=>$erroresDireccion,
+            "roles"=>$roles
         ]);
     }
 
+    //TODO BIEN
     public static function updateAgent(Router $router){
-        $router->view('admin/agentes/update',[
+        //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
+        $id = validarORedireccionar('/admin');
+        $agente = Agente::find($id);
+        $direccion = DireccionAgente::find($id);
 
+
+        //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
+        $roles = Rol::all();
+
+        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
+        $erroresAgente = $agente->validar();
+        $erroresDireccion = $direccion->validar();
+
+        //COMENZANDO EL METODO POST
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
+
+            //creando nueva instancia de cada clase
+            $argsAgente = new Agente($_POST['agente']);    
+            $argsDireccion = new DireccionAgente($_POST['direccion']); 
+            
+            $agente->sincronizar($argsAgente);
+            $direccion->sincronizar($argsDireccion);
+                        
+    
+            //validando la existencia de erroes en el formulario
+            $erroresAgente = $agente->validar();
+            $erroresDireccion = $direccion->validar();
+            
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresAgente) && empty($erroresDireccion)){
+                
+                // GUARDANDO EN LA BD
+                $guardarAgente=$agente->guardar();
+                
+                if($guardarAgente){
+                    $guardarDireccion=$direccion->guardar();
+                    if($guardarDireccion){
+                        header("Location: /admin/agentes?mensaje=2");
+                    }
+                    
+                }
+            }        
+        }
+        $router->view('admin/agentes/update',[
+            "agente"=>$agente,
+            "erroresAgente"=>$erroresAgente,
+            "direccion"=>$direccion,
+            "erroresDireccion"=>$erroresDireccion,
+            "roles"=>$roles
         ]);
     }
 
-    // public static function deleteAgent(Router $router){
-    //     $router->view('admin/agentes/delete',[
-
-    //     ]);
-    // }
+    public static function deleteAgent(Router $router){
+        if ($_SERVER['REQUEST_METHOD']==='POST') {
+            debuguear($_POST);
+            //validar ID
+            $id = $_POST['id'];
+            $id = filter_var($id, FILTER_VALIDATE_INT);
+        
+            if($id){
+                
+                $tipo=$_POST['tipo'];
+        
+                if(validarTipoContenido($tipo)){
+                    //eliminando objeto
+                    $Agente= Agente::find($id);
+                    $Agente->eliminar();
+                }
+            }
+        }
+    }
 
     //funciones para las paginas de los vendedores
     public static function sellers(Router $router){
+        $vendedores = Vendedor::all();
+        $direcciones = DireccionVendedor::all();
+        $mensaje=$_GET['mensaje']??null;
         $router->view('admin/vendedores/lista',[
-
+            "vendedores"=>$vendedores,
+            "direcciones"=>$direcciones,
+            "mensaje"=>$mensaje
         ]);
     }
 
     public static function createSeller(Router $router){
-        $router->view('admin/vendedores/create',[
+        //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
+        $vendedor = new Vendedor();
+        $direccion = new DireccionVendedor();
 
+
+        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
+        $erroresVendedor = Vendedor::getErrores();
+        $erroresDireccion = DireccionVendedor::getErrores();
+
+        //COMENZANDO EL METODO POST
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
+
+            //creando nueva instancia de cada clase
+            $vendedor = new Vendedor($_POST['vendedor']);
+            $direccion = new DireccionVendedor($_POST['direccion']);        
+            // debuguear($direccion);    
+                        
+    
+            //validando la existencia de erroes en el formulario
+            $erroresVendedor = $vendedor->validar();
+            $erroresDireccion = $direccion->validar();
+            
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresVendedor) && empty($erroresDireccion)){
+                
+                // GUARDANDO EN LA BD
+                $guardarVendedor=$vendedor->guardar();
+                
+                if($guardarVendedor){
+                    $guardarDireccion=$direccion->guardar();
+                    if($guardarDireccion){
+                        header("Location: /admin/vendedores?mensaje=1");
+                    }
+                    
+                }
+            }        
+        }
+        $router->view('admin/vendedores/create',[
+            "vendedor"=>$vendedor,
+            "erroresVendedor"=>$erroresVendedor,
+            "direccion"=>$direccion,
+            "erroresDireccion"=>$erroresDireccion
         ]);
     }
 
     public static function updateSeller(Router $router){
-        $router->view('admin/vendedores/update',[
+        //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
+        $id = validarORedireccionar('/admin');
+        $vendedor = Vendedor::find($id);
+        $direccion = DireccionVendedor::find($id);
 
+
+
+        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
+        $erroresVendedor = $vendedor->validar();
+        $erroresDireccion = $direccion->validar();
+
+        //COMENZANDO EL METODO POST
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
+
+            //creando nueva instancia de cada clase
+            $argsVendedor = new Agente($_POST['vendedor']);    
+            $argsDireccion = new DireccionAgente($_POST['direccion']); 
+            
+            $vendedor->sincronizar($argsVendedor);
+            $direccion->sincronizar($argsDireccion);
+                        
+    
+            //validando la existencia de erroes en el formulario
+            $erroresVendedor = $vendedor->validar();
+            $erroresDireccion = $direccion->validar();
+            
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresVendedor) && empty($erroresDireccion)){
+                
+                // GUARDANDO EN LA BD
+                $guardarVendedor=$vendedor->guardar();
+                
+                if($guardarVendedor){
+                    $guardarDireccion=$direccion->guardar();
+                    if($guardarDireccion){
+                        header("Location: /admin/vendedores?mensaje=2");
+                    }
+                    
+                }
+            }        
+        }
+        $router->view('admin/vendedores/update',[
+            "vendedor"=>$vendedor,
+            "erroresVendedor"=>$erroresVendedor,
+            "direccion"=>$direccion,
+            "erroresDireccion"=>$erroresDireccion
         ]);
     }
 

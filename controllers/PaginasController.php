@@ -226,5 +226,20 @@ class PaginasController{
         ]);
     }
 
+    public static function excel(Router $router){
+        $propiedades = Propiedad::all();
+        $direcciones = Direccion::all();
+        $muebles = Mueble::all();
+        $amenidades = Amenidad::all();
+        $metodosVenta = MetodosVenta::all();
+        $router->view('../views/generarExcel',[
+            "propiedades"=>$propiedades,
+            "direcciones"=>$direcciones,
+            "muebles"=>$muebles,
+            "amenidades"=>$amenidades,
+            "metodosVenta"=>$metodosVenta
+        ]);
+    }
+
 
 }

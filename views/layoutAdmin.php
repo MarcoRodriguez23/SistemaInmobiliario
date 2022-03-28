@@ -36,7 +36,8 @@
             </ul>
             <ul class="list-unstyled components">
                 <li>
-                    <a class="boton descargar" href="/prueba.txt" download="lista-inmuebles.txt">Descargar lista de inmuebles</a>
+                    <!-- <a class="boton descargar" href="/prueba.txt" download="lista-inmuebles.txt">Descargar lista de inmuebles</a> -->
+                    <a class="boton descargar" href="/excel">Descargar Lista de inmuebles</a>
                 </li>  
             </ul>
             <ul class="list-unstyled components">

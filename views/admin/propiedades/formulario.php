@@ -252,7 +252,7 @@
 </fieldset>
 
 <!--INFORMACION ADICIONAL EN CASO DE QUE SEA DEPARTAMENTO-->
-<fieldset class="dosColumnas">
+<fieldset id="infoDepartamento" class="dosColumnas">
     <legend>Departamento</legend>
     <div>
         <label for="numDepartamento">Número de departamento</label>

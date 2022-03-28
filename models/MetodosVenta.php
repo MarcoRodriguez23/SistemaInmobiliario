@@ -15,15 +15,15 @@ class MetodosVenta extends activeRecord{
     public function __construct($args=[])
     {
         $this->id=$args['id']??null;
-        $this->fovissste=$args['fovissste']??'0';
-        $this->cofinavit=$args['cofinavit']??'0';
-        $this->credito=$args['credito']??'0';
-        $this->efectivo=$args['efectivo']??'0';
+        $this->fovissste=$args['fovissste']??0;
+        $this->cofinavit=$args['cofinavit']??0;
+        $this->credito=$args['credito']??0;
+        $this->efectivo=$args['efectivo']??0;
     }
 
     public function validar(){
 
-        if($this->fovissste === '' && $this->cofinavit === '' && $this->credito === '' && $this->efectivo === ''){
+        if($this->fovissste === 0 && $this->cofinavit === 0 && $this->credito === 0 && $this->efectivo === 0){
             self::$errores['metodosVenta'] = "Seleccione mínimo una opción.";
         return self::$errores;
         }
