@@ -1,6 +1,6 @@
 <main>
     <h2>Citas agendadas</h2>
-    <form action="" method="post" class="contenedor filtro contenido-centrado">
+    <!-- <form action="" method="post" class="contenedor filtro contenido-centrado">
         <select name="nombre" id="nombre">
             <option value="" selected disabled>Nombre</option>
             <option value="nombre-1">Nombre X</option>
@@ -23,41 +23,43 @@
         </select>
         
         <button type="submit">Buscar</button>
-    </form>
-    <div class="contenedor">
+    </form> -->
+    <!-- <div class="contenedor">
         <ul style="padding: 0;">
             <li class="leyenda-representante" style="display: inline; padding:1rem;">Representante</li>
             <li class="leyenda-vendedor" style="display: inline; padding:1rem;">Vendedor</li>
         </ul>
-    </div>
+    </div> -->
     <div class="tabla contenedor table-responsive">
         <table>
             <tr>
-                <th>Nombre</th>
+                <th>Registro</th>
                 <th>Inmueble de interés</th>
+                <th>Nombre del visitante</th>
+                <th>Apellido del visitante</th>
+                <th>Teléfono</th>
                 <th>Fecha</th>
                 <th>Hora</th>
             </tr>
-            <tr>
-                <td class="leyenda-representante">Nombre y apellido</td>
-                <td>
-                    <a href="inmueble.php">
-                    inmueble X
-                    </a>
-                </td>
-                <td>dd/mm/aaaa</td>
-                <td>hh:mm</td>
-            </tr>
-            <tr>
-                <td class="leyenda-vendedor">Nombre y apellido</td>
-                <td>
-                    <a href="inmueble.php">
-                    inmueble X
-                    </a>
-                </td>
-                <td>dd/mm/aaaa</td>
-                <td>hh:mm</td>
-            </tr>
+            <?php foreach($citas as $cita): ?>
+            <?php foreach($direcciones as $direccion): ?>
+            <?php if($cita->idPropiedad === $direccion->id): ?>
+                <tr>
+                    <td><?php echo $cita->id; ?></td>
+                    <td>
+                        <a href="/admin/propiedades/info?id=<?php echo $cita->idPropiedad; ?>">
+                        <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>
+                        </a>
+                    </td>
+                    <td><?php echo $cita->nombres; ?></td>
+                    <td><?php echo $cita->apellidos; ?></td>
+                    <td><?php echo $cita->telefono; ?></td>
+                    <td><?php echo $cita->fecha; ?></td>
+                    <td><?php echo $cita->hora; ?></td>
+                </tr>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <?php endforeach; ?>
         </table> 
     </div>
 </main>

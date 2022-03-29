@@ -1,76 +1,186 @@
 <div class="opcion-superior contenedor">
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
-<main class="contenedor">
-    <section class="datos-propiedad">
-        <h3>Dirección del departamento</h3>
-        <p class="precio">$ ##,###,###</p>
+<main>
+    <section class="datos-propiedad contenedor">
+        <h3>
+            <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
+        <br>
+            <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
+        </h3>
     </section>
-    
-    <div class="pre-imagenes">
-        <img src="/build/img/1.jpg" alt="imagen" id="primer-imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <a href="#galeria">Ver todas las fotos</a>
-    </div>
-    <section class="info-propiedad sombra">
-        <h4>Información sobre la propiedad</h4>
-        <div>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam accusantium architecto repellendus vel, ipsum vitae optio iure repellat minima aliquam quia modi fugiat corporis quidem cumque iste nesciunt iusto. Et?
-            </p>
-            <div class="beneficios">
-                <div class="beneficio">
-                    <img src="/build/img/icono_dormitorio.svg" alt="beneficio1">
-                    <p>4 rec</p>
-                </div>
-                <div class="beneficio">
-                    <img src="/build/img/icono_estacionamiento.svg" alt="beneficio1">
-                    <p>2 est</p>
-                </div>
-                <div class="beneficio">
-                    <img src="/build/img/icono_wc.svg" alt="beneficio1">
-                    <p>2 wc</p>
-                </div>
-                <div class="beneficio">
-                    <img src="/build/img/medida.svg" alt="beneficio1">
-                    <p>72 m2</p>
-                </div>
-            </div>
+    <!-- <section class="carrousel contenedor">
+        <div class="carrousel-contenedor">
+            <button aria-label="Anterior" class="carrousel__anterior" id="anterior-seleccion">
+                <img src="/build/img/flecha-izquierda.png" alt="">
+            </button>
+            <div class="carrousel-items" id="C-seleccion"> -->
+                <!-- <aqui se van a ir agregando las imagenes -->
+                <!-- <?php
+                    foreach ($fotos as $foto) {
+                        echo "<img class='carrousel-item' src=/build/img/depG/$propiedad->id/$foto->foto></img>";
+                    }
+                ?> -->
+            <!-- </div>
+            <button aria-label="Siguiente" class="carrousel__siguiente" id="siguiente-seleccion">
+                <img src="/build/img/flecha-correcta.png" alt="">
+            </button>
+            <div class="carrousel-indicadores" role="tablist" id="indicadores-seleccion"></div>
         </div>
-        <h4>Amenidades</h4>
-        <div>
+    </section> -->
+    <section class="caracts-propiedad">
+        <h2>Características</h2>
+
+        <div class="caracts-propiedad-listas">
             <ul>
-                <li>amenidad 1</li>
-                <li>amenidad 2</li>
-                <li>amenidad 3</li>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Núm. de pisos: <?php echo $propiedad->numPisos; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Baños: <?php echo $propiedad->baños; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Habitaciones: <?php echo $propiedad->habitaciones; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Metros cuadrados: <?php echo $propiedad->mt2; ?> mt2</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Tipo de estacionamiento: <?php echo $estacionamiento->tipo; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Cajones de estacionamientos: <?php echo $propiedad->numEstacionamientos; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Habitación de servicio: <?php echo $propiedad->servicioH; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/departamentos.svg" alt="icono">
+                    <p>Patio de servicio: <?php echo $propiedad->servicioP; ?></p>
+                </li>
+            </ul>         
+        </div>
+    </section>
+    <section  class="extra-propiedad contenedor">
+    <h2>Info. y características extra</h2>
+
+    <div class="extra-elementos">
+        <ul>
+            <li>
+                <img src="/build/img/departamentos.svg" alt="icono">
+                <p>Año de construcción: <?php echo $propiedad->año; ?></p>
+            </li>
+            <li>
+                <img src="/build/img/departamentos.svg" alt="icono">
+                <p>Núm. exterior: <?php echo $direccion->numExterior; ?></p>
+            </li>
+            <li>
+                <img src="/build/img/departamentos.svg" alt="icono">
+                <p>Núm. interior: <?php echo $direccion->numInterior; ?></p>
+            </li>
+            <li>
+                <img src="/build/img/departamentos.svg" alt="icono">
+                <p>Número de departamento: <?php echo $propiedad->numDepartamento; ?></p>
+            </li>
+            <li>
+                <img src="/build/img/departamentos.svg" alt="icono">
+                <p>Número de piso: <?php echo $propiedad->piso; ?></p>
+            </li>
+            <li>
+                <img src="/build/img/departamentos.svg" alt="icono">
+                <p>Elevador: <?php echo $propiedad->numElevadores; ?></p>
+            </li>
+        </ul>       
+    </div>
+    </section>
+
+    <div class="contenedor enlace-google">
+        <a class="boton" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
+    </div>
+    
+
+    <div class="muebles-amenidades">
+        <div>
+            <h3>
+                Muebles
+            </h3>
+            <ul>
+                <?php foreach ($mueble as $clave => $val) {
+                    if($val==1 && $clave!="id"){
+                        echo "<li>".ucfirst($clave)."</li>";
+                    }
+                }
+                ?>
             </ul>
         </div>
-    </section>
-</main>
-<section class="contenedor sombra galeria" id="galeria">
-    <h3>Galería de fotos</h3>
-    <div>
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
-        <img src="/build/img/1.jpg" alt="imagen">
+
+        <div>
+            <h3>
+                Amenidades
+            </h3>
+            <ul>
+                <?php foreach ($amenidad as $clave => $val) {
+                    if($val==1 && $clave!="id"){
+                        
+                        if($clave==="roffGarden"){
+                            echo "<li>Roff Garden</li>";
+                        }
+                        if($clave==="salaDeUsosMultiples"){
+                            echo "<li>Sala de usos Multiples</li>";
+                        }
+                        if($clave==="calentadorSolar"){
+                            echo "<li>Calentador Solar</li>";
+                        }
+                        if($clave==="gimnasio"){
+                            echo "<li>".ucfirst($clave)."</li>";
+                        }
+                        if($clave==="cancha"){
+                            echo "<li>".ucfirst($clave)."</li>";
+                        }
+                    }
+                    
+                }
+                ?>
+            </ul>
+        </div>
+        
     </div>
-</section>
-<section class="ubicacion contenedor sombra">
-    <h3>Ubicación</h3>
-    <!-- <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus iusto non quia ducimus temporibus amet atque hic iste, quo ullam aliquid fugiat possimus autem, sapiente distinctio asperiores aperiam eum facere.
-    </p> -->
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1882.0899007228506!2d-99.15182182807233!3d19.36136581681272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffc9e53d8deb%3A0xed620e231dadd1ac!2sAv.%20Popocat%C3%A9petl%20158%2C%20Portales%20Nte%2C%20Benito%20Ju%C3%A1rez%2C%2003300%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1640037359833!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</section>
+
+    <div class="opciones-compra contenedor">
+        <div>
+            <h3>
+                Opciones de Compra
+            </h3>
+            <ul>
+                <!-- <img src="" alt="icono"> -->
+                <?php foreach ($metodosVenta as $clave => $val) {
+                    if($val==1 && $clave!="id"){
+                        if($clave === "credito"){
+                            echo "<li>CRÉDITO BANCARIO</li>";
+                        }
+                        else{
+                            echo "<li>".strtoupper($clave)."</li>";
+                        }
+                    }
+                }
+                ?>
+        </ul>  
+        </div>
+        <img src="/build/img/conocenos.jpg" alt="opciones venta">
+    </div>
+</main>
 <div class="opciones contenedor" style="width: 80%; margin: 1 rem auto;">
-    <a href="/admin/propiedades/update?id=<?php echo $row['id']; ?>" class="boton boton-amarillo">Actualizar</a>
-    <a href="/admin/propiedades/sell?id=<?php echo $row['id']; ?>" class="boton boton-verde">Vender</a>
-    <a href="/admin/propiedades/date?id=<?php echo $row['id']; ?>" class="boton boton-azul">Agendar</a>
+    <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton boton-amarillo">Actualizar</a>
+    <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton boton-verde">Vender</a>
+    <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton boton-azul">Agendar</a>
     <a href="#" class="boton boton-rojo">Eliminar</a>
 </div>

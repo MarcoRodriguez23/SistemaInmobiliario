@@ -36,7 +36,7 @@
     $router->post('/admin/vendedores/update',[AdminController::class,'updateSeller']);
     $router->post('/admin/vendedores/delete',[AdminController::class,'deleteSeller']);
 
-    $router->get('/admin/ganancias',[AdminController::class,'money']);
+    $router->get('/admin/ventas',[AdminController::class,'money']);
     $router->get('/admin/agenda',[AdminController::class,'dates']);
 
     //zona publica

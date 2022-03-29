@@ -1,6 +1,6 @@
 <main>
     <h2>Ganancias</h2>
-    <form action="" method="post" class="contenedor filtro contenido-centrado">
+    <!-- <form action="" method="post" class="contenedor filtro contenido-centrado">
         <select name="representante" id="representante">
             <option value="" selected disabled>Representante</option>
             <option value="representante-1">Representante X</option>
@@ -23,30 +23,32 @@
         </select>
 
         <button type="submit">Buscar</button>
-    </form>
+    </form> -->
     <div class=" tabla contenedor table-responsive">
         
         <table>
             <tr>
-                <th>Representante</th>
+                <th>Registro</th>
+                <th>Agente</th>
                 <th>Comisión</th>
                 <th>Vendedor</th>
                 <th>Comisión</th>
-                <th>Inmueble</th>
+                <th>Propiedad</th>
                 <th>Precio</th>
                 <th>Fecha</th>
-                <th>Lugar</th>
             </tr>
+            <?php foreach($ventas as $venta): ?>
             <tr>
-                <td>Nombre y apellido</td>
-                <td>$$$$$</td>
-                <td>Nombre y apellido</td>
-                <td>$$$$$</td>
-                <td>inmueble X</td>
-                <td>$$$$$</td>
-                <td>dd/mm/aaaa</td>
-                <td>dirección</td>
+                <td><?php echo $venta->id; ?></td>
+                <td><?php echo $venta->idAgente; ?></td>
+                <td><?php echo $agente->comision; ?></td>
+                <td><?php echo $venta->idVendedor; ?></td>
+                <td><?php echo $vendedor->comision; ?></td>
+                <td><?php echo $venta->idPropiedad; ?></td>
+                <td><?php echo $propiedad->precio; ?></td>
+                <td><?php echo $venta->id; ?></td>
             </tr>
+            <?php endforeach; ?>
         </table> 
     </div>
 </main>

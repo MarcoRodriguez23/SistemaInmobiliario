@@ -12,6 +12,7 @@ use Model\MetodosVenta;
 use Model\Escritura;
 use Model\Mueble;
 use Model\TipoPropiedad;
+use Model\Foto;
 
 use Model\Agente;
 use Model\Rol;
@@ -31,6 +32,7 @@ require_once '../models/MetodosVenta.php';
 require_once '../models/Escritura.php';
 require_once '../models/Mueble.php';
 require_once '../models/TipoPropiedad.php';
+require_once '../models/Foto.php';
 
 require_once '../models/Agente.php';
 require_once '../models/Rol.php';
@@ -238,8 +240,27 @@ class AdminController{
     }
 
     public static function infoHouse(Router $router){
+        $id = validarORedireccionar('/admin');
+        $propiedad = Propiedad::find($id);
+        $direccion = Direccion::find($id);
+        $mueble = Mueble::find($id);
+        $amenidad = Amenidad::find($id);
+        $fotos = Foto::find($id);
+        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
+        $escritura = Escritura::find($propiedad->idEscritura);
+        $metodosVenta = MetodosVenta::find($id);
+        // debuguear($metodosVenta);
+        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
         $router->view('admin/propiedades/info',[
-
+            'propiedad'=>$propiedad,
+            'direccion'=>$direccion,
+            'mueble'=>$mueble,
+            'amenidad'=>$amenidad,
+            'fotos'=>$fotos,
+            'estacionamiento'=>$estacionamiento,
+            'escritura'=>$escritura,
+            'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 
@@ -556,8 +577,13 @@ class AdminController{
 
     //funciones para la parte de citas
     public static function dates(Router $router){
+        $citas = Citas::all();
+        $propiedades = Propiedad::all();
+        $direcciones = Direccion::all();
         $router->view('admin/citas/lista',[
-
+            "citas"=>$citas,
+            "direcciones"=>$direcciones,
+            "propiedades"=>$propiedades
         ]);
     }
 }

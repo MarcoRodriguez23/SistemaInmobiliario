@@ -28,7 +28,7 @@
             </ul>
             <ul class="list-unstyled components">
                 <li>
-                    <a href="/admin/ganancias">Ganancias</a>
+                    <a href="/admin/ventas">Ventas</a>
                 </li>
                 <li>
                     <a href="/admin/agenda">Agenda</a>
