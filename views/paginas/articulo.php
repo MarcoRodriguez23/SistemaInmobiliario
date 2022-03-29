@@ -9,6 +9,6 @@
             <?php echo $entrada->descripcion; ?>
         </p>
 
-        <a href="/blog" class="boton">Volver a los articulos</a>
+        <a href="/blog" class="boton-morado">Volver a los articulos</a>
     </div>
 </main>

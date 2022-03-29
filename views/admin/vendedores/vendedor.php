@@ -8,7 +8,7 @@
 
     </div>
     <div class="opciones">
-        <a href="/admin/vendedores/update?id=<?php echo $vendedor->id; ?>" class="boton boton-amarillo">Actualizar</a>
+        <a href="/admin/vendedores/update?id=<?php echo $vendedor->id; ?>" class="boton-amarillo">Actualizar</a>
         <form method="POST" class="w-100" action="/admin/agentes/delete">
             <input type="hidden" name="id" value="<?php echo $vendedor->id; ?>">
             <input type="hidden" name="tipo" value="vendedor">

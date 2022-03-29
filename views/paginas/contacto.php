@@ -50,7 +50,7 @@
                 <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje"></textarea>
             </div>
 
-            <input type="submit" value="Enviar" class="boton boton-formulario">
+            <input type="submit" value="Enviar" class="boton-formulario">
         </form>
     </div>
 </main>

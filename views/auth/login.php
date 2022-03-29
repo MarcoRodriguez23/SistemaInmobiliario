@@ -8,13 +8,17 @@
     <form data-cy="formulario-login" method="POST" action="/login" class="formulario login" novalidate>
         <fieldset>
             <legend>Email y password</legend>
-            <label for="email">E-mail</label>
-            <input type="email" placeholder="Tu email" id="email" name="email" required>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" placeholder="Tu email" id="email" name="email" required>
+            </div>
 
-            <label for="password">password</label>
-            <input type="password" placeholder="Tu password" id="password" name="password" required>
+            <div>
+                <label for="password">password</label>
+                <input type="password" placeholder="Tu password" id="password" name="password" required>
+            </div>
         </fieldset>
 
-        <input type="submit" value="Iniciar Sesión" class="boton-verde">
+        <input type="submit" value="Iniciar Sesión" class="boton-morado">
     </form>
 </main>

@@ -104,7 +104,7 @@
     </section>
 
     <div class="contenedor enlace-google">
-        <a class="boton" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
+        <a class="boton-morado" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
     </div>
     
 
@@ -179,8 +179,8 @@
     </div>
 </main>
 <div class="opciones contenedor" style="width: 80%; margin: 1 rem auto;">
-    <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton boton-amarillo">Actualizar</a>
-    <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton boton-verde">Vender</a>
-    <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton boton-azul">Agendar</a>
-    <a href="#" class="boton boton-rojo">Eliminar</a>
+    <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>
+    <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
+    <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
+    <a href="#" class="boton-rojo">Eliminar</a>
 </div>

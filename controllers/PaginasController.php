@@ -78,11 +78,28 @@ class PaginasController{
     }
 
     public static function inmueble(Router $router){
-        $id = validarORedireccionar('/inmuebles');
-        $inmueble = Propiedad::find($id);
+        $id = validarORedireccionar('/inmueble');
+        $propiedad = Propiedad::find($id);
+        $direccion = Direccion::find($id);
+        $mueble = Mueble::find($id);
+        $amenidad = Amenidad::find($id);
+        $fotos = Foto::find($id);
+        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
+        $escritura = Escritura::find($propiedad->idEscritura);
+        $metodosVenta = MetodosVenta::find($id);
+        // debuguear($metodosVenta);
+        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
         $router->view('/paginas/inmueble',[
-            'inmueble'=>$inmueble
+            'propiedad'=>$propiedad,
+            'direccion'=>$direccion,
+            'mueble'=>$mueble,
+            'amenidad'=>$amenidad,
+            'fotos'=>$fotos,
+            'estacionamiento'=>$estacionamiento,
+            'escritura'=>$escritura,
+            'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 
@@ -136,10 +153,27 @@ class PaginasController{
 
     public static function terreno(Router $router){
         $id = validarORedireccionar('/terrenos');
-        // $terreno = Terreno::find($id);
+        $propiedad = Propiedad::find($id);
+        $direccion = Direccion::find($id);
+        $mueble = Mueble::find($id);
+        $amenidad = Amenidad::find($id);
+        $fotos = Foto::find($id);
+        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
+        $escritura = Escritura::find($propiedad->idEscritura);
+        $metodosVenta = MetodosVenta::find($id);
+        // debuguear($metodosVenta);
+        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
         $router->view('/paginas/terreno',[
-            // 'terreno'=>$terreno
+            'propiedad'=>$propiedad,
+            'direccion'=>$direccion,
+            'mueble'=>$mueble,
+            'amenidad'=>$amenidad,
+            'fotos'=>$fotos,
+            'estacionamiento'=>$estacionamiento,
+            'escritura'=>$escritura,
+            'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 

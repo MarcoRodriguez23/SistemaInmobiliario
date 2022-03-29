@@ -101,7 +101,7 @@
     </section>
 
     <div class="contenedor enlace-google">
-        <a class="boton" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
+        <a class="boton-morado" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
     </div>
     
 
@@ -154,23 +154,35 @@
 
     <div class="opciones-compra contenedor">
         <div>
-            <h3>
-                Opciones de Compra
-            </h3>
-            <ul>
-                <!-- <img src="" alt="icono"> -->
-                <?php foreach ($metodosVenta as $clave => $val) {
-                    if($val==1 && $clave!="id"){
-                        if($clave === "credito"){
-                            echo "<li>CRÉDITO BANCARIO</li>";
-                        }
-                        else{
-                            echo "<li>".strtoupper($clave)."</li>";
+            <div>
+                <h3>
+                    Opciones de Compra
+                </h3>
+                <ul>
+                    <!-- <img src="" alt="icono"> -->
+                    <?php foreach ($metodosVenta as $clave => $val) {
+                        if($val==1 && $clave!="id"){
+                            if($clave === "credito"){
+                                echo "<li>CRÉDITO BANCARIO</li>";
+                            }
+                            else{
+                                echo "<li>".strtoupper($clave)."</li>";
+                            }
                         }
                     }
-                }
-                ?>
-        </ul>  
+                    ?>
+                </ul>  
+            </div>
+            <div>
+                <h3>
+                    Escritura
+                </h3>
+                <ul>
+                    <li>
+                        <?php echo $escritura->tipo; ?>
+                    </li>
+                </ul>
+            </div>
         </div>
         <img src="build/img/conocenos.jpg" alt="opciones venta">
     </div>

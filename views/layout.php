@@ -27,7 +27,7 @@
                 <a href="/">HOME</a>
                 <a href="/nosotros">NOSOTROS</a>
                 <a href="/servicios">SERVICIOS</a>
-                <a href="/inmuebles">INMUEBLES</a>
+                <a href="/inmuebles">CASAS</a>
                 <a href="/departamentos">DEPARTAMENTOS</a>
                 <a href="/terrenos">TERRENOS</a>
                 <a href="/blog">BLOG</a>
