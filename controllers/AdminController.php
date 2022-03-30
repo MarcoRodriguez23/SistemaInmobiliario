@@ -9,10 +9,9 @@ use Model\Direccion;
 use Model\Citas;
 
 require_once '../Router.php';
+
 require_once '../models/Propiedad.php';
 require_once '../models/Direccion.php';
-
-
 require_once '../models/Citas.php';
 
 class AdminController{

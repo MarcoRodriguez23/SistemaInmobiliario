@@ -15,11 +15,11 @@ use Model\TipoPropiedad;
 use Model\Foto;
 
 use Model\Vendedor;
-
 use Model\Citas;
 
 require_once '../Router.php';
 
+require_once '../models/Amenidad.php';
 require_once '../models/Propiedad.php';
 require_once '../models/Direccion.php';
 require_once '../models/Estacionamiento.php';
@@ -30,8 +30,6 @@ require_once '../models/TipoPropiedad.php';
 require_once '../models/Foto.php';
 
 require_once '../models/Vendedor.php';
-
-
 require_once '../models/Citas.php';
 
 class HouseController{

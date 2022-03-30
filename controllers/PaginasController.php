@@ -20,6 +20,7 @@ use Model\Servicio;
 use PHPMailer\PHPMailer\PHPMailer as PHPMailer;
 
 require_once '../Router.php';
+
 require_once '../models/Propiedad.php';
 require_once '../models/Direccion.php';
 require_once '../models/Amenidad.php';
@@ -29,6 +30,9 @@ require_once '../models/MetodosVenta.php';
 require_once '../models/Foto.php';
 require_once '../models/Escritura.php';
 require_once '../models/Estacionamiento.php';
+
+require_once '../models/Blog.php';
+require_once '../models/Servicio.php';
 
 class PaginasController{
 
