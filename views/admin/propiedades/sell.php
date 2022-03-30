@@ -4,51 +4,86 @@
 <h1>Proceso de venta</h1>
 
 <section>
-    <h2>Inmueble X</h2>
+    <h3>
+        <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
+    <br>
+        <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
+    </h3>
     <div class="resumen-venta contenedor">
         <h4>Resumen</h4>
         <div class="resumen-venta_informacion">
             <img src="/build/img/1.jpg" alt="imagen del inmueble">
             <div>
-                <p>Dirección</p>
-                <p>Precio</p>
+                <p>Dirección: </p>
+                <p><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>
+                <p>Precio:</p>
+                <p>$<?php echo $propiedad->precio; ?></p>
                 <p>Forma de pago</p>
-                <p>Estado</p>
+                <ul>
+                    <!-- <img src="" alt="icono"> -->
+                    <?php foreach ($metodos as $clave => $val) {
+                        if($val==1 && $clave!="id"){
+                            if($clave === "credito"){
+                                echo "<li>Crédito bancario</li>";
+                            }
+                            else{
+                                echo "<li>".$clave."</li>";
+                            }
+                        }
+                    }
+                    ?>
+                </ul> 
             </div>
             <div>
                 <ul>
-                    <li>Muebles</li>
-                    <li>Cocina</li>
-                    <li>Baños</li>
-                    <li>Estacionamientos</li>
-                    <li>Habitaciones</li>
+                    <?php foreach ($mueble as $clave => $val) {
+                        if($val==1 && $clave!="id"){
+                            echo "<li>".ucfirst($clave)."</li>";
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
             <div>
                 <ul>
-                    <li>Amenidad 1</li>
-                    <li>Amenidad 2</li>
-                    <li>Amenidad 3</li>
-                    <li>Amenidad 4</li>
+                    <?php foreach ($amenidad as $clave => $val) {
+                        if($val==1 && $clave!="id"){
+                            
+                            if($clave==="roffGarden"){
+                                echo "<li>Roff Garden</li>";
+                            }
+                            if($clave==="salaDeUsosMultiples"){
+                                echo "<li>Sala de usos Multiples</li>";
+                            }
+                            if($clave==="calentadorSolar"){
+                                echo "<li>Calentador Solar</li>";
+                            }
+                            if($clave==="gimnasio"){
+                                echo "<li>".ucfirst($clave)."</li>";
+                            }
+                            if($clave==="cancha"){
+                                echo "<li>".ucfirst($clave)."</li>";
+                            }
+                        }
+                        
+                    }
+                    ?>
                 </ul>
-
             </div>
         </div>
     </div>
     <div>
-        <form action="" method="post" class="contenedor filtro">
-            <select name="representante" id="representante">
-                <option value="" selected disabled>Representante</option>
-                <option value="representante-1">Representante X</option>
-                <option value="representante-2">Representante X</option>
-            </select>
-            <select name="vendedor" id="vendedor">
-                <option value="" selected disabled>Vendedor</option>
-                <option value="vendedor-1">Vendedor 1</option>
-                <option value="vendedor-2">Vendedor 2</option>
-            </select>
-
-            <button type="submit">Buscar</button>
+        <form action="" method="GET" class="contenedor filtro">
+            <div>
+                <select name="venta[vendedor]">
+                    <option value="" disabled selected>--Selecciona un vendedor--</option>
+                    <?php foreach ($vendedores as $vendedor) :?>
+                        <option 
+                        <?php echo ($venta->idVendedor === $vendedor->id) ? 'selected' : ''; ?>
+                        value="<?php echo s($vendedor->id); ?>"><?php echo s($vendedor->nombres)." ".s($vendedor->apellidos) ; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            <input type="submit"> 
         </form>
     </div>
     <div class="contenedor tabla">

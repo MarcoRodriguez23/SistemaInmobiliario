@@ -30,23 +30,21 @@
             <tr>
                 <th>Registro</th>
                 <th>Agente</th>
-                <th>Comisión</th>
                 <th>Vendedor</th>
-                <th>Comisión</th>
                 <th>Propiedad</th>
                 <th>Precio</th>
+                <th>Comisión</th>
                 <th>Fecha</th>
             </tr>
             <?php foreach($ventas as $venta): ?>
             <tr>
                 <td><?php echo $venta->id; ?></td>
                 <td><?php echo $venta->idAgente; ?></td>
-                <td><?php echo $agente->comision; ?></td>
                 <td><?php echo $venta->idVendedor; ?></td>
-                <td><?php echo $vendedor->comision; ?></td>
                 <td><?php echo $venta->idPropiedad; ?></td>
                 <td><?php echo $propiedad->precio; ?></td>
-                <td><?php echo $venta->id; ?></td>
+                <td><?php echo $propiedad->comisión; ?></td>
+                <td><?php echo $venta->fecha; ?></td>
             </tr>
             <?php endforeach; ?>
         </table> 

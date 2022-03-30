@@ -4,8 +4,6 @@
         <p><?php echo $vendedor->edad; ?> Años</p>
         <p>Domicilio: <?php echo $direccion->estado.", ".$direccion->calle.", ".$direccion->municipioDelegacion.", ".$direccion->colonia; ?></p>
         <p>Teléfono: <?php echo $vendedor->telefono; ?></p>
-        <p>Comisión: <?php echo $vendedor->comision; ?>%</p>
-
     </div>
     <div class="opciones">
         <a href="/admin/vendedores/update?id=<?php echo $vendedor->id; ?>" class="boton-amarillo">Actualizar</a>

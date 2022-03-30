@@ -1,5 +1,5 @@
 <fieldset class="dosColumnas">
-    <legend>Información Personal</legend>
+    <!-- <legend>Información Personal</legend> -->
     <div>
         <label for="nombre">Nombre(s)</label>
         <input 
@@ -99,40 +99,5 @@
             value="<?php echo s($direccion->colonia); ?>"
             >
         <?php echo "<p>".$erroresDireccion["colonia"]."</p>"; ?>
-    </div>
-</fieldset>
-
-<fieldset class="comision">
-    <legend>Comisión</legend>
-    <div>
-        <label for="comision">Porcentaje de comisión</label>
-        <input 
-            type="number" 
-            placeholder="ejem: 30" 
-            id="comision" 
-            min="1" 
-            name="agente[comision]"
-            max="100"
-            value="<?php echo s($agente->comision); ?>"
-            >
-        <?php echo "<p>".$erroresAgente["comision"]."</p>"; ?>
-    </div>
-</fieldset>
-
-<fieldset>
-    <legend>Asignar rol</legend>
-    <div>
-        <label for="rol">Rol</label>
-        <select name="agente[rol]" id="rol">
-            <option value="0" selected disabled>--Seleccione un rol--</option>
-            <?php foreach($roles as $rol): ?>
-                <option 
-                    <?php echo $agente->rol===$rol->id ? 'selected': ''; ?>
-                    value="<?php echo $rol->id; ?>"
-                >
-                <?php echo s($rol->tipo); ?></option>
-            <?php endforeach; ?>
-        </select>
-        <?php echo "<p>".$erroresAgente["rol"]."</p>"; ?>
     </div>
 </fieldset>

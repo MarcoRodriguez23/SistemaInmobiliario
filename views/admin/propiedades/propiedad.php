@@ -6,7 +6,7 @@
                 <p class="direccion"><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>
                 <div class="info-inferior">
                     <p class="precio" class="precio">$ <?php echo $propiedad->precio; ?></p>
-                    <p class="pago"></p>
+                    <p class="pago">Comisión: <?php echo $propiedad->comision; ?> %</p>
                     <p class="estado"><?php echo $propiedad->status==0 ? "En venta": "Vendida";?></p>
                     <div class="beneficios">
                         <div class="beneficio">

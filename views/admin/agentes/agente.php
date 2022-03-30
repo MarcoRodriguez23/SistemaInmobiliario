@@ -4,9 +4,6 @@
         <p><?php echo $agente->edad; ?> Años</p>
         <p>Domicilio: <?php echo $direccion->estado.", ".$direccion->calle.", ".$direccion->municipioDelegacion.", ".$direccion->colonia; ?></p>
         <p>Teléfono: <?php echo $agente->telefono; ?></p>
-        <p><?php echo $agente->rol==$rol->id ? $rol->tipo : ''; ?></p>
-        <p>Comisión: <?php echo $agente->comision; ?>%</p>
-
     </div>
     <div class="opciones">
         <a href="/admin/agentes/update?id=<?php echo $agente->id; ?>" class="boton-amarillo">Actualizar</a>

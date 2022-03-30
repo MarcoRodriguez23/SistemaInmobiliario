@@ -151,6 +151,7 @@ class HouseController{
         $erroresMetodosVenta=$metodosVenta->validar();
     
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
 
             //asignar atributos
             $argsPropiedad = $_POST['propiedad'];        
@@ -296,8 +297,23 @@ class HouseController{
     }
 
     public static function sellHouse(Router $router){
-        $router->view('admin/propiedades/sell',[
+        $id = validarORedireccionar('/admin');
+        $propiedad = Propiedad::find($id);
+        $direccion = Direccion::find($id);
+        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
+        $metodos = MetodosVenta::find($id);
+        $amenidad = Amenidad::find($id);
+        $mueble = Mueble::find($id);
+        $vendedores = Vendedor::all();
 
+        $router->view('admin/propiedades/sell',[
+            'propiedad'=>$propiedad,
+            'direccion'=>$direccion,
+            'tipoPropiedad'=>$tipoPropiedad,
+            'metodos'=>$metodos,
+            'mueble'=>$mueble,
+            'amenidad'=>$amenidad,
+            'vendedores'=>$vendedores
         ]);
     }
 

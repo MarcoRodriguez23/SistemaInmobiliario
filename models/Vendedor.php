@@ -4,14 +4,13 @@ namespace Model;
 
 class Vendedor extends activeRecord{
     protected static $tabla='vendedor';
-    protected static $columnas_DB=['id','nombres','apellidos','edad','telefono','comision'];
+    protected static $columnas_DB=['id','nombres','apellidos','edad','telefono'];
 
     public $id;
     public $nombres;
     public $apellidos;
     public $edad;
     public $telefono;
-    public $comision;
 
     public function __construct($args=[])
     {
@@ -32,9 +31,6 @@ class Vendedor extends activeRecord{
         }
         if(!$this->edad){
             self::$errores["edad"]="Debe añadir su edad";
-        }
-        if(!$this->comision){
-            self::$errores["comision"]="Debe añadir su edad";
         }
         if(!$this->telefono){
             self::$errores["telefono"]="debes de añadir un teléfono";

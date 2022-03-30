@@ -12,4 +12,6 @@ $db = conectarDB();
 
 use Model\activeRecord;
 
+require_once '../models/ActiveRecord.php';
+
 activeRecord::setDB($db);

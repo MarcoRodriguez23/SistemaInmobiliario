@@ -1,5 +1,5 @@
 
-<main class="contenedor seccion contenido-centrado">
+<main class="contenedor seccion contenido-centrado login-plantilla">
     <h1 data-cy="heading-login">Iniciar Sesión</h1>
     <?php foreach ($errores as $error): ?>
         <div data-cy="alerta-login" class="alerta error"><?php echo $error;?></div>

@@ -294,6 +294,23 @@
     </div>
 </fieldset>
 
+<fieldset class="comision">
+    <legend>Comisión</legend>
+    <div>
+        <label for="comision">Porcentaje de comisión (1 a 50)</label>
+        <input 
+            type="number" 
+            placeholder="ejem: 30" 
+            id="comision" 
+            min="1" 
+            name="propiedad[comision]"
+            max="50"
+            value="<?php echo s($propiedad->comision); ?>"
+            >
+        <?php echo "<p>".$erroresPropiedad["comision"]."</p>"; ?>
+    </div>
+</fieldset>
+
 <!--PARTE DONDE SE AGREGAN LOS MUEBLES Y AMENIDADES QUE TIENE LA PROPIEDAD-->
 <fieldset>
     <legend>Muebles y amenidades</legend>

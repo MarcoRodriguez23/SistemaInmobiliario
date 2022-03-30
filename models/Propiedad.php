@@ -4,7 +4,7 @@ namespace Model;
 
 class Propiedad extends activeRecord{
     protected static $tabla='propiedad';
-    protected static $columnas_DB=['id','precio','año','mt2','idEscritura','idEstacionamiento','numEstacionamientos','numPisos','piso','numDepartamento','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status'];
+    protected static $columnas_DB=['id','precio','año','mt2','idEscritura','idEstacionamiento','numEstacionamientos','numPisos','piso','numDepartamento','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision'];
 
     public $id;
     public $precio;
@@ -23,6 +23,7 @@ class Propiedad extends activeRecord{
     public $servicioP;
     public $tipoPropiedad;
     public $status;
+    public $comision;
 
 
     public function __construct($args=[])
@@ -44,6 +45,7 @@ class Propiedad extends activeRecord{
         $this->servicioP=$args['servicioP']??'';
         $this->tipoPropiedad=$args['tipoPropiedad']??'';
         $this->status=$args['status']??0;
+        $this->comision=$args['comision']??0;
     }
 
     public function validar(){
@@ -83,6 +85,9 @@ class Propiedad extends activeRecord{
         }
         if(!$this->tipoPropiedad){
             self::$errores['tipoPropiedad'] = "Especificar el tipo de propiedad es obligatorio";
+        }
+        if(!$this->comision){
+            self::$errores['comision'] = "Especificar la comisión";
         }
     
         return self::$errores;

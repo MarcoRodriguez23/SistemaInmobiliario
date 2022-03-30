@@ -101,20 +101,3 @@
         <?php echo "<p>".$erroresDireccion["colonia"]."</p>"; ?>
     </div>
 </fieldset>
-
-<fieldset class="comision">
-    <legend>Comisión</legend>
-    <div>
-        <label for="comision">Porcentaje de comisión</label>
-        <input 
-            type="number" 
-            placeholder="ejem: 30" 
-            id="comision" 
-            min="1" 
-            name="vendedor[comision]"
-            max="100"
-            value="<?php echo s($vendedor->comision); ?>"
-            >
-        <?php echo "<p>".$erroresVendedor["comision"]."</p>"; ?>
-    </div>
-</fieldset>
