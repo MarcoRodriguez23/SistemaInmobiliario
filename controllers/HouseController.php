@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Agente;
 use MVC\Router;
 
 use Model\Amenidad;
@@ -16,6 +17,7 @@ use Model\Foto;
 
 use Model\Vendedor;
 use Model\Citas;
+use Model\Venta;
 
 require_once '../Router.php';
 
@@ -40,6 +42,7 @@ class HouseController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
+        $tipoPropiedad=TipoPropiedad::all();
         $mensaje=$_GET['mensaje']??null;
         
         
@@ -47,6 +50,7 @@ class HouseController{
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad,
             'mensaje'=>$mensaje
         ]);
     }
@@ -295,6 +299,7 @@ class HouseController{
     }
 
     public static function sellHouse(Router $router){
+        $venta = new Venta();
         $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
@@ -303,6 +308,35 @@ class HouseController{
         $amenidad = Amenidad::find($id);
         $mueble = Mueble::find($id);
         $vendedores = Vendedor::all();
+        $agentes = Agente::all();
+
+        $erroresVenta = Venta::getErrores();
+
+        //COMENZANDO EL METODO POST
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            
+            //creando nueva instancia de cada clase
+            $venta = new Venta($_POST['venta']);
+            $argsPropiedad = $_POST['propiedad'];
+            
+            $propiedad->sincronizar($argsPropiedad);
+                    
+            //validando la existencia de erroes en el formulario
+            $erroresVenta = $venta->validar();
+            
+            //si no hay errores proceder a los queries hacia la base de datos
+            if(empty($erroresVenta)){
+                
+                // GUARDANDO EN LA BD
+                $guardarVenta=$venta->guardar();
+                if($guardarVenta){
+                    $guardarPropiedad=$propiedad->guardar();
+                    if($guardarPropiedad){
+                        header("Location: /admin?mensaje=5");                    
+                    }
+                }
+            }        
+        }
 
         $router->view('admin/propiedades/sell',[
             'propiedad'=>$propiedad,
@@ -311,7 +345,9 @@ class HouseController{
             'metodos'=>$metodos,
             'mueble'=>$mueble,
             'amenidad'=>$amenidad,
-            'vendedores'=>$vendedores
+            'vendedores'=>$vendedores,
+            'agentes'=>$agentes,
+            'erroresVenta'=>$erroresVenta
         ]);
     }
 

@@ -5,8 +5,9 @@
             <div class="info-inmueble">
                 <p class="direccion"><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>
                 <div class="info-inferior">
-                    <p class="precio" class="precio">$ <?php echo $propiedad->precio; ?></p>
+                    <p class="precio">$ <?php echo $propiedad->precio; ?></p>
                     <p class="pago">Comisión: <?php echo $propiedad->comision; ?> %</p>
+                    <p class="pago">Tipo: <?php echo $tipo->tipo; ?></p>
                     <p class="estado"><?php echo $propiedad->status==0 ? "En venta": "Vendida";?></p>
                     <div class="beneficios">
                         <div class="beneficio">
@@ -26,14 +27,21 @@
                             <p><?php echo $propiedad->mt2;?> m2</p>
                         </div>   
                     </div>
+                    
                 </div>
             </div>
         </div>
     </a>
     <div class="opciones">
-        <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>
-        <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
-        <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
+        <?php if ($propiedad->status==1) : ?>
+            <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">VENDIDA</a>
+        <?php endif; ?>
+        <?php if ($propiedad->status==0) : ?>
+            <a href="/admin/propiedades/update?id=$propiedad->id" class="boton-amarillo">Actualizar</a>
+            <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
+            <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
+            
+        <?php endif; ?>
         <form method="POST" class="w-100" action="/admin/propiedades/delete">
             <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
             <input type="hidden" name="tipo" value="propiedad">

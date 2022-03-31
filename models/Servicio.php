@@ -15,10 +15,10 @@ class Servicio extends activeRecord{
     public function __construct($args=[])
     {
 
-        $this->$id=$args['id']??null;
-        $this->$titulo=$args['titulo']??'';
-        $this->$descripcion=$args['descripcion']??'';
-        $this->$imagen=$args['imagen']??'';
+        $this->id=$args['id']??null;
+        $this->titulo=$args['titulo']??'';
+        $this->descripcion=$args['descripcion']??'';
+        $this->imagen=$args['imagen']??'';
 
     }
 }

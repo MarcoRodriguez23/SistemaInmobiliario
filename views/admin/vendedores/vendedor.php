@@ -1,5 +1,6 @@
 <div class="plantilla">
     <div class="trabajador">
+    <p>ID= <?php echo $vendedor->id; ?></p>
         <p><?php echo $vendedor->nombres." ".$vendedor->apellidos; ?></p>
         <p><?php echo $vendedor->edad; ?> Años</p>
         <p>Domicilio: <?php echo $direccion->estado.", ".$direccion->calle.", ".$direccion->municipioDelegacion.", ".$direccion->colonia; ?></p>

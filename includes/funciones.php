@@ -55,6 +55,10 @@ function mostrarNotificacion($codigo){
         case 4:
             $mensaje = "Cita creada correctamente";
             break;
+        
+        case 5:
+            $mensaje = "Venta creada correctamente";
+            break;
 
         default:
             $mensaje = false;

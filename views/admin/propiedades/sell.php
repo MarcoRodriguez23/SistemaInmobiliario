@@ -1,16 +1,14 @@
 <div class="opcion-superior contenedor">
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
-<h1>Proceso de venta</h1>
+<h1 class="titulo-venta">Proceso de venta</h1>
 
-<section>
-    <h3>
-        <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
-    <br>
-        <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
-    </h3>
-    <div class="resumen-venta contenedor">
-        <h4>Resumen</h4>
+<div class="resumen-venta contenedor">
+<h4>
+    <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
+<br>
+    <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
+</h4>
         <div class="resumen-venta_informacion">
             <img src="/build/img/1.jpg" alt="imagen del inmueble">
             <div>
@@ -72,51 +70,45 @@
             </div>
         </div>
     </div>
+<form action="" class="contenedor formulario form-venta" method="POST" enctype="multipart/form-data">
+    <h4>Responsables de venta</h4>
     <div>
-        <form action="" method="GET" class="contenedor filtro">
+        <input type="hidden" name="venta[idPropiedad]" value="<?php echo $propiedad->id; ?>">
+        <input type="hidden" name="propiedad[status]" value="1">
+    </div>
+    <fieldset>
+            <legend>Agente</legend>
             <div>
-                <select name="venta[vendedor]">
-                    <option value="" disabled selected>--Selecciona un vendedor--</option>
-                    <?php foreach ($vendedores as $vendedor) :?>
+                <select
+                <?php echo ($propiedad->status==1 && (empty($erroresVenta))) ? 'disabled' : '' ;?>
+                name="venta[idAgente]">
+                    <option value="" disabled selected>--Selecciona un agente--</option>
+                    <?php foreach ($agentes as $agente) :?>
                         <option 
-                        <?php echo ($venta->idVendedor === $vendedor->id) ? 'selected' : ''; ?>
-                        value="<?php echo s($vendedor->id); ?>"><?php echo s($vendedor->nombres)." ".s($vendedor->apellidos) ; ?></option>
+                        <?php echo ($venta->idAgente === $agente->id) ? 'selected' : ''; ?>
+                        value="<?php echo s($agente->id); ?>"><?php echo s($agente->nombres)." ".s($agente->apellidos) ; ?></option>
                     <?php endforeach; ?>
                 </select>
-            <input type="submit"> 
-        </form>
-    </div>
-    <div class="contenedor tabla">
-    <table>
-            <tr>
-            <th>Representate</th>
-            <th>Precio del inmueble</th>
-            <th>Comisión</th>
-            <th>Ganancia por la venta</th>
-            </tr>
-            <tr>
-            <td>Nombre y apellido</td>
-            <td>$$$$$</td>
-            <td>%</td>
-            <td>$$$$$</td>
-            </tr>
-    </table> 
-    <table>
-            <tr>
-            <th>Vendedor</th>
-            <th>Precio del inmueble</th>
-            <th>Comisión</th>
-            <th>Ganancia por la venta</th>
-            </tr>
-            <tr>
-            <td>Nombre y apellido</td>
-            <td>$$$$$</td>
-            <td>%</td>
-            <td>$$$$$</td>
-            </tr>
-    </table> 
-    </div>
-</section>
-<div class="contenedor">
-    <button class="boton-azul">Vender</button>
-</div>
+            </div>
+    </fieldset>
+    <fieldset>
+        <legend>Vendedor</legend>
+        <div>
+            <select
+                <?php echo ($propiedad->status==1 && (empty($erroresVenta))) ? 'disabled' : '' ;?>
+                name="venta[idVendedor]">
+                <option value="" disabled selected>--Selecciona un vendedor--</option>
+                <?php foreach ($vendedores as $vendedor) :?>
+                    <option 
+                    <?php echo ($venta->idVendedor === $vendedor->id) ? 'selected' : ''; ?>
+                    value="<?php echo s($vendedor->id); ?>"><?php echo s($vendedor->nombres)." ".s($vendedor->apellidos) ; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <?php echo "<p>".$erroresVenta["trabajadores"]."</p>"; ?>
+    </fieldset>
+
+    <?php echo ($propiedad->status==1 && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-morado">';?>
+    
+</form>
+

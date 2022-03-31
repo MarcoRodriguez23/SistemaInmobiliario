@@ -29,23 +29,33 @@
         <table>
             <tr>
                 <th>Registro</th>
-                <th>Agente</th>
-                <th>Vendedor</th>
+                <th>ID Agente</th>
+                <th>ID Vendedor</th>
                 <th>Propiedad</th>
                 <th>Precio</th>
                 <th>Comisión</th>
                 <th>Fecha</th>
             </tr>
             <?php foreach($ventas as $venta): ?>
-            <tr>
-                <td><?php echo $venta->id; ?></td>
-                <td><?php echo $venta->idAgente; ?></td>
-                <td><?php echo $venta->idVendedor; ?></td>
-                <td><?php echo $venta->idPropiedad; ?></td>
-                <td><?php echo $propiedad->precio; ?></td>
-                <td><?php echo $propiedad->comisión; ?></td>
-                <td><?php echo $venta->fecha; ?></td>
-            </tr>
+            <?php foreach($propiedades as $propiedad): ?>
+            <?php foreach($direcciones as $direccion): ?>
+                <?php if($venta->idPropiedad === $propiedad->id && $propiedad->id === $direccion->id): ?>
+                <tr>
+                    <td><?php echo $venta->id; ?></td>
+                    <td><?php echo $venta->idAgente==0 ? 'Sin asignar' : $venta->idAgente; ?></td>
+                    <td><?php echo $venta->idVendedor==0 ? 'Sin asignar' : $venta->idVendedor; ?></td>
+                    <td>
+                        <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
+                        <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>
+                        </a>
+                    </td>
+                    <td>$<?php echo $propiedad->precio; ?></td>
+                    <td><?php echo $propiedad->comision; ?>%</td>
+                    <td><?php echo $venta->fecha; ?></td>
+                </tr>
+                <?php endif; ?> 
+            <?php endforeach; ?>
+            <?php endforeach; ?>
             <?php endforeach; ?>
         </table> 
     </div>

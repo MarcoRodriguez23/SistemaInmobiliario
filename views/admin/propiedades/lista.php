@@ -57,8 +57,10 @@
     <?php
         foreach ($propiedades as $propiedad) {
             foreach ($direcciones as $direccion) {
-                if($propiedad->id === $direccion->id){
-                    include 'propiedad.php';
+                foreach ($tipoPropiedad as $tipo) {
+                    if($propiedad->id === $direccion->id && $propiedad->tipoPropiedad === $tipo->id){
+                        include 'propiedad.php';
+                    }
                 }
             }
         }
