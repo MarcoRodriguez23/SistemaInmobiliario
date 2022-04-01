@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,17 +23,23 @@
                 <li>
                     <a href="/admin">Propiedades</a>
                 </li>
+                <?php if($_SESSION['nivel']==1): ?>
                 <li>
                     <a href="/admin/agentes">Agente inmobiliario</a>
                 </li>
+                <?php endif; ?>
+                <?php if(!($_SESSION['nivel']==3)): ?>
                 <li>
                     <a href="/admin/vendedores">Vendedores</a>
                 </li>
+                <?php endif; ?>
             </ul>
             <ul class="list-unstyled components">
+                <?php if(!($_SESSION['nivel']==3)): ?>
                 <li>
                     <a href="/admin/ventas">Ventas</a>
                 </li>
+                <?php endif; ?>
                 <li>
                     <a href="/admin/agenda">Agenda</a>
                 </li>

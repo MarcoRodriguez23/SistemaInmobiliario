@@ -32,6 +32,7 @@
             </div>
         </div>
     </a>
+    <?php if(!($_SESSION['nivel']==3)): ?>
     <div class="opciones">
         <?php if ($propiedad->status==1) : ?>
             <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">VENDIDA</a>
@@ -48,4 +49,5 @@
             <input type="submit" value="Eliminar" class="boton-rojo" onclick="return ConfirmDelete()">
         </form>
     </div>
+    <?php endif; ?>
 </div><!--plantilla -->

@@ -5,17 +5,19 @@ namespace Model;
 class Admin extends activeRecord{
     //BD
     protected static $tabla='administrador';
-    protected static $columnasDB = ['id','email','password'];
+    protected static $columnasDB = ['id','email','password','nivel'];
 
     public $id;
     public $email;
     public $password;
+    public $nivel;
 
     public function __construct($args=[])
     {
         $this->id=$args['id']??null;
         $this->email=$args['email']??'';
         $this->password=$args['password']??'';
+        $this->nivel=$args['nivel']??'';
     }
 
     public function validar(){
@@ -43,9 +45,12 @@ class Admin extends activeRecord{
 
     public function comprobarPassword($resultado){
         $usuario = $resultado->fetch_object();
-
+        
         $autenticado= password_verify($this->password, $usuario->password);
-
+        
+        //obteniendo el nivel del usuario
+        $this->nivel = $usuario->nivel;
+        
         if(!$autenticado){
             self::$errores= "El password es incorrecto";
         }
@@ -58,6 +63,7 @@ class Admin extends activeRecord{
         //llenar el arreglo de sesion
         $_SESSION['usuario']=$this->email;
         $_SESSION['login']=true;
+        $_SESSION['nivel']=$this->nivel;
 
         header('Location: /admin');
 

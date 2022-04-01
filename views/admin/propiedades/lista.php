@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <div>
 <?php
     if($mensaje){
@@ -7,9 +10,11 @@
         <?php }
         } ?>
 </div>
+<?php if(!($_SESSION['nivel']==3)): ?>
 <div class="opcion-superior contenedor">
     <a href="/admin/propiedades/create" class="boton-superior"><img src="/build/img/inmueble.svg" alt="inmueble"></a>
 </div>
+<?php endif; ?>
 <main>
     <h1>Propiedades en lista</h1>
     <!-- <section>
@@ -59,7 +64,12 @@
             foreach ($direcciones as $direccion) {
                 foreach ($tipoPropiedad as $tipo) {
                     if($propiedad->id === $direccion->id && $propiedad->tipoPropiedad === $tipo->id){
-                        include 'propiedad.php';
+                        if ($_SESSION['nivel']==3 && $propiedad->status !=1) {
+                            include 'propiedad.php';
+                        }
+                        if ($_SESSION['nivel']<3) {
+                            include 'propiedad.php';
+                        }
                     }
                 }
             }

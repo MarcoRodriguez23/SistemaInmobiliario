@@ -45,7 +45,7 @@ class AgentController{
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            // debuguear($_POST);
+            debuguear($_POST);
 
             //creando nueva instancia de cada clase
             $agente = new Agente($_POST['agente']);    

@@ -179,13 +179,14 @@
     </div>
 </main>
 
-
-<?php echo ($propiedad->status==1) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  
-'
-<div class="opciones contenedor" style="width: 80%; margin: 1 rem auto;">
-    <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>
-    <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
-    <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
-    <a href="#" class="boton-rojo">Eliminar</a>
-</div>
-';?>
+<?php if($propiedad->status==1): ?>
+    <h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>
+<?php endif; ?>
+<?php if($propiedad->status==0 && (!($_SESSION['nivel']==3))): ?>
+    <div class="opciones contenedor" style="width: 80%; margin: 1 rem auto;">
+        <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>
+        <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
+        <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
+        <a href="#" class="boton-rojo">Eliminar</a>
+    </div>
+<?php endif; ?>
