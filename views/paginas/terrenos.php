@@ -19,7 +19,7 @@
         <!-- aqui se va ir generando los anuncios de los terrenos -->
         <?php foreach($propiedades as $propiedad): ?>
             <?php foreach($direcciones as $direccion): ?>
-                <?php if($propiedad->tipoPropiedad == 3 && $propiedad->id === $direccion->id): ?>
+                <?php if($propiedad->tipoPropiedad == 3 && $propiedad->id === $direccion->id && $propiedad->status!=1): ?>
                     <div class="anuncio">
                         <a href="/terreno?id=<?php echo $propiedad->id; ?>">
                             <img loading="lazy" src="" alt="terreno <?php echo $propiedad->id; ?>">

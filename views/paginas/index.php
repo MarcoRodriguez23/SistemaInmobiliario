@@ -31,7 +31,7 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 1 && $propiedad->id === $direccion->id): ?>
+                    <?php if($propiedad->tipoPropiedad == 1 && $propiedad->id === $direccion->id && $propiedad->status != 1): ?>
                         <div class="imagen-texto">
                             <img loading="lazy" src="/build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="inmueble <?php echo $propiedad->id; ?>">
                             <p><?php echo "Casa en venta en ". $direccion->estado .", ".$direccion->municipioDelegacion; ?></p>
@@ -64,7 +64,7 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id): ?>
+                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id && $propiedad->status != 1): ?>
                         <div class="imagen-texto">
                             <img loading="lazy" src="/build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="departamento <?php echo $propiedad->id; ?>">
                             <p><?php echo "Departamento en venta en ". $direccion->estado .", ".$direccion->municipioDelegacion; ?></p>
@@ -98,7 +98,7 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 3 && $propiedad->id === $direccion->id): ?>
+                    <?php if($propiedad->tipoPropiedad == 3 && $propiedad->id === $direccion->id && $propiedad->status != 1): ?>
                         <div class="imagen-texto">
                             <img loading="lazy" src="/build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="terreno <?php echo $propiedad->id; ?>">
                             <p><?php echo "Terreno o local en venta en ". $direccion->estado .", ".$direccion->municipioDelegacion; ?></p>

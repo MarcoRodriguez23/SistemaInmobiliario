@@ -31,37 +31,37 @@
         <div class="caracts-propiedad-listas">
             <ul>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_edificio3.svg" alt="icono">
                     <p>Núm. de pisos: <?php echo $propiedad->numPisos; ?></p>
                 </li>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_baño1.svg" alt="icono">
                     <p>Baños: <?php echo $propiedad->baños; ?></p>
                 </li>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_recamara1.svg" alt="icono">
                     <p>Habitaciones: <?php echo $propiedad->habitaciones; ?></p>
                 </li>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_metros1.svg" alt="icono">
                     <p>Metros cuadrados: <?php echo $propiedad->mt2; ?> mt2</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_estacionamiento1.svg" alt="icono">
                     <p>Tipo de estacionamiento: <?php echo $estacionamiento->tipo; ?></p>
                 </li>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_estacionamiento2.svg" alt="icono">
                     <p>Cajones de estacionamientos: <?php echo $propiedad->numEstacionamientos; ?></p>
                 </li>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_sala1.svg" alt="icono">
                     <p>Habitación de servicio: <?php echo $propiedad->servicioH; ?></p>
                 </li>
                 <li>
-                    <img src="build/img/departamentos.svg" alt="icono">
+                    <img src="build/img/Iconos/icono_patiodeservicio1.svg" alt="icono">
                     <p>Patio de servicio: <?php echo $propiedad->servicioP; ?></p>
                 </li>
             </ul>         
@@ -73,27 +73,27 @@
     <div class="extra-elementos">
         <ul>
             <li>
-                <img src="build/img/departamentos.svg" alt="icono">
+                <img src="build/img/Iconos/icono_año.svg" alt="icono">
                 <p>Año de construcción: <?php echo $propiedad->año; ?></p>
             </li>
             <li>
-                <img src="build/img/departamentos.svg" alt="icono">
+                <img src="build/img/Iconos/icono_casa1.svg" alt="icono">
                 <p>Núm. exterior: <?php echo $direccion->numExterior; ?></p>
             </li>
             <li>
-                <img src="build/img/departamentos.svg" alt="icono">
+                <img src="build/img/Iconos/icono_casa1.svg" alt="icono">
                 <p>Núm. interior: <?php echo $direccion->numInterior; ?></p>
             </li>
             <li>
-                <img src="build/img/departamentos.svg" alt="icono">
+                <img src="build/img/Iconos/icono_edificio1.svg" alt="icono">
                 <p>Número de departamento: <?php echo $propiedad->numDepartamento; ?></p>
             </li>
             <li>
-                <img src="build/img/departamentos.svg" alt="icono">
+                <img src="build/img/Iconos/icono_edificio1.svg" alt="icono">
                 <p>Número de piso: <?php echo $propiedad->piso; ?></p>
             </li>
             <li>
-                <img src="build/img/departamentos.svg" alt="icono">
+                <img src="build/img/Iconos/icono_elevador1.svg" alt="icono">
                 <p>Elevador: <?php echo $propiedad->numElevadores; ?></p>
             </li>
         </ul>       
@@ -113,7 +113,42 @@
             <ul>
                 <?php foreach ($mueble as $clave => $val) {
                     if($val==1 && $clave!="id"){
-                        echo "<li>".ucfirst($clave)."</li>";
+                        if($clave==="sala"){
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_sala1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
+                        }
+                        if($clave==="lavadora"){
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_lavadora1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
+                        }
+                        if($clave==="boiler"){
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_boiler1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
+                        }
+                        if($clave==="cocina"){
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_cocina1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
+                        }
+                        if($clave==="camas"){
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_cama1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
+                        }
+                        if($clave==="roperos"){
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_closet1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
+                        }
                     }
                 }
                 ?>
@@ -129,19 +164,34 @@
                     if($val==1 && $clave!="id"){
                         
                         if($clave==="roffGarden"){
-                            echo "<li>Roff Garden</li>";
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_patio1.svg" alt="icono">
+                                Roff Garden
+                                </li>';
                         }
                         if($clave==="salaDeUsosMultiples"){
-                            echo "<li>Sala de usos Multiples</li>";
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_sala2.svg" alt="icono">
+                                Sala de usos Multiples
+                                </li>';
                         }
                         if($clave==="calentadorSolar"){
-                            echo "<li>Calentador Solar</li>";
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_calentadorsolar1.svg" alt="icono">
+                                Calentador Solar
+                                </li>';
                         }
                         if($clave==="gimnasio"){
-                            echo "<li>".ucfirst($clave)."</li>";
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_gym1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
                         }
                         if($clave==="cancha"){
-                            echo "<li>".ucfirst($clave)."</li>";
+                            echo '<li>
+                                <img src="build/img/Iconos/icono_cancha1.svg" alt="icono">
+                                '.ucfirst($clave).'
+                                </li>';
                         }
                     }
                     
@@ -163,10 +213,16 @@
                     <?php foreach ($metodosVenta as $clave => $val) {
                         if($val==1 && $clave!="id"){
                             if($clave === "credito"){
-                                echo "<li>CRÉDITO BANCARIO</li>";
+                                echo '<li>
+                                <img src="build/img/Iconos/icono_dinero1.svg" alt="icono">
+                                <p>CRÉDITO BANCARIO</p>
+                                </li>';
                             }
                             else{
-                                echo "<li>".strtoupper($clave)."</li>";
+                                echo '<li>
+                                <img src="build/img/Iconos/icono_dinero1.svg" alt="icono">
+                                <p>'.strtoupper($clave).'</p>
+                                </li>';
                             }
                         }
                     }
@@ -178,9 +234,12 @@
                     Escritura
                 </h3>
                 <ul>
-                    <li>
-                        <?php echo $escritura->tipo; ?>
-                    </li>
+                    <?php
+                        echo '<li>
+                        <img src="build/img/Iconos/icono_escrituras1.svg" alt="icono">
+                        <p>'.strtoupper($escritura->tipo).'</p>
+                        </li>';
+                    ?>
                 </ul>
             </div>
         </div>
