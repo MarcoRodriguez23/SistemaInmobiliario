@@ -20,6 +20,10 @@ class activeRecord{
         return static::$errores;
     }
 
+    public static function setAlerta($tipo, $mensaje) {
+        static::$errores[$tipo][] = $mensaje;
+    }
+
     public function validar(){
         static::$errores=[];
         return static::$errores;
@@ -152,6 +156,13 @@ class activeRecord{
         $query = "SELECT * FROM ". static::$tabla ." WHERE id=${id}";
         $resultado=self::consultarSQL($query);
         return array_shift($resultado);
+    }
+
+    // Busca un registro por un columna
+    public static function where($columna,$valor) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";
+        $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
     }
 
     public static function consultarSQL($query){

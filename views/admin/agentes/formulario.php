@@ -6,10 +6,10 @@
             type="text" 
             placeholder="Tu nombre" 
             id="nombre"
-            name="agente[nombres]"
-            value="<?php echo s($agente->nombres); ?>"
+            name="agente[nombre]"
+            value="<?php echo s($agente->nombre); ?>"
             >
-        <?php echo "<p>".$erroresAgente["nombres"]."</p>"; ?>
+        <?php echo "<p>".$erroresAgente["nombre"]."</p>"; ?>
     </div>
     <div>
         <label for="apellido">Apellidos</label>
@@ -17,10 +17,10 @@
             type="text" 
             placeholder="apellidos" 
             id="apellido"
-            name="agente[apellidos]"
-            value="<?php echo s($agente->apellidos); ?>"
+            name="agente[apellido]"
+            value="<?php echo s($agente->apellido); ?>"
             >
-        <?php echo "<p>".$erroresAgente["apellidos"]."</p>"; ?>
+        <?php echo "<p>".$erroresAgente["apellido"]."</p>"; ?>
     </div>
     <div>
         <label for="edad">Edad</label>

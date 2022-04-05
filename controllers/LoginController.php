@@ -3,10 +3,12 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Admin;
+use Model\Usuario;
+
 
 require_once '../Router.php';
-require_once '../models/Admin.php';
+require_once '../models/Usuario.php';
+
 
 class LoginController{
 
@@ -15,31 +17,37 @@ class LoginController{
         $errores=[];
 
         if($_SERVER['REQUEST_METHOD']==='POST'){
-            $auth = new Admin($_POST);
-            $errores = $auth->validar();
+            $auth = new Usuario($_POST);
+            $errores = $auth->validarLogin();
 
             if(empty($errores)){
                 //verificar si el usuario existe
-                $resultado=$auth->existeUsuario();
+                $usuario = Usuario::where('email',$auth->email);
                 
-                if(!$resultado){
-                    $errores = Admin::getErrores();
+                if($usuario){
+                    //verificar password
+                    if($usuario->comprobarPasswordAndVerificado($auth)){
+                        //autenticar al usuario
+                        session_start();
+                        $_SESSION['id']=$usuario->id;
+                        $_SESSION['nombre']=$usuario->nombre." ".$usuario->apellido;
+                        $_SESSION['email']=$usuario->email;
+                        $_SESSION['nivel']=$usuario->nivel;
+                        $_SESSION['login']=true;
+
+                        //redireccionar
+                        header('Location: /admin');
+                        
+                    }
                 }
                 else{
-                    //verificar el password
-                    $autenticado=$auth->comprobarPassword($resultado);
-                    //autenticar al usuario
-                    if($autenticado){
-                        $auth->autenticar();
-                    }
-                    else{
-                        $errores = Admin::getErrores();
-                    }
+                    Usuario::setAlerta('error','Usuario no encontrado');
                 }
                 
             }
         }
-
+        
+        $errores = Usuario::getErrores();
         $router->view('auth/login',[
             'errores'=>$errores
         ]);
@@ -49,5 +57,33 @@ class LoginController{
         session_start();
         $_SESSION=[];
         header('Location: /');
+    }
+
+    public static function confirmar(Router $router){
+        $errores = [];
+
+        //recogiendo el token por GET
+        $token = s($_GET['token']);
+        
+        $usuario = Usuario::where('token',$token);
+        
+        if(empty($usuario)){
+            //mostrar mensaje
+            Usuario::setAlerta("error","token no válido");
+        }
+        else{
+            //confirmando la existencia del usuario
+            $usuario->confirmado = 1;
+            //eliminando el token del usuario que ya fue confirmado
+            $usuario->token = null;
+            //actualizando el usuario ya sin token y confirmado
+            $usuario->guardar();
+            Usuario::setAlerta("exito","Token válido, confirmando usuario");
+        }
+
+        $errores=Usuario::getErrores();
+        $router->view('auth/confirmar-cuenta',[
+            'errores'=>$errores
+        ]);
     }
 }

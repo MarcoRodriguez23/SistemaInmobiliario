@@ -16,7 +16,7 @@
         <?php
         foreach ($vendedores as $vendedor) {
             foreach ($direcciones as $direccion) {
-                if($vendedor->id === $direccion->id){
+                if($vendedor->id === $direccion->id && $vendedor->nivel==3 && $vendedor->confirmado == 1){
                     include 'vendedor.php';
                 }
             }

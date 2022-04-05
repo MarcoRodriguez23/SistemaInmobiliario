@@ -2,13 +2,12 @@
 
 namespace Controllers;
 
-use Model\Agente;
 use MVC\Router;
 
 use Model\Propiedad;
 use Model\Direccion;
+use Model\Usuario;
 use Model\Citas;
-use Model\Vendedor;
 use Model\Venta;
 
 require_once '../Router.php';
@@ -16,7 +15,7 @@ require_once '../Router.php';
 require_once '../models/Propiedad.php';
 require_once '../models/Direccion.php';
 require_once '../models/Citas.php';
-require_once '../models/Vendedor.php';
+require_once '../models/Usuario.php';
 
 class AdminController{
     
@@ -25,15 +24,13 @@ class AdminController{
         $ventas = Venta::all();
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
-        $vendedores = Vendedor::all();
-        $agentes = Agente::all();
+        $trabajadores = Usuario::all();
 
         $router->view('admin/ganancias/lista',[
             'ventas'=>$ventas,
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'agentes'=>$agentes,
-            'vendedores'=>$vendedores
+            'trabajadores'=>$trabajadores
         ]);
     }
 
@@ -42,7 +39,7 @@ class AdminController{
         $citas = Citas::all();
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
-        $vendedores = Vendedor::all();
+        $vendedores = Usuario::all();
         $router->view('admin/citas/lista',[
             "citas"=>$citas,
             "direcciones"=>$direcciones,

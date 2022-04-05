@@ -4,7 +4,7 @@ namespace Model;
 
 class Citas extends activeRecord{
     protected static $tabla='citas';
-    protected static $columnas_DB=['id','idPropiedad','nombres','apellidos','telefono','fecha','hora','idVendedor'];
+    protected static $columnas_DB=['id','idPropiedad','nombres','apellidos','telefono','fecha','hora','idEncargado'];
 
     public $id;
     public $idPropiedad;
@@ -13,7 +13,7 @@ class Citas extends activeRecord{
     public $telefono;
     public $fecha;
     public $hora;
-    public $idVendedor;
+    public $idEncargado;
 
     public function __construct($args=[])
     {
@@ -24,7 +24,7 @@ class Citas extends activeRecord{
         $this->telefono=$args['telefono']??'';
         $this->fecha=$args['fecha']??'';
         $this->hora=$args['hora']??'';
-        $this->idVendedor=$args['idVendedor']??'';
+        $this->idEncargado=$args['idEncargado']??'';
     }
 
     public function validar(){
@@ -46,7 +46,7 @@ class Citas extends activeRecord{
         if(!$this->hora){
             self::$errores["hora"]="Debe escoger una hora para su visita";
         }
-        if(!$this->idVendedor){
+        if(!$this->idEncargado){
             self::$errores["idVendedor"]="Debe escoger un vendedor";
         }
         return self::$errores;

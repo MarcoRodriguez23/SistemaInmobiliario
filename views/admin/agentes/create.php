@@ -16,8 +16,11 @@
                     type="email" 
                     id="usuario" 
                     placeholder="Correo"
-                    name="credenciales[email]"
+                    name="agente[email]"
+                    value="<?php echo s($agente->email); ?>"
                     >
+                <?php echo "<p>".$erroresAgente["email"]."</p>"; ?>
+                <?php echo "<p>".$erroresAgente["yaExiste"]."</p>"; ?>
             </div>
 
             <div>
@@ -26,12 +29,13 @@
                     type="password" 
                     id="password" 
                     placeholder="Contraseña"
-                    name="credenciales[password]"
+                    name="agente[password]"
                     >
+                <?php echo "<p>".$erroresAgente["password"]."</p>"; ?>
             </div>
 
             <div>
-                <input type="hidden" name="credenciales[nivel]" value="2">
+                <input type="hidden" name="agente[nivel]" value="2">
                 
             </div>
             

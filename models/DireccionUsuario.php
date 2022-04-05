@@ -2,8 +2,8 @@
 
 namespace Model;
 
-class DireccionAgente extends activeRecord{
-    protected static $tabla='direccionagente';
+class DireccionUsuario extends activeRecord{
+    protected static $tabla='direccionusuario';
     protected static $columnas_DB=['id','estado','municipioDelegacion','calle','colonia'];
 
     public $id;

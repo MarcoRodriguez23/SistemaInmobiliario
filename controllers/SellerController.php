@@ -3,12 +3,13 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Vendedor;
-use Model\DireccionVendedor;
+use Model\Usuario;
+use Model\DireccionUsuario;
+use Classes\Email;
 
 require_once '../Router.php';
-require_once '../models/Vendedor.php';
-require_once '../models/DireccionVendedor.php';
+require_once '../models/Agente.php';
+require_once '../models/DireccionUsuario.php';
 
 
 
@@ -16,9 +17,10 @@ class SellerController{
 
     //funciones para las paginas de los vendedores
     public static function sellers(Router $router){
-        $vendedores = Vendedor::all();
-        $direcciones = DireccionVendedor::all();
+        $vendedores = Usuario::all();
+        $direcciones = DireccionUsuario::all();
         $mensaje=$_GET['mensaje']??null;
+        
         $router->view('admin/vendedores/lista',[
             "vendedores"=>$vendedores,
             "direcciones"=>$direcciones,
@@ -28,43 +30,54 @@ class SellerController{
 
     public static function createSeller(Router $router){
         //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
-        $vendedor = new Vendedor();
-        $direccion = new DireccionVendedor();
-
+        $vendedor = new Usuario();
+        $direccion = new DireccionUsuario();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresVendedor = Vendedor::getErrores();
-        $erroresDireccion = DireccionVendedor::getErrores();
+        $erroresVendedor = Usuario::getErrores();
+        $erroresDireccion = DireccionUsuario::getErrores();
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            // debuguear($_POST);
-
+            
             //creando nueva instancia de cada clase
-            $vendedor = new Vendedor($_POST['vendedor']);
-            $direccion = new DireccionVendedor($_POST['direccion']);        
-            // debuguear($direccion);    
-                        
-    
+            $vendedor->sincronizar($_POST['agente']);
+            $direccion->sincronizar($_POST['direccion']);   
+            
             //validando la existencia de erroes en el formulario
             $erroresVendedor = $vendedor->validar();
             $erroresDireccion = $direccion->validar();
-            
-            //si no hay errores proceder a los queries hacia la base de datos
+
+            //si no hay errores proceder a los queries hacia la base de datos   
             if(empty($erroresVendedor) && empty($erroresDireccion)){
+                $existencia=$vendedor->existeUsuario(); 
                 
-                // GUARDANDO EN LA BD
-                $guardarVendedor=$vendedor->guardar();
-                
-                if($guardarVendedor){
-                    $guardarDireccion=$direccion->guardar();
-                    if($guardarDireccion){
-                        header("Location: /admin/vendedores?mensaje=1");
-                    }
-                    
+                if($existencia->num_rows){
+                    $erroresVendedor = Usuario::getErrores();
                 }
-            }        
+                else{
+                    // Hashear el Password
+                    $vendedor->hashPassword();
+
+                    // Generar un Token único
+                    $vendedor->crearToken();
+
+                    // Enviar el Email
+                    $email = new Email($vendedor->nombre, $vendedor->email, $vendedor->token);
+                    $email->enviarConfirmacion();
+
+                    //crear el usuario
+                    $guardarVendedor = $vendedor->guardar();
+                    if($guardarVendedor){
+                        $guardarDireccion = $direccion->guardar();
+                        if($guardarDireccion){
+                            header('Location: /admin/vendedores?mensaje=1');
+                        }
+                    }
+                }
+            }     
         }
+
         $router->view('admin/vendedores/create',[
             "vendedor"=>$vendedor,
             "erroresVendedor"=>$erroresVendedor,
@@ -76,13 +89,13 @@ class SellerController{
     public static function updateSeller(Router $router){
         //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
         $id = validarORedireccionar('/admin');
-        $vendedor = Vendedor::find($id);
-        $direccion = DireccionVendedor::find($id);
+        $vendedor = Usuario::find($id);
+        $direccion = DireccionUsuario::find($id);
 
 
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresVendedor = $vendedor->validar();
+        $erroresVendedor = $vendedor->validarUpdate();
         $erroresDireccion = $direccion->validar();
 
         //COMENZANDO EL METODO POST
@@ -90,15 +103,18 @@ class SellerController{
             // debuguear($_POST);
 
             //creando nueva instancia de cada clase
-            $argsVendedor = new Vendedor($_POST['vendedor']);    
-            $argsDireccion = new DireccionVendedor($_POST['direccion']); 
+            $argsVendedor = new Usuario($_POST['vendedor']);    
+            $argsDireccion = new DireccionUsuario($_POST['direccion']); 
             
-            $vendedor->sincronizar($argsVendedor);
+            $vendedor->nombre = $argsVendedor->nombre;
+            $vendedor->apellido = $argsVendedor->apellido;
+            $vendedor->telefono = $argsVendedor->telefono;
+            $vendedor->edad = $argsVendedor->edad;
             $direccion->sincronizar($argsDireccion);
                         
     
             //validando la existencia de erroes en el formulario
-            $erroresVendedor = $vendedor->validar();
+            $erroresVendedor = $vendedor->validarUpdate();
             $erroresDireccion = $direccion->validar();
             
             //si no hay errores proceder a los queries hacia la base de datos
@@ -116,6 +132,11 @@ class SellerController{
                 }
             }        
         }
+
+
+        $erroresVendedor= Usuario::getErrores();
+        $erroresDireccion= DireccionUsuario::getErrores();
+
         $router->view('admin/vendedores/update',[
             "vendedor"=>$vendedor,
             "erroresVendedor"=>$erroresVendedor,
@@ -137,7 +158,7 @@ class SellerController{
         
                 if(validarTipoContenido($tipo)){
                     //eliminando objeto
-                    $vendedor= Vendedor::find($id);
+                    $vendedor= Usuario::find($id);
                     $vendedor->eliminar();
                 }
             }

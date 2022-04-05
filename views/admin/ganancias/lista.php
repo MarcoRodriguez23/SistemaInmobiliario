@@ -29,8 +29,7 @@
         <table>
             <tr>
                 <th>Registro</th>
-                <th>ID Agente</th>
-                <th>ID Vendedor</th>
+                <th>Responsable de la venta</th>
                 <th>Propiedad</th>
                 <th>Precio</th>
                 <th>Comisión</th>
@@ -39,11 +38,12 @@
             <?php foreach($ventas as $venta): ?>
             <?php foreach($propiedades as $propiedad): ?>
             <?php foreach($direcciones as $direccion): ?>
+            <?php foreach($trabajadores as $trabajador): ?>
                 <?php if($venta->idPropiedad === $propiedad->id && $propiedad->id === $direccion->id): ?>
+                <?php if($venta->idEncargado === $trabajador->id): ?>
                 <tr>
                     <td><?php echo $venta->id; ?></td>
-                    <td><?php echo $venta->idAgente==0 ? 'Sin asignar' : $venta->idAgente; ?></td>
-                    <td><?php echo $venta->idVendedor==0 ? 'Sin asignar' : $venta->idVendedor; ?></td>
+                    <td><?php echo $trabajador->nombre." ".$trabajador->apellido; ?></td>
                     <td>
                         <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
                         <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>
@@ -54,6 +54,8 @@
                     <td><?php echo $venta->fecha; ?></td>
                 </tr>
                 <?php endif; ?> 
+                <?php endif; ?> 
+            <?php endforeach; ?>
             <?php endforeach; ?>
             <?php endforeach; ?>
             <?php endforeach; ?>

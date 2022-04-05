@@ -64,5 +64,7 @@
     $router->post('/login',[LoginController::class,'login']);
     $router->get('/crear',[LoginController::class,'crear']);
     $router->get('/logout',[LoginController::class,'logout']);
+
+    $router->get('/confirmar-cuenta',[LoginController::class,'confirmar']);
     
     $router->comprobarRutas();

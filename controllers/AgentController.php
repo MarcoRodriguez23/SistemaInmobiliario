@@ -3,29 +3,26 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Agente;
-use Model\Rol;
-use Model\DireccionAgente;
+use Model\Usuario;
+use Model\DireccionUsuario;
+use Classes\Email;
 
 require_once '../Router.php';
 require_once '../models/Agente.php';
-require_once '../models/Rol.php';
-require_once '../models/DireccionAgente.php';
+require_once '../models/DireccionUsuario.php';
 
 class AgentController{
 
     //funciones para las paginas de los agentes inmobiliarios
     //TODO BIEN
     public static function agents(Router $router){
-        $agentes = Agente::all();
-        $direcciones = DireccionAgente::all();
-        $roles = Rol::all();
+        $agentes = Usuario::all();
+        $direcciones = DireccionUsuario::all();
         $mensaje=$_GET['mensaje']??null;
 
         $router->view('admin/agentes/lista',[
             "agentes"=>$agentes,
             "direcciones"=>$direcciones,
-            "roles"=>$roles,
             "mensaje"=>$mensaje
         ]);
     }
@@ -33,51 +30,61 @@ class AgentController{
     //TODO BIEN
     public static function createAgent(Router $router){
         //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
-        $agente = new Agente();
-        $direccion = new DireccionAgente();
-
-        //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
-        $roles = Rol::all();
+        $agente = new Usuario();
+        $direccion = new DireccionUsuario();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresAgente = Agente::getErrores();
-        $erroresDireccion = DireccionAgente::getErrores();
+        $erroresAgente = Usuario::getErrores();
+        $erroresDireccion = DireccionUsuario::getErrores();
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            debuguear($_POST);
-
+            
             //creando nueva instancia de cada clase
-            $agente = new Agente($_POST['agente']);    
-            $direccion = new DireccionAgente($_POST['direccion']);        
-                        
-    
+            $agente->sincronizar($_POST['agente']);
+            $direccion->sincronizar($_POST['direccion']);   
+            
             //validando la existencia de erroes en el formulario
             $erroresAgente = $agente->validar();
             $erroresDireccion = $direccion->validar();
-            
-            //si no hay errores proceder a los queries hacia la base de datos
-            if(empty($erroresAgente)){
+
+            //si no hay errores proceder a los queries hacia la base de datos   
+            if(empty($erroresAgente) && empty($erroresDireccion)){
+                $existencia=$agente->existeUsuario(); 
                 
-                // GUARDANDO EN LA BD
-                $guardarAgente=$agente->guardar();
-                
-                if($guardarAgente){
-                    $guardarDireccion=$direccion->guardar();
-                    if($guardarDireccion){
-                        header("Location: /admin/agentes?mensaje=1");
-                    }
-                    
+                if($existencia->num_rows){
+                    $erroresAgente = Usuario::getErrores();
                 }
-            }        
+                else{
+                    // Hashear el Password
+                    $agente->hashPassword();
+
+                    // Generar un Token único
+                    $agente->crearToken();
+
+                    // Enviar el Email
+                    $email = new Email($agente->nombre, $agente->email, $agente->token);
+                    $email->enviarConfirmacion();
+
+                    //crear el usuario
+                    $guardarAgente = $agente->guardar();
+                    if($guardarAgente){
+                        $guardarDireccion = $direccion->guardar();
+                        if($guardarDireccion){
+                            header('Location: /admin/agentes?mensaje=1');
+                        }
+                    }
+                }
+            }     
         }
 
+        $erroresAgente = Usuario::getErrores();
+        $erroresDireccion = DireccionUsuario::getErrores();
         $router->view('admin/agentes/create',[
             "agente"=>$agente,
             "erroresAgente"=>$erroresAgente,
             "direccion"=>$direccion,
-            "erroresDireccion"=>$erroresDireccion,
-            "roles"=>$roles
+            "erroresDireccion"=>$erroresDireccion
         ]);
     }
 
@@ -85,15 +92,11 @@ class AgentController{
     public static function updateAgent(Router $router){
         //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
         $id = validarORedireccionar('/admin');
-        $agente = Agente::find($id);
-        $direccion = DireccionAgente::find($id);
-
-
-        //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
-        $roles = Rol::all();
+        $agente = Usuario::find($id);
+        $direccion = DireccionUsuario::find($id);
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresAgente = $agente->validar();
+        $erroresAgente = $agente->validarUpdate();
         $erroresDireccion = $direccion->validar();
 
         //COMENZANDO EL METODO POST
@@ -101,15 +104,19 @@ class AgentController{
             // debuguear($_POST);
 
             //creando nueva instancia de cada clase
-            $argsAgente = new Agente($_POST['agente']);    
-            $argsDireccion = new DireccionAgente($_POST['direccion']); 
+            $argsAgente = new Usuario($_POST['agente']);  
             
-            $agente->sincronizar($argsAgente);
+            $argsDireccion = new DireccionUsuario($_POST['direccion']); 
+            
+            $agente->nombre = $argsAgente->nombre;
+            $agente->apellido = $argsAgente->apellido;
+            $agente->telefono = $argsAgente->telefono;
+            $agente->edad = $argsAgente->edad;
             $direccion->sincronizar($argsDireccion);
                         
     
             //validando la existencia de erroes en el formulario
-            $erroresAgente = $agente->validar();
+            $erroresAgente = $agente->validarUpdate();
             $erroresDireccion = $direccion->validar();
             
             //si no hay errores proceder a los queries hacia la base de datos
@@ -127,12 +134,14 @@ class AgentController{
                 }
             }        
         }
+        $erroresAgente= Usuario::getErrores();
+        $erroresDireccion= DireccionUsuario::getErrores();
+
         $router->view('admin/agentes/update',[
             "agente"=>$agente,
             "erroresAgente"=>$erroresAgente,
             "direccion"=>$direccion,
             "erroresDireccion"=>$erroresDireccion,
-            "roles"=>$roles
         ]);
     }
 
@@ -149,7 +158,7 @@ class AgentController{
         
                 if(validarTipoContenido($tipo)){
                     //eliminando objeto
-                    $Agente= Agente::find($id);
+                    $Agente= Usuario::find($id);
                     $Agente->eliminar();
                 }
             }

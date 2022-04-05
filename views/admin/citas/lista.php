@@ -24,7 +24,7 @@
                     </td>
                     <td><?php echo $cita->nombres." ".$cita->apellidos; ?></td>
                     <td><?php echo $cita->telefono; ?></td>
-                    <td><?php echo $vendedor->nombres." ".$vendedor->apellidos; ?></td>
+                    <td><?php echo $vendedor->nombre." ".$vendedor->apellido; ?></td>
                     <td><?php echo $cita->fecha; ?></td>
                     <td><?php echo $cita->hora; ?></td>
                 </tr>

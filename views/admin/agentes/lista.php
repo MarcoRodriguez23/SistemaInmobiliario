@@ -16,7 +16,7 @@
         <?php
         foreach ($agentes as $agente) {
             foreach ($direcciones as $direccion) {
-                if($agente->id === $direccion->id){
+                if($agente->id === $direccion->id && $agente->nivel==2 && $agente->confirmado == 1){
                     include 'agente.php';
                 }
             }
