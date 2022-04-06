@@ -65,6 +65,13 @@
     $router->get('/crear',[LoginController::class,'crear']);
     $router->get('/logout',[LoginController::class,'logout']);
 
+
+    //recuperar password
+    $router->get('/olvide',[LoginController::class,'olvide']);  
+    $router->post('/olvide',[LoginController::class,'olvide']);
+    $router->get('/recuperar',[LoginController::class,'recuperar']);   
+    $router->post('/recuperar',[LoginController::class,'recuperar']);
+
     $router->get('/confirmar-cuenta',[LoginController::class,'confirmar']);
     
     $router->comprobarRutas();
