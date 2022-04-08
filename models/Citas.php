@@ -46,9 +46,9 @@ class Citas extends activeRecord{
         if(!$this->hora){
             self::$errores["hora"]="Debe escoger una hora para su visita";
         }
-        if(!$this->idEncargado){
-            self::$errores["idVendedor"]="Debe escoger un vendedor";
-        }
+        // if(!$this->idEncargado){
+        //     self::$errores["idEncargado"]="Debe escoger un vendedor";
+        // }
         return self::$errores;
     }
 }

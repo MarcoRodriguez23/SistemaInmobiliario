@@ -12,7 +12,7 @@ require_once '../models/Agente.php';
 require_once '../models/DireccionUsuario.php';
 
 
-
+// CONTROLLER CONCLUIDO
 class SellerController{
 
     //funciones para las paginas de los vendedores
@@ -133,7 +133,6 @@ class SellerController{
             }        
         }
 
-
         $erroresVendedor= Usuario::getErrores();
         $erroresDireccion= DireccionUsuario::getErrores();
 
@@ -145,7 +144,7 @@ class SellerController{
         ]);
     }
 
-    public static function deleteSeller(Router $router){
+    public static function deleteSeller(){
         if ($_SERVER['REQUEST_METHOD']==='POST') {
             debuguear($_POST);
             //validar ID

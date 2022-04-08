@@ -14,11 +14,11 @@
                 </div>
 
                 <div>
-                    <label for="nombre">Nombre(s)</label>
+                    <label for="nombre">Nombre(s) del visitante</label>
                     <input 
                         id="nombre" 
                         type="text" 
-                        placeholder="Tu Nombre"
+                        placeholder="Nombre"
                         name="cita[nombres]"
                         value="<?php echo s($cita->nombres); ?>"
                     >
@@ -27,18 +27,18 @@
                 
                 
                 <div>
-                    <label for="apellido">Apellidos</label>
+                    <label for="apellido">Apellidos del visitante</label>
                     <input 
                         id="apellido"
                         type="text"
-                        placeholder="Tus apellidos"
+                        placeholder="Apellidos"
                         name="cita[apellidos]"
                         value="<?php echo s($cita->apellidos) ; ?>"
                     >
                     <?php echo "<p>". $erroresCita["apellidos"]."</p>"; ?>
                 </div>
                 <div>
-                    <label for="telefono">Teléfono</label>
+                    <label for="telefono">Teléfono del visitante</label>
                     <input 
                         type="number" 
                         placeholder="ejem: 5546782345" 
@@ -51,19 +51,19 @@
                     <?php echo "<p>".$erroresCita["telefono"]."</p>"; ?>
                     <?php echo "<p>".$erroresCita["formatoTelefono"]."</p>"; ?>
                 </div>
-                <div class="campo">
+                <div id="campo-fecha" class="campo">
                     <label for="fecha">Fecha</label>
                     <input 
                         id="fecha" 
                         type="date"
                         name="cita[fecha]"
-                        value="<?php echo s($cita->fecha); ?>"     
+                        value="<?php echo s($cita->fecha); ?>"
                     >
                     <?php echo "<p>".$erroresCita["fecha"]."</p>"; ?>
                 </div>
                 
-                <div class="campo">
-                    <label for="hora">Hora</label>
+                <div id="campo-hora" class="campo">
+                    <label for="hora">Hora (FORMATO 24 HRS)</label>
                     <input 
                         id="hora" 
                         type="time"
@@ -73,17 +73,9 @@
                     <?php echo "<p>".$erroresCita["hora"]."</p>"; ?>
                 </div>
 
+              
                 <div>
-                    <label for="">Vendedor</label>
-                    <select name="cita[idVendedor]">
-                        <option value="" disabled selected>--Selecciona un opción--</option>
-                        <?php foreach ($vendedores as $vendedor) :?>
-                            <option 
-                            <?php echo ($cita->idVendedor === $vendedor->id) ? 'selected' : ''; ?>
-                            value="<?php echo s($vendedor->id); ?>"><?php echo s($vendedor->nombres)." ".s($vendedor->apellidos); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?php echo "<p>".$erroresCita["idVendedor"]."</p>"; ?>
+                    <input type="hidden" name="cita[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
                 </div>
             </fieldset>
         

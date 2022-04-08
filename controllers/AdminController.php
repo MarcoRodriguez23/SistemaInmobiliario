@@ -17,9 +17,10 @@ require_once '../models/Direccion.php';
 require_once '../models/Citas.php';
 require_once '../models/Usuario.php';
 
+//CONTROLADOR CONCLUIDO
 class AdminController{
     
-    //funciones para la parte de ganancias
+    //funcion para la parte de ganancias
     public static function money(Router $router){
         $ventas = Venta::all();
         $propiedades = Propiedad::all();
@@ -34,17 +35,17 @@ class AdminController{
         ]);
     }
 
-    //funciones para la parte de citas
+    //funcion para la parte de citas
     public static function dates(Router $router){
         $citas = Citas::all();
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
-        $vendedores = Usuario::all();
+        $trabajadores = Usuario::all();
         $router->view('admin/citas/lista',[
             "citas"=>$citas,
             "direcciones"=>$direcciones,
             "propiedades"=>$propiedades,
-            "vendedores"=>$vendedores
+            "trabajadores"=>$trabajadores
         ]);
     }
 }

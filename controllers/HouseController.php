@@ -14,10 +14,13 @@ use Model\Escritura;
 use Model\Mueble;
 use Model\TipoPropiedad;
 use Model\Foto;
+use Model\Categoria;
 
-use Model\Vendedor;
+use Model\Usuario;
 use Model\Citas;
 use Model\Venta;
+
+use Intervention\Image\ImageManagerStatic as Image;
 
 require_once '../Router.php';
 
@@ -30,8 +33,9 @@ require_once '../models/Escritura.php';
 require_once '../models/Mueble.php';
 require_once '../models/TipoPropiedad.php';
 require_once '../models/Foto.php';
+require_once '../models/Categoria.php';
 
-require_once '../models/Vendedor.php';
+require_once '../models/Usuario.php';
 require_once '../models/Citas.php';
 
 class HouseController{
@@ -43,6 +47,7 @@ class HouseController{
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
         $tipoPropiedad=TipoPropiedad::all();
+        $fotos = Foto::all();
         $mensaje=$_GET['mensaje']??null;
         
         
@@ -51,7 +56,8 @@ class HouseController{
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
             'tipoPropiedad'=>$tipoPropiedad,
-            'mensaje'=>$mensaje
+            'mensaje'=>$mensaje,
+            'fotos'=>$fotos
         ]);
     }
 
@@ -68,6 +74,7 @@ class HouseController{
         $estacionamientos = Estacionamiento::all();
         $escrituras = Escritura::all();
         $tipoPropiedad = TipoPropiedad::all();
+        $categorias = Categoria::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad = Propiedad::getErrores();
@@ -127,7 +134,8 @@ class HouseController{
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
-            "erroresMetodosVenta"=>$erroresMetodosVenta
+            "erroresMetodosVenta"=>$erroresMetodosVenta,
+            "categorias"=>$categorias
         ]);
     }
 
@@ -136,7 +144,7 @@ class HouseController{
 
         //buscando en todas las tablas la propiedad
         $id = validarORedireccionar('/admin');
-        $propiedad = Propiedad::find($id);        
+        $propiedad = Propiedad::find($id);    
         $direccion = Direccion::find($id);        
         $muebles =  Mueble::find($id);        
         $amenidades = Amenidad::find($id);        
@@ -146,11 +154,13 @@ class HouseController{
         $estacionamientos = Estacionamiento::all();
         $escrituras = Escritura::all();
         $tipoPropiedad = TipoPropiedad::all();
+        $categorias = Categoria::all();
+        $fotos = Foto::find($id);
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresPropiedad= $propiedad->validar();
-        $erroresDireccion = $direccion->validar();
-        $erroresMetodosVenta=$metodosVenta->validar();
+        $erroresPropiedad= [];
+        $erroresDireccion = [];
+        $erroresMetodosVenta=[];
     
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             // debuguear($_POST);
@@ -158,25 +168,30 @@ class HouseController{
             //asignar atributos
             $argsPropiedad = $_POST['propiedad'];        
             $argsDireccion = $_POST['direccion'];        
-            $argsMuebles = $_POST['muebles'];
-            $argsAmenidades = $_POST['amenidades'];                 
-            $argsMetodosVenta = $_POST['metodosventa']; 
-                          
+            $muebles = new Mueble($_POST['muebles']);
+            $muebles->id = $id;
+            $amenidades = new Amenidad($_POST['amenidades']);
+            $amenidades->id = $id;              
 
-            $metodosVenta->sincronizar($argsMetodosVenta) ;
-            $propiedad->sincronizar($argsPropiedad) ;        
-            $direccion->sincronizar($argsDireccion) ;        
-            $muebles->sincronizar($argsMuebles) ;
-            $amenidades->sincronizar($argsAmenidades) ; 
+            $metodosVenta = new MetodosVenta($_POST['metodosventa']);
+            $metodosVenta->id = $id; 
+            
+            $propiedad->sincronizar($argsPropiedad) ;       
+            $direccion->sincronizar($argsDireccion) ;
+
+            // debuguear($_FILES['fotos']);
+
 
             $erroresPropiedad= $propiedad->validar();
             $erroresDireccion = $direccion->validar();
             $erroresMetodosVenta=$metodosVenta->validar();
-            
     
             //si no hay errores proceder a los queries hacia la base de datos
             if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
                 
+                
+                
+
                 // GUARDANDO EN LA BD
                 $guardarPropiedad=$propiedad->guardar();
                 
@@ -189,6 +204,35 @@ class HouseController{
                             if($guardarAmenidades){
                                 $guardarMetodoVenta=$metodosVenta->guardar();
                                 if($guardarMetodoVenta){
+
+                                    //IMAGENES
+                                    if($_FILES['fotos']['tmp_name'][0]){
+
+                                        foreach ($_FILES['fotos']['tmp_name'] as $key) {
+                                            //generando un nombre unico
+                                            // echo $key;
+                                            $nombreFoto = md5(uniqid(rand(),true)).".jpg";
+                                            
+                                            //creando el objeto para hacer referencia en la base de datos
+                                            $foto = new Foto();
+                                            
+                                            //asignando valores al objeto de foto
+                                            $foto->idPropiedad=$id;
+                                            $foto->foto = $nombreFoto;
+                        
+                                            if(!is_dir(CARPETA_IMAGENES)){
+                                                mkdir(CARPETA_IMAGENES);
+                                            }
+                        
+                                            //creando el archivo de la foto
+                                            $img = Image::make($key)->fit(800,600);
+                                            
+                                            $img->save(CARPETA_IMAGENES . $nombreFoto);
+                        
+                                            $foto->guardar();
+                                        }
+                                    }
+
                                     //mensaje que indica que se actualizo exitosamente
                                     header("Location: /admin?mensaje=2");
                                 }
@@ -209,7 +253,9 @@ class HouseController{
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
-            "erroresMetodosVenta"=>$erroresMetodosVenta
+            "erroresMetodosVenta"=>$erroresMetodosVenta,
+            "categorias"=>$categorias,
+            "fotos"=>$fotos
         ]);
     }
 
@@ -243,8 +289,10 @@ class HouseController{
         $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
         $escritura = Escritura::find($propiedad->idEscritura);
         $metodosVenta = MetodosVenta::find($id);
-        // debuguear($metodosVenta);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
+        $fotos = Foto::find($id);
+
+
         $router->view('admin/propiedades/info',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
@@ -254,7 +302,8 @@ class HouseController{
             'estacionamiento'=>$estacionamiento,
             'escritura'=>$escritura,
             'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad
+            'tipoPropiedad'=>$tipoPropiedad,
+            'fotos'=>$fotos
         ]);
     }
 
@@ -264,13 +313,14 @@ class HouseController{
         $direccion = Direccion::find($id);
         $cita = new Citas();
 
-        $vendedores = Vendedor::all();
+        $vendedores = Usuario::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresCita = Citas::getErrores();
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
 
             //creando nueva instancia de cada clase
             $cita = new Citas($_POST['cita']);        
@@ -307,8 +357,7 @@ class HouseController{
         $metodos = MetodosVenta::find($id);
         $amenidad = Amenidad::find($id);
         $mueble = Mueble::find($id);
-        $vendedores = Vendedor::all();
-        $agentes = Agente::all();
+        $vendedores = Usuario::all();
 
         $erroresVenta = Venta::getErrores();
 
@@ -346,7 +395,6 @@ class HouseController{
             'mueble'=>$mueble,
             'amenidad'=>$amenidad,
             'vendedores'=>$vendedores,
-            'agentes'=>$agentes,
             'erroresVenta'=>$erroresVenta
         ]);
     }

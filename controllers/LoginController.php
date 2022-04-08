@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Usuario;
+use Classes\Email;
 
 
 require_once '../Router.php';
@@ -84,6 +85,90 @@ class LoginController{
         $errores=Usuario::getErrores();
         $router->view('auth/confirmar-cuenta',[
             'errores'=>$errores
+        ]);
+    }
+
+    public static function recuperar(Router $router){
+        $alertas = [];
+        $error = false;
+
+        $token = s($_GET['token']);
+        
+        //buscar usuario por el token
+
+        $usuario = Usuario::where('token',$token);
+
+        if(empty($usuario)){
+            Usuario::setAlerta('error','token no valido');
+            $error=true;
+        }
+        else{
+            if($_SERVER['REQUEST_METHOD']==='POST'){
+    
+                $password = new Usuario($_POST);
+                $alertas = $password->validarPassword();
+    
+                if(empty($alertas)){
+                    //quitando la antigua contraseña
+                    $usuario->password = null;
+
+                    $usuario->password = $password->password;
+                    $usuario->hashPassword();
+
+                    $usuario->token = null;
+                    $resultado = $usuario->guardar();
+                    if($resultado){
+                        header('Location: /login');
+                    }
+                }
+    
+            }
+        }
+
+        $alertas = Usuario::getErrores();
+        $router->view('auth/recuperar',[
+            'alertas'=>$alertas,
+            'error'=>$error
+        ]);
+    }
+
+    public static function olvide(Router $router){
+
+        $errores = [];
+
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+            $auth = new Usuario($_POST);
+            
+
+            $auth->validarEmail();
+
+            if (empty($errores)) {
+
+                $usuario = Usuario::where('email',$auth->email);
+                
+                if($usuario && $usuario->confirmado === "1"){
+                    
+                    $usuario->Creartoken();
+                    $usuario->guardar();
+
+                    //enviar el email
+                    $email = new Email($usuario->email,$usuario->nombre,$usuario->token);
+                    $email->enviarInstrucciones();
+
+                    //alerta de exito
+                    Usuario::setAlerta('exito','Revisa tu email para el siguiente paso');
+                }
+                else{
+                    Usuario::setAlerta('error','El usuario no existe o no esta confirmado');
+                }
+                
+            }
+
+        }
+
+        $alertas = Usuario::getErrores();
+        $router->view('auth/olvide',[
+            'alertas'=>$alertas
         ]);
     }
 }

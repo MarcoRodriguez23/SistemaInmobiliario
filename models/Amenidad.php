@@ -16,11 +16,11 @@ class Amenidad extends activeRecord{
     public function __construct($args=[])
     {
         $this->id=$args['id']??null;
-        $this->roffGarden=$args['roffGarden']??0;
-        $this->salaDeUsosMultiples=$args['salaDeUsosMultiples']??0;
-        $this->gimnasio=$args['gimnasio']??0;
-        $this->cancha=$args['cancha']??0;
-        $this->calentadorSolar=$args['calentadorSolar']??0;
+        $this->roffGarden=$args['roffGarden']??'0';
+        $this->salaDeUsosMultiples=$args['salaDeUsosMultiples']??'0';
+        $this->gimnasio=$args['gimnasio']??'0';
+        $this->cancha=$args['cancha']??'0';
+        $this->calentadorSolar=$args['calentadorSolar']??'0';
     }
 }
 

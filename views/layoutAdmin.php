@@ -18,6 +18,7 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Panel de administración</h3>
+                <p>Bienvenid@ <?php echo $_SESSION['nombre']." ".$_SESSION['apellido']; ?></p>
             </div>
             <ul class="list-unstyled components">
                 <li>

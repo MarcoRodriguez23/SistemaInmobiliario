@@ -17,6 +17,20 @@
     <?php
         include __DIR__. '/formulario.php';
     ?>
-        
+    <fieldset>
+        <legend>Fotografías</legend>
+        <div>
+            <label for="imagen">imagen:</label>
+            <input type="file" id="imagen" accept="image/jpeg, image/png" name="fotos[]" multiple>
+        </div>
+        <div>
+            <span>Fotos actuales</span>
+            <div class="fotos-actuales">
+                <?php foreach($fotos as $foto): ?>
+                    <img src="/imagenes/<?php echo $foto->foto;?>" alt="" class="imagen-small">
+                <?php endforeach; ?>
+            </div>   
+        </div>
+    </fieldset>    
     <input type="submit" value="Actualizar Propiedad" class="boton-azul">  
 </form>

@@ -24,4 +24,8 @@
 
         <input type="submit" value="Iniciar Sesión" class="boton-morado">
     </form>
+    <div class="enlace-login contenedor">
+        <a href="/olvide">¿Olvidaste tu password? Clic aqui para reestablecer.</a>
+    </div>
 </main>
+

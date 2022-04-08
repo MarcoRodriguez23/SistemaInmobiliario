@@ -15,6 +15,21 @@
     </div>
 </fieldset>
 
+<fieldset>
+    <legend>¿Se encuentra en remodelación?</legend>
+    <div>
+    <select name="propiedad[categoria]">
+        <option value="" disabled selected>--Selecciona una opción--</option>
+        <?php foreach ($categorias as $row) :?>
+            <option 
+            <?php echo ($propiedad->categoria === $row->id) ? 'selected' : ''; ?>
+            value="<?php echo s($row->id); ?>"><?php echo s($row->tipo); ?></option>
+        <?php endforeach; ?>
+    </select>
+    <?php echo "<p>".$erroresPropiedad["categoria"]."</p>"; ?>
+    </div>
+</fieldset>
+
 <!--PARTE DONDE SE AGREGA INFORMACION SOBRE LA UBICACION DE LA PROPIEDAD-->
 <fieldset class="dosColumnas">
     <legend>Ubicación</legend>
@@ -105,7 +120,31 @@
     </div>
 
     <div>
-        <label for="mt2">Metros Caudrados</label>
+        <label for="link360">Enlace de recorrido 360°</label>
+        <input 
+            type="text" 
+            placeholder="Link de recorrido" 
+            name="direccion[link360]" 
+            id="link360"
+            value="<?php echo s($direccion->link360); ?>"
+            >
+        <?php echo "<p>".$erroresDireccion["link360"]."</p>"; ?>
+    </div>
+
+    <div>
+        <label for="CP">Código Postal</label>
+        <input 
+            type="number" 
+            placeholder="Ej: 56432" 
+            name="direccion[CP]" 
+            id="CP"
+            value="<?php echo s($direccion->CP); ?>"
+            >
+        <?php echo "<p>".$erroresDireccion["CP"]."</p>"; ?>
+    </div>
+
+    <div>
+        <label for="mt2">Metros Cuadrados</label>
         <input 
             type="number" 
             placeholder="Ej: 58.30" 
@@ -177,37 +216,6 @@
     </div>
 
     <div>
-        <label for="idEstacionamiento">Tipo de estacionamiento</label>
-        <select name="propiedad[idEstacionamiento]" id="idEstacionamiento">
-            <option value="" disabled selected>--Seleccione un tipo de estacionamiento--</option>
-            <?php
-                foreach ($estacionamientos as $estacionamiento):?>  
-                    <option
-                        <?php echo $propiedad->idEstacionamiento === $estacionamiento->id ? 'selected' : ''; ?>
-                        value="<?php echo s($estacionamiento->id); ?>"
-                    >
-                    <?php echo s($estacionamiento->tipo); ?>
-                    </option>
-            <?php endforeach; ?>
-        </select>
-        <?php echo "<p>".$erroresPropiedad["idEstacionamiento"]."</p>"; ?>
-    </div>
-
-
-    <div>
-        <label for="numEstacionamientos">Número de estacionamientos</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 2" 
-            min="0" 
-            name="propiedad[numEstacionamientos]" 
-            id="numEstacionamientos"
-            value="<?php echo s($propiedad->numEstacionamientos); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["numEstacionamientos"]."</p>"; ?>
-    </div>
-
-    <div>
         <label for="servicioH">Habitaciones de servicio</label>
         <input 
             type="number" 
@@ -232,6 +240,52 @@
             >
         <?php echo "<p>".$erroresPropiedad["servicioP"]."</p>"; ?>
     </div>
+
+    <div>
+        <label for="idEstacionamiento">Tipo de estacionamiento</label>
+        <select name="propiedad[idEstacionamiento]" id="idEstacionamiento">
+            <option value="" disabled selected>--Seleccione un tipo de estacionamiento--</option>
+            <?php
+                foreach ($estacionamientos as $estacionamiento):?>  
+                    <option
+                        <?php echo $propiedad->idEstacionamiento === $estacionamiento->id ? 'selected' : ''; ?>
+                        value="<?php echo s($estacionamiento->id); ?>"
+                    >
+                    <?php echo s($estacionamiento->tipo); ?>
+                    </option>
+            <?php endforeach; ?>
+        </select>
+        <?php echo "<p>".$erroresPropiedad["idEstacionamiento"]."</p>"; ?>
+    </div>
+
+
+    <div>
+        <label for="numEstacionamientos">Número de cajones</label>
+        <input 
+            type="number" 
+            placeholder="Ej: 2" 
+            min="0" 
+            name="propiedad[numEstacionamientos]" 
+            id="numEstacionamientos"
+            value="<?php echo s($propiedad->numEstacionamientos); ?>"
+            >
+        <?php echo "<p>".$erroresPropiedad["numEstacionamientos"]."</p>"; ?>
+    </div>
+
+    <div>
+        <label for="numIdEstacionamiento">Número de estacionamiento</label>
+        <input 
+            type="number" 
+            placeholder="Ej: 280" 
+            min="0" 
+            name="propiedad[numIdEstacionamiento]" 
+            id="numIdEstacionamiento"
+            value="<?php echo s($propiedad->numIdEstacionamiento); ?>"
+            >
+        <?php echo "<p>".$erroresPropiedad["numIdEstacionamiento"]."</p>"; ?>
+    </div>
+
+    
 </fieldset>
 
 <!--PRECIO DE LA PROPIEDAD-->
@@ -248,6 +302,18 @@
             value="<?php echo s($propiedad->precio); ?>"
             >
         <?php echo "<p>".$erroresPropiedad["precio"]."</p>"; ?>
+    </div>
+    <div>
+        <label for="mantenimiento">Precio de mantenimiento</label>
+        <input 
+            type="number" 
+            placeholder="Ej: 5000" 
+            min="1000" 
+            name="propiedad[mantenimiento]" 
+            id="mantenimiento"
+            value="<?php echo s($propiedad->mantenimiento); ?>"
+            >
+        <?php echo "<p>".$erroresPropiedad["mantenimiento"]."</p>"; ?>
     </div>
 </fieldset>
 
@@ -295,7 +361,7 @@
 </fieldset>
 
 <fieldset class="comision">
-    <legend>Comisión</legend>
+    <legend>Comisión de venta</legend>
     <div>
         <label for="comision">Porcentaje de comisión (1 a 50)</label>
         <input 
@@ -483,4 +549,20 @@
         <?php echo "<p>".$erroresMetodosVenta["metodosVenta"]."</p>"; ?>
     </div>
     <p style="color:black">(puede marcar más de una opción)</p>
+</fieldset>
+
+<fieldset>
+    <legend>Número de predio</legend>
+    <div>
+        <label for="numPredio">Número de predio</label>
+        <input 
+            type="text" 
+            placeholder="ejem: 03840546028-8" 
+            id="numPredio" 
+            min="1" 
+            name="propiedad[numPredio]"
+            value="<?php echo s($propiedad->numPredio); ?>"
+            >
+        <?php echo "<p>".$erroresPropiedad["numPredio"]."</p>"; ?>
+    </div>
 </fieldset>

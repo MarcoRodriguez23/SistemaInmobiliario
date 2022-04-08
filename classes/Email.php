@@ -56,4 +56,43 @@ class Email {
 
     }
 
+    public function enviarInstrucciones() {
+
+        //crear una instancia de PHPMailer
+       $mail = new PHPMailer();
+
+       //Configurando SMTP
+       $mail->isSMTP();
+       $mail->Host='smtp.mailtrap.io';
+       $mail->SMTPAuth= true;
+       $mail->Username='f8f5444957e76d';
+       $mail->Password='0642cad10af248';
+       $mail->SMTPSecure='tls';
+       $mail->Port='2525';
+
+       //configurando el contenido  del Email
+       //quien lo envia
+       $mail->setFrom('cuentas@inmobiliariagallardo.com');
+       //A donde va
+       $mail->addAddress('admin@inmobiliariagallardo.com','inmobiliaria-gallardo.com');
+       $mail->Subject='Reestablece tu password';
+       //habilitar html
+       $mail->isHTML(true);
+       $mail->CharSet = 'UTF-8';
+
+       $contenido = '<html>';
+        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace</p>";
+        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Reestablecer password</a>";        
+        $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
+        $contenido .= '</html>';
+        $mail->Body = $contenido;
+
+        $mail->Body = $contenido;
+        $mail->AltBody = "texto alternativo";
+
+        //Enviar el mail
+        $mail->send();
+
+   }
+
 }

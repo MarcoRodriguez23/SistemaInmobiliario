@@ -1,5 +1,5 @@
 <main>
-    <h2>Ganancias</h2>
+    <h2>Ventas</h2>
     <!-- <form action="" method="post" class="contenedor filtro contenido-centrado">
         <select name="representante" id="representante">
             <option value="" selected disabled>Representante</option>

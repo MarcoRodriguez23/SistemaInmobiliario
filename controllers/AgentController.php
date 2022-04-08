@@ -11,6 +11,8 @@ require_once '../Router.php';
 require_once '../models/Agente.php';
 require_once '../models/DireccionUsuario.php';
 
+
+// CONTROLLER CONCLUIDO
 class AgentController{
 
     //funciones para las paginas de los agentes inmobiliarios

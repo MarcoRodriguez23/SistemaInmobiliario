@@ -4,7 +4,7 @@ namespace Model;
 
 class Propiedad extends activeRecord{
     protected static $tabla='propiedad';
-    protected static $columnas_DB=['id','precio','año','mt2','idEscritura','idEstacionamiento','numEstacionamientos','numPisos','piso','numDepartamento','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision'];
+    protected static $columnas_DB=['id','precio','año','mt2','idEscritura','idEstacionamiento','numEstacionamientos','numIdEstacionamiento','numPisos','piso','numDepartamento','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision','numPredio','mantenimiento','categoria'];
 
     public $id;
     public $precio;
@@ -13,6 +13,7 @@ class Propiedad extends activeRecord{
     public $idEscritura;
     public $idEstacionamiento;
     public $numEstacionamientos;
+    public $numIdEstacionamiento;
     public $numPisos;
     public $piso;
     public $numDepartamento;
@@ -24,6 +25,9 @@ class Propiedad extends activeRecord{
     public $tipoPropiedad;
     public $status;
     public $comision;
+    public $numPredio;
+    public $mantenimiento;
+    public $categoria;
 
 
     public function __construct($args=[])
@@ -35,6 +39,7 @@ class Propiedad extends activeRecord{
         $this->idEscritura=$args['idEscritura']??'';
         $this->idEstacionamiento=$args['idEstacionamiento']??'';
         $this->numEstacionamientos=$args['numEstacionamientos']??'';
+        $this->numIdEstacionamiento=$args['numIdEstacionamiento']??'';
         $this->numPisos=$args['numPisos']??'';
         $this->piso=$args['piso']??0;
         $this->numDepartamento=$args['numDepartamento']??0;
@@ -46,6 +51,9 @@ class Propiedad extends activeRecord{
         $this->tipoPropiedad=$args['tipoPropiedad']??'';
         $this->status=$args['status']??0;
         $this->comision=$args['comision']??0;
+        $this->numPredio=$args['numPredio']??'';
+        $this->mantenimiento=$args['mantenimiento']??'';
+        $this->categoria=$args['categoria']??'';
     }
 
     public function validar(){
@@ -66,7 +74,10 @@ class Propiedad extends activeRecord{
             self::$errores['idEstacionamiento'] = "El tipo de estacionamiento es obligatorio";
         }
         if(!$this->numEstacionamientos){
-            self::$errores['numEstacionamientos'] = "El número de estacionamientos es obligatorio";
+            self::$errores['numEstacionamientos'] = "El número de cajones es obligatorio";
+        }
+        if(!$this->numIdEstacionamiento){
+            self::$errores['numIdEstacionamiento'] = "El número de estacionamiento es obligatorio";
         }
         if(!$this->numPisos){
             self::$errores['numPisos'] = "El número de pisos es obligatorio";
@@ -88,6 +99,15 @@ class Propiedad extends activeRecord{
         }
         if(!$this->comision){
             self::$errores['comision'] = "Especificar la comisión";
+        }
+        if(!$this->numPredio){
+            self::$errores['numPredio'] = "El número de predio es obligatorio";
+        }
+        if(!$this->mantenimiento){
+            self::$errores['mantenimiento'] = "Especificar el precio de mantenimiento";
+        }
+        if(!$this->categoria){
+            self::$errores['categoria'] = "Indicar si se esta o no en remodelación";
         }
     
         return self::$errores;

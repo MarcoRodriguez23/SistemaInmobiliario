@@ -84,18 +84,6 @@
                 <img src="build/img/Iconos/icono_casa1.svg" alt="icono">
                 <p>Núm. interior: <?php echo $direccion->numInterior; ?></p>
             </li>
-            <li>
-                <img src="build/img/Iconos/icono_edificio1.svg" alt="icono">
-                <p>Número de departamento: <?php echo $propiedad->numDepartamento; ?></p>
-            </li>
-            <li>
-                <img src="build/img/Iconos/icono_edificio1.svg" alt="icono">
-                <p>Número de piso: <?php echo $propiedad->piso; ?></p>
-            </li>
-            <li>
-                <img src="build/img/Iconos/icono_elevador1.svg" alt="icono">
-                <p>Elevador: <?php echo $propiedad->numElevadores; ?></p>
-            </li>
         </ul>       
     </div>
     </section>

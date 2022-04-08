@@ -1,7 +1,13 @@
 <div class="plantilla">
     <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
         <div class="inmueble">
-            <img src="build/img/1.jpg" alt="foto del inmueble">
+            <?php $unaImagen = true; ?>
+            <?php foreach($fotos as $foto): ?>
+                <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
+                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Seleccione <-Actualizar-> para agregar las imágenes">
+                <?php $unaImagen = false; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
             <div class="info-inmueble">
                 <p class="direccion"><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>
                 <div class="info-inferior">
@@ -38,9 +44,9 @@
             <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">VENDIDA</a>
         <?php endif; ?>
         <?php if ($propiedad->status==0) : ?>
-            <a href="/admin/propiedades/update?id=$propiedad->id" class="boton-amarillo">Actualizar</a>
             <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
             <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
+            <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>
             
         <?php endif; ?>
         <form method="POST" class="w-100" action="/admin/propiedades/delete">

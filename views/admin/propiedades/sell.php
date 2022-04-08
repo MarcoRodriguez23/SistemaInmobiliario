@@ -5,7 +5,11 @@
 
 <div class="resumen-venta contenedor">
 <h4>
-    <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
+    <?php
+
+use Dotenv\Parser\Value;
+
+ echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
 <br>
     <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
 </h4>
@@ -72,41 +76,19 @@
     </div>
 <form action="" class="contenedor formulario form-venta" method="POST" enctype="multipart/form-data">
     <h4>Responsables de venta</h4>
-    <div>
-        <input type="hidden" name="venta[idPropiedad]" value="<?php echo $propiedad->id; ?>">
-        <input type="hidden" name="propiedad[status]" value="1">
-    </div>
+    <legend></legend>
     <fieldset>
-            <legend>Agente</legend>
-            <div>
-                <select
-                <?php echo ($propiedad->status==1 && (empty($erroresVenta))) ? 'disabled' : '' ;?>
-                name="venta[idAgente]">
-                    <option value="" disabled selected>--Selecciona un agente--</option>
-                    <?php foreach ($agentes as $agente) :?>
-                        <option 
-                        <?php echo ($venta->idAgente === $agente->id) ? 'selected' : ''; ?>
-                        value="<?php echo s($agente->id); ?>"><?php echo s($agente->nombres)." ".s($agente->apellidos) ; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-    </fieldset>
-    <fieldset>
-        <legend>Vendedor</legend>
         <div>
-            <select
-                <?php echo ($propiedad->status==1 && (empty($erroresVenta))) ? 'disabled' : '' ;?>
-                name="venta[idVendedor]">
-                <option value="" disabled selected>--Selecciona un vendedor--</option>
-                <?php foreach ($vendedores as $vendedor) :?>
-                    <option 
-                    <?php echo ($venta->idVendedor === $vendedor->id) ? 'selected' : ''; ?>
-                    value="<?php echo s($vendedor->id); ?>"><?php echo s($vendedor->nombres)." ".s($vendedor->apellidos) ; ?></option>
-                <?php endforeach; ?>
-            </select>
+            <input type="hidden" name="venta[idPropiedad]" value="<?php echo $propiedad->id; ?>">
+            <input type="hidden" name="propiedad[status]" value="1">
         </div>
-        <?php echo "<p>".$erroresVenta["trabajadores"]."</p>"; ?>
+        <div>
+            <input type="hidden" name="venta[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
+            <input type="text" disabled value="<?php echo $_SESSION['nombre']; ?>">
+        </div>
     </fieldset>
+    
+    
 
     <?php echo ($propiedad->status==1 && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-morado">';?>
     
