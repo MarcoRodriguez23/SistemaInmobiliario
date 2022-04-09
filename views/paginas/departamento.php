@@ -1,9 +1,15 @@
 <main>
     <section class="datos-propiedad contenedor">
+  
         <h3>
-            <?php echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
-        <br>
-            <?php echo "Calle: ". $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", CP:".$direccion->CP; ?>
+            <?php echo $tipoPropiedad->tipo; ?>
+            <?php foreach($categorias as $cat): ?>
+                <?php echo $propiedad->categoria === $cat->id ? $cat->tipo : '' ; ?>
+            <?php endforeach; ?>
+            en
+            <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
+            <?php echo $direccion->estado; ?>
+            <?php echo "CP:".$direccion->CP; ?>
         </h3>
     </section>
     <section class="carrousel contenedor">

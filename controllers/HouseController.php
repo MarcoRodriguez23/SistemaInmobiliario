@@ -21,6 +21,7 @@ use Model\Citas;
 use Model\Venta;
 
 use Intervention\Image\ImageManagerStatic as Image;
+use Model\Status;
 
 require_once '../Router.php';
 
@@ -48,6 +49,9 @@ class HouseController{
         $metodosVenta=MetodosVenta::all();
         $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
+        $status = Status::all();
+        $categorias = Categoria::all();
+
         $mensaje=$_GET['mensaje']??null;
         
         
@@ -57,6 +61,8 @@ class HouseController{
             'metodosVenta'=>$metodosVenta,
             'tipoPropiedad'=>$tipoPropiedad,
             'mensaje'=>$mensaje,
+            'status'=>$status,
+            'categorias'=>$categorias,
             'fotos'=>$fotos
         ]);
     }

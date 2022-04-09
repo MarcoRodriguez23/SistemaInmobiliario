@@ -64,7 +64,7 @@
             foreach ($direcciones as $direccion) {
                 foreach ($tipoPropiedad as $tipo) {
                     if($propiedad->id === $direccion->id && $propiedad->tipoPropiedad === $tipo->id){
-                        if ($_SESSION['nivel']==3 && $propiedad->status !=1) {
+                        if ($_SESSION['nivel']==3 && $propiedad->status !=2) {
                             include 'propiedad.php';
                         }
                         if ($_SESSION['nivel']<3) {

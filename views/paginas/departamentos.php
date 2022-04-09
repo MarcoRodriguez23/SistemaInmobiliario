@@ -16,7 +16,7 @@
         <!-- aqui se va ir generando los anuncios de los departamentos -->
         <?php foreach($propiedades as $propiedad): ?>
             <?php foreach($direcciones as $direccion): ?>
-                <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id && $propiedad->status!=1): ?>
+                <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id && $propiedad->status!=2): ?>
                     <div class="anuncio">
                         <a href="/departamento?id=<?php echo $propiedad->id; ?>">
                             <?php $unaImagen = true; ?>

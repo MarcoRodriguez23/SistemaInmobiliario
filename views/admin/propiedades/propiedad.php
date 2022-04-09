@@ -13,8 +13,16 @@
                 <div class="info-inferior">
                     <p class="precio">$ <?php echo $propiedad->precio; ?></p>
                     <p class="pago">Comisión: <?php echo $propiedad->comision; ?> %</p>
-                    <p class="pago">Tipo: <?php echo $tipo->tipo; ?></p>
-                    <p class="estado"><?php echo $propiedad->status==0 ? "En venta": "Vendida";?></p>
+                    <p class="pago">
+                        <?php foreach($categorias as $cat): ?>
+                            <?php echo $propiedad->categoria === $cat->id ? ucfirst($cat->tipo) : '' ; ?>
+                        <?php endforeach; ?>
+                    </p>
+                    <p class="estado">
+                        <?php foreach($status as $sts): ?>
+                            <?php echo $propiedad->status === $sts->id ? ucfirst($sts->estado) : '' ; ?>
+                        <?php endforeach; ?>
+                    </p>
                     <div class="beneficios">
                         <div class="beneficio">
                             <img src="build/img/icono_dormitorio.svg" alt="beneficio1">
@@ -40,10 +48,10 @@
     </a>
     <?php if(!($_SESSION['nivel']==3)): ?>
     <div class="opciones">
-        <?php if ($propiedad->status==1) : ?>
+        <?php if ($propiedad->status==2) : ?>
             <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">VENDIDA</a>
         <?php endif; ?>
-        <?php if ($propiedad->status==0) : ?>
+        <?php if ($propiedad->status!=2) : ?>
             <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
             <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
             <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>

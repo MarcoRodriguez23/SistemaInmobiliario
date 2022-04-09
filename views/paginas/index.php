@@ -31,10 +31,29 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 1 && $propiedad->id === $direccion->id && $propiedad->status != 1): ?>
+                    <?php if($propiedad->tipoPropiedad == 1 && $propiedad->id === $direccion->id && $propiedad->status != 2): ?>
                         <div class="imagen-texto">
-                            <img loading="lazy" src="/build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="inmueble <?php echo $propiedad->id; ?>">
-                            <p><?php echo "Casa en venta en ". $direccion->estado .", ".$direccion->municipioDelegacion; ?></p>
+                            <?php $unaImagen = true; ?>
+                            <?php foreach($fotos as $foto): ?>
+                                <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
+                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Casa">
+                                <?php $unaImagen = false; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            <p>
+                                <?php foreach($tipoPropiedad as $tipo): ?>
+                                    <?php echo $propiedad->tipoPropiedad === $tipo->id ? $tipo->tipo : '' ; ?>
+                                <?php endforeach; ?>
+                                <?php foreach($categorias as $cat): ?>
+                                    <?php echo $propiedad->categoria === $cat->id ? $cat->tipo : '' ; ?>
+                                <?php endforeach; ?>
+                                para
+                                <?php foreach($status as $sts): ?>
+                                    <?php echo $propiedad->status === $sts->id ? $sts->estado : '' ; ?>
+                                <?php endforeach; ?>
+                                en
+                                <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                            </p>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -64,10 +83,29 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id && $propiedad->status != 1): ?>
+                    <?php if($propiedad->tipoPropiedad == 2 && $propiedad->id === $direccion->id && $propiedad->status != 2): ?>
                         <div class="imagen-texto">
-                            <img loading="lazy" src="/build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="departamento <?php echo $propiedad->id; ?>">
-                            <p><?php echo "Departamento en venta en ". $direccion->estado .", ".$direccion->municipioDelegacion; ?></p>
+                            <?php $unaImagen = true; ?>
+                            <?php foreach($fotos as $foto): ?>
+                                <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
+                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Departamento">
+                                <?php $unaImagen = false; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            <p>
+                                <?php foreach($tipoPropiedad as $tipo): ?>
+                                    <?php echo $propiedad->tipoPropiedad === $tipo->id ? $tipo->tipo : '' ; ?>
+                                <?php endforeach; ?>
+                                <?php foreach($categorias as $cat): ?>
+                                    <?php echo $propiedad->categoria === $cat->id ? $cat->tipo : '' ; ?>
+                                <?php endforeach; ?>
+                                para
+                                <?php foreach($status as $sts): ?>
+                                    <?php echo $propiedad->status === $sts->id ? $sts->estado : '' ; ?>
+                                <?php endforeach; ?>
+                                en
+                                <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                            </p>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -98,10 +136,29 @@
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
                 <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == 3 && $propiedad->id === $direccion->id && $propiedad->status != 1): ?>
+                    <?php if($propiedad->tipoPropiedad == 3 && $propiedad->id === $direccion->id && $propiedad->status != 2): ?>
                         <div class="imagen-texto">
-                            <img loading="lazy" src="/build/img/DepG/<?php echo $propiedad->id."/1.webp"; ?>" alt="terreno <?php echo $propiedad->id; ?>">
-                            <p><?php echo "Terreno o local en venta en ". $direccion->estado .", ".$direccion->municipioDelegacion; ?></p>
+                        <?php $unaImagen = true; ?>
+                            <?php foreach($fotos as $foto): ?>
+                                <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
+                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Terreno">
+                                <?php $unaImagen = false; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            <p>
+                                <?php foreach($tipoPropiedad as $tipo): ?>
+                                    <?php echo $propiedad->tipoPropiedad === $tipo->id ? $tipo->tipo : '' ; ?>
+                                <?php endforeach; ?>
+                                <?php foreach($categorias as $cat): ?>
+                                    <?php echo $propiedad->categoria === $cat->id ? $cat->tipo : '' ; ?>
+                                <?php endforeach; ?>
+                                para
+                                <?php foreach($status as $sts): ?>
+                                    <?php echo $propiedad->status === $sts->id ? $sts->estado : '' ; ?>
+                                <?php endforeach; ?>
+                                en
+                                <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                            </p>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>

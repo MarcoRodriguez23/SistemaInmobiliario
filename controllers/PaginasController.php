@@ -13,6 +13,8 @@ use Model\MetodosVenta;
 use Model\Foto;
 use Model\Escritura;
 use Model\Estacionamiento;
+use Model\Categoria;
+use Model\Status;
 
 use Model\Blog;
 use Model\Servicio;
@@ -30,6 +32,8 @@ require_once '../models/MetodosVenta.php';
 require_once '../models/Foto.php';
 require_once '../models/Escritura.php';
 require_once '../models/Estacionamiento.php';
+require_once '../models/Categoria.php';
+require_once '../models/Status.php';
 
 require_once '../models/Blog.php';
 require_once '../models/Servicio.php';
@@ -40,11 +44,17 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $fotos=Foto::all();
+        $status=Status::all();
+        $categorias=Categoria::all();
+        $tipoPropiedad=TipoPropiedad::all();
         
         $router->view('/paginas/index',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'fotos'=>$fotos
+            'fotos'=>$fotos,
+            'status'=>$status,
+            'categorias'=>$categorias,
+            'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 
@@ -91,6 +101,8 @@ class PaginasController{
         $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
         $escritura = Escritura::find($propiedad->idEscritura);
         $metodosVenta = MetodosVenta::find($id);
+
+        $categorias=Categoria::all();
         // debuguear($metodosVenta);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
@@ -103,6 +115,7 @@ class PaginasController{
             'estacionamiento'=>$estacionamiento,
             'escritura'=>$escritura,
             'metodosVenta'=>$metodosVenta,
+            'categorias'=>$categorias,
             'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
@@ -128,6 +141,8 @@ class PaginasController{
         $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
         $escritura = Escritura::find($propiedad->idEscritura);
         $metodosVenta = MetodosVenta::find($id);
+
+        $categorias=Categoria::all();
         // debuguear($metodosVenta);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
@@ -140,6 +155,7 @@ class PaginasController{
             'estacionamiento'=>$estacionamiento,
             'escritura'=>$escritura,
             'metodosVenta'=>$metodosVenta,
+            'categorias'=>$categorias,
             'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
