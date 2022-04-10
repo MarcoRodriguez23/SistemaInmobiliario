@@ -33,10 +33,10 @@
                 <a href="/blog">BLOG</a>
                 <a href="/contacto">CONTACTO</a>
                 <?php if(!$auth): ?>
-                    <!-- <a href="/login">Iniciar Sesión</a> -->
+                    <a href="/login">Iniciar Sesión</a>
                 <?php endif; ?>
                 <?php if($auth): ?>
-                    <!-- <a href="/logout">Cerrar Sesión</a> -->
+                    <a href="/logout">Cerrar Sesión</a>
                 <?php endif; ?>
             </nav>
         </div> <!--.barra-->

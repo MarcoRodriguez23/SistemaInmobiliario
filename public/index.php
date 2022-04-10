@@ -19,6 +19,7 @@
     $router->get('/admin/propiedades/update',[HouseController::class,'updateHouse']);
     $router->post('/admin/propiedades/update',[HouseController::class,'updateHouse']);
     $router->post('/admin/propiedades/delete',[HouseController::class,'deleteHouse']);
+    $router->post('/admin/propiedades/deleteFotos',[HouseController::class,'deleteFotos']);
     $router->get('/admin/propiedades/info',[HouseController::class,'infoHouse']);
     $router->get('/admin/propiedades/date',[HouseController::class,'dateHouse']);
     $router->post('/admin/propiedades/date',[HouseController::class,'dateHouse']);

@@ -2,6 +2,10 @@
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
 <h1>Actualizar propiedad</h1>
+<form method="POST" class="w-100" action="/admin/propiedades/deleteFotos">
+    <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
+    <input type="submit" value="Eliminar Fotos actuales" class="boton-rojo" onclick="return ConfirmDelete()">
+</form>
 <!-- <nav class="tabs contenedor contenido-centrado">
     <button type="button" data-paso="1" class="actual">Dirección</button>
     <button type="button" data-paso="2" class="">Valor de la propiedad</button>
@@ -34,3 +38,5 @@
     </fieldset>    
     <input type="submit" value="Actualizar Propiedad" class="boton-azul">  
 </form>
+
+

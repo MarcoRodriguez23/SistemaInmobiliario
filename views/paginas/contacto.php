@@ -6,12 +6,17 @@
         <p>
             Por favor, complete los campos a continuación y luego haga clic en enviar.<br>Estaremos en contacto.
         </p>
+        <?php
+            if ($mensaje) {
+                echo "<p class='alerta exito'>".$mensaje."</p>";
+            }
+        ?>
     </div>
     <div class="color-formulario">
 
-        <form class="formulario-user contenedor" action="/enviar" method="POST">
+        <form class="formulario-user contenedor" action="/contacto" method="POST">
             <div>
-                <label for="nombre">Nombre</label>
+                <label for="nombre">Nombre y apellido</label>
                 <input type="text" name="nombre" placeholder="Nombre Completo" id="nombre" required>
             </div>
             
@@ -37,11 +42,12 @@
 
             <div>
                 <label for="asunto">Asunto</label>
-                <select name="asunto" id="">
-                    <option value="" selected disabled>--Usted esta interesado en--</option>
-                    <option value="1">Inmueble</option>
-                    <option value="2">Departamento</option>
-                    <option value="3">Terreno</option>
+                <select name="asunto">
+                    <option value="" disabled selected>--Selecciona una opción--</option>
+                    <?php foreach ($tipos as $row) :?>
+                        <option 
+                        value="<?php echo s($row->tipo); ?>"><?php echo s($row->tipo); ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             
@@ -49,8 +55,9 @@
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje"></textarea>
             </div>
-
-            <input type="submit" value="Enviar" class="boton-formulario">
+            <div class="boton-formulario">
+                <input type="submit" value="Enviar" class="boton">
+            </div>
         </form>
     </div>
 </main>

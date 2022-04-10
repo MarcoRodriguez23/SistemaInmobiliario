@@ -215,9 +215,10 @@ class PaginasController{
 
     public static function contacto(Router $router){
         $mensaje = null;
+        $tipos = TipoPropiedad::all();
 
         if($_SERVER['REQUEST_METHOD']==="POST"){
-            $respuestas=$_POST['contacto'];
+            $respuestas=$_POST;
            
             //crear una instancia de PHPMailer
             $mail = new PHPMailer();
@@ -235,7 +236,7 @@ class PaginasController{
             //quien lo envia
             $mail->setFrom('admin@bienesraices.com');
             //A donde va
-            $mail->addAddress('admin@bienesraices.com','bienes raices.com');
+            $mail->addAddress('admin@bienesraices.com','bienesraices.com');
             $mail->Subject='Tienes un nuevo mensaje';
             //habilitar html
             $mail->isHTML(true);
@@ -247,22 +248,19 @@ class PaginasController{
             $contenido .= '<p>Nombre:'. $respuestas['nombre'] . '</p>';
             
             //enviar de forma condicional algunos campos
-            if($respuestas['contacto']==="telefono"){
-                $contenido .= '<p>Eligio ser contactado por Teléfono: </p>';
-                $contenido .= '<p>Teléfono:'. $respuestas['telefono'] . '</p>';
-                $contenido .= '<p>Fecha de contacto: '. $respuestas['fecha'] . '</p>';
-                $contenido .= '<p>Hora de contacto: '. $respuestas['hora'] . '</p>';
+            if($respuestas['empresa']!=""){
+                $contenido .= '<p>De la empresa: '.$respuestas['empresa'].'</p>';
+                $contenido .= '<p>Con el puesto de: '.$respuestas['puesto'].'</p>';
             }
-            else{
-                $contenido .= '<p>Eligio ser contactado por Email: </p>';
-                $contenido .= '<p>Email:'. $respuestas['email'] . '</p>';
-            }
+            $contenido .= '<p>Esta interesado en adquirir '.$respuestas['asunto'].'</p>';
+            $contenido .= '<p>Medios de contacto proporcionados</p>';
+            $contenido .= '<p>Email: '.$respuestas['correo'].'</p>';
+            $contenido .= '<p>Whatsapp: '.$respuestas['telefono'].'</p>';
             
-            $contenido .= '<p>Mensaje:'. $respuestas['mensaje'] . '</p>';
-            $contenido .= '<p>Vende o compra:'. $respuestas['tipo'] . '</p>';
-            $contenido .= '<p>Precio o presupuesto: $'. $respuestas['precio'] . '</p>';
+            $contenido .= '<p>Mensaje:</p>';
+            $contenido .= $respuestas['mensaje'];
             
-            $contenido .= '<html>';
+            $contenido .= '</html>';
 
             $mail->Body = $contenido;
             $mail->AltBody = "texto alternativo";
@@ -274,9 +272,11 @@ class PaginasController{
                 $mensaje = "mensaje no enivado";
             }
         }
+
         
         $router->view('/paginas/contacto',[
-            'mensaje'=>$mensaje
+            'mensaje'=>$mensaje,
+            'tipos'=>$tipos
         ]);
     }
 

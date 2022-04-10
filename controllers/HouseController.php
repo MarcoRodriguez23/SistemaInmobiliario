@@ -285,6 +285,28 @@ class HouseController{
         }
     }
 
+     //TODO BIEN
+     public static function deleteFotos(Router $router){
+        if ($_SERVER['REQUEST_METHOD']==='POST') {
+            //validar ID
+            $id = $_POST['id'];
+            $id = filter_var($id, FILTER_VALIDATE_INT);
+            
+
+            if($id){
+                $fotos = Foto::find($id);
+                
+                // para cada foto....
+                foreach ($fotos as $foto) {
+                    //eliminando el archivo de la carpeta
+                    $foto->borrarImagen();
+                    //eliminando el objeto de foto
+                    $foto->eliminar();
+                }
+            }
+        }
+    }
+
     public static function infoHouse(Router $router){
         $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);

@@ -118,9 +118,9 @@ class activeRecord{
     //eliminar el archivo
     public function borrarImagen(){
         //comprobar si existe el archivo
-        $existe = file_exists(CARPETA_IMAGENES . $this->imagen);
+        $existe = file_exists(CARPETA_IMAGENES . $this->foto);
         if($existe){
-            unlink(CARPETA_IMAGENES . $this->imagen);
+            unlink(CARPETA_IMAGENES . $this->foto);
         }
     }
 
