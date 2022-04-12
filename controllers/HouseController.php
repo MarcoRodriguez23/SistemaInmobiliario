@@ -75,17 +75,19 @@ class HouseController{
         $metodosVenta = new MetodosVenta();
         $muebles = new Mueble();
         $amenidades = new Amenidad();
+        
 
         //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
         $estacionamientos = Estacionamiento::all();
         $escrituras = Escritura::all();
         $tipoPropiedad = TipoPropiedad::all();
         $categorias = Categoria::all();
+        $status = Status::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresPropiedad = Propiedad::getErrores();
-        $erroresDireccion = Direccion::getErrores();
-        $erroresMetodosVenta = MetodosVenta::getErrores();
+        $erroresPropiedad = [];
+        $erroresDireccion = [];
+        $erroresMetodosVenta = [];
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
@@ -97,15 +99,54 @@ class HouseController{
             $muebles = new  Mueble($_POST['muebles']);
             $amenidades = new Amenidad($_POST['amenidades']);                 
             $metodosVenta = new MetodosVenta($_POST['metodosventa']);
-                        
-    
-            //validando la existencia de erroes en el formulario
+
             $erroresPropiedad = $propiedad->validar();
+            
+            if($propiedad->tipoPropiedad){
+                switch ($propiedad->tipoPropiedad) {
+                    //Casa
+                    case '1':
+                        $erroresPropiedad = $propiedad->validarCasa();
+                        // debuguear($erroresPropiedad);
+                        break;
+                    //Departamento
+                    case '2':
+                        $erroresPropiedad = $propiedad->validarDepartamento();
+                        // debuguear($erroresPropiedad);
+                        break;
+                    //Terreno
+                    case '3':
+                        $erroresPropiedad = $propiedad->validarTerreno();
+                        break;
+                    //Bodega
+                    case '4':
+                        $erroresPropiedad = $propiedad->validarBodega();
+                        debuguear($erroresPropiedad);
+                        break;
+                    //Local
+                    case '5':
+                        $erroresPropiedad = $propiedad->validarLocal();
+                        debuguear($erroresPropiedad);
+                        break;
+                    //Oficina
+                    case '6':
+                        $erroresPropiedad = $propiedad->validarOficina();
+                        debuguear($erroresPropiedad);
+                        break;
+                          
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            //validando la existencia de erroes en el formulario
+            
             $erroresDireccion = $direccion->validar();
             $erroresMetodosVenta = $metodosVenta->validar();
             
             //si no hay errores proceder a los queries hacia la base de datos
             if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
+                debuguear("no hay errores");
                 
                 // GUARDANDO EN LA BD
                 $guardarPropiedad=$propiedad->guardar();
@@ -141,7 +182,8 @@ class HouseController{
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
             "erroresMetodosVenta"=>$erroresMetodosVenta,
-            "categorias"=>$categorias
+            "categorias"=>$categorias,
+            "status"=>$status
         ]);
     }
 

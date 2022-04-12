@@ -12,6 +12,11 @@
                 <p class="direccion"><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>
                 <div class="info-inferior">
                     <p class="precio">$ <?php echo $propiedad->precio; ?></p>
+                    <p class="pago">
+                        <?php foreach($tipoPropiedad as $tipo): ?>
+                            <?php echo $propiedad->tipoPropiedad === $tipo->id ? ucfirst($tipo->tipo) : '' ; ?>
+                        <?php endforeach; ?>
+                    </p>
                     <p class="pago">Comisión: <?php echo $propiedad->comision; ?> %</p>
                     <p class="pago">
                         <?php foreach($categorias as $cat): ?>

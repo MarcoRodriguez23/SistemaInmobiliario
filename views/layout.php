@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="build/css/app.css">
-    <link rel="shortcut icon" href="build/img/logo.jpeg">
+    <link rel="icon" type="image/jpg" href="/build/img/GALLARDO SVG.svg"/>
     <title>Inmobiliaria Gallardo</title>
 </head>
 <body>

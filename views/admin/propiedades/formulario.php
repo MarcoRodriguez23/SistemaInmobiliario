@@ -1,9 +1,9 @@
 
 <!--PARTE DONDE SE ESCOGE EL TIPO DE PROPIEDAD-->
-<fieldset>
+<fieldset id="fieldSetTipoPropiedad">
     <legend>Tipo de propiedad</legend>
     <div>
-    <select name="propiedad[tipoPropiedad]">
+    <select id="tipoPropiedad" name="propiedad[tipoPropiedad]">
         <option value="" disabled selected>--Selecciona una opción--</option>
         <?php foreach ($tipoPropiedad as $row) :?>
             <option 
@@ -15,7 +15,24 @@
     </div>
 </fieldset>
 
-<fieldset>
+<fieldset id="fieldSetStatus">
+    <legend>Disponible para: </legend>
+    <div>
+    <select id="status" name="propiedad[status]">
+        <option value="" disabled selected>--Selecciona una opción--</option>
+        <?php foreach ($status as $row) :?>
+            <?php if($row->id !=2): ?>
+                <option 
+                <?php echo ($propiedad->status === $row->id) ? 'selected' : ''; ?>
+                value="<?php echo s($row->id); ?>"><?php echo s($row->estado); ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </select>
+    <?php echo "<p>".$erroresPropiedad["status"]."</p>"; ?>
+    </div>
+</fieldset>
+
+<fieldset id="fieldSetRemodelacion">
     <legend>¿Se encuentra en remodelación?</legend>
     <div>
     <select name="propiedad[categoria]">
@@ -31,7 +48,7 @@
 </fieldset>
 
 <!--PARTE DONDE SE AGREGA INFORMACION SOBRE LA UBICACION DE LA PROPIEDAD-->
-<fieldset class="dosColumnas">
+<fieldset id="fieldSetUbicacion" class="dosColumnas">
     <legend>Ubicación</legend>
     <div>
         <label for="estado">Estado</label>
@@ -159,7 +176,7 @@
 </fieldset>
 
 <!--PARTE DONDE SE DESCRIBE LA PROPIEDAD-->
-<fieldset class="dosColumnas">
+<fieldset id="fieldSetDescripcionPropiedad" class="dosColumnas">
     <legend>
         Descripción de la propiedad
     </legend>
@@ -181,7 +198,7 @@
         <input 
             type="number" 
             placeholder="Ej: 2020" 
-            min="1800" 
+            min="1500" 
             name="propiedad[año]" 
             id="año"
             value="<?php echo s($propiedad->año); ?>"
@@ -194,7 +211,7 @@
         <input 
             type="number" 
             placeholder="Ej: 4" 
-            min="1" 
+            min="0" 
             name="propiedad[habitaciones]" 
             id="habitaciones"
             value="<?php echo s($propiedad->habitaciones); ?>"
@@ -207,7 +224,7 @@
         <input 
             type="number" 
             placeholder="Ej: 3" 
-            min="1" 
+            min="0" 
             name="propiedad[baños]" 
             id="baños"
             value="<?php echo s($propiedad->baños); ?>"
@@ -289,7 +306,7 @@
 </fieldset>
 
 <!--PRECIO DE LA PROPIEDAD-->
-<fieldset>
+<fieldset id="fieldSetPrecio">
     <legend>Precio</legend>
     <div>
         <label for="precio">Cantidad</label>
@@ -318,7 +335,7 @@
 </fieldset>
 
 <!--INFORMACION ADICIONAL EN CASO DE QUE SEA DEPARTAMENTO-->
-<fieldset id="infoDepartamento" class="dosColumnas">
+<fieldset id="fieldSetDepartamento" class="dosColumnas">
     <legend>Departamento</legend>
     <div>
         <label for="numDepartamento">Número de departamento</label>
@@ -360,7 +377,7 @@
     </div>
 </fieldset>
 
-<fieldset class="comision">
+<fieldset id="fieldSetComision" class="comision">
     <legend>Comisión de venta</legend>
     <div>
         <label for="comision">Porcentaje de comisión (1 a 50)</label>
@@ -378,7 +395,7 @@
 </fieldset>
 
 <!--PARTE DONDE SE AGREGAN LOS MUEBLES Y AMENIDADES QUE TIENE LA PROPIEDAD-->
-<fieldset>
+<fieldset id="fieldSetMueblesAmenidades">
     <legend>Muebles y amenidades</legend>
     <div>
         <div class="opciones"><!--Div para tener las opciones de los muebles-->
@@ -494,7 +511,7 @@
 </fieldset>
 
 <!--PARTE DONDE SE AGREGAN LAS OPCIONES DE VENTA Y EL PAPEL DE LA PROPIEDAD-->
-<fieldset>
+<fieldset id="fieldSetEscritura">
     <legend>Escritura y opciones de venta</legend>
     <div>
         <select name="propiedad[idEscritura]">
@@ -551,7 +568,7 @@
     <p style="color:black">(puede marcar más de una opción)</p>
 </fieldset>
 
-<fieldset>
+<fieldset id="fieldSetPredio">
     <legend>Número de predio</legend>
     <div>
         <label for="numPredio">Número de predio</label>
