@@ -80,7 +80,7 @@ use Dotenv\Parser\Value;
     <fieldset>
         <div>
             <input type="hidden" name="venta[idPropiedad]" value="<?php echo $propiedad->id; ?>">
-            <input type="hidden" name="propiedad[status]" value="1">
+            <input type="hidden" name="propiedad[status]" value="2">
         </div>
         <div>
             <input type="hidden" name="venta[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
@@ -90,7 +90,7 @@ use Dotenv\Parser\Value;
     
     
 
-    <?php echo ($propiedad->status==1 && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-morado">';?>
+    <?php echo ($propiedad->status==2 && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-morado">';?>
     
 </form>
 

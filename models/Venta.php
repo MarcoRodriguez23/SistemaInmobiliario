@@ -4,7 +4,7 @@ namespace Model;
 
 class Venta extends activeRecord{
     protected static $tabla='venta';
-    protected static $columnas_DB=['id','idEnargado','idPropiedad','fecha'];
+    protected static $columnas_DB=['id','idEncargado','idPropiedad','fecha'];
 
     public $id;
     public $idEncargado;

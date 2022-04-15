@@ -42,23 +42,32 @@
 
     $router->get('/admin/ventas',[AdminController::class,'money']);
     $router->get('/admin/agenda',[AdminController::class,'dates']);
+    $router->get('/excel',[AdminController::class,'excel']);
+
 
     //zona publica
     $router->get('/',[PaginasController::class,'index']);
     $router->get('/nosotros',[PaginasController::class,'nosotros']);
+    //listas genereales
     $router->get('/servicios',[PaginasController::class,'servicios']);
-    $router->get('/servicio',[PaginasController::class,'servicio']);
-    $router->get('/inmuebles',[PaginasController::class,'inmuebles']);
-    $router->get('/inmueble',[PaginasController::class,'inmueble']);
+    $router->get('/casas',[PaginasController::class,'casas']);
     $router->get('/departamentos',[PaginasController::class,'departamentos']);
-    $router->get('/departamento',[PaginasController::class,'departamento']);
     $router->get('/terrenos',[PaginasController::class,'terrenos']);
-    $router->get('/terreno',[PaginasController::class,'terreno']);
+    $router->get('/comercial',[PaginasController::class,'comercial']);
     $router->get('/blog',[PaginasController::class,'blog']);
+    
+    //informacion individual
+    $router->get('/servicio',[PaginasController::class,'servicio']);
+    $router->get('/casa',[PaginasController::class,'casa']);
+    $router->get('/departamento',[PaginasController::class,'departamento']);
+    $router->get('/terreno',[PaginasController::class,'terreno']);
+    $router->get('/local',[PaginasController::class,'local']);
+    $router->get('/bodega',[PaginasController::class,'bodega']);
+    $router->get('/oficina',[PaginasController::class,'oficina']);
     $router->get('/entrada',[PaginasController::class,'entrada']);
     $router->get('/contacto',[PaginasController::class,'contacto']);
     $router->post('/contacto',[PaginasController::class,'contacto']);
-    $router->get('/excel',[PaginasController::class,'excel']);
+    
 
     //login y autenticacion
     $router->get('/login',[LoginController::class,'login']);

@@ -99,11 +99,11 @@
                                 <?php foreach($categorias as $cat): ?>
                                     <?php echo $propiedad->categoria === $cat->id ? $cat->tipo : '' ; ?>
                                 <?php endforeach; ?>
-                                para
+                                en
                                 <?php foreach($status as $sts): ?>
                                     <?php echo $propiedad->status === $sts->id ? $sts->estado : '' ; ?>
                                 <?php endforeach; ?>
-                                en
+                                
                                 <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
                             </p>
                         </div>

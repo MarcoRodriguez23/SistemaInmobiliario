@@ -9,6 +9,9 @@ use Model\Direccion;
 use Model\Usuario;
 use Model\Citas;
 use Model\Venta;
+use Model\Mueble;
+use Model\Amenidad;
+use Model\MetodosVenta;
 
 require_once '../Router.php';
 
@@ -16,6 +19,9 @@ require_once '../models/Propiedad.php';
 require_once '../models/Direccion.php';
 require_once '../models/Citas.php';
 require_once '../models/Usuario.php';
+require_once '../models/Mueble.php';
+require_once '../models/Amenidad.php';
+require_once '../models/MetodosVenta.php';
 
 //CONTROLADOR CONCLUIDO
 class AdminController{
@@ -46,6 +52,21 @@ class AdminController{
             "direcciones"=>$direcciones,
             "propiedades"=>$propiedades,
             "trabajadores"=>$trabajadores
+        ]);
+    }
+
+    public static function excel(Router $router){
+        $propiedades = Propiedad::all();
+        $direcciones = Direccion::all();
+        $muebles = Mueble::all();
+        $amenidades = Amenidad::all();
+        $metodosVenta = MetodosVenta::all();
+        $router->view('../views/generarExcel',[
+            "propiedades"=>$propiedades,
+            "direcciones"=>$direcciones,
+            "muebles"=>$muebles,
+            "amenidades"=>$amenidades,
+            "metodosVenta"=>$metodosVenta
         ]);
     }
 }

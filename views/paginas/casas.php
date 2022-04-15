@@ -21,8 +21,14 @@
             <?php foreach($direcciones as $direccion): ?>
                 <?php if($propiedad->tipoPropiedad == 1 && $propiedad->id === $direccion->id && $propiedad->status!=2): ?>
                     <div class="anuncio">
-                        <a href="/inmueble?id=<?php echo $propiedad->id; ?>">
-                            <img loading="lazy" src="" alt="inmueble <?php echo $propiedad->id; ?>">
+                        <a href="/casa?id=<?php echo $propiedad->id; ?>">
+                            <?php $unaImagen = true; ?>
+                            <?php foreach($fotos as $foto): ?>
+                                <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
+                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="foto del inmueble">
+                                <?php $unaImagen = false; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                             <div class="info-anuncio">
                                 <p class="precio">
                                     <?php echo  "$ ".$propiedad->precio; ?>

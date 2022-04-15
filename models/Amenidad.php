@@ -4,7 +4,7 @@ namespace Model;
 
 class Amenidad extends activeRecord{
     protected static $tabla='amenidad';
-    protected static $columnas_DB=['id','roffGarden','salaDeUsosMultiples','gimnasio','cancha','calentadorSolar'];
+    protected static $columnas_DB=['id','roffGarden','salaDeUsosMultiples','gimnasio','cancha','calentadorSolar','alberca'];
 
     public $id;
     public $roffGarden;
@@ -12,6 +12,7 @@ class Amenidad extends activeRecord{
     public $gimnasio;
     public $cancha;
     public $calentadorSolar;
+    public $alberca;
 
     public function __construct($args=[])
     {
@@ -21,6 +22,7 @@ class Amenidad extends activeRecord{
         $this->gimnasio=$args['gimnasio']??'0';
         $this->cancha=$args['cancha']??'0';
         $this->calentadorSolar=$args['calentadorSolar']??'0';
+        $this->alberca=$args['alberca']??'0';
     }
 }
 

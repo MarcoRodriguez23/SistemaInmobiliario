@@ -24,8 +24,9 @@
     <fieldset>
         <legend>Fotografías</legend>
         <div>
-            <label for="imagen">imagen:</label>
+            <label for="imagen">imágenes(Limite de 8MB)</label>
             <input type="file" id="imagen" accept="image/jpeg, image/png" name="fotos[]" multiple>
+            <?php echo $erroresTamaño ? "<p>".$erroresTamaño."</p>" : "" ?>
         </div>
         <div>
             <span>Fotos actuales</span>

@@ -29,79 +29,44 @@
             <div class="carrousel-indicadores" role="tablist" id="indicadores-seleccion"></div>
         </div>
     </section>
+    <section class="caracts-propiedad">
+        <h2>Características</h2>
 
-    <div class="contenedor enlace-google">
-        <a class="boton-morado" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
-    </div>
-
-    <div class="contenedor enlace-google">
-        <a class="boton-morado" target="_blank" href="<?php echo $direccion->link360; ?>">Recorre la propiedad en 360°</a>
-    </div>
-
-    <div class="opciones-compra contenedor">
-        <div>
-            <div>
-                <h3>
-                    Opciones de Compra
-                </h3>
-                <ul>
-                    <!-- <img src="" alt="icono"> -->
-                    <?php foreach ($metodosVenta as $clave => $val) {
-                        if($val==1 && $clave!="id"){
-                            if($clave === "credito"){
-                                echo '<li>
-                                <img src="/build/img/Iconos/icono_dinero1.svg" alt="icono">
-                                <p>CRÉDITO BANCARIO</p>
-                                </li>';
-                            }
-                            else{
-                                echo '<li>
-                                <img src="/build/img/Iconos/icono_dinero1.svg" alt="icono">
-                                <p>'.strtoupper($clave).'</p>
-                                </li>';
-                            }
-                        }
-                    }
-                    ?>
-                </ul>  
-            </div>
-            <div>
-                <h3>
-                    Documentación
-                </h3>
-                <ul>
-                    <?php
-                        echo '<li>
-                        <img src="/build/img/Iconos/icono_escrituras1.svg" alt="icono">
-                        <p>'.strtoupper($escritura->tipo).'</p>
-                        </li>';
-                    ?>
-                </ul>
-            </div>
-        </div>
-        <img src="/build/img/conocenos.jpg" alt="opciones venta">
-    </div>
-
-    <section  class="extra-propiedad contenedor">
-    <h2>Características</h2>
-
-    <div class="extra-elementos">
-    <ul>
+        <div class="caracts-propiedad-listas">
+            <ul>
                 <li>
-                    <img src="/build/img/Iconos/icono_recamara1.svg" alt="icono">
-                    <p>Habitaciones: <?php echo $propiedad->habitaciones; ?></p>
+                    <img src="/build/img/Iconos/icono_edificio3.svg" alt="icono">
+                    <p><?php echo $propiedad->categoria==='1' ? "Remodelado" : "En remodelación"; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/Iconos/icono_edificio3.svg" alt="icono">
+                    <p>Núm. de pisos: <?php echo $propiedad->numPisos; ?></p>
                 </li>
                 <li>
                     <img src="/build/img/Iconos/icono_baño1.svg" alt="icono">
                     <p>Baños: <?php echo $propiedad->baños; ?></p>
                 </li>
                 <li>
-                    <img src="/build/img/Iconos/icono_metros1.svg" alt="icono">
-                    <p>Mt2: <?php echo $propiedad->mt2; ?></p>
+                    <img src="/build/img/Iconos/icono_recamara1.svg" alt="icono">
+                    <p>Habitaciones: <?php echo $propiedad->habitaciones; ?></p>
                 </li>
                 <li>
                     <img src="/build/img/Iconos/icono_metros1.svg" alt="icono">
-                    <p>Mt2 Construidos: <?php echo $propiedad->mt2Construidos; ?></p>
+                    <p>Metros cuadrados: <?php echo $propiedad->mt2; ?> mt2</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="/build/img/Iconos/icono_estacionamiento1.svg" alt="icono">
+                    <p>Tipo de estacionamiento: <?php echo $estacionamiento->tipo; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/Iconos/icono_estacionamiento2.svg" alt="icono">
+                    <p>Cajones de estacionamientos: <?php echo $propiedad->numEstacionamientos; ?></p>
+                </li>
+                <li>
+                    <img src="/build/img/Iconos/icono_estacionamiento2.svg" alt="icono">
+                    <p>Número de estacionamiento: <?php echo $propiedad->numIdEstacionamiento; ?></p>
                 </li>
                 <li>
                     <img src="/build/img/Iconos/icono_sala1.svg" alt="icono">
@@ -111,35 +76,14 @@
                     <img src="/build/img/Iconos/icono_patiodeservicio1.svg" alt="icono">
                     <p>Patio de servicio: <?php echo $propiedad->servicioP; ?></p>
                 </li>
-                <li>
-                    <img src="/build/img/Iconos/icono_edificio3.svg" alt="icono">
-                    <p>Núm. de pisos: <?php echo $propiedad->numPisos; ?></p>
-                </li>
-                <li>
-                    <img src="/build/img/Iconos/icono_elevador1.svg" alt="icono">
-                    <p>Núm. de predio: <?php echo $propiedad->numPredio; ?></p>
-                </li>
-                <li>
-                    <img src="/build/img/Iconos/icono_estacionamiento1.svg" alt="icono">
-                    <p>Tipo de estacionamiento: <?php echo $estacionamiento->tipo; ?></p>
-                </li>
-                <li>
-                    <img src="/build/img/Iconos/icono_estacionamiento2.svg" alt="icono">
-                    <p>Cajones de estacionamientos: <?php echo $propiedad->numEstacionamientos; ?></p>
-                </li>
-            </ul>            
-    </div>
+            </ul>         
+        </div>
     </section>
-
     <section  class="extra-propiedad contenedor">
     <h2>Info. y características extra</h2>
 
     <div class="extra-elementos">
         <ul>
-            <li>
-                <img src="/build/img/Iconos/icono_edificio3.svg" alt="icono">
-                <p><?php echo $propiedad->categoria==='1' ? "Remodelado" : "Para remodelación"; ?></p>
-            </li>
             <li>
                 <img src="/build/img/Iconos/icono_año.svg" alt="icono">
                 <p>Año de construcción: <?php echo $propiedad->año; ?></p>
@@ -154,11 +98,11 @@
             </li>
             <li>
                 <img src="/build/img/Iconos/icono_edificio1.svg" alt="icono">
-                <p>Núm. de departamento: <?php echo $propiedad->numDepartamento; ?></p>
+                <p>Número de departamento: <?php echo $propiedad->numDepartamento; ?></p>
             </li>
             <li>
                 <img src="/build/img/Iconos/icono_edificio1.svg" alt="icono">
-                <p>Núm. de piso: <?php echo $propiedad->piso; ?></p>
+                <p>Número de piso: <?php echo $propiedad->piso; ?></p>
             </li>
             <li>
                 <img src="/build/img/Iconos/icono_elevador1.svg" alt="icono">
@@ -166,15 +110,24 @@
             </li>
             <li>
                 <img src="/build/img/Iconos/icono_elevador1.svg" alt="icono">
-                <p>Mtto mensual: <?php echo "$ ".$propiedad->mantenimiento; ?></p>
+                <p>mantenimiento: <?php echo "$ ".$propiedad->mantenimiento; ?></p>
             </li>
             <li>
-                <img src="/build/img/Iconos/icono_estacionamiento2.svg" alt="icono">
-                <p>Núm. de estacionamiento: <?php echo $propiedad->numIdEstacionamiento; ?></p>
+                <img src="/build/img/Iconos/icono_elevador1.svg" alt="icono">
+                <p>Número de predio: <?php echo $propiedad->numPredio; ?></p>
             </li>
         </ul>       
     </div>
     </section>
+
+    <div class="contenedor enlace-google">
+        <a class="boton-morado" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
+    </div>
+
+    <div class="contenedor enlace-google">
+        <a class="boton-morado" target="_blank" href="<?php echo $direccion->link360; ?>">Recorre la propiedad en 360°</a>
+    </div>
+    
 
     <div class="muebles-amenidades">
         <div>
@@ -273,6 +226,48 @@
         
     </div>
 
-    
+    <div class="opciones-compra contenedor">
+        <div>
+            <div>
+                <h3>
+                    Opciones de Compra
+                </h3>
+                <ul>
+                    <!-- <img src="" alt="icono"> -->
+                    <?php foreach ($metodosVenta as $clave => $val) {
+                        if($val==1 && $clave!="id"){
+                            if($clave === "credito"){
+                                echo '<li>
+                                <img src="/build/img/Iconos/icono_dinero1.svg" alt="icono">
+                                <p>CRÉDITO BANCARIO</p>
+                                </li>';
+                            }
+                            else{
+                                echo '<li>
+                                <img src="/build/img/Iconos/icono_dinero1.svg" alt="icono">
+                                <p>'.strtoupper($clave).'</p>
+                                </li>';
+                            }
+                        }
+                    }
+                    ?>
+                </ul>  
+            </div>
+            <div>
+                <h3>
+                    Escritura
+                </h3>
+                <ul>
+                    <?php
+                        echo '<li>
+                        <img src="/build/img/Iconos/icono_escrituras1.svg" alt="icono">
+                        <p>'.strtoupper($escritura->tipo).'</p>
+                        </li>';
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <img src="/build/img/conocenos.jpg" alt="opciones venta">
+    </div>
 </main>
 

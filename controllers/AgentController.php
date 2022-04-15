@@ -149,7 +149,6 @@ class AgentController{
 
     public static function deleteAgent(Router $router){
         if ($_SERVER['REQUEST_METHOD']==='POST') {
-            debuguear($_POST);
             //validar ID
             $id = $_POST['id'];
             $id = filter_var($id, FILTER_VALIDATE_INT);

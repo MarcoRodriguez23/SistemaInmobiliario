@@ -80,19 +80,19 @@ class PaginasController{
         ]);
     }
 
-    public static function inmuebles(Router $router){
+    public static function casas(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $fotos=Foto::all();
-        $router->view('/paginas/inmuebles',[
+        $router->view('/paginas/casas',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'fotos'=>$fotos
         ]);
     }
 
-    public static function inmueble(Router $router){
-        $id = validarORedireccionar('/inmueble');
+    public static function casa(Router $router){
+        $id = validarORedireccionar('/casa');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
         $mueble = Mueble::find($id);
@@ -106,7 +106,7 @@ class PaginasController{
         // debuguear($metodosVenta);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
-        $router->view('/paginas/inmueble',[
+        $router->view('/paginas/casa',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
             'mueble'=>$mueble,
@@ -280,20 +280,25 @@ class PaginasController{
         ]);
     }
 
-    public static function excel(Router $router){
-        $propiedades = Propiedad::all();
-        $direcciones = Direccion::all();
-        $muebles = Mueble::all();
-        $amenidades = Amenidad::all();
-        $metodosVenta = MetodosVenta::all();
-        $router->view('../views/generarExcel',[
-            "propiedades"=>$propiedades,
-            "direcciones"=>$direcciones,
-            "muebles"=>$muebles,
-            "amenidades"=>$amenidades,
-            "metodosVenta"=>$metodosVenta
+    public static function comercial(Router $router){
+
+        $router->view('/paginas/comercial',[
+
         ]);
     }
 
+    public static function local(Router $router){
+
+        $router->view('/paginas/local',[
+
+        ]);
+    }
+
+    public static function bodega(Router $router){
+
+        $router->view('/paginas/bodega',[
+
+        ]);
+    }
 
 }

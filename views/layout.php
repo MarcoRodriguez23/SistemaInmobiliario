@@ -27,9 +27,10 @@
                 <a href="/">HOME</a>
                 <a href="/nosotros">NOSOTROS</a>
                 <a href="/servicios">SERVICIOS</a>
-                <a href="/inmuebles">CASAS</a>
+                <a href="/casas">CASAS</a>
                 <a href="/departamentos">DEPARTAMENTOS</a>
                 <a href="/terrenos">TERRENOS</a>
+                <a href="/comercial">COMERCIAL</a>
                 <a href="/blog">BLOG</a>
                 <a href="/contacto">CONTACTO</a>
                 <?php if(!$auth): ?>
@@ -80,6 +81,6 @@
         Todos los derechos reservados <?php echo date('Y'); ?> &copy;
     </p>
     </footer>
-    <script src="build/js/bundle.min.js"></script>
+    <script src="build/js/bundle.js"></script>
 </body>
 </html>

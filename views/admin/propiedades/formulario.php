@@ -11,7 +11,7 @@
             value="<?php echo s($row->id); ?>"><?php echo s($row->tipo); ?></option>
         <?php endforeach; ?>
     </select>
-    <?php echo "<p>".$erroresPropiedad["tipoPropiedad"]."</p>"; ?>
+    <?php echo $erroresPropiedad["tipoPropiedad"] ? "<p>".$erroresPropiedad["tipoPropiedad"]."</p>" : "" ?>
     </div>
 </fieldset>
 
@@ -24,26 +24,28 @@
             <?php if($row->id !=2): ?>
                 <option 
                 <?php echo ($propiedad->status === $row->id) ? 'selected' : ''; ?>
-                value="<?php echo s($row->id); ?>"><?php echo s($row->estado); ?></option>
+                value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
             <?php endif; ?>
         <?php endforeach; ?>
     </select>
-    <?php echo "<p>".$erroresPropiedad["status"]."</p>"; ?>
+    <?php echo $erroresPropiedad["status"] ? "<p>".$erroresPropiedad["status"]."</p>" : "" ?>
     </div>
 </fieldset>
 
 <fieldset id="fieldSetRemodelacion">
-    <legend>¿Se encuentra en remodelación?</legend>
+    <legend>Remodelación</legend>
     <div>
     <select name="propiedad[categoria]">
         <option value="" disabled selected>--Selecciona una opción--</option>
         <?php foreach ($categorias as $row) :?>
-            <option 
-            <?php echo ($propiedad->categoria === $row->id) ? 'selected' : ''; ?>
-            value="<?php echo s($row->id); ?>"><?php echo s($row->tipo); ?></option>
+            <?php if($row->id !='0'): ?>
+                <option 
+                <?php echo ($propiedad->categoria === $row->id) ? 'selected' : ''; ?>
+                value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->tipo)); ?></option>
+            <?php endif; ?>
         <?php endforeach; ?>
     </select>
-    <?php echo "<p>".$erroresPropiedad["categoria"]."</p>"; ?>
+    <?php echo $erroresPropiedad["categoria"] ? "<p>".$erroresPropiedad["categoria"]."</p>" : "" ?>
     </div>
 </fieldset>
 
@@ -58,8 +60,7 @@
             name="direccion[estado]" id="estado" 
             value="<?php echo s($direccion->estado); ?>"
         >
-        <?php echo "<p>".$erroresDireccion["estado"]."</p>"; ?>
-        
+        <?php echo $erroresDireccion["estado"] ? "<p>".$erroresDireccion["estado"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -71,7 +72,7 @@
             id="municipioDelegacion" 
             value="<?php echo s($direccion->municipioDelegacion); ?>"
         >
-        <?php echo "<p>".$erroresDireccion["municipioDelegacion"]."</p>"; ?>
+        <?php echo $erroresDireccion["municipioDelegacion"] ? "<p>".$erroresDireccion["municipioDelegacion"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -82,8 +83,8 @@
             name="direccion[calle]" 
             id="calle"
             value="<?php echo s($direccion->calle); ?>"
-            >
-        <?php echo "<p>".$erroresDireccion["calle"]."</p>"; ?>
+        >
+        <?php echo $erroresDireccion["calle"] ? "<p>".$erroresDireccion["calle"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -94,8 +95,8 @@
             name="direccion[colonia]" 
             id="colonia"
             value="<?php echo s($direccion->colonia); ?>"
-            >
-        <?php echo "<p>".$erroresDireccion["colonia"]."</p>"; ?>
+        >
+        <?php echo $erroresDireccion["colonia"] ? "<p>".$erroresDireccion["colonia"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -107,8 +108,8 @@
             name="direccion[numInterior]" 
             id="numInterior"
             value="<?php echo s($direccion->numInterior); ?>"
-            >
-        <?php echo "<p>".$erroresDireccion["numInterior"]."</p>"; ?>
+        >
+        <?php echo $erroresDireccion["numInterior"] ? "<p>".$erroresDireccion["numInterior"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -120,8 +121,8 @@
             name="direccion[numExterior]" 
             id="numExterior"
             value="<?php echo s($direccion->numExterior); ?>"
-            >
-        <?php echo "<p>".$erroresDireccion["numExterior"]."</p>"; ?>
+        >
+        <?php echo $erroresDireccion["numExterior"] ? "<p>".$erroresDireccion["numExterior"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -132,20 +133,20 @@
             name="direccion[linkGoogle]" 
             id="linkGoogle"
             value="<?php echo s($direccion->linkGoogle); ?>"
-            >
-        <?php echo "<p>".$erroresDireccion["linkGoogle"]."</p>"; ?>
+        >
+        <?php echo $erroresDireccion["linkGoogle"] ? "<p>".$erroresDireccion["linkGoogle"]."</p>" : "" ?>
     </div>
 
     <div>
-        <label for="link360">Enlace de recorrido 360°</label>
+        <label for="link360">Enlace de recorrido 360° (opcional)</label>
         <input 
             type="text" 
             placeholder="Link de recorrido" 
             name="direccion[link360]" 
             id="link360"
             value="<?php echo s($direccion->link360); ?>"
-            >
-        <?php echo "<p>".$erroresDireccion["link360"]."</p>"; ?>
+        >
+        <?php echo $erroresDireccion["link360"] ? "<p>".$erroresDireccion["link360"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -156,22 +157,35 @@
             name="direccion[CP]" 
             id="CP"
             value="<?php echo s($direccion->CP); ?>"
-            >
-        <?php echo "<p>".$erroresDireccion["CP"]."</p>"; ?>
+        >
+        <?php echo $erroresDireccion["CP"] ? "<p>".$erroresDireccion["CP"]."</p>" : "" ?>
     </div>
 
     <div>
         <label for="mt2">Metros Cuadrados</label>
         <input 
             type="number" 
-            placeholder="Ej: 58.30" 
+            placeholder="Ej: 80.30" 
             min="0" 
             name="propiedad[mt2]" 
             id="mt2" 
             step=".01"
             value="<?php echo s($propiedad->mt2); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["mt2"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["mt2"] ? "<p>".$erroresPropiedad["mt2"]."</p>" : "" ?>
+    </div>
+    <div>
+        <label for="mt2Construccion">Metros Cuadrados Construidos</label>
+        <input 
+            type="number" 
+            placeholder="Ej: 69.40" 
+            min="0" 
+            name="propiedad[mt2Construccion]" 
+            id="mt2Construccion" 
+            step=".01"
+            value="<?php echo s($propiedad->mt2Construccion); ?>"
+        >
+        <?php echo $erroresPropiedad["mt2Construccion"] ? "<p>".$erroresPropiedad["mt2Construccion"]."</p>" : "" ?>
     </div>
 </fieldset>
 
@@ -189,8 +203,8 @@
             name="propiedad[numPisos]" 
             id="numPisos"
             value="<?php echo s($propiedad->numPisos); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["numPisos"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["numPisos"] ? "<p>".$erroresPropiedad["numPisos"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -198,12 +212,12 @@
         <input 
             type="number" 
             placeholder="Ej: 2020" 
-            min="1500" 
+            min="0" 
             name="propiedad[año]" 
             id="año"
             value="<?php echo s($propiedad->año); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["año"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["año"] ? "<p>".$erroresPropiedad["año"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -215,8 +229,8 @@
             name="propiedad[habitaciones]" 
             id="habitaciones"
             value="<?php echo s($propiedad->habitaciones); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["habitaciones"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["habitaciones"] ? "<p>".$erroresPropiedad["habitaciones"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -228,8 +242,8 @@
             name="propiedad[baños]" 
             id="baños"
             value="<?php echo s($propiedad->baños); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["baños"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["baños"] ? "<p>".$erroresPropiedad["baños"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -241,8 +255,8 @@
             name="propiedad[servicioH]" 
             id="servicioH"
             value="<?php echo s($propiedad->servicioH); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["servicioH"]; ?>
+        >
+        <?php echo $erroresPropiedad["servicioH"] ? "<p>".$erroresPropiedad["servicioH"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -255,7 +269,7 @@
             id="servicioP"
             value="<?php echo s($propiedad->servicioP); ?>"
             >
-        <?php echo "<p>".$erroresPropiedad["servicioP"]."</p>"; ?>
+        <?php echo $erroresPropiedad["servicioP"] ? "<p>".$erroresPropiedad["servicioP"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -263,16 +277,18 @@
         <select name="propiedad[idEstacionamiento]" id="idEstacionamiento">
             <option value="" disabled selected>--Seleccione un tipo de estacionamiento--</option>
             <?php
-                foreach ($estacionamientos as $estacionamiento):?>  
+                foreach ($estacionamientos as $estacionamiento):?>
+                <?php if($estacionamiento->id != '0'): ?>  
                     <option
                         <?php echo $propiedad->idEstacionamiento === $estacionamiento->id ? 'selected' : ''; ?>
                         value="<?php echo s($estacionamiento->id); ?>"
                     >
                     <?php echo s($estacionamiento->tipo); ?>
                     </option>
+                <?php endif; ?>
             <?php endforeach; ?>
         </select>
-        <?php echo "<p>".$erroresPropiedad["idEstacionamiento"]."</p>"; ?>
+        <?php echo $erroresPropiedad["idEstacionamiento"] ? "<p>".$erroresPropiedad["idEstacionamiento"]."</p>" : "" ?>
     </div>
 
 
@@ -285,8 +301,8 @@
             name="propiedad[numEstacionamientos]" 
             id="numEstacionamientos"
             value="<?php echo s($propiedad->numEstacionamientos); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["numEstacionamientos"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["numEstacionamientos"] ? "<p>".$erroresPropiedad["numEstacionamientos"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -298,8 +314,8 @@
             name="propiedad[numIdEstacionamiento]" 
             id="numIdEstacionamiento"
             value="<?php echo s($propiedad->numIdEstacionamiento); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["numIdEstacionamiento"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["numIdEstacionamiento"] ? "<p>".$erroresPropiedad["numIdEstacionamiento"]."</p>" : "" ?>
     </div>
 
     
@@ -313,42 +329,30 @@
         <input 
             type="number" 
             placeholder="Ej: 1800000" 
-            min="100000" 
+            min="10000" 
             name="propiedad[precio]" 
             id="precio"
             value="<?php echo s($propiedad->precio); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["precio"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["precio"] ? "<p>".$erroresPropiedad["precio"]."</p>" : "" ?>
     </div>
     <div>
         <label for="mantenimiento">Precio de mantenimiento</label>
         <input 
             type="number" 
             placeholder="Ej: 5000" 
-            min="1000" 
+            min="0" 
             name="propiedad[mantenimiento]" 
             id="mantenimiento"
             value="<?php echo s($propiedad->mantenimiento); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["mantenimiento"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["mantenimiento"] ? "<p>".$erroresPropiedad["mantenimiento"]."</p>" : "" ?>
     </div>
 </fieldset>
 
 <!--INFORMACION ADICIONAL EN CASO DE QUE SEA DEPARTAMENTO-->
 <fieldset id="fieldSetDepartamento" class="dosColumnas">
     <legend>Departamento</legend>
-    <div>
-        <label for="numDepartamento">Número de departamento</label>
-        <input
-            type="number" 
-            placeholder="Ej: 1" 
-            min="0" 
-            name="propiedad[numDepartamento]" 
-            id="numDepartamento"
-            value="<?php echo s($propiedad->numDepartamento); ?>"
-            >
-        <!-- <?php echo "<p>".$erroresPropiedad["numDepartamento"]."</p>"; ?> -->
-    </div>
 
     <div>
         <label for="piso">Número de piso</label>
@@ -359,8 +363,8 @@
             name="propiedad[piso]" 
             id="piso"
             value="<?php echo s($propiedad->piso); ?>"
-            >
-        <!-- <?php echo "<p>".$erroresPropiedad["piso"]."</p>"; ?> -->
+        >
+        <?php echo $erroresPropiedad["piso"] ? "<p>".$erroresPropiedad["piso"]."</p>" : "" ?>
     </div>
 
     <div>
@@ -372,8 +376,8 @@
             name="propiedad[numElevadores]" 
             id="numElevadores"
             value="<?php echo s($propiedad->numElevadores); ?>"
-            >
-        <!-- <?php echo "<p>".$erroresPropiedad["numElevadores"]."</p>"; ?> -->
+        >
+        <?php echo $erroresPropiedad["numElevadores"] ? "<p>".$erroresPropiedad["numElevadores"]."</p>" : "" ?>
     </div>
 </fieldset>
 
@@ -389,8 +393,8 @@
             name="propiedad[comision]"
             max="50"
             value="<?php echo s($propiedad->comision); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["comision"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["comision"] ? "<p>".$erroresPropiedad["comision"]."</p>" : "" ?>
     </div>
 </fieldset>
 
@@ -506,6 +510,15 @@
                     >
                 <label>Calentador Solar</label>
             </div>   
+            <div>
+                <input 
+                    type="checkbox" 
+                    name="amenidades[alberca]" 
+                    value="1"
+                    <?php echo $amenidades->alberca==1 ? 'checked' : ''; ?>
+                    >
+                <label>Alberca</label>
+            </div> 
         </div>
     </div>
 </fieldset>
@@ -522,7 +535,7 @@
                 value="<?php echo s($escritura->id); ?>"><?php echo s($escritura->tipo); ?></option>
             <?php endforeach; ?>
         </select>
-        <?php echo "<p>".$erroresPropiedad["idEscritura"]."</p>"; ?>
+        <?php echo $erroresPropiedad["idEscritura"] ? "<p>".$erroresPropiedad["idEscritura"]."</p>" : "" ?>
     </div>
     
     
@@ -539,11 +552,11 @@
         <div>
             <input 
                 type="checkbox" 
-                name="metodosventa[cofinavit]" 
+                name="metodosventa[infonavit]" 
                 value="1"
-                <?php echo $metodosVenta->cofinavit==1 ? 'checked' : '' ; ?>
+                <?php echo $metodosVenta->infonavit==1 ? 'checked' : '' ; ?>
                 >
-            <label>COFINAVIT</label>
+            <label>INFONAVIT</label>
         </div> 
         <div>
             <input 
@@ -563,7 +576,7 @@
                 >
             <label>Efectivo</label>
         </div> 
-        <?php echo "<p>".$erroresMetodosVenta["metodosVenta"]."</p>"; ?>
+        <?php echo $erroresMetodosVenta["metodosVenta"] ? "<p>".$erroresMetodosVenta["metodosVenta"]."</p>" : "" ?>
     </div>
     <p style="color:black">(puede marcar más de una opción)</p>
 </fieldset>
@@ -579,7 +592,7 @@
             min="1" 
             name="propiedad[numPredio]"
             value="<?php echo s($propiedad->numPredio); ?>"
-            >
-        <?php echo "<p>".$erroresPropiedad["numPredio"]."</p>"; ?>
+        >
+        <?php echo $erroresPropiedad["numPredio"] ? "<p>".$erroresPropiedad["numPredio"]."</p>" : "" ?>
     </div>
 </fieldset>

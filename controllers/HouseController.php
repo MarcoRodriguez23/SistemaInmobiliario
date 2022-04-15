@@ -2,7 +2,6 @@
 
 namespace Controllers;
 
-use Model\Agente;
 use MVC\Router;
 
 use Model\Amenidad;
@@ -101,18 +100,15 @@ class HouseController{
             $metodosVenta = new MetodosVenta($_POST['metodosventa']);
 
             $erroresPropiedad = $propiedad->validar();
-            
             if($propiedad->tipoPropiedad){
                 switch ($propiedad->tipoPropiedad) {
                     //Casa
                     case '1':
                         $erroresPropiedad = $propiedad->validarCasa();
-                        // debuguear($erroresPropiedad);
                         break;
                     //Departamento
                     case '2':
                         $erroresPropiedad = $propiedad->validarDepartamento();
-                        // debuguear($erroresPropiedad);
                         break;
                     //Terreno
                     case '3':
@@ -121,32 +117,23 @@ class HouseController{
                     //Bodega
                     case '4':
                         $erroresPropiedad = $propiedad->validarBodega();
-                        debuguear($erroresPropiedad);
                         break;
                     //Local
                     case '5':
                         $erroresPropiedad = $propiedad->validarLocal();
-                        debuguear($erroresPropiedad);
                         break;
                     //Oficina
                     case '6':
                         $erroresPropiedad = $propiedad->validarOficina();
-                        debuguear($erroresPropiedad);
-                        break;
-                          
-                    default:
-                        # code...
                         break;
                 }
             }
             //validando la existencia de erroes en el formulario
-            
             $erroresDireccion = $direccion->validar();
             $erroresMetodosVenta = $metodosVenta->validar();
             
             //si no hay errores proceder a los queries hacia la base de datos
             if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
-                debuguear("no hay errores");
                 
                 // GUARDANDO EN LA BD
                 $guardarPropiedad=$propiedad->guardar();
@@ -196,7 +183,8 @@ class HouseController{
         $direccion = Direccion::find($id);        
         $muebles =  Mueble::find($id);        
         $amenidades = Amenidad::find($id);        
-        $metodosVenta = MetodosVenta::find($id);    
+        $metodosVenta = MetodosVenta::find($id); 
+        // debuguear($metodosVenta);   
         
         //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
         $estacionamientos = Estacionamiento::all();
@@ -204,6 +192,7 @@ class HouseController{
         $tipoPropiedad = TipoPropiedad::all();
         $categorias = Categoria::all();
         $fotos = Foto::find($id);
+        $status = Status::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad= [];
@@ -227,19 +216,26 @@ class HouseController{
             $propiedad->sincronizar($argsPropiedad) ;       
             $direccion->sincronizar($argsDireccion) ;
 
-            // debuguear($_FILES['fotos']);
-
+            $sizeTotal=0;
+                //ciclo para obtener los MB'S totales que el usuario subira
+                if($_FILES['fotos']['size'][0]){
+                    foreach ($_FILES['fotos']['size'] as $peso) {
+                        $sizeTotal += $peso;
+                    }
+                    //1MB = 1048576
+                    $sizeLimite = 8 * 1048576;
+                    if($sizeTotal >= $sizeLimite){
+                        $erroresTamaño="Acaba de superar el limite de 8MB";
+                    }
+                }
 
             $erroresPropiedad= $propiedad->validar();
             $erroresDireccion = $direccion->validar();
             $erroresMetodosVenta=$metodosVenta->validar();
     
-            //si no hay errores proceder a los queries hacia la base de datos
-            if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
+            //si no hay errores proceder a los queries hacia la base de datos y la subida de las imagenes
+            if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta) && empty($erroresTamaño)){
                 
-                
-                
-
                 // GUARDANDO EN LA BD
                 $guardarPropiedad=$propiedad->guardar();
                 
@@ -303,7 +299,9 @@ class HouseController{
             "metodosVenta"=>$metodosVenta,
             "erroresMetodosVenta"=>$erroresMetodosVenta,
             "categorias"=>$categorias,
-            "fotos"=>$fotos
+            "fotos"=>$fotos,
+            "status"=>$status,
+            "erroresTamaño"=>$erroresTamaño
         ]);
     }
 
@@ -322,6 +320,14 @@ class HouseController{
                     //eliminando objeto
                     $Propiedad= Propiedad::find($id);
                     $Propiedad->eliminar();
+                    $mueble = Mueble::find($id);
+                    $mueble->eliminar();
+                    $amenidad = Amenidad::find($id);
+                    $amenidad->eliminar();
+                    $direccion = Direccion::find($id);
+                    $direccion->eliminar();
+                    $metodosVenta = MetodosVenta::find($id);
+                    $metodosVenta->eliminar();
                 }
             }
         }

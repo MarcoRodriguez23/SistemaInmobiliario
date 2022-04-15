@@ -25,5 +25,6 @@
     "gulp-terser-js": "^5.2.2",
     "gulp-webp": "^4.0.1",
     "terser": "^5.3.8"
-  }
+  },
+  "dependencies": {}
 }
