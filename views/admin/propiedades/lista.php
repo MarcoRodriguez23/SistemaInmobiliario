@@ -17,6 +17,7 @@
 <?php endif; ?>
 <main>
     <h1>Propiedades en lista</h1>
+    <!--FILTRO-->
     <section>
         <form action="/admin" method="post" class="contenedor filtro contenido-centrado">
             <select name="filtro[precio]" id="precio">
@@ -34,7 +35,6 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
                 <?php
-
                 ?>
             </select>
             <select name="filtro[categoria]" id="categoria">
@@ -47,7 +47,8 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             </select>
-            <button type="submit">Buscar</button>
+
+            <input type="submit" value="Buscar">
         </form>
     </section>
     

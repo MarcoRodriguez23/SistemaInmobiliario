@@ -99,7 +99,7 @@
                     <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje"></textarea>
                 </div>
                 <div class="boton-formulario">
-                    <input type="submit" value="Enviar" class="boton">
+                    <input type="submit" value="Enviar" class="boton-morado">
                 </div>
             </form>
         </div>

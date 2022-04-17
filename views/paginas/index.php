@@ -15,7 +15,7 @@
             Vende o compra tu casa, departamento, terreno o local comercial con inmobiliaria Gallardo, somos especialistas en identificar las mejores zonas para que elijas tu hogar con nosotros.
 
             </p>
-            <a href="/servicios" class="boton">Explorar</a>
+            <a href="/servicios" class="boton-morado">Explorar</a>
         </div>
         
     </div>
@@ -70,7 +70,7 @@
     <p>
         Venta de casas baratas en CDMX, casas al sur de la ciudad de México, contamos con todas las opciones de compra y venta en las mejores zonas.
     </p>
-    <a href="/inmuebles" class="boton">Conoce más sobre los inmuebles</a>
+    <a href="/inmuebles" class="boton-morado">Conoce más sobre los inmuebles</a>
 </section>
 
 <section class="contenedor carrousel">
@@ -123,7 +123,7 @@
     <p>
         Tenemos los mejores departamentos en venta en la CDMX, tenemos los mejores lugares para vivir en CDMX y Morelos, departamentos baratos para comprar en infonovit.
     </p>
-    <a href="/departamentos" class="boton">Conoce más sobre los departamentos</a>
+    <a href="/departamentos" class="boton-morado">Conoce más sobre los departamentos</a>
 </section>
 
 <section class="contenedor carrousel">
@@ -175,7 +175,7 @@
     <p>
         Los mejores terrenos para un patrimonio rentable y valioso para ti y tu familia
     </p>
-    <a href="/terrenos" class="boton boton">Conoce más sobre los terrenos</a>
+    <a href="/terrenos" class="boton-morado">Conoce más sobre los terrenos</a>
 </section>
 
 

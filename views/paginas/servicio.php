@@ -8,6 +8,6 @@
             <?php echo $servicio->descripcion; ?>
         </p>
         
-        <a href="/servicios" class="boton">Volver</a>
+        <a href="/servicios" class="boton-morado boton">Volver</a>
     </div>
 </main>

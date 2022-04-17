@@ -24,7 +24,7 @@
                 <p class="texto-servicio">
                 <?php echo $row->infoprevia; ?>
                 </p>
-                <a href="/entrada?id=<?php echo $row->id; ?>" class="boton">Conocer más</a>
+                <a href="/entrada?id=<?php echo $row->id; ?>" class="boton boton-morado">Conocer más</a>
             </article>
         <?php endforeach; ?>
     </div>
