@@ -15,13 +15,13 @@
         </div>
         
     </div>
-    <div class="anuncios anunciosD">
+    <div class="anuncios">
         <!-- aqui se va ir generando los anuncios de los inmuebles -->
         <?php foreach($propiedades as $propiedad): ?>
             <?php foreach($direcciones as $direccion): ?>
                 <?php if($propiedad->tipoPropiedad > 3 && $propiedad->id === $direccion->id && $propiedad->status!=2): ?>
                     <div class="anuncio">
-                        <a href="/casa?id=<?php echo $propiedad->id; ?>">
+                        <a href="/negocio?id=<?php echo $propiedad->id; ?>">
                             <?php $unaImagen = true; ?>
                             <?php foreach($fotos as $foto): ?>
                                 <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>

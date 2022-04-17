@@ -25,20 +25,20 @@
             </div>
             <nav class="navegacion">
                 <a href="/">HOME</a>
-                <a href="/nosotros">NOSOTROS</a>
                 <a href="/servicios">SERVICIOS</a>
-                <a href="/casas">CASAS</a>
-                <a href="/departamentos">DEPARTAMENTOS</a>
-                <a href="/terrenos">TERRENOS</a>
-                <a href="/comercial">COMERCIAL</a>
+                <a href="/inmuebles">INMUEBLES</a>
                 <a href="/blog">BLOG</a>
                 <a href="/contacto">CONTACTO</a>
-                <?php if(!$auth): ?>
+                <!-- <a href="/casas">CASAS</a>
+                <a href="/departamentos">DEPARTAMENTOS</a>
+                <a href="/terrenos">TERRENOS</a>
+                <a href="/comercial">COMERCIAL</a> -->
+                <!-- <?php if(!$auth): ?>
                     <a href="/login">Iniciar Sesión</a>
                 <?php endif; ?>
                 <?php if($auth): ?>
                     <a href="/logout">Cerrar Sesión</a>
-                <?php endif; ?>
+                <?php endif; ?> -->
             </nav>
         </div> <!--.barra-->
     </header>
@@ -61,6 +61,10 @@
             <p>
                 tel: 55-7379-2800
             </p>
+            <p>
+                ¿Eres administrador?
+            </p>
+            <a href="/login">Ingresa aqui</a>
         </div>
         <div class="footer-socialMedia">
             <h4>Encuentranos en:</h4>

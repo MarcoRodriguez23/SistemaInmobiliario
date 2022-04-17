@@ -17,46 +17,39 @@
 <?php endif; ?>
 <main>
     <h1>Propiedades en lista</h1>
-    <!-- <section>
-        <form action="" method="post" class="contenedor filtro contenido-centrado">
-            <select name="ubicacion" id="ubicacion">
-                <option value="" selected disabled>Ubicación</option>
-                <option value="ubicacion-1">Ubicación X</option>
-                <option value="ubicacion-2">Ubicación X</option>
-            </select>
-            <select name="precio" id="precio">
+    <section>
+        <form action="/admin" method="post" class="contenedor filtro contenido-centrado">
+            <select name="filtro[precio]" id="precio">
                 <option value="" selected disabled>Precio</option>
-                <option value="precio-1">precio 1</option>
-                <option value="precio-2">precio 2</option>
+                <option value="<2000000">Menor a $2,000,000 MXN</option>
+                <option value=">2000000">Mayor a $2,000,000 MXN</option>
             </select>
-            <select name="pago" id="pago">
-                <option value="" selected disabled>Tipo de pago</option>
-                <option value="pago-1">Forma de pago 1</option>
-                <option value="pago-2">Forma de pago 2</option>
+            <select name="filtro[status]" id="status">
+                <option value="" selected disabled>Disponibilidad</option>
+                <?php foreach ($status as $row) :?>
+                    <?php if($row->id !='0'): ?>
+                        <option 
+                        <?php echo ($propiedad->status === $row->id) ? 'selected' : ''; ?>
+                        value="<?php echo s($row->estado); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <?php
+
+                ?>
             </select>
-            <select name="habitacion" id="habitacion">
-                <option value="" selected disabled>Habitaciones</option>
-                <option value="habitacion-1">1</option>
-                <option value="habitacion-2">2</option>
-            </select>
-            <select name="estacionamiento" id="estacionamiento">
-                <option value="" selected disabled>Estacionamientos</option>
-                <option value="estacionamiento-1">1</option>
-                <option value="estacionamiento-2">2</option>
-            </select>
-            <select name="wc" id="wc">
-                <option value="" selected disabled>Baños</option>
-                <option value="wc-1">1</option>
-                <option value="wc-2">2</option>
-            </select>
-            <select name="mt2" id="mt2">
-                <option value="" selected disabled>Medidas</option>
-                <option value="mt2-1">1</option>
-                <option value="mt2-2">2</option>
+            <select name="filtro[categoria]" id="categoria">
+                <option value="" selected disabled>Diseño</option>
+                <?php foreach ($categorias as $row) :?>
+                    <?php if($row->id !='0'): ?>
+                        <option 
+                        <?php echo ($propiedad->categoria === $row->id) ? 'selected' : ''; ?>
+                        value="<?php echo s($row->tipo); ?>"><?php echo ucfirst(s($row->tipo)); ?></option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </select>
             <button type="submit">Buscar</button>
         </form>
-    </section> -->
+    </section>
     
     <div class="inmuebles contenedor">
     <?php

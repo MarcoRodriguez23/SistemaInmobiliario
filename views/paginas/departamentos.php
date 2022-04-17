@@ -12,7 +12,7 @@
         </div>
         
     </div>
-    <div class="anuncios anunciosD">
+    <div class="anuncios">
         <!-- aqui se va ir generando los anuncios de los departamentos -->
         <?php foreach($propiedades as $propiedad): ?>
             <?php foreach($direcciones as $direccion): ?>

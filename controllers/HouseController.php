@@ -52,6 +52,10 @@ class HouseController{
         $categorias = Categoria::all();
 
         $mensaje=$_GET['mensaje']??null;
+
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            debuguear($_POST);
+        }
         
         
         $router->view('admin/propiedades/lista',[

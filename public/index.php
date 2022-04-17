@@ -14,6 +14,7 @@
     //zona privada
     //zona privada
     $router->get('/admin',[HouseController::class,'index']);
+    $router->post('/admin',[HouseController::class,'index']);
     $router->get('/admin/propiedades/create',[HouseController::class,'createHouse']);
     $router->post('/admin/propiedades/create',[HouseController::class,'createHouse']);
     $router->get('/admin/propiedades/update',[HouseController::class,'updateHouse']);
@@ -47,9 +48,9 @@
 
     //zona publica
     $router->get('/',[PaginasController::class,'index']);
-    $router->get('/nosotros',[PaginasController::class,'nosotros']);
     //listas genereales
     $router->get('/servicios',[PaginasController::class,'servicios']);
+    $router->get('/inmuebles',[PaginasController::class,'inmuebles']);
     $router->get('/casas',[PaginasController::class,'casas']);
     $router->get('/departamentos',[PaginasController::class,'departamentos']);
     $router->get('/terrenos',[PaginasController::class,'terrenos']);
@@ -61,9 +62,7 @@
     $router->get('/casa',[PaginasController::class,'casa']);
     $router->get('/departamento',[PaginasController::class,'departamento']);
     $router->get('/terreno',[PaginasController::class,'terreno']);
-    $router->get('/local',[PaginasController::class,'local']);
-    $router->get('/bodega',[PaginasController::class,'bodega']);
-    $router->get('/oficina',[PaginasController::class,'oficina']);
+    $router->get('/negocio',[PaginasController::class,'negocio']);
     $router->get('/entrada',[PaginasController::class,'entrada']);
     $router->get('/contacto',[PaginasController::class,'contacto']);
     $router->post('/contacto',[PaginasController::class,'contacto']);

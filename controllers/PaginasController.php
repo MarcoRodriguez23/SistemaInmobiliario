@@ -58,8 +58,8 @@ class PaginasController{
         ]);
     }
 
-    public static function nosotros(Router $router){
-        $router->view('/paginas/nosotros',[
+    public static function inmuebles(Router $router){
+        $router->view('/paginas/inmuebles',[
 
         ]);
     }
@@ -281,23 +281,42 @@ class PaginasController{
     }
 
     public static function comercial(Router $router){
-
+        $propiedades=Propiedad::all();
+        $direcciones=Direccion::all();
+        $fotos=Foto::all();
         $router->view('/paginas/comercial',[
-
+            'propiedades'=>$propiedades,
+            'direcciones'=>$direcciones,
+            'fotos'=>$fotos
         ]);
     }
 
-    public static function local(Router $router){
+    public static function negocio(Router $router){
+        $id = validarORedireccionar('/comercial');
+        $propiedad = Propiedad::find($id);
+        $direccion = Direccion::find($id);
+        $mueble = Mueble::find($id);
+        $amenidad = Amenidad::find($id);
+        $fotos = Foto::find($id);
+        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
+        $escritura = Escritura::find($propiedad->idEscritura);
+        $metodosVenta = MetodosVenta::find($id);
 
-        $router->view('/paginas/local',[
+        $categorias=Categoria::all();
+        // debuguear($metodosVenta);
+        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
-        ]);
-    }
-
-    public static function bodega(Router $router){
-
-        $router->view('/paginas/bodega',[
-
+        $router->view('/paginas/negocio',[
+            'propiedad'=>$propiedad,
+            'direccion'=>$direccion,
+            'mueble'=>$mueble,
+            'amenidad'=>$amenidad,
+            'fotos'=>$fotos,
+            'estacionamiento'=>$estacionamiento,
+            'escritura'=>$escritura,
+            'metodosVenta'=>$metodosVenta,
+            'categorias'=>$categorias,
+            'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 
