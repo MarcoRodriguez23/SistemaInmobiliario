@@ -345,6 +345,27 @@ class Propiedad extends activeRecord{
     
         return self::$errores;
     }
+
+    //buscar una registro por su ID
+    public static function filter($datos){
+        $where = "";
+        $categoria=$datos['filtro']['categoria'];
+        $precio=$datos['filtro']['precio'];
+        $status=$datos['filtro']['status'];
+
+        if($categoria != "" || $precio != "" || $status != ""){
+            $where = " where";
+        }
+
+        if($categoria != ""){
+            $where .= " categoria = '".$categoria."' ";
+        }
+
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla .$where;
+        $resultado=self::consultarSQL($query);
+        return $resultado;
+    }
 }
 
 

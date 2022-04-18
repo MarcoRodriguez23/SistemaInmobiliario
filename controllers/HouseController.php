@@ -43,7 +43,7 @@ class HouseController{
     //funciones para las paginas de las propiedades
     //VERIFICAR FOTOGRAFIAS
     public static function index(Router $router){
-        $propiedades=Propiedad::all();
+        
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
         $tipoPropiedad=TipoPropiedad::all();
@@ -54,7 +54,11 @@ class HouseController{
         $mensaje=$_GET['mensaje']??null;
 
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            debuguear($_POST);
+            $propiedades = Propiedad::filter($_POST);
+            // debuguear($propiedades);
+        }
+        else{
+            $propiedades=Propiedad::all();
         }
         
         

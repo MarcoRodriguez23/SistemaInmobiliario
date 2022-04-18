@@ -31,7 +31,7 @@
                     <?php if($row->id !='0'): ?>
                         <option 
                         <?php echo ($propiedad->status === $row->id) ? 'selected' : ''; ?>
-                        value="<?php echo s($row->estado); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
+                        value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
                     <?php endif; ?>
                 <?php endforeach; ?>
                 <?php
@@ -40,11 +40,9 @@
             <select name="filtro[categoria]" id="categoria">
                 <option value="" selected disabled>Diseño</option>
                 <?php foreach ($categorias as $row) :?>
-                    <?php if($row->id !='0'): ?>
                         <option 
                         <?php echo ($propiedad->categoria === $row->id) ? 'selected' : ''; ?>
-                        value="<?php echo s($row->tipo); ?>"><?php echo ucfirst(s($row->tipo)); ?></option>
-                    <?php endif; ?>
+                        value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->tipo)); ?></option>
                 <?php endforeach; ?>
             </select>
 
