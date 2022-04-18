@@ -349,20 +349,68 @@ class Propiedad extends activeRecord{
     //buscar una registro por su ID
     public static function filter($datos){
         $where = "";
-        $categoria=$datos['filtro']['categoria'];
-        $precio=$datos['filtro']['precio'];
-        $status=$datos['filtro']['status'];
+        $categoria=$datos['categoria'];
+        $precio=$datos['precio'];
+        $status=$datos['status'];
+        $tipo=$datos['tipoPropiedad'];
 
-        if($categoria != "" || $precio != "" || $status != ""){
+        if($categoria != "" || $precio != "" || $status != "" || $tipo != ""){
             $where = " where";
-        }
 
-        if($categoria != ""){
-            $where .= " categoria = '".$categoria."' ";
+            if($categoria != "" && $precio != "" && $status != "" && $tipo != ""){
+                $where .= " categoria = '".$categoria."' AND precio ".$precio." AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
+            }
+
+            elseif ($categoria == "" && $precio != "" && $status != "" && $tipo != "") {
+                $where .= " precio ".$precio." AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
+            }
+            elseif ($categoria != "" && $precio == "" && $status != "" && $tipo != "") {
+                $where .= " categoria = '".$categoria."' AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
+            }
+            elseif ($categoria != "" && $precio != "" && $status == "" && $tipo != "") {
+                $where .= " categoria = '".$categoria."' AND precio ".$precio."' AND tipoPropiedad = '".$tipo."' ";
+            }
+            elseif ($categoria != "" && $precio != "" && $status != "" && $tipo == "") {
+                $where .= " categoria = '".$categoria."' AND precio ".$precio." AND status = '".$status."' ";
+            }
+
+            elseif ($categoria == "" && $precio == "" && $status != "" && $tipo != "") {
+                $where .= " AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
+            }
+            elseif ($categoria == "" && $precio != "" && $status == "" && $tipo != "") {
+                $where .= " precio ".$precio." AND tipoPropiedad = '".$tipo."' ";
+            }
+            elseif ($categoria == "" && $precio != "" && $status != "" && $tipo == "") {
+                $where .= " precio ".$precio." AND status = '".$status."' ";
+            }
+            elseif ($categoria != "" && $precio == "" && $status == "" && $tipo != "") {
+                $where .= " categoria = '".$categoria."' AND tipoPropiedad = '".$tipo."' ";
+            }
+            elseif ($categoria != "" && $precio == "" && $status != "" && $tipo == "") {
+                $where .= " categoria = '".$categoria."' AND status = '".$status."' ";
+            }
+            elseif ($categoria != "" && $precio != "" && $status == "" && $tipo == "") {
+                $where .= " categoria = '".$categoria."' AND precio ".$precio."' ";
+            }
+
+
+            elseif($categoria != ""){
+                $where .= " categoria = '".$categoria."' ";
+            }
+            elseif($precio != ""){
+                $where .= " precio ".$precio;
+            }
+            elseif($status != ""){
+                $where .= " status = '".$status."' ";
+            }
+            elseif($tipo != ""){
+                $where .= " tipoPropiedad = '".$tipo."' ";
+            }
         }
 
         //obteniendo la propiedad
         $query = "SELECT * FROM ". static::$tabla .$where;
+        // debuguear($query);
         $resultado=self::consultarSQL($query);
         return $resultado;
     }

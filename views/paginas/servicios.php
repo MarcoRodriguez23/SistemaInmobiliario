@@ -9,7 +9,7 @@
     <?php foreach($servicios as $row): ?>
         <a href="/servicio?id=<?php echo $row->id; ?>">
             <div class="imagen-texto">
-                <img loading="lazy" src="/build/img/anuncio1.jpg" alt="info-anuncio">
+                <img loading="lazy" src="/build/img/conocenos.jpg" alt="info-anuncio">
                 <p><?php echo $row->titulo; ?></p>
             </div>
         </a>

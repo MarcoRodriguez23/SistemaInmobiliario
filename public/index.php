@@ -59,11 +59,11 @@
     
     //informacion individual
     $router->get('/servicio',[PaginasController::class,'servicio']);
-    $router->get('/casa',[PaginasController::class,'casa']);
-    $router->get('/departamento',[PaginasController::class,'departamento']);
-    $router->get('/terreno',[PaginasController::class,'terreno']);
-    $router->get('/negocio',[PaginasController::class,'negocio']);
     $router->get('/entrada',[PaginasController::class,'entrada']);
+    $router->get('/casa',[PaginasController::class,'infoPropiedad']);
+    $router->get('/departamento',[PaginasController::class,'infoPropiedad']);
+    $router->get('/terreno',[PaginasController::class,'infoPropiedad']);
+    $router->get('/negocio',[PaginasController::class,'infoPropiedad']);
     $router->get('/contacto',[PaginasController::class,'contacto']);
     $router->post('/contacto',[PaginasController::class,'contacto']);
     

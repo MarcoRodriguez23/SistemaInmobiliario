@@ -91,35 +91,6 @@ class PaginasController{
         ]);
     }
 
-    public static function casa(Router $router){
-        $id = validarORedireccionar('/casa');
-        $propiedad = Propiedad::find($id);
-        $direccion = Direccion::find($id);
-        $mueble = Mueble::find($id);
-        $amenidad = Amenidad::find($id);
-        $fotos = Foto::find($id);
-        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
-        $escritura = Escritura::find($propiedad->idEscritura);
-        $metodosVenta = MetodosVenta::find($id);
-
-        $categorias=Categoria::all();
-        // debuguear($metodosVenta);
-        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
-
-        $router->view('/paginas/casa',[
-            'propiedad'=>$propiedad,
-            'direccion'=>$direccion,
-            'mueble'=>$mueble,
-            'amenidad'=>$amenidad,
-            'fotos'=>$fotos,
-            'estacionamiento'=>$estacionamiento,
-            'escritura'=>$escritura,
-            'metodosVenta'=>$metodosVenta,
-            'categorias'=>$categorias,
-            'tipoPropiedad'=>$tipoPropiedad
-        ]);
-    }
-
     public static function departamentos(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
@@ -131,35 +102,6 @@ class PaginasController{
         ]);
     }
 
-    public static function departamento(Router $router){
-        $id = validarORedireccionar('/departamentos');
-        $propiedad = Propiedad::find($id);
-        $direccion = Direccion::find($id);
-        $mueble = Mueble::find($id);
-        $amenidad = Amenidad::find($id);
-        $fotos = Foto::find($id);
-        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
-        $escritura = Escritura::find($propiedad->idEscritura);
-        $metodosVenta = MetodosVenta::find($id);
-
-        $categorias=Categoria::all();
-        // debuguear($metodosVenta);
-        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
-
-        $router->view('/paginas/departamento',[
-            'propiedad'=>$propiedad,
-            'direccion'=>$direccion,
-            'mueble'=>$mueble,
-            'amenidad'=>$amenidad,
-            'fotos'=>$fotos,
-            'estacionamiento'=>$estacionamiento,
-            'escritura'=>$escritura,
-            'metodosVenta'=>$metodosVenta,
-            'categorias'=>$categorias,
-            'tipoPropiedad'=>$tipoPropiedad
-        ]);
-    }
-
     public static function terrenos(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
@@ -168,32 +110,6 @@ class PaginasController{
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'fotos'=>$fotos
-        ]);
-    }
-
-    public static function terreno(Router $router){
-        $id = validarORedireccionar('/terrenos');
-        $propiedad = Propiedad::find($id);
-        $direccion = Direccion::find($id);
-        $mueble = Mueble::find($id);
-        $amenidad = Amenidad::find($id);
-        $fotos = Foto::find($id);
-        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
-        $escritura = Escritura::find($propiedad->idEscritura);
-        $metodosVenta = MetodosVenta::find($id);
-        // debuguear($metodosVenta);
-        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
-
-        $router->view('/paginas/terreno',[
-            'propiedad'=>$propiedad,
-            'direccion'=>$direccion,
-            'mueble'=>$mueble,
-            'amenidad'=>$amenidad,
-            'fotos'=>$fotos,
-            'estacionamiento'=>$estacionamiento,
-            'escritura'=>$escritura,
-            'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 
@@ -291,8 +207,8 @@ class PaginasController{
         ]);
     }
 
-    public static function negocio(Router $router){
-        $id = validarORedireccionar('/comercial');
+    public static function infoPropiedad(Router $router){
+        $id = validarORedireccionar('/inmuebles');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
         $mueble = Mueble::find($id);
@@ -306,7 +222,7 @@ class PaginasController{
         // debuguear($metodosVenta);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
-        $router->view('/paginas/negocio',[
+        $router->view('/paginas/infoPropiedad',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
             'mueble'=>$mueble,

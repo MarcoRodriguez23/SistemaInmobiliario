@@ -8,25 +8,25 @@
     <div class="servicios contenedor">
         <a href="/casas">
             <div class="imagen-texto">
-                <img loading="lazy" src="/build/img/anuncio1.jpg" alt="info-anuncio">
+                <img loading="lazy" src="/build/img/conocenos.jpg" alt="info-anuncio">
                 <p>Casas</p>
             </div>
         </a>
         <a href="/departamentos">
             <div class="imagen-texto">
-                <img loading="lazy" src="/build/img/anuncio1.jpg" alt="info-anuncio">
+                <img loading="lazy" src="/build/img/conocenos.jpg" alt="info-anuncio">
                 <p>departamentos</p>
             </div>
         </a>
         <a href="/terrenos">
             <div class="imagen-texto">
-                <img loading="lazy" src="/build/img/anuncio1.jpg" alt="info-anuncio">
+                <img loading="lazy" src="/build/img/conocenos.jpg" alt="info-anuncio">
                 <p>Terrenos</p>
             </div>
         </a>
         <a href="/comercial">
             <div class="imagen-texto">
-                <img loading="lazy" src="/build/img/anuncio1.jpg" alt="info-anuncio">
+                <img loading="lazy" src="/build/img/conocenos.jpg" alt="info-anuncio">
                 <p>Comerciales</p>
             </div>
         </a>

@@ -51,11 +51,14 @@ class HouseController{
         $status = Status::all();
         $categorias = Categoria::all();
 
+        $filtro = [];
+
         $mensaje=$_GET['mensaje']??null;
 
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            $propiedades = Propiedad::filter($_POST);
-            // debuguear($propiedades);
+            $filtro = $_POST['filtro'];
+            // debuguear($filtro);
+            $propiedades = Propiedad::filter($filtro);
         }
         else{
             $propiedades=Propiedad::all();
@@ -70,7 +73,8 @@ class HouseController{
             'mensaje'=>$mensaje,
             'status'=>$status,
             'categorias'=>$categorias,
-            'fotos'=>$fotos
+            'fotos'=>$fotos,
+            'filtro'=>$filtro
         ]);
     }
 
@@ -206,9 +210,9 @@ class HouseController{
         $erroresPropiedad= [];
         $erroresDireccion = [];
         $erroresMetodosVenta=[];
+        $erroresTamaño = [];
     
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            // debuguear($_POST);
 
             //asignar atributos
             $argsPropiedad = $_POST['propiedad'];        
