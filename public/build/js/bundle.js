@@ -14,7 +14,7 @@ function iniciarApp(){
     fechaCita();
     horaCita();
     deshabilitarFechaAnterior();
-    // ocultarFieldsetsFormularioInmueble();
+    ocultarFieldsetsFormularioInmueble();
 }
 // funcion para poder utilizar el icono de menu movil y poder ver las opciones del navegador
 // APROBADO
@@ -489,93 +489,165 @@ function mostrarAlerta(mensaje, tipo, posicion) {
 
 
 function ocultarFieldsetsFormularioInmueble(){
+  const formularioCreate = document.querySelector('#formulario-propiedad-create');
+  const formularioUpdate = document.querySelector('#formulario-propiedad-update');
 
-  const tiposPropiedad = document.querySelector("#tipoPropiedad");
-  const fieldSetRemodelacion = document.querySelector("#fieldSetRemodelacion");
-  const fieldSetUbicacion = document.querySelector("#fieldSetUbicacion");
-  const fieldSetDescripcionPropiedad = document.querySelector("#fieldSetDescripcionPropiedad");
-  const fieldSetPrecio = document.querySelector("#fieldSetPrecio");
-  const fieldSetDepartamento = document.querySelector("#fieldSetDepartamento");
-  const fieldSetComision = document.querySelector("#fieldSetComision");
-  const fieldSetMueblesAmenidades = document.querySelector("#fieldSetMueblesAmenidades");
-  const fieldSetEscritura = document.querySelector("#fieldSetEscritura");
-  const fieldSetPredio = document.querySelector("#fieldSetPredio");
 
+  const fieldSetStatus = document.querySelector('#fieldSetStatus');
+  const fieldSetRemodelacion = document.querySelector('#fieldSetRemodelacion');
+  const fieldSetDescripcionPropiedad = document.querySelector('#fieldSetDescripcionPropiedad');
+  const fieldSetPrecio = document.querySelector('#fieldSetPrecio');
+  const fieldSetDepartamento = document.querySelector('#fieldSetDepartamento');
+  const fieldSetComision = document.querySelector('#fieldSetComision');
+  const fieldSetMueblesAmenidades = document.querySelector('#fieldSetMueblesAmenidades');
+  const fieldSetPredio = document.querySelector('#fieldSetPredio');
+
+  fieldSetStatus.classList.add('ocultar');
   fieldSetRemodelacion.classList.add('ocultar');
-  fieldSetUbicacion.classList.add('ocultar');
   fieldSetDescripcionPropiedad.classList.add('ocultar');
   fieldSetPrecio.classList.add('ocultar');
   fieldSetDepartamento.classList.add('ocultar');
   fieldSetComision.classList.add('ocultar');
   fieldSetMueblesAmenidades.classList.add('ocultar');
-  fieldSetEscritura.classList.add('ocultar');
   fieldSetPredio.classList.add('ocultar');
-  
-  tiposPropiedad.addEventListener('change',()=>{
-    const opcion =tiposPropiedad.options[tiposPropiedad.selectedIndex].text;
 
-    switch (opcion) {
-      case "Casa":
+
+  if(formularioUpdate || formularioCreate){
+    const tipoPropiedad = document.querySelector('#tipoPropiedad');
+    switch (tipoPropiedad.selectedIndex) {
+      case 1:
+        fieldSetStatus.classList.remove('ocultar');
         fieldSetRemodelacion.classList.remove('ocultar');
-        fieldSetUbicacion.classList.remove('ocultar');
         fieldSetDescripcionPropiedad.classList.remove('ocultar');
         fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.add('ocultar');
         fieldSetComision.classList.remove('ocultar');
         fieldSetMueblesAmenidades.classList.remove('ocultar');
-        fieldSetEscritura.classList.remove('ocultar');
         fieldSetPredio.classList.remove('ocultar');
-
-        break;
-      case "Departamento":
+      break;
+      case 2:
+        fieldSetStatus.classList.remove('ocultar');
         fieldSetRemodelacion.classList.remove('ocultar');
-        fieldSetUbicacion.classList.remove('ocultar');
         fieldSetDescripcionPropiedad.classList.remove('ocultar');
         fieldSetPrecio.classList.remove('ocultar');
         fieldSetDepartamento.classList.remove('ocultar');
         fieldSetComision.classList.remove('ocultar');
         fieldSetMueblesAmenidades.classList.remove('ocultar');
-        fieldSetEscritura.classList.remove('ocultar');
         fieldSetPredio.classList.remove('ocultar');
-        break;
-      case "Terreno":
-        fieldSetUbicacion.classList.remove('ocultar');
+      break;
+      case 3:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.add('ocultar');
+        fieldSetDescripcionPropiedad.classList.add('ocultar');
         fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.add('ocultar');
         fieldSetComision.classList.remove('ocultar');
-        fieldSetEscritura.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.add('ocultar');
         fieldSetPredio.classList.remove('ocultar');
-        break;
-      
-        case "Bodega":
-          fieldSetUbicacion.classList.remove('ocultar');
-          fieldSetPrecio.classList.remove('ocultar');
-          fieldSetComision.classList.remove('ocultar');
-          fieldSetEscritura.classList.remove('ocultar');
-          fieldSetPredio.classList.remove('ocultar');
-        break;
-      case "Local":
-        fieldSetRemodelacion.classList.remove('ocultar');
-        fieldSetUbicacion.classList.remove('ocultar');
+      break;
+      case 4:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.add('ocultar');
         fieldSetDescripcionPropiedad.classList.remove('ocultar');
         fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.remove('ocultar');
         fieldSetComision.classList.remove('ocultar');
-        fieldSetEscritura.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.add('ocultar');
         fieldSetPredio.classList.remove('ocultar');
-        break;
-      case "Oficina":
-  
+      break;
+      case 5:
+        fieldSetStatus.classList.remove('ocultar');
         fieldSetRemodelacion.classList.remove('ocultar');
-        fieldSetUbicacion.classList.remove('ocultar');
         fieldSetDescripcionPropiedad.classList.remove('ocultar');
         fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.add('ocultar');
         fieldSetComision.classList.remove('ocultar');
-        fieldSetEscritura.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.remove('ocultar');
         fieldSetPredio.classList.remove('ocultar');
-        break;
+      break;
+      case 6:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.remove('ocultar');
+        fieldSetDescripcionPropiedad.classList.remove('ocultar');
+        fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.remove('ocultar');
+        fieldSetComision.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.remove('ocultar');
+        fieldSetPredio.classList.remove('ocultar');
+      break;
     
       default:
         break;
     }
-  });
+    tipoPropiedad.addEventListener('change',()=>{
+      switch (tipoPropiedad.selectedIndex) {
+        case 1:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.remove('ocultar');
+        fieldSetDescripcionPropiedad.classList.remove('ocultar');
+        fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.add('ocultar');
+        fieldSetComision.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.remove('ocultar');
+        fieldSetPredio.classList.remove('ocultar');
+      break;
+      case 2:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.remove('ocultar');
+        fieldSetDescripcionPropiedad.classList.remove('ocultar');
+        fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.remove('ocultar');
+        fieldSetComision.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.remove('ocultar');
+        fieldSetPredio.classList.remove('ocultar');
+      break;
+      case 3:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.add('ocultar');
+        fieldSetDescripcionPropiedad.classList.add('ocultar');
+        fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.add('ocultar');
+        fieldSetComision.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.add('ocultar');
+        fieldSetPredio.classList.remove('ocultar');
+      break;
+      case 4:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.add('ocultar');
+        fieldSetDescripcionPropiedad.classList.remove('ocultar');
+        fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.remove('ocultar');
+        fieldSetComision.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.add('ocultar');
+        fieldSetPredio.classList.remove('ocultar');
+      break;
+      case 5:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.remove('ocultar');
+        fieldSetDescripcionPropiedad.classList.remove('ocultar');
+        fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.add('ocultar');
+        fieldSetComision.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.remove('ocultar');
+        fieldSetPredio.classList.remove('ocultar');
+      break;
+      case 6:
+        fieldSetStatus.classList.remove('ocultar');
+        fieldSetRemodelacion.classList.remove('ocultar');
+        fieldSetDescripcionPropiedad.classList.remove('ocultar');
+        fieldSetPrecio.classList.remove('ocultar');
+        fieldSetDepartamento.classList.remove('ocultar');
+        fieldSetComision.classList.remove('ocultar');
+        fieldSetMueblesAmenidades.classList.remove('ocultar');
+        fieldSetPredio.classList.remove('ocultar');
+      break;
+      
+        default:
+          break;
+      }
+    });
+  }
+
 }
 /* @preserve
     _____ __ _     __                _

@@ -50,9 +50,9 @@ class Direccion extends activeRecord{
         if(!$this->numInterior){
             self::$errores['numInterior'] = "El número interior es obligatorio";
         }
-        if(!$this->linkGoogle){
-            self::$errores['linkGoogle'] = "El link de google Maps es obligatorio";
-        }
+        // if(!$this->linkGoogle){
+        //     self::$errores['linkGoogle'] = "El link de google Maps es obligatorio";
+        // }
         if(!$this->CP){
             self::$errores['CP'] = "El código postal es obligatorio";
         }

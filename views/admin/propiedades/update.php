@@ -17,7 +17,7 @@
     <button type="button" data-paso="8" class="">Opciones de venta</button>
     <button type="button" data-paso="9" class="">Papeles</button>
 </nav> -->
-<form action="" class="contenedor formulario" method="POST" enctype="multipart/form-data">
+<form id="formulario-propiedad-update" action="" class="contenedor formulario" method="POST" enctype="multipart/form-data">
     <?php
         include __DIR__. '/formulario.php';
     ?>

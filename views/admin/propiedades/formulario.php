@@ -4,7 +4,9 @@
     <legend>Tipo de propiedad</legend>
     <div>
     <select id="tipoPropiedad" name="propiedad[tipoPropiedad]">
-        <option value="" disabled selected>--Selecciona una opción--</option>
+        <option value="" disabled 
+        <?php echo ($propiedad->tipoPropiedad === "") ? 'selected' : ''; ?>
+        >--Selecciona una opción--</option>
         <?php foreach ($tipoPropiedad as $row) :?>
             <option 
             <?php echo ($propiedad->tipoPropiedad === $row->id) ? 'selected' : ''; ?>
@@ -126,7 +128,7 @@
     </div>
 
     <div>
-        <label for="linkGoogle">Enlace de Google Maps</label>
+        <label for="linkGoogle">Enlace de Google Maps (opcional)</label>
         <input 
             type="text" 
             placeholder="Link de Google Maps" 
@@ -247,7 +249,7 @@
     </div>
 
     <div>
-        <label for="servicioH">Habitaciones de servicio</label>
+        <label for="servicioH">Habitaciones de servicio (opcional)</label>
         <input 
             type="number" 
             placeholder="Ej: 1" 
@@ -260,7 +262,7 @@
     </div>
 
     <div>
-        <label for="servicioP">Patio de servicio</label>
+        <label for="servicioP">Patio de servicio (opcional)</label>
         <input 
             type="number" 
             placeholder="Ej: 1" 
@@ -306,7 +308,7 @@
     </div>
 
     <div>
-        <label for="numIdEstacionamiento">Número de estacionamiento</label>
+        <label for="numIdEstacionamiento">Número de estacionamiento (opcional)</label>
         <input 
             type="number" 
             placeholder="Ej: 280" 
