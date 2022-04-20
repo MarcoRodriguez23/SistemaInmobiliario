@@ -44,14 +44,11 @@
                                 <?php foreach($tipoPropiedad as $tipo): ?>
                                     <?php echo $propiedad->tipoPropiedad === $tipo->id ? $tipo->tipo : '' ; ?>
                                 <?php endforeach; ?>
-                                <?php foreach($categorias as $cat): ?>
-                                    <?php echo $propiedad->categoria === $cat->id ? $cat->tipo : '' ; ?>
-                                <?php endforeach; ?>
-                                para
+                                en
                                 <?php foreach($status as $sts): ?>
                                     <?php echo $propiedad->status === $sts->id ? $sts->estado : '' ; ?>
                                 <?php endforeach; ?>
-                                en
+                                ,
                                 <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
                             </p>
                         </div>
@@ -70,7 +67,7 @@
     <p>
         Venta de casas baratas en CDMX, casas al sur de la ciudad de México, contamos con todas las opciones de compra y venta en las mejores zonas.
     </p>
-    <a href="/inmuebles" class="boton-morado">Conoce más sobre los inmuebles</a>
+    <a href="/casas" class="boton-morado">Conoce más sobre las casas</a>
 </section>
 
 <section class="contenedor carrousel">

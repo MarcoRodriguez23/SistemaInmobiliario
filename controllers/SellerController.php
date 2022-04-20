@@ -8,7 +8,6 @@ use Model\DireccionUsuario;
 use Classes\Email;
 
 require_once '../Router.php';
-require_once '../models/Agente.php';
 require_once '../models/DireccionUsuario.php';
 
 
@@ -39,9 +38,10 @@ class SellerController{
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
             
             //creando nueva instancia de cada clase
-            $vendedor->sincronizar($_POST['agente']);
+            $vendedor->sincronizar($_POST['vendedor']);
             $direccion->sincronizar($_POST['direccion']);   
             
             //validando la existencia de erroes en el formulario
@@ -50,6 +50,7 @@ class SellerController{
 
             //si no hay errores proceder a los queries hacia la base de datos   
             if(empty($erroresVendedor) && empty($erroresDireccion)){
+                // debuguear("no hay errores");
                 $existencia=$vendedor->existeUsuario(); 
                 
                 if($existencia->num_rows){
@@ -63,7 +64,7 @@ class SellerController{
                     $vendedor->crearToken();
 
                     // Enviar el Email
-                    $email = new Email($vendedor->nombre, $vendedor->email, $vendedor->token);
+                    $email = new Email($vendedor->email, $vendedor->nombre, $vendedor->token);
                     $email->enviarConfirmacion();
 
                     //crear el usuario

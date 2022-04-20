@@ -1,5 +1,4 @@
-<div class="plantilla">
-    <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
+
         <div class="inmueble">
             <?php $unaImagen = true; ?>
             <?php foreach($fotos as $foto): ?>
@@ -17,7 +16,6 @@
                             <?php echo $propiedad->tipoPropiedad === $tipo->id ? ucfirst($tipo->tipo) : '' ; ?>
                         <?php endforeach; ?>
                     </p>
-                    <p class="campo-info">Comisión: <?php echo $propiedad->comision; ?> %</p>
                     <p class="campo-info">
                         <?php foreach($categorias as $cat): ?>
                             <?php echo $propiedad->categoria === $cat->id ? ucfirst($cat->tipo) : '' ; ?>
@@ -51,24 +49,4 @@
             </div>
         </div>
     </a>
-    <?php if($propiedad->status!=2): ?>
-    <div class="opciones">
-        <?php if($_SESSION['nivel']<3): ?>
-        <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>
-        <?php endif; ?>
-        <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
-        <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
-    <?php endif; ?>
-    <?php if($propiedad->status==2): ?>
-    <div class="opciones">
-        <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">VENDIDA</a>
-    <?php endif; ?>
-        <?php if($_SESSION['nivel']<3): ?>
-        <form method="POST" class="w-100" action="/admin/propiedades/delete">
-            <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
-            <input type="hidden" name="tipo" value="propiedad">
-            <input type="submit" value="Eliminar" class="boton-rojo" onclick="return ConfirmDelete()">
-        </form>
-        <?php endif; ?>
-    </div>
 </div><!--plantilla -->

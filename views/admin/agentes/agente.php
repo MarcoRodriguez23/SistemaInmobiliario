@@ -3,7 +3,7 @@
         <p>ID= <?php echo $agente->id; ?></p>
         <p><?php echo $agente->nombre." ".$agente->apellido; ?></p>
         <p><?php echo $agente->edad; ?> Años</p>
-        <p>Domicilio: <?php echo $direccion->estado.", ".$direccion->calle.", ".$direccion->municipioDelegacion.", ".$direccion->colonia; ?></p>
+        <p>Domicilio: <?php echo $direccion->calle.", Colonia ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>
         <p>Teléfono: <?php echo $agente->telefono; ?></p>
     </div>
     <div class="opciones">

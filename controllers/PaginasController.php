@@ -83,33 +83,60 @@ class PaginasController{
     public static function casas(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $fotos=Foto::all();
+        $metodosVenta=MetodosVenta::all();
+        $tipoPropiedad=TipoPropiedad::all();
+        $fotos = Foto::all();
+        $status = Status::all();
+        $categorias = Categoria::all();
+
         $router->view('/paginas/casas',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'fotos'=>$fotos
+            'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad,
+            'status'=>$status,
+            'categorias'=>$categorias,
+            'fotos'=>$fotos,
         ]);
     }
 
     public static function departamentos(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $fotos=Foto::all();
+        $metodosVenta=MetodosVenta::all();
+        $tipoPropiedad=TipoPropiedad::all();
+        $fotos = Foto::all();
+        $status = Status::all();
+        $categorias = Categoria::all();
+
         $router->view('/paginas/departamentos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'fotos'=>$fotos
+            'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad,
+            'status'=>$status,
+            'categorias'=>$categorias,
+            'fotos'=>$fotos,
         ]);
     }
 
     public static function terrenos(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $fotos=Foto::all();
+        $metodosVenta=MetodosVenta::all();
+        $tipoPropiedad=TipoPropiedad::all();
+        $fotos = Foto::all();
+        $status = Status::all();
+        $categorias = Categoria::all();
+
         $router->view('/paginas/terrenos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'fotos'=>$fotos
+            'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad,
+            'status'=>$status,
+            'categorias'=>$categorias,
+            'fotos'=>$fotos,
         ]);
     }
 
@@ -141,18 +168,18 @@ class PaginasController{
 
             //Configurando SMTP
             $mail->isSMTP();
-            $mail->Host='smtp.mailtrap.io';
+            $mail->Host='smtp.gmail.com';
             $mail->SMTPAuth= true;
-            $mail->Username='f8f5444957e76d';
-            $mail->Password='0642cad10af248';
+            $mail->Username=$_ENV['EMAIL_USER'];
+            $mail->Password=$_ENV['EMAIL_PASSWORD'];
             $mail->SMTPSecure='tls';
-            $mail->Port='2525';
+            $mail->Port='587';
 
             //configurando el contenido  del Email
             //quien lo envia
-            $mail->setFrom('admin@bienesraices.com');
+            $mail->setFrom('Sistema inmobiliario');
             //A donde va
-            $mail->addAddress('admin@bienesraices.com','bienesraices.com');
+            $mail->addAddress('marco_ben2010@hotmail.com');
             $mail->Subject='Tienes un nuevo mensaje';
             //habilitar html
             $mail->isHTML(true);
@@ -199,11 +226,20 @@ class PaginasController{
     public static function comercial(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $fotos=Foto::all();
+        $metodosVenta=MetodosVenta::all();
+        $tipoPropiedad=TipoPropiedad::all();
+        $fotos = Foto::all();
+        $status = Status::all();
+        $categorias = Categoria::all();
+
         $router->view('/paginas/comercial',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'fotos'=>$fotos
+            'metodosVenta'=>$metodosVenta,
+            'tipoPropiedad'=>$tipoPropiedad,
+            'status'=>$status,
+            'categorias'=>$categorias,
+            'fotos'=>$fotos,
         ]);
     }
 

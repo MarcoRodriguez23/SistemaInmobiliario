@@ -6,15 +6,21 @@
 <div class="resumen-venta contenedor">
 <h4>
     <?php
-
-use Dotenv\Parser\Value;
-
- echo $tipoPropiedad->tipo." en ".$direccion->estado; ?>
-<br>
-    <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
+        echo $tipoPropiedad->tipo." en ".$direccion->estado; 
+    ?>
+    <br>
+    <?php 
+        echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; 
+    ?>
 </h4>
         <div class="resumen-venta_informacion">
-            <img src="/build/img/1.jpg" alt="imagen del inmueble">
+            <?php $unaImagen = true; ?>
+            <?php foreach($fotos as $foto): ?>
+                <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
+                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Seleccione <-Actualizar-> para agregar las imágenes">
+                <?php $unaImagen = false; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
             <div>
                 <p>Dirección: </p>
                 <p><?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?></p>

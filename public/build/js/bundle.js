@@ -15,6 +15,7 @@ function iniciarApp(){
     horaCita();
     deshabilitarFechaAnterior();
     ocultarFieldsetsFormularioInmueble();
+    formatoPrecios();
 }
 // funcion para poder utilizar el icono de menu movil y poder ver las opciones del navegador
 // APROBADO
@@ -502,15 +503,31 @@ function ocultarFieldsetsFormularioInmueble(){
   const fieldSetMueblesAmenidades = document.querySelector('#fieldSetMueblesAmenidades');
   const fieldSetPredio = document.querySelector('#fieldSetPredio');
 
-  fieldSetStatus.classList.add('ocultar');
-  fieldSetRemodelacion.classList.add('ocultar');
-  fieldSetDescripcionPropiedad.classList.add('ocultar');
-  fieldSetPrecio.classList.add('ocultar');
-  fieldSetDepartamento.classList.add('ocultar');
-  fieldSetComision.classList.add('ocultar');
-  fieldSetMueblesAmenidades.classList.add('ocultar');
-  fieldSetPredio.classList.add('ocultar');
-
+  if(fieldSetStatus){
+    fieldSetStatus.classList.add('ocultar');
+  }
+  if(fieldSetRemodelacion){
+    fieldSetRemodelacion.classList.add('ocultar');
+  }
+  if(fieldSetDescripcionPropiedad){
+    fieldSetDescripcionPropiedad.classList.add('ocultar');
+  }
+  if(fieldSetPrecio){
+    fieldSetPrecio.classList.add('ocultar');
+  }
+  if(fieldSetDepartamento){
+    fieldSetDepartamento.classList.add('ocultar');
+  }
+  if(fieldSetComision){
+    fieldSetComision.classList.add('ocultar');
+  }
+  if(fieldSetMueblesAmenidades){
+    fieldSetMueblesAmenidades.classList.add('ocultar');
+  }
+  if(fieldSetPredio){
+    fieldSetPredio.classList.add('ocultar');
+  }
+  
 
   if(formularioUpdate || formularioCreate){
     const tipoPropiedad = document.querySelector('#tipoPropiedad');
@@ -647,6 +664,16 @@ function ocultarFieldsetsFormularioInmueble(){
       }
     });
   }
+}
+
+function formatoPrecios(){
+  const precios = document.querySelectorAll(".precio");
+
+  precios.forEach(element => {
+    // console.log(a.toLocaleString('en-US'))
+    console.log(parseInt(element.textContent).toLocaleString('en-US'));
+    element.textContent = "$ "+parseInt(element.textContent).toLocaleString('en-US');
+  });
 
 }
 /* @preserve

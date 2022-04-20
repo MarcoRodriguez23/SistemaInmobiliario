@@ -23,28 +23,28 @@ class Email {
         $mail = new PHPMailer();
 
         //Configurando SMTP
-        $mail->isSMTP();
-        $mail->Host='smtp.mailtrap.io';
-        $mail->SMTPAuth= true;
-        $mail->Username='f8f5444957e76d';
-        $mail->Password='0642cad10af248';
-        $mail->SMTPSecure='tls';
-        $mail->Port='2525';
+       $mail->isSMTP();
+       $mail->Host='smtp.gmail.com';
+       $mail->SMTPAuth= true;
+       $mail->Username=$_ENV['EMAIL_USER'];
+       $mail->Password=$_ENV['EMAIL_PASSWORD'];
+       $mail->SMTPSecure='tls';
+       $mail->Port='587';
 
-        //configurando el contenido  del Email
-        //quien lo envia
-        $mail->setFrom('cuentas@inmobiliariagallardo.com');
-        //A donde va
-        $mail->addAddress('admin@inmobiliariagallardo.com','inmobiliaria-gallardo.com');
+       //configurando el contenido  del Email
+       //quien lo envia
+       $mail->setFrom($_ENV['EMAIL_USER']);
+       //A donde va
+        $mail->addAddress($this->email);
         $mail->Subject='Confirma tu cuenta';
         //habilitar html
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-         $contenido .= "<p><strong>Hola " . $this->email .  "</strong> Has Creado tu cuenta en el Sistema inmobiliario, solo debes confirmarla presionando el siguiente enlace</p>";
+         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> tu cuenta ha sido creada en el Sistema inmobiliario, solo debes confirmarla presionando el siguiente enlace</p>";
          $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
-         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
+         $contenido .= "<p>Si tu no solicitaste este registro, puedes ignorar el mensaje</p>";
          $contenido .= '</html>';
          $mail->Body = $contenido;
 
@@ -63,18 +63,18 @@ class Email {
 
        //Configurando SMTP
        $mail->isSMTP();
-       $mail->Host='smtp.mailtrap.io';
+       $mail->Host='smtp.gmail.com';
        $mail->SMTPAuth= true;
-       $mail->Username='f8f5444957e76d';
-       $mail->Password='0642cad10af248';
+       $mail->Username=$_ENV['EMAIL_USER'];
+       $mail->Password=$_ENV['EMAIL_PASSWORD'];
        $mail->SMTPSecure='tls';
-       $mail->Port='2525';
+       $mail->Port='587';
 
        //configurando el contenido  del Email
        //quien lo envia
-       $mail->setFrom('cuentas@inmobiliariagallardo.com');
+       $mail->setFrom($_ENV['EMAIL_USER']);
        //A donde va
-       $mail->addAddress('admin@inmobiliariagallardo.com','inmobiliaria-gallardo.com');
+       $mail->addAddress($this->email);
        $mail->Subject='Reestablece tu password';
        //habilitar html
        $mail->isHTML(true);

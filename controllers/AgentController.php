@@ -8,7 +8,6 @@ use Model\DireccionUsuario;
 use Classes\Email;
 
 require_once '../Router.php';
-require_once '../models/Agente.php';
 require_once '../models/DireccionUsuario.php';
 
 
@@ -35,9 +34,9 @@ class AgentController{
         $agente = new Usuario();
         $direccion = new DireccionUsuario();
 
-        //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresAgente = Usuario::getErrores();
-        $erroresDireccion = DireccionUsuario::getErrores();
+        //arreglos iniciales para la validacion
+        $erroresAgente = [];
+        $erroresDireccion = [];
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
@@ -65,7 +64,7 @@ class AgentController{
                     $agente->crearToken();
 
                     // Enviar el Email
-                    $email = new Email($agente->nombre, $agente->email, $agente->token);
+                    $email = new Email($agente->email, $agente->nombre, $agente->token);
                     $email->enviarConfirmacion();
 
                     //crear el usuario

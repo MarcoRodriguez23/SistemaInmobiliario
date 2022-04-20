@@ -50,7 +50,7 @@
 <footer class="footer">
     <div class="footer-superior">
         <div class="footer-logo">
-            <a href="index.php" class="logotipo">
+            <a href="/" class="logotipo">
                 <img  src="build/img/GALLARDO SVG.svg" alt="Logotipo">
             </a>
         </div>
