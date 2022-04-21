@@ -20,8 +20,8 @@
                     name="vendedor[email]"
                     value="<?php echo s($vendedor->email); ?>"
                     >
-                <?php echo "<p>".$erroresVendedor["email"]."</p>"; ?>
-                <?php echo "<p>".$erroresVendedor["yaExiste"]."</p>"; ?>
+                <?php echo isset($erroresVendedor["email"])? "<p>".$erroresVendedor["email"]."</p>" : ""; ?>
+                <?php echo isset($erroresVendedor["yaExiste"])? "<p>".$erroresVendedor["yaExiste"]."</p>" : ""; ?>
             </div>
 
             <div>
@@ -32,7 +32,7 @@
                     placeholder="Contraseña"
                     name="vendedor[password]"
                     >
-                    <?php echo "<p>".$erroresVendedor["password"]."</p>"; ?>
+                    <?php echo isset($erroresVendedor["password"])? "<p>".$erroresVendedor["password"]."</p>" : ""; ?>
             </div>
 
             <div>

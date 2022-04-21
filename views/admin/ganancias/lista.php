@@ -19,7 +19,21 @@
                 <?php if($venta->idEncargado === $trabajador->id): ?>
                 <tr>
                     <td><?php echo $venta->id; ?></td>
-                    <td><?php echo $trabajador->nombre." ".$trabajador->apellido; ?></td>
+                    <td>
+                        <div>
+                            <?php if($trabajador->nivel == 1): ?>
+                                <img src="/build/img/Iconos/cajon.svg" alt="admin">
+                            <?php endif; ?>
+                            <?php if($trabajador->nivel == 2): ?>
+                                <img src="/build/img/Iconos/cajon.svg" alt="agente">
+                            <?php endif; ?>
+                            <?php if($trabajador->nivel == 3): ?>
+                                <img src="/build/img/Iconos/cajon.svg" alt="vendedor">
+                            <?php endif; ?>
+                            <?php echo $trabajador->nombre." ".$trabajador->apellido; ?>
+                        </div>
+                        
+                    </td>
                     <td>
                         <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
                         <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>
@@ -27,7 +41,12 @@
                     </td>
                     <td class="precio"><?php echo $propiedad->precio; ?></td>
                     <td><?php echo $propiedad->comision; ?>%</td>
-                    <td><?php echo $venta->fecha; ?></td>
+                    <td>
+                        <?php
+                            $date = date_create($venta->fecha);
+                            echo date_format($date,"d/m/Y") ;
+                        ?>
+                    </td>
                 </tr>
                 <?php endif; ?> 
                 <?php endif; ?> 

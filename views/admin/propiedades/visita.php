@@ -73,10 +73,38 @@
                     <?php echo "<p>".$erroresCita["hora"]."</p>"; ?>
                 </div>
 
-              
+
                 <div>
-                    <input type="hidden" name="cita[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
+                    <label for="idEcargado">Responsable de la visita</label>
+                    
+                    <select id="idEncargado" name="cita[idEncargado]">
+                        <option value="" disabled 
+                        <?php echo ($cita->idEncargado === "") ? 'selected' : ''; ?>
+                        >--Selecciona una opción--</option>
+                        
+                        <!--Asignando a la sesión iniciada como el responsable-->
+                        <option 
+                            value="<?php echo $_SESSION['id']; ?>"
+                            <?php echo ($cita->idEncargado == $_SESSION['id']) ? 'selected' : ''; ?>
+                        >
+                            <?php echo s($_SESSION['nombre'])." (Yo sere el responsable)"; ?>
+                        </option>
+                        
+                        <!--trayendo a todos los vendedores-->
+                        <?php foreach ($vendedores as $row) :?>
+                            <?php if($row->id != $_SESSION['id']): ?>
+                                <option 
+                                    <?php echo ($cita->idEncargado === $row->id) ? 'selected' : ''; ?>
+                                    value="<?php echo s($row->id); ?>"
+                                >
+                                    <?php echo s($row->nombre)." ".s($row->apellido); ?></option>
+                            <?php endif; ?>  
+                        <?php endforeach; ?>
+
+                    </select>
+                    <?php echo isset($erroresPropiedad["idEncargado"]) ? "<p>".$erroresPropiedad["tipoPropiedad"]."</p>" : "" ?>
                 </div>
+
             </fieldset>
         
             

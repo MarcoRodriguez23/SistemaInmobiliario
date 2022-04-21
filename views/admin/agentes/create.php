@@ -19,8 +19,8 @@
                     name="agente[email]"
                     value="<?php echo s($agente->email); ?>"
                     >
-                <?php echo "<p>".$erroresAgente["email"]."</p>"; ?>
-                <?php echo "<p>".$erroresAgente["yaExiste"]."</p>"; ?>
+                <?php echo isset($erroresAgente["email"]) ? "<p>".$erroresAgente["email"]."</p>" : ""; ?>
+                <?php echo isset($erroresAgente["yaExiste"]) ? "<p>".$erroresAgente["yaExiste"]."</p>" : ""; ?>
             </div>
 
             <div>
@@ -31,7 +31,7 @@
                     placeholder="Contraseña"
                     name="agente[password]"
                     >
-                <?php echo "<p>".$erroresAgente["password"]."</p>"; ?>
+                <?php echo isset($erroresAgente["password"]) ? "<p>".$erroresAgente["password"]."</p>" : ""; ?>
             </div>
 
             <div>

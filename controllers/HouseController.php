@@ -401,7 +401,12 @@ class HouseController{
         $direccion = Direccion::find($id);
         $cita = new Citas();
 
-        $vendedores = Usuario::all();
+        if($_SESSION['nivel']==1){
+            $vendedores = Usuario::all();
+        }
+        elseif($_SESSION['nivel']==2){
+            $vendedores = Usuario::allXCreador($_SESSION['id']);
+        }
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresCita = Citas::getErrores();

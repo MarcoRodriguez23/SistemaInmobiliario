@@ -9,7 +9,7 @@
             name="agente[nombre]"
             value="<?php echo s($agente->nombre); ?>"
             >
-        <?php echo "<p>".$erroresAgente["nombre"]."</p>"; ?>
+        <?php echo isset($erroresAgente["nombre"]) ? "<p>".$erroresAgente["nombre"]."</p>" : ""; ?>
     </div>
     <div>
         <label for="apellido">Apellidos</label>
@@ -20,7 +20,7 @@
             name="agente[apellido]"
             value="<?php echo s($agente->apellido); ?>"
             >
-        <?php echo "<p>".$erroresAgente["apellido"]."</p>"; ?>
+        <?php echo isset($erroresAgente["apellido"]) ? "<p>".$erroresAgente["apellido"]."</p>" : ""; ?>
     </div>
     <div>
         <label for="edad">Edad</label>
@@ -32,7 +32,7 @@
             name="agente[edad]"
             value="<?php echo s($agente->edad); ?>"
             >
-        <?php echo "<p>".$erroresAgente["edad"]."</p>"; ?>
+        <?php echo isset($erroresAgente["edad"]) ? "<p>".$erroresAgente["edad"]."</p>" : ""; ?>
     </div>
     <div>
         <label for="telefono">Teléfono</label>
@@ -45,8 +45,8 @@
             min="5500000000"
             value="<?php echo s($agente->telefono); ?>"
             >
-        <?php echo "<p>".$erroresAgente["telefono"]."</p>"; ?>
-        <?php echo "<p>".$erroresAgente["formatoTelefono"]."</p>"; ?>
+        <?php echo isset($erroresAgente["telefono"]) ? "<p>".$erroresAgente["telefono"]."</p>" : ""; ?>
+        <?php echo isset($erroresAgente["formatoTelefono"]) ? "<p>".$erroresAgente["formatoTelefono"]."</p>" : ""; ?>
     </div>
 </fieldset>
 
@@ -61,7 +61,7 @@
             id="estado" 
             value="<?php echo s($direccion->estado); ?>"
         >
-        <?php echo "<p>".$erroresDireccion["estado"]."</p>"; ?>
+        <?php echo isset($erroresDireccion["estado"]) ? "<p>".$erroresDireccion["estado"]."</p>" : ""; ?>
         
     </div>
 
@@ -74,7 +74,7 @@
             id="municipioDelegacion" 
             value="<?php echo s($direccion->municipioDelegacion); ?>"
         >
-        <?php echo "<p>".$erroresDireccion["municipioDelegacion"]."</p>"; ?>
+        <?php echo isset($erroresDireccion["municipioDelegacion"]) ? "<p>".$erroresDireccion["municipioDelegacion"]."</p>" : ""; ?>
     </div>
 
     <div>
@@ -86,7 +86,7 @@
             id="calle"
             value="<?php echo s($direccion->calle); ?>"
             >
-        <?php echo "<p>".$erroresDireccion["calle"]."</p>"; ?>
+        <?php echo isset($erroresDireccion["calle"]) ? "<p>".$erroresDireccion["calle"]."</p>" : ""; ?>
     </div>
 
     <div>
@@ -98,6 +98,6 @@
             id="colonia"
             value="<?php echo s($direccion->colonia); ?>"
             >
-        <?php echo "<p>".$erroresDireccion["colonia"]."</p>"; ?>
+        <?php echo isset($erroresDireccion["colonia"]) ? "<p>".$erroresDireccion["colonia"]."</p>" : ""; ?>
     </div>
 </fieldset>

@@ -23,10 +23,18 @@
                             <?php echo $propiedad->categoria === $cat->id ? ucfirst($cat->tipo) : '' ; ?>
                         <?php endforeach; ?>
                     </p>
+                    
                     <p class="estado">
                         <?php foreach($status as $sts): ?>
                             <?php echo $propiedad->status === $sts->id ? ucfirst($sts->estado) : '' ; ?>
                         <?php endforeach; ?>
+                    </p>
+                    <p class="campo-info">
+                        Cargado el:
+                        <?php
+                            $date = date_create($propiedad->creacion);
+                            echo date_format($date,"d/m/Y") ;
+                        ?>
                     </p>
                     <div class="beneficios">
                         <div class="beneficio">

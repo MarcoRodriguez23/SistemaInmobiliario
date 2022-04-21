@@ -27,8 +27,26 @@
                     </td>
                     <td><?php echo $cita->nombres." ".$cita->apellidos; ?></td>
                     <td><?php echo $cita->telefono; ?></td>
-                    <td><?php echo $trabajador->nombre." ".$trabajador->apellido; ?></td>
-                    <td><?php echo $cita->fecha; ?></td>
+                    <td>
+                        <div>
+                            <?php if($trabajador->nivel == 1): ?>
+                                <img src="/build/img/Iconos/cajon.svg" alt="admin">
+                            <?php endif; ?>
+                            <?php if($trabajador->nivel == 2): ?>
+                                <img src="/build/img/Iconos/cajon.svg" alt="agente">
+                            <?php endif; ?>
+                            <?php if($trabajador->nivel == 3): ?>
+                                <img src="/build/img/Iconos/cajon.svg" alt="vendedor">
+                            <?php endif; ?>    
+                            <?php echo $trabajador->nombre." ".$trabajador->apellido; ?>
+                        </div> 
+                    </td>
+                    <td>
+                        <?php
+                            $date = date_create($cita->fecha);
+                            echo date_format($date,"d/m/Y") ;
+                        ?>
+                    </td>
                     <td><?php echo $cita->hora; ?></td>
                 </tr>
 

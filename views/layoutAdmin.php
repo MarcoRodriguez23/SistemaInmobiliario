@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Panel de administración</h3>
-                <p>Hola <?php echo $_SESSION['nombre']." ".$_SESSION['apellido']; ?></p>
+                <p>Hola <?php echo $_SESSION['nombre']; ?></p>
             </div>
             <ul class="list-unstyled components">
                 <li>

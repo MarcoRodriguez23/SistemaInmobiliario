@@ -16,9 +16,15 @@ class SellerController{
 
     //funciones para las paginas de los vendedores
     public static function sellers(Router $router){
-        $vendedores = Usuario::all();
+        if($_SESSION['nivel']==1){
+            $vendedores = Usuario::all();
+        }
+        elseif($_SESSION['nivel']==2){
+            $vendedores = Usuario::allXCreador($_SESSION['id']);
+        }
         $direcciones = DireccionUsuario::all();
         $mensaje=$_GET['mensaje']??null;
+        // debuguear($vendedores);
         
         $router->view('admin/vendedores/lista',[
             "vendedores"=>$vendedores,

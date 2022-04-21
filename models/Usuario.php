@@ -5,7 +5,7 @@ namespace Model;
 class Usuario extends activeRecord{
     //BD
     protected static $tabla='usuario';
-    protected static $columnas_DB=['id','nombre','apellido','edad','email','password','telefono','nivel','confirmado','token'];
+    protected static $columnas_DB=['id','nombre','apellido','edad','email','password','telefono','nivel','confirmado','token','idCreador'];
 
     public $id;
     public $nombre;
@@ -17,6 +17,7 @@ class Usuario extends activeRecord{
     public $nivel;
     public $confirmado;
     public $token;
+    public $idCreador;
 
     //metodo constructor
     public function __construct($args=[])
@@ -31,6 +32,7 @@ class Usuario extends activeRecord{
         $this->nivel=$args['nivel']??'0';
         $this->confirmado=$args['confirmado']??'0';
         $this->token=$args['token']??'';
+        $this->idCreador=$args['idCreador']??'1';
     }
 
     //metodo para validar cuando se crea la cuenta
@@ -155,6 +157,14 @@ class Usuario extends activeRecord{
     public function crearToken(){
         //generando un id de 13 tanto numeros como letras
         $this->token = uniqid();
+    }
+
+    //buscar una registro por su ID
+    public static function allXCreador($id){
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idCreador =${id}";
+        $resultado=self::consultarSQL($query);
+        return $resultado;
     }
 
     

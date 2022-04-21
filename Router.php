@@ -65,7 +65,7 @@ class Router{
 
         $contenido = ob_get_clean();
         
-        session_start();
+        // session_start();
 
         $auth= $_SESSION['login']??null;
 

@@ -4,7 +4,7 @@ namespace Model;
 
 class Propiedad extends activeRecord{
     protected static $tabla='propiedad';
-    protected static $columnas_DB=['id','precio','año','mt2','mt2Construccion','idEscritura','idEstacionamiento','numEstacionamientos','numIdEstacionamiento','numPisos','piso','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision','numPredio','mantenimiento','categoria'];
+    protected static $columnas_DB=['id','precio','año','mt2','mt2Construccion','idEscritura','idEstacionamiento','numEstacionamientos','numIdEstacionamiento','numPisos','piso','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision','numPredio','mantenimiento','categoria','creacion','idCreador'];
 
     public $id;
     public $precio;
@@ -28,6 +28,8 @@ class Propiedad extends activeRecord{
     public $numPredio;
     public $mantenimiento;
     public $categoria;
+    public $creacion;
+    public $idCreador;
 
 
     public function __construct($args=[])
@@ -54,6 +56,8 @@ class Propiedad extends activeRecord{
         $this->numPredio=$args['numPredio']??'';
         $this->mantenimiento=$args['mantenimiento']??0;
         $this->categoria=$args['categoria']??0;
+        $this->creacion=date('Y/m/d');
+        $this->idCreador=$args['idCreador']??1;
     }
 
     public function validar(){
@@ -352,64 +356,63 @@ class Propiedad extends activeRecord{
         $categoria=$datos['categoria'];
         $precio=$datos['precio'];
         $status=$datos['status'];
+        $orden=$datos['orden'];
         $tipo=$datos['tipoPropiedad'];
 
-        if($categoria != "" || $precio != "" || $status != "" || $tipo != ""){
-            $where = " where";
+        //Consultas para categoria
+        if($categoria !== ""){        
+            if($where==""){
+                $where.=" categoria = '$categoria' ";
+            }
+            else{
+                $where.="AND categoria = '$categoria' ";    
+            }  
+        }//fin consulta categoria
+        
+        //Consultas para precio
+        if(!empty($precio)){        
+            if($where==""){
+                $where.=" precio ".$precio." ";
+            }
+            else{
+                $where.=" AND precio ".$precio." ";    
+            }  
+        }//fin consulta precio  
 
-            if($categoria != "" && $precio != "" && $status != "" && $tipo != ""){
-                $where .= " categoria = '".$categoria."' AND precio ".$precio." AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
+        //Consultas para status
+        if(!empty($status)){        
+            if($where==""){
+                $where.=" status = '$status' ";
             }
+            else{
+                $where.="AND status = '$status' ";    
+            }  
+        }//fin consulta status
 
-            elseif ($categoria == "" && $precio != "" && $status != "" && $tipo != "") {
-                $where .= " precio ".$precio." AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
+        //Consultas para tipo
+        if(!empty($tipo)){        
+            if($where==""){
+                $where.=" tipoPropiedad = '$tipo' ";
             }
-            elseif ($categoria != "" && $precio == "" && $status != "" && $tipo != "") {
-                $where .= " categoria = '".$categoria."' AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
-            }
-            elseif ($categoria != "" && $precio != "" && $status == "" && $tipo != "") {
-                $where .= " categoria = '".$categoria."' AND precio ".$precio."' AND tipoPropiedad = '".$tipo."' ";
-            }
-            elseif ($categoria != "" && $precio != "" && $status != "" && $tipo == "") {
-                $where .= " categoria = '".$categoria."' AND precio ".$precio." AND status = '".$status."' ";
-            }
+            else{
+                $where.="AND tipoPropiedad = '$tipo' ";    
+            }  
+        }//fin consulta tipo
 
-            elseif ($categoria == "" && $precio == "" && $status != "" && $tipo != "") {
-                $where .= " AND status = '".$status."' AND tipoPropiedad = '".$tipo."' ";
-            }
-            elseif ($categoria == "" && $precio != "" && $status == "" && $tipo != "") {
-                $where .= " precio ".$precio." AND tipoPropiedad = '".$tipo."' ";
-            }
-            elseif ($categoria == "" && $precio != "" && $status != "" && $tipo == "") {
-                $where .= " precio ".$precio." AND status = '".$status."' ";
-            }
-            elseif ($categoria != "" && $precio == "" && $status == "" && $tipo != "") {
-                $where .= " categoria = '".$categoria."' AND tipoPropiedad = '".$tipo."' ";
-            }
-            elseif ($categoria != "" && $precio == "" && $status != "" && $tipo == "") {
-                $where .= " categoria = '".$categoria."' AND status = '".$status."' ";
-            }
-            elseif ($categoria != "" && $precio != "" && $status == "" && $tipo == "") {
-                $where .= " categoria = '".$categoria."' AND precio ".$precio."' ";
-            }
-
-
-            elseif($categoria != ""){
-                $where .= " categoria = '".$categoria."' ";
-            }
-            elseif($precio != ""){
-                $where .= " precio ".$precio;
-            }
-            elseif($status != ""){
-                $where .= " status = '".$status."' ";
-            }
-            elseif($tipo != ""){
-                $where .= " tipoPropiedad = '".$tipo."' ";
-            }
+        //agregando la palabra reservada where antes de la consulta en caso de que exista parametros
+        if(!empty($where)){
+            $whereFinal = " where".$where;
+        }
+        else{
+            $whereFinal = $where;
         }
 
-        //obteniendo la propiedad
-        $query = "SELECT * FROM ". static::$tabla .$where;
+        //Consultas para orden
+        if(!empty($orden)){        
+            $whereFinal.= " ".$orden; 
+        }//fin consulta orden
+
+        $query = "SELECT * FROM ". static::$tabla .$whereFinal;
         // debuguear($query);
         $resultado=self::consultarSQL($query);
         return $resultado;

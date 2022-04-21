@@ -26,7 +26,13 @@
             <nav class="navegacion">
                 <a href="/">HOME</a>
                 <a href="/servicios">SERVICIOS</a>
-                <a href="/inmuebles">INMUEBLES</a>
+                <ol>
+                    <a href="/casas">Casas</a>
+                    <a href="/casas">Casas</a>
+                    <a href="/casas">Casas</a>
+                    <a href="/casas">Casas</a>
+                    <a href="/casas">Casas</a>
+                </ol>
                 <a href="/blog">BLOG</a>
                 <a href="/contacto">CONTACTO</a>
                 <!-- <a href="/casas">CASAS</a>
