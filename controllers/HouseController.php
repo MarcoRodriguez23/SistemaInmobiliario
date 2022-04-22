@@ -485,12 +485,48 @@ class HouseController{
             $argsPropiedad = $_POST['propiedad'];
             
             $propiedad->sincronizar($argsPropiedad);
+
+            $nombreContrato = "";
+            //IMAGENES
+            if($_FILES['contrato']){
+                
+                //generando un nombre unico
+                if($_FILES['contrato']['type']==='image/png' || $_FILES['contrato']['type']==='image/jpg'){
+                    $nombreContrato = md5(uniqid(rand(),true)).".jpg";
+                }
+                if($_FILES['contrato']['type']==='application/pdf'){
+                    $nombreContrato = md5(uniqid(rand(),true)).".pdf";
+                }
+                
+                //asignando valores al objeto de foto
+                $venta->contrato = $nombreContrato;
+                // debuguear($venta);
+            }
                     
             //validando la existencia de erroes en el formulario
             $erroresVenta = $venta->validar();
+            // debuguear($erroresVenta);
             
             //si no hay errores proceder a los queries hacia la base de datos
             if(empty($erroresVenta)){
+
+                if(!is_dir(CARPETA_CONTRATOS)){
+                    mkdir(CARPETA_CONTRATOS);
+                }
+                //creando el archivo de la foto
+                if($_FILES['contrato']['type']==='image/png' || $_FILES['contrato']['type']==='image/jpg'){
+                    $file = Image::make($_FILES['contrato']['tmp_name']);
+                    
+                    $file->save(CARPETA_CONTRATOS . $nombreContrato);
+                }
+                elseif($_FILES['contrato']['type']==='application/pdf'){
+                    
+                    //subiendo el contrato como pdf
+                    //indicando el nombre temporal, la carpeta y concatenando el nombre del archivo
+                    move_uploaded_file($_FILES['contrato']['tmp_name'],CARPETA_CONTRATOS . $nombreContrato);
+                }
+
+                // debuguear($file);
                 
                 // GUARDANDO EN LA BD
                 $guardarVenta=$venta->guardar();

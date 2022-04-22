@@ -4,11 +4,12 @@
 define('TEMPLATES_URL', __DIR__. '/templates');
 define('FUNCIONES_URL', __DIR__. 'funciones.php');
 define('CARPETA_IMAGENES',$_SERVER['DOCUMENT_ROOT'].'/imagenes/');
+define('CARPETA_CONTRATOS',$_SERVER['DOCUMENT_ROOT'].'/contratos/');
 
 
-function incluirTemplate(string $nombre, bool $inicio = false){
-    include TEMPLATES_URL."/${nombre}.php";
-}
+// function incluirTemplate(string $nombre, bool $inicio = false){
+//     include TEMPLATES_URL."/${nombre}.php";
+// }
 
 function estaAutenticado(){
     session_start();

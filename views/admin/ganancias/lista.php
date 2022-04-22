@@ -10,6 +10,7 @@
                 <th>Precio</th>
                 <th>Comisión</th>
                 <th>Fecha</th>
+                <th>Contrato</th>
             </tr>
             <?php foreach($ventas as $venta): ?>
             <?php foreach($propiedades as $propiedad): ?>
@@ -46,6 +47,9 @@
                             $date = date_create($venta->fecha);
                             echo date_format($date,"d/m/Y") ;
                         ?>
+                    </td>
+                    <td>
+                        <a href="/contratos/<?php echo $venta->contrato; ?>" target="_blank">Contrato</a>
                     </td>
                 </tr>
                 <?php endif; ?> 

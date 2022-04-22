@@ -369,7 +369,7 @@ class Propiedad extends activeRecord{
         $creador=$nivel;
 
         //Consultas para creador
-        if($creador !== ""){        
+        if($creador !== "" && $creador != "1"){        
             if($where==""){
                 $where.=" idCreador = '$creador' ";
             }
