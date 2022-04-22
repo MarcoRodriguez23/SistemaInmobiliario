@@ -351,13 +351,32 @@ class Propiedad extends activeRecord{
     }
 
     //buscar una registro por su ID
-    public static function filter($datos){
+    public static function allXcreador($id){
+        //obteniendo la propiedad
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idCreador=${id}";
+        $resultado=self::consultarSQL($query);
+        return $resultado;
+    }
+
+    //buscar una registro por su ID
+    public static function filter($datos,$nivel){
         $where = "";
         $categoria=$datos['categoria'];
         $precio=$datos['precio'];
         $status=$datos['status'];
         $orden=$datos['orden'];
         $tipo=$datos['tipoPropiedad'];
+        $creador=$nivel;
+
+        //Consultas para creador
+        if($creador !== ""){        
+            if($where==""){
+                $where.=" idCreador = '$creador' ";
+            }
+            else{
+                $where.="AND idCreador = '$categoria' ";    
+            }  
+        }//f
 
         //Consultas para categoria
         if($categoria !== ""){        

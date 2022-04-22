@@ -43,6 +43,8 @@ class HouseController{
     //funciones para las paginas de las propiedades
     //VERIFICAR FOTOGRAFIAS
     public static function index(Router $router){
+
+        
         
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
@@ -57,11 +59,31 @@ class HouseController{
 
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             $filtro = $_POST['filtro'];
-            // debuguear($filtro);
-            $propiedades = Propiedad::filter($filtro);
+
+            if($_SESSION['nivel']==1){
+                $propiedades = Propiedad::filter($filtro,$_SESSION['id']);
+            }
+            elseif($_SESSION['nivel']==2){
+                $propiedades = Propiedad::filter($filtro,$_SESSION['id']);
+            }
+            elseif($_SESSION['nivel']==3){
+                $usuario = Usuario::find($_SESSION['id']);
+                $creador = $usuario->idCreador;
+                $propiedades = Propiedad::filter($filtro,$creador);
+            }
         }
         else{
-            $propiedades=Propiedad::all();
+            if($_SESSION['nivel']==1){
+                $propiedades = Propiedad::all();
+            }
+            elseif($_SESSION['nivel']==2){
+                $propiedades = Propiedad::allXCreador($_SESSION['id']);
+            }
+            elseif($_SESSION['nivel']==3){
+                $usuario = Usuario::find($_SESSION['id']);
+                $creador = $usuario->idCreador;
+                $propiedades = Propiedad::allXCreador($creador);
+            }
         }
         
         
