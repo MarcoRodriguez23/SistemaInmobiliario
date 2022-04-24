@@ -20,7 +20,7 @@
             
                 <tr>
                     <td><?php echo $cita->id; ?></td>
-                    <td>
+                    <td class="enlace-tabla">
                         <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
                             <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>
                         </a>

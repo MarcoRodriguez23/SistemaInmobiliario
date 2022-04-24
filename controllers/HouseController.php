@@ -474,6 +474,8 @@ class HouseController{
         $mueble = Mueble::find($id);
         $vendedores = Usuario::all();
         $fotos = Foto::find($id);
+        $venta = Venta::where('idPropiedad',$id);
+        // debuguear($venta);
 
         $erroresVenta = Venta::getErrores();
 
@@ -548,7 +550,8 @@ class HouseController{
             'amenidad'=>$amenidad,
             'vendedores'=>$vendedores,
             'erroresVenta'=>$erroresVenta,
-            'fotos'=>$fotos
+            'fotos'=>$fotos,
+            'venta'=>$venta
         ]);
     }
 

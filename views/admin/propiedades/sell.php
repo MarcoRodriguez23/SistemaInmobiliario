@@ -46,7 +46,7 @@
     </section>
 </main>
 
-<div class="muebles-amenidades">
+<div class="muebles-amenidades contenedor">
     <div>
         <h3>Muebles</h3>
         <ul>
@@ -145,7 +145,7 @@
     </div>
 </div>
 
-<section>
+<section class="contenedor">
     <h4>Fotografías</h4>
     <div class="fotos-actuales contenedor">
         <?php foreach($fotos as $foto): ?>
@@ -172,6 +172,7 @@
             <input type="text" disabled value="<?php echo date('d/m/Y'); ?>">
         </div>
     </fieldset>
+    
     <fieldset>
         <legend>Contrato de venta</legend>
         <div>
@@ -180,6 +181,7 @@
         </div>
         <?php echo isset($erroresVenta["contrato"]) ? "<p>".$erroresVenta["contrato"]."</p>" : "" ?>
     </fieldset>
+
     
     <?php echo ($propiedad->status==2 && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-azul">';?>
 

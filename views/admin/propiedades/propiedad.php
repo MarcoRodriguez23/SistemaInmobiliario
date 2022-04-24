@@ -51,7 +51,7 @@
                         </div>
                         <div class="beneficio">
                             <img src="build/img/medida.svg" alt="beneficio1">
-                            <p><?php echo $propiedad->mt2;?> m2</p>
+                            <p><?php echo $propiedad->mt2;?> m <sup>2</sup> </p>
                         </div>   
                     </div>
                     

@@ -27,11 +27,19 @@
                 <a href="/">HOME</a>
                 <a href="/servicios">SERVICIOS</a>
                 <ol>
-                    <a href="/casas">Casas</a>
-                    <a href="/casas">Casas</a>
-                    <a href="/casas">Casas</a>
-                    <a href="/casas">Casas</a>
-                    <a href="/casas">Casas</a>
+                    <span>INMUEBLES</span>
+                    <li>
+                        <a href="/casas">Casas</a>
+                    </li>
+                    <li>
+                        <a href="/departamentos">Departamentos</a>
+                    </li>
+                    <li>
+                        <a href="/terrenos">Terrenos</a>
+                    </li>
+                    <li>
+                        <a href="/comercial">Comercial</a>
+                    </li>
                 </ol>
                 <a href="/blog">BLOG</a>
                 <a href="/contacto">CONTACTO</a>

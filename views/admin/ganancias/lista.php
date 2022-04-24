@@ -35,7 +35,7 @@
                         </div>
                         
                     </td>
-                    <td>
+                    <td class="enlace-tabla">
                         <a href="/admin/propiedades/info?id=<?php echo $propiedad->id; ?>">
                         <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>
                         </a>
@@ -48,8 +48,8 @@
                             echo date_format($date,"d/m/Y") ;
                         ?>
                     </td>
-                    <td>
-                        <a href="/contratos/<?php echo $venta->contrato; ?>" target="_blank">Contrato</a>
+                    <td class="enlace-tabla">
+                        <a  href="/contratos/<?php echo $venta->contrato; ?>" target="_blank">Contrato</a>
                     </td>
                 </tr>
                 <?php endif; ?> 
