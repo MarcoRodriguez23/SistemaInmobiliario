@@ -11,5 +11,6 @@
             echo "No se conecto";
             exit;
         }
+        $db->set_charset("utf8");
         return $db;
     }
