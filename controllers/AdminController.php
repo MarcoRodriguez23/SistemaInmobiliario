@@ -28,10 +28,26 @@ class AdminController{
     
     //funcion para la parte de ganancias
     public static function money(Router $router){
-        $ventas = Venta::all();
+
+        if($_SESSION['nivel']==1){
+            $ventas = Venta::all();
+        }
+        elseif($_SESSION['nivel']==2){
+            $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
+            // debuguear($usuarios);
+            
+            $ventas[]= Venta::where('idEncargado',$_SESSION['id']);
+            foreach ($usuarios as $key) {
+                $ventas[]= Venta::where('idEncargado',$key->id);
+            }
+        }
+
+        // debuguear($ventas);
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
         $trabajadores = Usuario::all();
+
+
 
         $router->view('admin/ganancias/lista',[
             'ventas'=>$ventas,
@@ -43,7 +59,45 @@ class AdminController{
 
     //funcion para la parte de citas
     public static function dates(Router $router){
-        $citas = Citas::all();
+
+        
+
+        if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
+            $filtro = $_POST['filtro'];
+
+            if($_SESSION['nivel']==1){
+                $citas = Citas::filter($filtro, $_SESSION['id']);
+            }
+            // elseif($_SESSION['nivel']==2){
+            //     $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
+            //     // debuguear($usuarios);
+            //     $citas[]= Citas::where('idEncargado',$_SESSION['id']);
+            //     foreach ($usuarios as $key) {
+            //         $citas[]= Citas::where('idEncargado',$key->id);
+            //     }
+
+            //     $propiedades = Propiedad::filter($filtro ,$_SESSION['id']);
+            // }
+        }
+
+        else{
+            if($_SESSION['nivel']==1){
+                $citas = Citas::all();
+            }
+            elseif($_SESSION['nivel']==2){
+                $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
+                // debuguear($usuarios);
+                $citas[]= Citas::where('idEncargado',$_SESSION['id']);
+                foreach ($usuarios as $key) {
+                    $citas[]= Citas::where('idEncargado',$key->id);
+                }
+            }
+        }
+
+
+
+        
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
         $trabajadores = Usuario::all();

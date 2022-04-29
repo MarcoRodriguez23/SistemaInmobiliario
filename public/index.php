@@ -43,6 +43,7 @@
 
     $router->get('/admin/ventas',[AdminController::class,'money']);
     $router->get('/admin/agenda',[AdminController::class,'dates']);
+    $router->post('/admin/agenda',[AdminController::class,'dates']);
     $router->get('/excel',[AdminController::class,'excel']);
 
 

@@ -16,6 +16,7 @@ function iniciarApp(){
     deshabilitarFechaAnterior();
     ocultarFieldsetsFormularioInmueble();
     formatoPrecios();
+    enlacesInmuebles();
 }
 // funcion para poder utilizar el icono de menu movil y poder ver las opciones del navegador
 // APROBADO
@@ -670,11 +671,30 @@ function formatoPrecios(){
   const precios = document.querySelectorAll(".precio");
 
   precios.forEach(element => {
-    // console.log(a.toLocaleString('en-US'))
-    console.log(parseInt(element.textContent).toLocaleString('en-US'));
     element.textContent = "$ "+parseInt(element.textContent).toLocaleString('en-US');
   });
 
+}
+
+var mostrar = true;
+
+function enlacesInmuebles(){
+  const spanInmuebles = document.querySelector('#span-inmuebles');
+  const enlacesInmuebles = document.querySelector('#enlaces-inmuebles');
+
+  if(spanInmuebles){
+    spanInmuebles.addEventListener('click',()=>{
+      if(mostrar){
+        enlacesInmuebles.classList.add('mostrar-enlaces');
+        mostrar = false;
+      }
+      else{
+        enlacesInmuebles.classList.remove('mostrar-enlaces');
+        mostrar = true;
+      }
+    });
+
+  }
 }
 /* @preserve
     _____ __ _     __                _

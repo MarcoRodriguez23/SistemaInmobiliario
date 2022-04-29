@@ -165,6 +165,13 @@ class activeRecord{
         return array_shift( $resultado ) ;
     }
 
+     // Busca todos los registros por un columna
+     public static function whereAll($columna,$valor) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";
+        $resultado = self::consultarSQL($query);
+        return $resultado ;
+    }
+
     public static function consultarSQL($query){
         //consultar la bd
         $resultado = self::$db->query($query);

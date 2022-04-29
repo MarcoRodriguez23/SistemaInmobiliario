@@ -44,8 +44,6 @@ class HouseController{
     //VERIFICAR FOTOGRAFIAS
     public static function index(Router $router){
 
-        
-        
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
         $tipoPropiedad=TipoPropiedad::all();

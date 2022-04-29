@@ -7,10 +7,10 @@
     
     <div class="servicios contenedor">
     <?php foreach($servicios as $row): ?>
-        <a href="/servicio?id=<?php echo $row->id; ?>">
+        <a href="/servicio?id=<?php echo s($row->id); ?>">
             <div class="imagen-texto">
-                <img loading="lazy" src="/build/img/conocenos.jpg" alt="info-anuncio">
-                <p><?php echo $row->titulo; ?></p>
+                <img loading="lazy" src="/build/img/<?php echo s($row->imagen); ?>" alt="info-anuncio">
+                <p><?php echo s($row->titulo); ?></p>
             </div>
         </a>
     <?php endforeach; ?>

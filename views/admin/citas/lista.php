@@ -1,5 +1,17 @@
 <main>
     <h2>Citas agendadas</h2>
+
+    <!--FILTRO-->
+    <form action="/admin/agenda" method="post" class="filtro">
+        <input class="input-buscador" type="text" name="filtro[estado]" placeholder="Estado">
+        <input class="input-buscador" type="text" name="filtro[calle]" placeholder="Calle">
+        <input class="input-buscador" type="text" name="filtro[colonia]" placeholder="Colonia">
+        <input class="input-buscador" type="text" name="filtro[municipioDelegacion]" placeholder="municipio/Delegación">
+        <input class="input-buscador" type="number" name="filtro[numExterior]" placeholder="Núm Exterior">
+
+        <input type="submit" value="Buscar">
+    </form>
+
     <div class="tabla contenedor table-responsive">
         <table>
             <tr>
@@ -30,13 +42,13 @@
                     <td>
                         <div>
                             <?php if($trabajador->nivel == 1): ?>
-                                <img src="/build/img/Iconos/cajon.svg" alt="admin">
+                                <img src="/build/img/Iconos/admin.svg" alt="admin">
                             <?php endif; ?>
                             <?php if($trabajador->nivel == 2): ?>
-                                <img src="/build/img/Iconos/cajon.svg" alt="agente">
+                                <img src="/build/img/Iconos/agente.svg" alt="agente">
                             <?php endif; ?>
                             <?php if($trabajador->nivel == 3): ?>
-                                <img src="/build/img/Iconos/cajon.svg" alt="vendedor">
+                                <img src="/build/img/Iconos/vendedor.svg" alt="vendedor">
                             <?php endif; ?>    
                             <?php echo $trabajador->nombre." ".$trabajador->apellido; ?>
                         </div> 

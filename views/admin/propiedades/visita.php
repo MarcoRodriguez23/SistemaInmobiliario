@@ -5,6 +5,7 @@
     <h1>Agendar cita</h1>
     <div class="contenedor contenido-centrado">
 
+        <!--Inicio del formulario para la visita-->
         <form action="" class="formulario" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <div>
@@ -37,6 +38,7 @@
                     >
                     <?php echo "<p>". $erroresCita["apellidos"]."</p>"; ?>
                 </div>
+
                 <div>
                     <label for="telefono">Teléfono del visitante</label>
                     <input 
@@ -51,6 +53,7 @@
                     <?php echo "<p>".$erroresCita["telefono"]."</p>"; ?>
                     <?php echo "<p>".$erroresCita["formatoTelefono"]."</p>"; ?>
                 </div>
+
                 <div id="campo-fecha" class="campo">
                     <label for="fecha">Fecha</label>
                     <input 
@@ -73,7 +76,6 @@
                     <?php echo "<p>".$erroresCita["hora"]."</p>"; ?>
                 </div>
 
-
                 <div>
                     <label for="idEcargado">Responsable de la visita</label>
                     
@@ -92,23 +94,24 @@
                         
                         <!--trayendo a todos los vendedores-->
                         <?php foreach ($vendedores as $row) :?>
+                            <!--if para omitir al usuario de la sesion actual-->
                             <?php if($row->id != $_SESSION['id']): ?>
                                 <option 
                                     <?php echo ($cita->idEncargado === $row->id) ? 'selected' : ''; ?>
                                     value="<?php echo s($row->id); ?>"
                                 >
-                                    <?php echo s($row->nombre)." ".s($row->apellido); ?></option>
+                                    <?php echo s($row->nombre)." ".s($row->apellido); ?>
+                                </option>
                             <?php endif; ?>  
                         <?php endforeach; ?>
-
                     </select>
-                    <?php echo isset($erroresPropiedad["idEncargado"]) ? "<p>".$erroresPropiedad["tipoPropiedad"]."</p>" : "" ?>
+                    <?php echo isset($$erroresCita["idEncargado"]) ? "<p>".$$erroresCita["idEncargado"]."</p>" : "" ?>
                 </div>
 
             </fieldset>
-        
-            
+           
         <input type="submit" value="Crear visita" class="boton-azul">  
     </form>
+    <!--fin del formulario para la visita-->
     </div>
 </main>

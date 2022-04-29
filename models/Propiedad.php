@@ -371,20 +371,20 @@ class Propiedad extends activeRecord{
         //Consultas para creador
         if($creador !== "" && $creador != "1"){        
             if($where==""){
-                $where.=" idCreador = '$creador' ";
+                $where.=" idCreador LIKE '$creador' ";
             }
             else{
-                $where.="AND idCreador = '$categoria' ";    
+                $where.="AND idCreador LIKE '$categoria' ";    
             }  
         }//f
 
         //Consultas para categoria
         if($categoria !== ""){        
             if($where==""){
-                $where.=" categoria = '$categoria' ";
+                $where.=" categoria LIKE '$categoria' ";
             }
             else{
-                $where.="AND categoria = '$categoria' ";    
+                $where.="AND categoria LIKE '$categoria' ";    
             }  
         }//fin consulta categoria
         
@@ -401,20 +401,20 @@ class Propiedad extends activeRecord{
         //Consultas para status
         if(!empty($status)){        
             if($where==""){
-                $where.=" status = '$status' ";
+                $where.=" status LIKE '$status' ";
             }
             else{
-                $where.="AND status = '$status' ";    
+                $where.="AND status LIKE '$status' ";    
             }  
         }//fin consulta status
 
         //Consultas para tipo
         if(!empty($tipo)){        
             if($where==""){
-                $where.=" tipoPropiedad = '$tipo' ";
+                $where.=" tipoPropiedad LIKE '$tipo' ";
             }
             else{
-                $where.="AND tipoPropiedad = '$tipo' ";    
+                $where.="AND tipoPropiedad LIKE '$tipo' ";    
             }  
         }//fin consulta tipo
 

@@ -46,9 +46,83 @@ class Citas extends activeRecord{
         if(!$this->hora){
             self::$errores["hora"]="Debe escoger una hora para su visita";
         }
-        // if(!$this->idEncargado){
-        //     self::$errores["idEncargado"]="Debe escoger un vendedor";
-        // }
+        if(!$this->idEncargado){
+            self::$errores["idEncargado"]="Debe escoger un vendedor";
+        }
         return self::$errores;
+    }
+
+    public static function filter($datos,$nivel){
+        $where = "";
+        $estado=$datos['estado'];
+        $calle=$datos['calle'];
+        $colonia=$datos['colonia'];
+        $municipioDelegacion=$datos['municipio/delegacion'];
+        $numExterior=$datos['numExterior'];
+
+        
+        //
+        if(!empty($estado)){        
+            if($where==""){
+                $where.=" estado LIKE '".$estado."' ";
+            }
+            else{
+                $where.=" AND estado LIKE '".$estado."' ";    
+            }  
+        }// 
+
+        //
+        if(!empty($calle)){        
+            if($where==""){
+                $where.=" calle LIKE '".$calle."' ";
+            }
+            else{
+                $where.=" AND calle LIKE '".$calle."' ";    
+            }  
+        }// 
+
+        //
+        if(!empty($colonia)){        
+            if($where==""){
+                $where.=" colonia LIKE '".$colonia."' ";
+            }
+            else{
+                $where.=" AND colonia LIKE '".$colonia."' ";    
+            }  
+        }// 
+
+        //
+        if(!empty($municipioDelegacion)){        
+            if($where==""){
+                $where.=" municipioDelegacion LIKE '".$municipioDelegacion."' ";
+            }
+            else{
+                $where.=" AND municipioDelegacion LIKE '".$municipioDelegacion."' ";    
+            }  
+        }// 
+        
+        //
+        if(!empty($numExterior)){        
+            if($where==""){
+                $where.=" numExterior LIKE '".$numExterior."' ";
+            }
+            else{
+                $where.=" AND numExterior LIKE '".$numExterior."' ";    
+            }  
+        }// 
+        
+        //agregando la palabra reservada where antes de la consulta en caso de que exista parametros
+        if(!empty($where)){
+            $whereFinal = " WHERE".$where;
+        }
+        else{
+            $whereFinal = $where;
+        }
+
+        $query = "SELECT * FROM ". static::$tabla .$whereFinal;
+        debuguear($query);
+        $resultado=self::consultarSQL($query);
+        // debuguear($resultado);
+        return $resultado;
     }
 }

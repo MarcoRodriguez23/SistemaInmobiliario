@@ -26,34 +26,17 @@
             <nav class="navegacion">
                 <a href="/">HOME</a>
                 <a href="/servicios">SERVICIOS</a>
-                <ol>
-                    <span>INMUEBLES</span>
-                    <li>
-                        <a href="/casas">Casas</a>
-                    </li>
-                    <li>
-                        <a href="/departamentos">Departamentos</a>
-                    </li>
-                    <li>
-                        <a href="/terrenos">Terrenos</a>
-                    </li>
-                    <li>
-                        <a href="/comercial">Comercial</a>
-                    </li>
+                <span id="span-inmuebles">INMUEBLES</span>
+                <ol id="enlaces-inmuebles">
+                    <li> <a href="/casas">CASAS</a> </li>
+                    <li> <a href="/departamentos">DEPARTAMENTOS</a> </li>
+                    <li> <a href="/terrenos">TERRENOS</a> </li>
+                    <li> <a href="/comercial">COMERCIAL</a> </li>
                 </ol>
                 <a href="/blog">BLOG</a>
                 <a href="/contacto">CONTACTO</a>
-                <!-- <a href="/casas">CASAS</a>
-                <a href="/departamentos">DEPARTAMENTOS</a>
-                <a href="/terrenos">TERRENOS</a>
-                <a href="/comercial">COMERCIAL</a> -->
-                <!-- <?php if(!$auth): ?>
-                    <a href="/login">Iniciar Sesión</a>
-                <?php endif; ?>
-                <?php if($auth): ?>
-                    <a href="/logout">Cerrar Sesión</a>
-                <?php endif; ?> -->
             </nav>
+            
         </div> <!--.barra-->
     </header>
 
@@ -64,7 +47,7 @@
 <footer class="footer">
     <div class="footer-superior">
         <div class="footer-logo">
-            <a href="/" class="logotipo">
+            <a href="/login" class="logotipo">
                 <img  src="build/img/GALLARDO SVG.svg" alt="Logotipo">
             </a>
         </div>
@@ -75,10 +58,6 @@
             <p>
                 tel: 55-7379-2800
             </p>
-            <p>
-                ¿Eres administrador?
-            </p>
-            <a href="/login">Ingresa aqui</a>
         </div>
         <div class="footer-socialMedia">
             <h4>Encuentranos en:</h4>

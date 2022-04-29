@@ -1,3 +1,6 @@
+<?php
+    // debuguear($ventas);
+?>
 <main>
     <h2>Ventas</h2>
     <div class=" tabla contenedor table-responsive">
@@ -23,13 +26,13 @@
                     <td>
                         <div>
                             <?php if($trabajador->nivel == 1): ?>
-                                <img src="/build/img/Iconos/cajon.svg" alt="admin">
+                                <img src="/build/img/Iconos/admin.svg" alt="admin">
                             <?php endif; ?>
                             <?php if($trabajador->nivel == 2): ?>
-                                <img src="/build/img/Iconos/cajon.svg" alt="agente">
+                                <img src="/build/img/Iconos/agente.svg" alt="agente">
                             <?php endif; ?>
                             <?php if($trabajador->nivel == 3): ?>
-                                <img src="/build/img/Iconos/cajon.svg" alt="vendedor">
+                                <img src="/build/img/Iconos/vendedor.svg" alt="vendedor">
                             <?php endif; ?>
                             <?php echo $trabajador->nombre." ".$trabajador->apellido; ?>
                         </div>
