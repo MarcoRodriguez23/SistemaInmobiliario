@@ -159,7 +159,7 @@ class Usuario extends activeRecord{
         $this->token = uniqid();
     }
 
-    //buscar una registro por su ID
+    //busca todos los usuarios de un creador
     public static function allXCreador($id){
         //obteniendo la propiedad
         $query = "SELECT * FROM ". static::$tabla ." WHERE idCreador =${id}";

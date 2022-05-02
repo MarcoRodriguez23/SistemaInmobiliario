@@ -352,13 +352,13 @@ class Propiedad extends activeRecord{
 
     //buscar una registro por su ID
     public static function allXcreador($id){
-        //obteniendo la propiedad
+        //obteniendo las propiedades creadadas por la sesión actual (agente) y por el superadministrador
         $query = "SELECT * FROM ". static::$tabla ." WHERE idCreador IN (1,${id})";
         $resultado=self::consultarSQL($query);
         return $resultado;
     }
 
-    //buscar una registro por su ID
+    //filtro de la propiedad
     public static function filter($datos,$nivel){
         $where = "";
         $categoria=$datos['categoria'];

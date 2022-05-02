@@ -15,7 +15,7 @@
     <div class="articulos-blog">
         <?php foreach($blog as $row) : ?>
             <article class="info-servicio">
-                <picture class="imagen-servicio">
+                <picture class="imagen-blog">
                     <source srcset="build/img/MAIN.webp" type="image/webp">
                     <source srcset="build/img/MAIN.jpg" type="image/jpeg">
                     <img loading="lazy" src="build/img/MAIN.jpg" alt="anuncio-1">

@@ -99,8 +99,6 @@ class Citas extends activeRecord{
             }  
         }// 
         
-
-        
         //agregando la palabra reservada where antes de la consulta en caso de que exista parametros
         if(!empty($where)){
             $whereFinal = " WHERE".$where;
@@ -108,14 +106,21 @@ class Citas extends activeRecord{
         else{
             $whereFinal = $where;
         }
-
+        //query para ver toas las citas con el filtro
         $query = "SELECT * FROM ". static::$tabla. " WHERE idPropiedad IN (SELECT id FROM direccion" . $whereFinal.")";
-        if($nivel == 3){
-            $query .= " AND idEncargado = ". $id;
+
+        //cambios en el query para ver solamente lo que el agente o vendedor tiene permitido
+        if($nivel !=1){
+            $query .= " AND idEncargado IN (SELECT id FROM usuario WHERE id = " .$id . " OR idCreador = ".$id.")";
         }
         $resultado=self::consultarSQL($query);
-        // debuguear($query);
-        // debuguear($resultado);
         return $resultado;
+    }
+
+    // Mostrara todas las citas del agente y de sus vendedores
+    public static function CitasAgenteOVendedor($id) {
+        $query = "SELECT * FROM citas WHERE idPropiedad IN (SELECT id FROM direccion) AND idEncargado IN (SELECT id FROM usuario WHERE id = ".$id." OR idCreador = ".$id.")";
+        $resultado = self::consultarSQL($query);
+        return $resultado ;
     }
 }

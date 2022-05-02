@@ -5,6 +5,7 @@ namespace MVC;
 class Router{
     public array $rutasGET=[];
     public array $rutasPOST=[];
+    public $rutas_protegidas;
     
     public function get($url, $fn){
         $this->rutasGET[$url]=$fn;
@@ -19,9 +20,9 @@ class Router{
         $auth= $_SESSION['login']??null;
         
         //arreglo de rutas protegidas
-        $rutas_protegidas=['/admin','propiedades/crear','propiedades/actualizar','propiedades/eliminar','vendedores/crear','vendedores/actualizar','vendedores/eliminar'];
-
+        $this->rutas_protegidas=['/admin','/admin/propiedades/create','/admin/propiedades/update','/admin/propiedades/delete','/admin/propiedades/deleteFotos','/admin/propiedades/info','/admin/propiedades/date','/admin/propiedades/sell','/admin/agentes','/admin/agentes/create','/admin/agentes/update','/admin/agentes/delete','/admin/vendedores','/admin/vendedores/create','/admin/vendedores/update','/admin/vendedores/delete'];
         
+
         
         //CAMBIAR PATH_INFO POR REQUEST_URI AL PASAR A HEROKU
         $urlActual =  ($_SERVER['REQUEST_URI']==='')?'/': $_SERVER['REQUEST_URI'];
@@ -38,7 +39,7 @@ class Router{
         }
 
         //protegiendo rutas
-        if(in_array($urlActual, $rutas_protegidas) && !$auth){
+        if(in_array($urlActual, $this->rutas_protegidas) && !$auth){
             header('Location: /');
         }
 
@@ -65,17 +66,13 @@ class Router{
 
         $contenido = ob_get_clean();
         
-        // session_start();
-
-        $auth= $_SESSION['login']??null;
-
-        if(!$auth){
-            include __DIR__ . "/views/layout.php";
-        }
-        else{
+        $urlActual =  ($_SERVER['REQUEST_URI']==='')?'/': $_SERVER['REQUEST_URI'];
+        //si se ingresa a alguna ruta de admin mostrar el layout de admin
+        if(in_array($urlActual, $this->rutas_protegidas)){
             include __DIR__ . "/views/layoutAdmin.php";
         }
-        
+        else{
+            include __DIR__ . "/views/layout.php";
+        }
     }
-
 }

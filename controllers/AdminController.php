@@ -54,8 +54,7 @@ class AdminController{
 
     //funcion para la parte de citas
     public static function dates(Router $router){
-
-
+        //POST para realizar el filtrado de citas
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             $filtro = $_POST['filtro'];
 
@@ -63,12 +62,7 @@ class AdminController{
                 $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
             }
             elseif($_SESSION['nivel']==2){
-                $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
-                // debuguear($usuarios);
-                $citas[]= Citas::where('idEncargado',$_SESSION['id']);
-                foreach ($usuarios as $key) {
-                    $citas[]= Citas::where('idEncargado',$key->id);
-                }
+                $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
             }
             elseif($_SESSION['nivel']==3){
                 $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
@@ -78,18 +72,10 @@ class AdminController{
             if($_SESSION['nivel']==1){
                 $citas = Citas::all();
             }
-            elseif($_SESSION['nivel']==2){
-                //buscando todas las citas del agente en sesión
-                $citas= Citas::whereAll('idEncargado',$_SESSION['id']);
-                //buscando todos los vendedores del agente en sesión
-                $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
-                //concatenando las citas de los vendedores del agente en sesión
-                foreach ($usuarios as $key) {
-                    $citas[]= Citas::where('idEncargado',$key->id);
-                }
-            }
-            elseif($_SESSION['nivel']==3){
-                $citas[]= Citas::where('idEncargado',$_SESSION['id']);
+            elseif($_SESSION['nivel']>1){
+                //buscando todas las citas del agente en sesión y de sus vendedores o las citas del vendedor en sesión
+                $citas= Citas::CitasAgenteOVendedor($_SESSION['id']);
+
             }
         }
 

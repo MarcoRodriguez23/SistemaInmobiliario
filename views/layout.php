@@ -18,10 +18,10 @@
     <header class="header">
         <div class="contenedor barra">
             <a href="/" class="logotipo">
-                <img  src="build/img/GALLARDO SVG.svg" alt="Logotipo">
+                <img  src="/build/img/GALLARDO SVG.svg" alt="Logotipo">
             </a>
             <div class="mobile-menu">
-                <img src="build/img/barras.svg" alt="icono-responsive">
+                <img src="/build/img/barras.svg" alt="icono-responsive">
             </div>
             <nav class="navegacion">
                 <a href="/">HOME</a>
@@ -36,7 +36,6 @@
                 <a href="/blog">BLOG</a>
                 <a href="/contacto">CONTACTO</a>
             </nav>
-            
         </div> <!--.barra-->
     </header>
 
@@ -48,7 +47,7 @@
     <div class="footer-superior">
         <div class="footer-logo">
             <a href="/login" class="logotipo">
-                <img  src="build/img/GALLARDO SVG.svg" alt="Logotipo">
+                <img  src="/build/img/GALLARDO SVG.svg" alt="Logotipo">
             </a>
         </div>
         <div class="footer-informacion">
@@ -63,13 +62,13 @@
             <h4>Encuentranos en:</h4>
             <div class="socialMedia-imagenes">
                 <a href="#">
-                    <img src="../build/img/facebook.svg" alt="Facebook">
+                    <img src="/build/img/facebook.svg" alt="Facebook">
                 </a>
                 <a href="#">
-                    <img src="../build/img/mercadolibre.png" alt="Mercado libre">
+                    <img src="/build/img/mercadolibre.png" alt="Mercado libre">
                 </a>
                 <a href="https://wa.me/5573792800" target="_blank">
-                    <img src="../build/img/whatsapp.svg" alt="whatsapp">
+                    <img src="/build/img/whatsapp.svg" alt="whatsapp">
                 </a>
             </div>
         </div>
