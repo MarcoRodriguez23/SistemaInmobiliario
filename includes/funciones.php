@@ -61,6 +61,10 @@ function mostrarNotificacion($codigo){
             $mensaje = "Venta creada correctamente";
             break;
 
+        case 6:
+            $mensaje = "El registro no pudo eliminarse";
+            break;
+
         default:
             $mensaje = false;
             break;

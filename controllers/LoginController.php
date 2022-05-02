@@ -54,10 +54,11 @@ class LoginController{
         ]);
     }
 
-    public static function logout(Router $router){
+    public static function logout(){
         session_start();
+        //limpienado la variable de $_SESSION
         $_SESSION=[];
-        header('Location: /');
+        header('Location: /login');
     }
 
     public static function confirmar(Router $router){
@@ -91,11 +92,9 @@ class LoginController{
     public static function recuperar(Router $router){
         $alertas = [];
         $error = false;
-
         $token = s($_GET['token']);
         
         //buscar usuario por el token
-
         $usuario = Usuario::where('token',$token);
 
         if(empty($usuario)){
@@ -121,7 +120,6 @@ class LoginController{
                         header('Location: /login');
                     }
                 }
-    
             }
         }
 
@@ -133,13 +131,11 @@ class LoginController{
     }
 
     public static function olvide(Router $router){
-
         $errores = [];
 
         if($_SERVER['REQUEST_METHOD']==='POST'){
             $auth = new Usuario($_POST);
             
-
             $auth->validarEmail();
 
             if (empty($errores)) {

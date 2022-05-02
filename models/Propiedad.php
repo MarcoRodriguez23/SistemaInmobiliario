@@ -353,7 +353,7 @@ class Propiedad extends activeRecord{
     //buscar una registro por su ID
     public static function allXcreador($id){
         //obteniendo la propiedad
-        $query = "SELECT * FROM ". static::$tabla ." WHERE idCreador=${id}";
+        $query = "SELECT * FROM ". static::$tabla ." WHERE idCreador IN (1,${id})";
         $resultado=self::consultarSQL($query);
         return $resultado;
     }

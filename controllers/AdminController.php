@@ -33,21 +33,16 @@ class AdminController{
             $ventas = Venta::all();
         }
         elseif($_SESSION['nivel']==2){
-            $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
-            // debuguear($usuarios);
-            
+            $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);           
             $ventas[]= Venta::where('idEncargado',$_SESSION['id']);
             foreach ($usuarios as $key) {
                 $ventas[]= Venta::where('idEncargado',$key->id);
             }
         }
 
-        // debuguear($ventas);
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
         $trabajadores = Usuario::all();
-
-
 
         $router->view('admin/ganancias/lista',[
             'ventas'=>$ventas,
@@ -60,30 +55,12 @@ class AdminController{
     //funcion para la parte de citas
     public static function dates(Router $router){
 
-        
 
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            // debuguear($_POST);
             $filtro = $_POST['filtro'];
 
             if($_SESSION['nivel']==1){
-                $citas = Citas::filter($filtro, $_SESSION['id']);
-            }
-            // elseif($_SESSION['nivel']==2){
-            //     $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
-            //     // debuguear($usuarios);
-            //     $citas[]= Citas::where('idEncargado',$_SESSION['id']);
-            //     foreach ($usuarios as $key) {
-            //         $citas[]= Citas::where('idEncargado',$key->id);
-            //     }
-
-            //     $propiedades = Propiedad::filter($filtro ,$_SESSION['id']);
-            // }
-        }
-
-        else{
-            if($_SESSION['nivel']==1){
-                $citas = Citas::all();
+                $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
             }
             elseif($_SESSION['nivel']==2){
                 $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
@@ -93,19 +70,39 @@ class AdminController{
                     $citas[]= Citas::where('idEncargado',$key->id);
                 }
             }
+            elseif($_SESSION['nivel']==3){
+                $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
+            }
+        }
+        else{
+            if($_SESSION['nivel']==1){
+                $citas = Citas::all();
+            }
+            elseif($_SESSION['nivel']==2){
+                //buscando todas las citas del agente en sesión
+                $citas= Citas::whereAll('idEncargado',$_SESSION['id']);
+                //buscando todos los vendedores del agente en sesión
+                $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
+                //concatenando las citas de los vendedores del agente en sesión
+                foreach ($usuarios as $key) {
+                    $citas[]= Citas::where('idEncargado',$key->id);
+                }
+            }
+            elseif($_SESSION['nivel']==3){
+                $citas[]= Citas::where('idEncargado',$_SESSION['id']);
+            }
         }
 
-
-
-        
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
         $trabajadores = Usuario::all();
+        
         $router->view('admin/citas/lista',[
             "citas"=>$citas,
             "direcciones"=>$direcciones,
             "propiedades"=>$propiedades,
-            "trabajadores"=>$trabajadores
+            "trabajadores"=>$trabajadores,
+            "filtro"=>$filtro
         ]);
     }
 

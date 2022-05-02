@@ -52,14 +52,12 @@ class Citas extends activeRecord{
         return self::$errores;
     }
 
-    public static function filter($datos,$nivel){
+    public static function filter($datos,$id,$nivel){
         $where = "";
         $estado=$datos['estado'];
         $calle=$datos['calle'];
         $colonia=$datos['colonia'];
-        $municipioDelegacion=$datos['municipio/delegacion'];
-        $numExterior=$datos['numExterior'];
-
+        $municipioDelegacion=$datos['municipioDelegacion'];
         
         //
         if(!empty($estado)){        
@@ -101,15 +99,7 @@ class Citas extends activeRecord{
             }  
         }// 
         
-        //
-        if(!empty($numExterior)){        
-            if($where==""){
-                $where.=" numExterior LIKE '".$numExterior."' ";
-            }
-            else{
-                $where.=" AND numExterior LIKE '".$numExterior."' ";    
-            }  
-        }// 
+
         
         //agregando la palabra reservada where antes de la consulta en caso de que exista parametros
         if(!empty($where)){
@@ -119,9 +109,12 @@ class Citas extends activeRecord{
             $whereFinal = $where;
         }
 
-        $query = "SELECT * FROM ". static::$tabla .$whereFinal;
-        debuguear($query);
+        $query = "SELECT * FROM ". static::$tabla. " WHERE idPropiedad IN (SELECT id FROM direccion" . $whereFinal.")";
+        if($nivel == 3){
+            $query .= " AND idEncargado = ". $id;
+        }
         $resultado=self::consultarSQL($query);
+        // debuguear($query);
         // debuguear($resultado);
         return $resultado;
     }

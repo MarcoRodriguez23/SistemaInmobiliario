@@ -337,7 +337,7 @@ class HouseController{
         ]);
     }
 
-    //TODO BIEN
+    //VERIFICAR
     public static function deleteHouse(Router $router){
         if ($_SERVER['REQUEST_METHOD']==='POST') {
             //validar ID

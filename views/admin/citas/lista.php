@@ -3,11 +3,34 @@
 
     <!--FILTRO-->
     <form action="/admin/agenda" method="post" class="filtro">
-        <input class="input-buscador" type="text" name="filtro[estado]" placeholder="Estado">
-        <input class="input-buscador" type="text" name="filtro[calle]" placeholder="Calle">
-        <input class="input-buscador" type="text" name="filtro[colonia]" placeholder="Colonia">
-        <input class="input-buscador" type="text" name="filtro[municipioDelegacion]" placeholder="municipio/Delegación">
-        <input class="input-buscador" type="number" name="filtro[numExterior]" placeholder="Núm Exterior">
+        <input 
+            class="input-buscador" 
+            type="text" 
+            name="filtro[estado]" 
+            placeholder="Estado"
+            value="<?php echo s($filtro['estado']); ?>"
+            >
+        <input 
+            class="input-buscador" 
+            type="text" 
+            name="filtro[calle]" 
+            placeholder="Calle"
+            value="<?php echo s($filtro['calle']); ?>"
+            >
+        <input 
+            class="input-buscador" 
+            type="text" 
+            name="filtro[colonia]" 
+            placeholder="Colonia"
+            value="<?php echo s($filtro['colonia']); ?>"
+            >
+        <input 
+            class="input-buscador" 
+            type="text" 
+            name="filtro[municipioDelegacion]" 
+            placeholder="municipio/Delegación"
+            value="<?php echo s($filtro['municipioDelegacion']); ?>"
+            >
 
         <input type="submit" value="Buscar">
     </form>
@@ -29,7 +52,7 @@
             <?php foreach($trabajadores as $trabajador): ?>
             <?php if($cita->idPropiedad === $propiedad->id && $propiedad->id === $direccion->id): ?>
             <?php if($cita->idEncargado === $trabajador->id): ?>
-            
+                
                 <tr>
                     <td><?php echo $cita->id; ?></td>
                     <td class="enlace-tabla">
@@ -43,21 +66,21 @@
                         <div>
                             <?php if($trabajador->nivel == 1): ?>
                                 <img src="/build/img/Iconos/admin.svg" alt="admin">
-                            <?php endif; ?>
+                                <?php endif; ?>
                             <?php if($trabajador->nivel == 2): ?>
                                 <img src="/build/img/Iconos/agente.svg" alt="agente">
-                            <?php endif; ?>
-                            <?php if($trabajador->nivel == 3): ?>
-                                <img src="/build/img/Iconos/vendedor.svg" alt="vendedor">
-                            <?php endif; ?>    
-                            <?php echo $trabajador->nombre." ".$trabajador->apellido; ?>
-                        </div> 
+                                <?php endif; ?>
+                                <?php if($trabajador->nivel == 3): ?>
+                                    <img src="/build/img/Iconos/vendedor.svg" alt="vendedor">
+                                    <?php endif; ?>    
+                                    <?php echo $trabajador->nombre." ".$trabajador->apellido; ?>
+                                </div> 
                     </td>
                     <td>
                         <?php
                             $date = date_create($cita->fecha);
                             echo date_format($date,"d/m/Y") ;
-                        ?>
+                            ?>
                     </td>
                     <td><?php echo $cita->hora; ?></td>
                 </tr>

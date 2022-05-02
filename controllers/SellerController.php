@@ -99,8 +99,6 @@ class SellerController{
         $vendedor = Usuario::find($id);
         $direccion = DireccionUsuario::find($id);
 
-
-
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresVendedor = $vendedor->validarUpdate();
         $erroresDireccion = $direccion->validar();
@@ -119,7 +117,6 @@ class SellerController{
             $vendedor->edad = $argsVendedor->edad;
             $direccion->sincronizar($argsDireccion);
                         
-    
             //validando la existencia de erroes en el formulario
             $erroresVendedor = $vendedor->validarUpdate();
             $erroresDireccion = $direccion->validar();
@@ -153,7 +150,6 @@ class SellerController{
 
     public static function deleteSeller(){
         if ($_SERVER['REQUEST_METHOD']==='POST') {
-            debuguear($_POST);
             //validar ID
             $id = $_POST['id'];
             $id = filter_var($id, FILTER_VALIDATE_INT);

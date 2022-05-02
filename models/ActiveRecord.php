@@ -38,7 +38,6 @@ class activeRecord{
             //crear
             $resultado=$this->crear();
         }
-        // debuguear($resultado);
         return $resultado;        
     }
 
@@ -88,8 +87,10 @@ class activeRecord{
         $resultado= self::$db->query($borrar);
 
         if($resultado){
-            $this->borrarImagen();
             header('Location: /admin?mensaje=3');
+        }
+        else{
+            header('Location: /admin?mensaje=6');
         }
     }
 
