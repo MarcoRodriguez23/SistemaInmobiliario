@@ -19,7 +19,7 @@ use Model\Status;
 use Model\Blog;
 use Model\Servicio;
 
-use PHPMailer\PHPMailer\PHPMailer as PHPMailer;
+use Classes\Email;
 
 require_once '../Router.php';
 
@@ -38,8 +38,11 @@ require_once '../models/Status.php';
 require_once '../models/Blog.php';
 require_once '../models/Servicio.php';
 
+require_once '../classes/Email.php';
+
 class PaginasController{
 
+    //función para recolectar la información que se mostrara en la pagina /index
     public static function index(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
@@ -55,12 +58,6 @@ class PaginasController{
             'status'=>$status,
             'categorias'=>$categorias,
             'tipoPropiedad'=>$tipoPropiedad
-        ]);
-    }
-
-    public static function inmuebles(Router $router){
-        $router->view('/paginas/inmuebles',[
-
         ]);
     }
 
@@ -163,60 +160,11 @@ class PaginasController{
         if($_SERVER['REQUEST_METHOD']==="POST"){
             $respuestas=$_POST;
            
-            //crear una instancia de PHPMailer
-            $mail = new PHPMailer();
-
-            //Configurando SMTP
-            $mail->isSMTP();
-            $mail->Host='smtp.gmail.com';
-            $mail->SMTPAuth= true;
-            $mail->Username=$_ENV['EMAIL_USER'];
-            $mail->Password=$_ENV['EMAIL_PASSWORD'];
-            $mail->SMTPSecure='tls';
-            $mail->Port='587';
-
-            //configurando el contenido  del Email
-            //quien lo envia
-            $mail->setFrom('Sistema inmobiliario');
-            //A donde va
-            $mail->addAddress('marco_ben2010@hotmail.com');
-            $mail->Subject='Tienes un nuevo mensaje';
-            //habilitar html
-            $mail->isHTML(true);
-            $mail->CharSet = 'UTF-8';
-
-            //definir el contenido
-            $contenido = '<html>';
-            $contenido .= '<p>Tienes un nuevo mensaje</p>';
-            $contenido .= '<p>Nombre:'. $respuestas['nombre'] . '</p>';
-            
-            //enviar de forma condicional algunos campos
-            if($respuestas['empresa']!=""){
-                $contenido .= '<p>De la empresa: '.$respuestas['empresa'].'</p>';
-                $contenido .= '<p>Con el puesto de: '.$respuestas['puesto'].'</p>';
-            }
-            $contenido .= '<p>Esta interesado en adquirir '.$respuestas['asunto'].'</p>';
-            $contenido .= '<p>Medios de contacto proporcionados</p>';
-            $contenido .= '<p>Email: '.$respuestas['correo'].'</p>';
-            $contenido .= '<p>Whatsapp: '.$respuestas['telefono'].'</p>';
-            
-            $contenido .= '<p>Mensaje:</p>';
-            $contenido .= $respuestas['mensaje'];
-            
-            $contenido .= '</html>';
-
-            $mail->Body = $contenido;
-            $mail->AltBody = "texto alternativo";
-
-            if($mail->send()){
-                $mensaje= "mensaje enviado";
-            }
-            else{
-                $mensaje = "mensaje no enivado";
-            }
+            //enviar el email
+            $email = new Email('','','');
+            $mensaje = $email->emailContacto($respuestas);           
         }
 
-        
         $router->view('/paginas/contacto',[
             'mensaje'=>$mensaje,
             'tipos'=>$tipos
@@ -254,7 +202,7 @@ class PaginasController{
         $escritura = Escritura::find($propiedad->idEscritura);
         $metodosVenta = MetodosVenta::find($id);
 
-        $categorias=Categoria::all();
+        $categoria = Categoria::find($propiedad->categoria);
         // debuguear($metodosVenta);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
@@ -267,9 +215,8 @@ class PaginasController{
             'estacionamiento'=>$estacionamiento,
             'escritura'=>$escritura,
             'metodosVenta'=>$metodosVenta,
-            'categorias'=>$categorias,
+            'categoria'=>$categoria,
             'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
-
 }

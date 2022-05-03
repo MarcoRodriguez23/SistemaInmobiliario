@@ -428,7 +428,12 @@ class Propiedad extends activeRecord{
 
         //Consultas para orden
         if(!empty($orden)){        
-            $whereFinal.= " ".$orden; 
+            if($orden == 1){
+                $whereFinal.= " ORDER BY creacion ASC"; 
+            }
+            elseif ($orden == 2) {
+                $whereFinal.= " ORDER BY creacion DESC"; 
+            }
         }//fin consulta orden
 
         $query = "SELECT * FROM ". static::$tabla .$whereFinal;

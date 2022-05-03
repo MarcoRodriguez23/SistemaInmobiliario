@@ -29,9 +29,11 @@ class AdminController{
     //funcion para la parte de ganancias
     public static function money(Router $router){
 
+        //el superadministrador puede ver todas las ventas generadas
         if($_SESSION['nivel']==1){
             $ventas = Venta::all();
         }
+        //el agente inmobiliario puede ver sus ventas y la de sus vendedores
         elseif($_SESSION['nivel']==2){
             $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);           
             $ventas[]= Venta::where('idEncargado',$_SESSION['id']);
@@ -82,6 +84,7 @@ class AdminController{
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
         $trabajadores = Usuario::all();
+        $filtro = [];
         
         $router->view('admin/citas/lista',[
             "citas"=>$citas,

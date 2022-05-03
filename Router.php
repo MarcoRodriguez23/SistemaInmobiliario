@@ -20,7 +20,7 @@ class Router{
         $auth= $_SESSION['login']??null;
         
         //arreglo de rutas protegidas
-        $this->rutas_protegidas=['/admin','/admin/propiedades/create','/admin/propiedades/update','/admin/propiedades/delete','/admin/propiedades/deleteFotos','/admin/propiedades/info','/admin/propiedades/date','/admin/propiedades/sell','/admin/agentes','/admin/agentes/create','/admin/agentes/update','/admin/agentes/delete','/admin/vendedores','/admin/vendedores/create','/admin/vendedores/update','/admin/vendedores/delete'];
+        $this->rutas_protegidas=['/admin','/admin/propiedades/create','/admin/propiedades/update','/admin/propiedades/delete','/admin/propiedades/deleteFotos','/admin/propiedades/info','/admin/propiedades/date','/admin/propiedades/sell','/admin/agentes','/admin/agentes/create','/admin/agentes/update','/admin/agentes/delete','/admin/vendedores','/admin/vendedores/create','/admin/vendedores/update','/admin/vendedores/delete','/admin/agenda','/admin/ventas'];
         
 
         
@@ -67,8 +67,17 @@ class Router{
         $contenido = ob_get_clean();
         
         $urlActual =  ($_SERVER['REQUEST_URI']==='')?'/': $_SERVER['REQUEST_URI'];
+        //dividimos la URL actual cada vez que exista un '?' eso indica que se están pasando variables por la url
+        $splitURL = explode('?', $urlActual);
+        
+        // if ($metodo === 'GET') {
+        //     $fn = $this->rutasGET[$splitURL[0]] ?? null; //$splitURL[0] contiene la URL sin variables 
+        // } else {
+        // $fn = $this->rutasPOST[$splitURL[0]] ?? null;
+        // }
+
         //si se ingresa a alguna ruta de admin mostrar el layout de admin
-        if(in_array($urlActual, $this->rutas_protegidas)){
+        if(in_array($splitURL[0], $this->rutas_protegidas)){
             include __DIR__ . "/views/layoutAdmin.php";
         }
         else{

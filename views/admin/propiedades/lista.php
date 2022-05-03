@@ -1,6 +1,3 @@
-<?php
-    // session_start();
-?>
 <div>
 <?php
     if($mensaje){
@@ -22,31 +19,37 @@
         <select name="filtro[precio]" id="precio">
             <!-- <option value="" selected disabled>Precio</option> -->
             <option
-            <?php echo $filtro['precio'] == "" ? "selected" : ""  ?>
+            <?php echo array_key_exists('precio',$filtro) ? ($filtro['precio'] == "" ? "selected" : "") : "" ?>
             value="">Todos los precios</option>
             <option
-                <?php echo $filtro['precio'] == "<=2000000" ? "selected" : ""  ?>
+                <?php echo array_key_exists('precio',$filtro) ? ($filtro['precio'] == "<=2000000" ? "selected" : "") : "" ?>
                 value="<=2000000"
             >
-                Menor a $2,000,000 MXN
+            Menor a $2,000,000 MXN
             </option>
             <option 
-            <?php echo $filtro['precio'] == ">=2000000" ? "selected" : ""  ?>
+            <?php echo array_key_exists('precio',$filtro) ? ($filtro['precio'] == ">=2000000" ? "selected" : "" ) : "" ?>
                 value=">=2000000"
             >
-                Mayor a $2,000,000 MXN
+            Mayor a $2,000,000 MXN
             </option>
         </select>
         <select name="filtro[tipoPropiedad]" id="tipo">
             <!-- <option value="" selected disabled>Tipo</option> -->
             <option
-            <?php echo $filtro['tipoPropiedad'] == "" ? "selected" : ""  ?>
-            value="">Todos los tipos</option>
+                <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] == "" ? "selected" : "") : "" ?>
+                value=""
+            >
+            Todos los tipos
+            </option>
             <?php foreach ($tipoPropiedad as $row) :?>
                 <?php if($row->id !='0'): ?>
                     <option 
-                    <?php echo $filtro['tipoPropiedad'] == $row->id ? "selected" : ""  ?>
-                    value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->tipo)); ?></option>
+                        <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] == $row->id ? "selected" : "" ) : "" ?>
+                        value="<?php echo s($row->id); ?>"
+                    >
+                    <?php echo ucfirst(s($row->tipo)); ?>
+                    </option>
                 <?php endif; ?>
             <?php endforeach; ?>
             <?php
@@ -56,12 +59,12 @@
         <select name="filtro[status]" id="status">
             <!-- <option value="" selected disabled>Disponibilidad</option> -->
             <option
-            <?php echo $filtro['status'] == "" ? "selected" : ""  ?>
+            <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == "" ? "selected" : "" ) : "" ?>
             value="">Todos los status</option>
             <?php foreach ($status as $row) :?>
                 <?php if($row->id !='0'): ?>
                     <option 
-                    <?php echo $filtro['status'] == $row->id ? "selected" : ""  ?>
+                    <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == $row->id ? "selected" : "" ) : "" ?>
                     value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -72,12 +75,18 @@
         <select name="filtro[categoria]" id="tipo">
             <!-- <option value="" selected disabled>Tipo</option> -->
             <option
-            <?php echo $filtro['categoria'] == "" ? "selected" : ""  ?>
-            value="">Todos los diseños</option>
+                <?php echo array_key_exists('categoria',$filtro) ? ($filtro['categoria'] == "" ? "selected" : "" ) : "" ?>
+                value=""
+            >
+            Todos los diseños
+            </option>
             <?php foreach ($categorias as $row) :?>
                     <option 
-                    <?php echo $filtro['categoria'] === $row->id ? "selected" : ""  ?>
-                    value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->tipo)); ?></option>
+                        <?php echo array_key_exists('categoria',$filtro) ? ($filtro['categoria'] === $row->id ? "selected" : "" ) : "" ?>
+                        value="<?php echo s($row->id); ?>"
+                    >
+                    <?php echo ucfirst(s($row->tipo)); ?>
+                    </option>
             <?php endforeach; ?>
             <?php
             ?>
@@ -88,16 +97,16 @@
 
             
             <option 
-            <?php echo $filtro['orden'] == "order by creacion asc" ? "selected" : ""  ?>
-                value="order by creacion asc"
+            <?php echo array_key_exists('orden',$filtro) ? ($filtro['orden'] == 1 ? "selected" : "" ) : "" ?>
+                value="1"
             >
-                Más antigüa
+            Más antigüa
             </option>
             <option
-                <?php echo $filtro['orden'] == "order by creacion desc" ? "selected" : ""  ?>
-                value="order by creacion desc"
+                <?php echo array_key_exists('orden',$filtro) ? ($filtro['orden'] == 2 ? "selected" : "" ) : "" ?>
+                value="2"
             >
-                Más reciente
+            Más reciente
             </option>
         </select>
 

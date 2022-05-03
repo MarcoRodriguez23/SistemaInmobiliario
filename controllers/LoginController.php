@@ -6,13 +6,13 @@ use MVC\Router;
 use Model\Usuario;
 use Classes\Email;
 
-
 require_once '../Router.php';
 require_once '../models/Usuario.php';
-
+require_once '../classes/Email.php';
 
 class LoginController{
 
+    //funcion para ingresar al sistema
     public static function login(Router $router){
 
         $errores=[];
@@ -54,13 +54,15 @@ class LoginController{
         ]);
     }
 
+    //funcion para cerrar sesión
     public static function logout(){
-        session_start();
+        // session_start();
         //limpienado la variable de $_SESSION
         $_SESSION=[];
         header('Location: /login');
     }
 
+    //función para confirmar el token para darse de alta en el sistema
     public static function confirmar(Router $router){
         $errores = [];
 
@@ -89,6 +91,7 @@ class LoginController{
         ]);
     }
 
+    //función para confirmar el token para recuperar contraseña
     public static function recuperar(Router $router){
         $alertas = [];
         $error = false;
@@ -130,6 +133,7 @@ class LoginController{
         ]);
     }
 
+    //función que realiza la recepción del email para enviar correo y recuperar contraseña
     public static function olvide(Router $router){
         $errores = [];
 
@@ -156,10 +160,8 @@ class LoginController{
                 }
                 else{
                     Usuario::setAlerta('error','El usuario no existe o no esta confirmado');
-                }
-                
+                }   
             }
-
         }
 
         $alertas = Usuario::getErrores();

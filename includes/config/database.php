@@ -1,5 +1,4 @@
 <?php
-
     function conectarDB() : mysqli {
         $hostname=$_ENV['DB_HOST'];
         $username=$_ENV['DB_USER'];
@@ -11,6 +10,7 @@
             echo "No se conecto";
             exit;
         }
+        //para poder visualizar los acentos correctamente
         $db->set_charset("utf8");
         return $db;
     }

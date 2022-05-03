@@ -51,7 +51,6 @@
     $router->get('/',[PaginasController::class,'index']);
     //listas genereales
     $router->get('/servicios',[PaginasController::class,'servicios']);
-    $router->get('/inmuebles',[PaginasController::class,'inmuebles']);
     $router->get('/casas',[PaginasController::class,'casas']);
     $router->get('/departamentos',[PaginasController::class,'departamentos']);
     $router->get('/terrenos',[PaginasController::class,'terrenos']);
@@ -68,13 +67,11 @@
     $router->get('/contacto',[PaginasController::class,'contacto']);
     $router->post('/contacto',[PaginasController::class,'contacto']);
     
-
     //login y autenticacion
     $router->get('/login',[LoginController::class,'login']);
     $router->post('/login',[LoginController::class,'login']);
     $router->get('/crear',[LoginController::class,'crear']);
     $router->get('/logout',[LoginController::class,'logout']);
-
 
     //recuperar password
     $router->get('/olvide',[LoginController::class,'olvide']);  

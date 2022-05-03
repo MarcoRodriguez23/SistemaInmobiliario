@@ -20,7 +20,6 @@ header("Content-Disposition: attachment; filename=propiedades.xls");
         <th>Metros cuadrados</th>
         <th>Número de pisos</th>
         <th>Piso</th>
-        <th>Número de departamento</th>
         <th>Número de elevadores</th>
         <th>Habitaciones</th>
         <th>Baños</th>
@@ -71,7 +70,6 @@ header("Content-Disposition: attachment; filename=propiedades.xls");
             <td><?php echo $propiedad->mt2; ?></td>
             <td><?php echo $propiedad->numPisos; ?></td>
             <td><?php echo $propiedad->piso; ?></td>
-            <td><?php echo $propiedad->numDepartamento; ?></td>
             <td><?php echo $propiedad->numElevadores; ?></td>
             <td><?php echo $propiedad->habitaciones; ?></td>
             <td><?php echo $propiedad->baños; ?></td>

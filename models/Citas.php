@@ -58,6 +58,7 @@ class Citas extends activeRecord{
         $calle=$datos['calle'];
         $colonia=$datos['colonia'];
         $municipioDelegacion=$datos['municipioDelegacion'];
+        $orden=$datos['orden'];
         
         //
         if(!empty($estado)){        
@@ -113,6 +114,19 @@ class Citas extends activeRecord{
         if($nivel !=1){
             $query .= " AND idEncargado IN (SELECT id FROM usuario WHERE id = " .$id . " OR idCreador = ".$id.")";
         }
+
+        //Consultas para orden
+        if(!empty($orden)){        
+            if($orden == 1){
+                $query.= " ORDER BY fecha ASC"; 
+            }
+            elseif ($orden == 2) {
+                $query.= " ORDER BY fecha DESC"; 
+            }
+        }//fin consulta orden
+
+
+
         $resultado=self::consultarSQL($query);
         return $resultado;
     }

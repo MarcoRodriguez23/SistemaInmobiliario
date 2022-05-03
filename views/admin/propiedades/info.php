@@ -5,9 +5,7 @@
     <section class="datos-propiedad contenedor">
         <h3>
             <?php echo $tipoPropiedad->tipo; ?>
-            <?php foreach($categorias as $cat): ?>
-                <?php echo $propiedad->categoria === $cat->id ? $cat->tipo : '' ; ?>
-            <?php endforeach; ?>
+            <?php echo $categoria->tipo?>
             en
             <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
             <?php echo $direccion->estado; ?>

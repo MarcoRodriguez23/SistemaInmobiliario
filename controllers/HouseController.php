@@ -399,6 +399,7 @@ class HouseController{
         $metodosVenta = MetodosVenta::find($id);
         $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
         $fotos = Foto::find($id);
+        $categoria = Categoria::find($propiedad->categoria);
 
 
         $router->view('admin/propiedades/info',[
@@ -411,7 +412,8 @@ class HouseController{
             'escritura'=>$escritura,
             'metodosVenta'=>$metodosVenta,
             'tipoPropiedad'=>$tipoPropiedad,
-            'fotos'=>$fotos
+            'fotos'=>$fotos,
+            'categoria'=>$categoria
         ]);
     }
 

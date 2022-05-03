@@ -132,7 +132,6 @@ class SellerController{
                     if($guardarDireccion){
                         header("Location: /admin/vendedores?mensaje=2");
                     }
-                    
                 }
             }        
         }
@@ -153,11 +152,8 @@ class SellerController{
             //validar ID
             $id = $_POST['id'];
             $id = filter_var($id, FILTER_VALIDATE_INT);
-        
             if($id){
-                
                 $tipo=$_POST['tipo'];
-        
                 if(validarTipoContenido($tipo)){
                     //eliminando objeto
                     $vendedor= Usuario::find($id);

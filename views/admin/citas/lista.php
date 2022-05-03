@@ -8,30 +8,45 @@
             type="text" 
             name="filtro[estado]" 
             placeholder="Estado"
-            value="<?php echo s($filtro['estado']); ?>"
+            value="<?php echo array_key_exists('estado',$filtro) ? (s($filtro['estado'])) : "" ?>" 
             >
         <input 
             class="input-buscador" 
             type="text" 
             name="filtro[calle]" 
             placeholder="Calle"
-            value="<?php echo s($filtro['calle']); ?>"
+            value="<?php echo array_key_exists('calle',$filtro) ? (s($filtro['calle'])) : "" ?>" 
             >
         <input 
             class="input-buscador" 
             type="text" 
             name="filtro[colonia]" 
             placeholder="Colonia"
-            value="<?php echo s($filtro['colonia']); ?>"
+            value="<?php echo array_key_exists('colonia',$filtro) ? (s($filtro['colonia'])) : "" ?>" 
             >
         <input 
             class="input-buscador" 
             type="text" 
             name="filtro[municipioDelegacion]" 
             placeholder="municipio/Delegación"
-            value="<?php echo s($filtro['municipioDelegacion']); ?>"
+            value="<?php echo array_key_exists('municipioDelegacion',$filtro) ? (s($filtro['municipioDelegacion'])) : "" ?>" 
             >
 
+            <select name="filtro[orden]" id="orden">
+            <option
+                <?php echo array_key_exists('orden',$filtro) ? ($filtro['orden'] == 1 ? "selected" : "" ) : "" ?> 
+                value="1"
+            >
+            Más antigüa
+            </option>
+            <option
+                <?php echo array_key_exists('orden',$filtro) ? ($filtro['orden'] == 2 ? "selected" : "" ) : "" ?> 
+                value="2"
+            >
+            Más reciente
+            </option>
+        </select>
+        
         <input type="submit" value="Buscar">
     </form>
 

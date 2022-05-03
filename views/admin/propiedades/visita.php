@@ -23,7 +23,7 @@
                         name="cita[nombres]"
                         value="<?php echo s($cita->nombres); ?>"
                     >
-                    <?php echo "<p>".$erroresCita["nombres"]."</p>"; ?>
+                    <?php echo isset($erroresCita['nombres']) ?"<p>".$erroresCita["nombres"]."</p>" : "" ?>
                 </div>
                 
                 
@@ -36,7 +36,7 @@
                         name="cita[apellidos]"
                         value="<?php echo s($cita->apellidos) ; ?>"
                     >
-                    <?php echo "<p>". $erroresCita["apellidos"]."</p>"; ?>
+                    <?php echo isset($erroresCita['apellidos']) ?"<p>".$erroresCita["apellidos"]."</p>" : "" ?>
                 </div>
 
                 <div>
@@ -50,8 +50,8 @@
                         min="5500000000"
                         value="<?php echo s($cita->telefono); ?>"
                     >
-                    <?php echo "<p>".$erroresCita["telefono"]."</p>"; ?>
-                    <?php echo "<p>".$erroresCita["formatoTelefono"]."</p>"; ?>
+                    <?php echo isset($erroresCita['telefono']) ?"<p>".$erroresCita["telefono"]."</p>" : "" ?>
+                    <?php echo isset($erroresCita['formatoTelefono']) ?"<p>".$erroresCita["formatoTelefono"]."</p>" : "" ?>
                 </div>
 
                 <div id="campo-fecha" class="campo">
@@ -62,7 +62,7 @@
                         name="cita[fecha]"
                         value="<?php echo s($cita->fecha); ?>"
                     >
-                    <?php echo "<p>".$erroresCita["fecha"]."</p>"; ?>
+                    <?php echo isset($erroresCita['fecha']) ?"<p>".$erroresCita["fecha"]."</p>" : "" ?>
                 </div>
                 
                 <div id="campo-hora" class="campo">
@@ -73,7 +73,7 @@
                         name="cita[hora]"
                         value="<?php echo s($cita->hora); ?>"   
                     >
-                    <?php echo "<p>".$erroresCita["hora"]."</p>"; ?>
+                    <?php echo isset($erroresCita['hora']) ?"<p>".$erroresCita["hora"]."</p>" : "" ?>
                 </div>
 
                 <div>
@@ -105,7 +105,7 @@
                             <?php endif; ?>  
                         <?php endforeach; ?>
                     </select>
-                    <?php echo isset($$erroresCita["idEncargado"]) ? "<p>".$$erroresCita["idEncargado"]."</p>" : "" ?>
+                    <?php echo isset($erroresCita["idEncargado"]) ? "<p>".$erroresCita["idEncargado"]."</p>" : "" ?>
                 </div>
 
             </fieldset>
