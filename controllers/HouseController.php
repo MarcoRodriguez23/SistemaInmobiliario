@@ -9,18 +9,18 @@ use Model\Propiedad;
 use Model\Direccion;
 use Model\Estacionamiento;
 use Model\MetodosVenta;
-use Model\Escritura;
+// use Model\Escritura;
 use Model\Mueble;
-use Model\TipoPropiedad;
+// use Model\TipoPropiedad;
 use Model\Foto;
-use Model\Categoria;
+// use Model\Categoria;
 
 use Model\Usuario;
 use Model\Citas;
 use Model\Venta;
 
 use Intervention\Image\ImageManagerStatic as Image;
-use Model\Status;
+// use Model\Status;
 
 require_once '../Router.php';
 
@@ -29,11 +29,11 @@ require_once '../models/Propiedad.php';
 require_once '../models/Direccion.php';
 require_once '../models/Estacionamiento.php';
 require_once '../models/MetodosVenta.php';
-require_once '../models/Escritura.php';
+// require_once '../models/Escritura.php';
 require_once '../models/Mueble.php';
-require_once '../models/TipoPropiedad.php';
+// require_once '../models/TipoPropiedad.php';
 require_once '../models/Foto.php';
-require_once '../models/Categoria.php';
+// require_once '../models/Categoria.php';
 
 require_once '../models/Usuario.php';
 require_once '../models/Citas.php';
@@ -46,10 +46,10 @@ class HouseController{
 
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        $tipoPropiedad=TipoPropiedad::all();
+        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        $status = Status::all();
-        $categorias = Categoria::all();
+        // $status = Status::all();
+        // $categorias = Categoria::all();
 
         $filtro = [];
 
@@ -89,10 +89,10 @@ class HouseController{
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad,
+            // 'tipoPropiedad'=>$tipoPropiedad,
             'mensaje'=>$mensaje,
-            'status'=>$status,
-            'categorias'=>$categorias,
+            // 'status'=>$status,
+            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
             'filtro'=>$filtro
         ]);
@@ -110,10 +110,10 @@ class HouseController{
 
         //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
         $estacionamientos = Estacionamiento::all();
-        $escrituras = Escritura::all();
-        $tipoPropiedad = TipoPropiedad::all();
-        $categorias = Categoria::all();
-        $status = Status::all();
+        // $escrituras = Escritura::all();
+        // $tipoPropiedad = TipoPropiedad::all();
+        // $categorias = Categoria::all();
+        // $status = Status::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad = [];
@@ -195,14 +195,14 @@ class HouseController{
             'propiedad'=>$propiedad,
             'erroresPropiedad'=>$erroresPropiedad,
             'estacionamientos'=>$estacionamientos,
-            'escrituras'=>$escrituras,
-            'tipoPropiedad'=>$tipoPropiedad,
+            // 'escrituras'=>$escrituras,
+            // 'tipoPropiedad'=>$tipoPropiedad,
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
             "erroresMetodosVenta"=>$erroresMetodosVenta,
-            "categorias"=>$categorias,
-            "status"=>$status
+            // "categorias"=>$categorias,
+            // "status"=>$status
         ]);
     }
 
@@ -220,11 +220,11 @@ class HouseController{
         
         //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
         $estacionamientos = Estacionamiento::all();
-        $escrituras = Escritura::all();
-        $tipoPropiedad = TipoPropiedad::all();
-        $categorias = Categoria::all();
+        // $escrituras = Escritura::all();
+        // $tipoPropiedad = TipoPropiedad::all();
+        // $categorias = Categoria::all();
         $fotos = Foto::find($id);
-        $status = Status::all();
+        // $status = Status::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad= [];
@@ -324,15 +324,15 @@ class HouseController{
             'propiedad'=>$propiedad,
             'erroresPropiedad'=>$erroresPropiedad,
             'estacionamientos'=>$estacionamientos,
-            'escrituras'=>$escrituras,
-            'tipoPropiedad'=>$tipoPropiedad,
+            // 'escrituras'=>$escrituras,
+            // 'tipoPropiedad'=>$tipoPropiedad,
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
             "erroresMetodosVenta"=>$erroresMetodosVenta,
-            "categorias"=>$categorias,
+            // "categorias"=>$categorias,
             "fotos"=>$fotos,
-            "status"=>$status,
+            // "status"=>$status,
             "erroresTamaño"=>$erroresTamaño
         ]);
     }
@@ -395,11 +395,11 @@ class HouseController{
         $amenidad = Amenidad::find($id);
         $fotos = Foto::find($id);
         $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
-        $escritura = Escritura::find($propiedad->idEscritura);
+        // $escritura = Escritura::find($propiedad->idEscritura);
         $metodosVenta = MetodosVenta::find($id);
-        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
+        // $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
         $fotos = Foto::find($id);
-        $categoria = Categoria::find($propiedad->categoria);
+        // $categoria = Categoria::find($propiedad->categoria);
 
 
         $router->view('admin/propiedades/info',[
@@ -409,11 +409,11 @@ class HouseController{
             'amenidad'=>$amenidad,
             'fotos'=>$fotos,
             'estacionamiento'=>$estacionamiento,
-            'escritura'=>$escritura,
+            // 'escritura'=>$escritura,
             'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad,
+            // 'tipoPropiedad'=>$tipoPropiedad,
             'fotos'=>$fotos,
-            'categoria'=>$categoria
+            // 'categoria'=>$categoria
         ]);
     }
 
@@ -468,7 +468,7 @@ class HouseController{
         $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
-        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
+        // $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
         $metodos = MetodosVenta::find($id);
         $amenidad = Amenidad::find($id);
         $mueble = Mueble::find($id);
@@ -544,7 +544,7 @@ class HouseController{
         $router->view('admin/propiedades/sell',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
-            'tipoPropiedad'=>$tipoPropiedad,
+            // 'tipoPropiedad'=>$tipoPropiedad,
             'metodos'=>$metodos,
             'mueble'=>$mueble,
             'amenidad'=>$amenidad,

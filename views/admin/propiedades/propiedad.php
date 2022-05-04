@@ -13,21 +13,17 @@
                 <div class="info-inferior">
                     <p class="precio"><?php echo $propiedad->precio; ?></p>
                     <p class="campo-info">
-                        <?php foreach($tipoPropiedad as $tipo): ?>
-                            <?php echo $propiedad->tipoPropiedad === $tipo->id ? ucfirst($tipo->tipo) : '' ; ?>
-                        <?php endforeach; ?>
+                            <?php echo ucfirst($propiedad->tipoPropiedad);?>
                     </p>
-                    <p class="campo-info">Comisión: <?php echo $propiedad->comision; ?> %</p>
                     <p class="campo-info">
-                        <?php foreach($categorias as $cat): ?>
-                            <?php echo $propiedad->categoria === $cat->id ? ucfirst($cat->tipo) : '' ; ?>
-                        <?php endforeach; ?>
+                        Comisión: <?php echo $propiedad->comision; ?> %
+                    </p>
+                    <p class="campo-info">
+                        <?php echo ucfirst($propiedad->categoria);?>
                     </p>
                     
                     <p class="estado">
-                        <?php foreach($status as $sts): ?>
-                            <?php echo $propiedad->status === $sts->id ? ucfirst($sts->estado) : '' ; ?>
-                        <?php endforeach; ?>
+                            <?php echo ucfirst($propiedad->status); ?>
                     </p>
                     <p class="campo-info">
                         Cargado el:
@@ -59,7 +55,7 @@
             </div>
         </div>
     </a>
-    <?php if($propiedad->status!=2): ?>
+    <?php if($propiedad->status!="vendida"): ?>
     <div class="opciones">
         <?php if($_SESSION['nivel']<3): ?>
         <a href="/admin/propiedades/update?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">Actualizar</a>
@@ -67,7 +63,7 @@
         <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">Vender</a>
         <a href="/admin/propiedades/date?id=<?php echo $propiedad->id; ?>" class="boton-azul">Agendar</a>
     <?php endif; ?>
-    <?php if($propiedad->status==2): ?>
+    <?php if($propiedad->status=="vendida"): ?>
     <div class="opciones">
         <a href="/admin/propiedades/sell?id=<?php echo $propiedad->id; ?>" class="boton-verde">VENDIDA</a>
     <?php endif; ?>

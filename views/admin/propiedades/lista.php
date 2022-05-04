@@ -16,6 +16,7 @@
     <h1>Propiedades en lista</h1>
     <!--FILTRO-->
     <form action="/admin" method="post" class="filtro">
+
         <select name="filtro[precio]" id="precio">
             <!-- <option value="" selected disabled>Precio</option> -->
             <option
@@ -34,6 +35,7 @@
             Mayor a $2,000,000 MXN
             </option>
         </select>
+
         <select name="filtro[tipoPropiedad]" id="tipo">
             <!-- <option value="" selected disabled>Tipo</option> -->
             <option
@@ -42,18 +44,44 @@
             >
             Todos los tipos
             </option>
-            <?php foreach ($tipoPropiedad as $row) :?>
-                <?php if($row->id !='0'): ?>
-                    <option 
-                        <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] == $row->id ? "selected" : "" ) : "" ?>
-                        value="<?php echo s($row->id); ?>"
-                    >
-                    <?php echo ucfirst(s($row->tipo)); ?>
-                    </option>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <?php
-            ?>
+
+            <option
+                value="Casa"
+                <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] === "Casa" ? "selected" : "" ) : "" ?>
+            >
+            Casa
+            </option>
+
+            <option
+                value="Departamento"
+                <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] === "Departamento" ? "selected" : "" ) : "" ?>
+            >
+            Departamento
+            </option>
+            <option
+                value="Terreno"
+                <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] === "Terreno" ? "selected" : "" ) : "" ?>
+            >
+            Terreno
+            </option>
+            <option
+                value="Bodega"
+                <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] === "Bodega" ? "selected" : "" ) : "" ?>
+            >
+            Bodega
+            </option>
+            <option
+                value="Local"
+                <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] === "Local" ? "selected" : "" ) : "" ?>
+            >
+            Local
+            </option>
+            <option
+                value="Oficina"
+                <?php echo array_key_exists('tipoPropiedad',$filtro) ? ($filtro['tipoPropiedad'] === "Oficina" ? "selected" : "" ) : "" ?>
+            >
+            Oficina
+            </option>
         </select>
         
         <select name="filtro[status]" id="status">
@@ -61,15 +89,31 @@
             <option
             <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == "" ? "selected" : "" ) : "" ?>
             value="">Todos los status</option>
-            <?php foreach ($status as $row) :?>
-                <?php if($row->id !='0'): ?>
-                    <option 
-                    <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == $row->id ? "selected" : "" ) : "" ?>
-                    value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <?php
-            ?>
+
+            <option
+                value="venta"
+                <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == "venta" ? "selected" : "" ) : "" ?>
+            >
+            Venta
+            </option>
+            <option
+                value="vendida"
+                <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == "vendida" ? "selected" : "" ) : "" ?>
+            >
+            Vendida
+            </option>
+            <option
+                value="preventa"
+                <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == "preventa" ? "selected" : "" ) : "" ?>
+            >
+            Preventa
+            </option>
+            <option
+                value="renta"
+                <?php echo array_key_exists('status',$filtro) ? ($filtro['status'] == "renta" ? "selected" : "" ) : "" ?>
+            >
+            Renta
+            </option>
         </select>
 
         <select name="filtro[categoria]" id="tipo">
@@ -80,16 +124,31 @@
             >
             Todos los diseños
             </option>
-            <?php foreach ($categorias as $row) :?>
-                    <option 
-                        <?php echo array_key_exists('categoria',$filtro) ? ($filtro['categoria'] === $row->id ? "selected" : "" ) : "" ?>
-                        value="<?php echo s($row->id); ?>"
-                    >
-                    <?php echo ucfirst(s($row->tipo)); ?>
-                    </option>
-            <?php endforeach; ?>
-            <?php
-            ?>
+            <option
+                value="Para construir"
+                <?php echo array_key_exists('categoria',$filtro) ? ($filtro['categoria'] === "Para construir" ? "selected" : "" ) : "" ?>
+            >
+            Para construir
+            </option>
+
+            <option
+                value="Con remodelado"
+                <?php echo array_key_exists('categoria',$filtro) ? ($filtro['categoria'] === "Con remodelado" ? "selected" : "" ) : "" ?>
+            >
+            Con remodelado
+            </option>
+            <option
+                value="Para remodelar"
+                <?php echo array_key_exists('categoria',$filtro) ? ($filtro['categoria'] === "Para remodelar" ? "selected" : "" ) : "" ?>
+            >
+            Para remodelar
+            </option>
+            <option
+                value="Para laborar"
+                <?php echo array_key_exists('categoria',$filtro) ? ($filtro['categoria'] === "Para laborar" ? "selected" : "" ) : "" ?>
+            >
+            Para laborar
+            </option>
         </select>
 
         <select name="filtro[orden]" id="orden">
@@ -117,16 +176,15 @@
     <?php
         foreach ($propiedades as $propiedad) {
             foreach ($direcciones as $direccion) {
-                foreach ($tipoPropiedad as $tipo) {
-                    if($propiedad->id === $direccion->id && $propiedad->tipoPropiedad === $tipo->id){
-                        if ($_SESSION['nivel']==3 && $propiedad->status !=2) {
+                    if($propiedad->id === $direccion->id){
+                        if ($_SESSION['nivel']==3 && $propiedad->status !="vendida") {
                             include 'propiedad.php';
                         }
                         if ($_SESSION['nivel']<3) {
                             include 'propiedad.php';
                         }
                     }
-                }
+                
             }
         }
     ?>

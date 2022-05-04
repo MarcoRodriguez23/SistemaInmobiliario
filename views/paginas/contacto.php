@@ -87,10 +87,12 @@
                     <label for="asunto">Asunto</label>
                     <select name="asunto">
                         <option value="" disabled selected>--Selecciona una opción--</option>
-                        <?php foreach ($tipos as $row) :?>
-                            <option 
-                            value="<?php echo s($row->tipo); ?>"><?php echo s($row->tipo); ?></option>
-                        <?php endforeach; ?>
+                        <option value="Casa">Casa</option>
+                        <option value="Departmaneto">Departmaneto</option>
+                        <option value="Terreno">Terreno</option>
+                        <option value="Bodega">Bodega</option>
+                        <option value="Local">Local</option>
+                        <option value="Oficina">Oficina</option>
                     </select>
                 </div>
                 

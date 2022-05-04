@@ -4,14 +4,14 @@ namespace Model;
 
 class Propiedad extends activeRecord{
     protected static $tabla='propiedad';
-    protected static $columnas_DB=['id','precio','año','mt2','mt2Construccion','idEscritura','idEstacionamiento','numEstacionamientos','numIdEstacionamiento','numPisos','piso','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision','numPredio','mantenimiento','categoria','creacion','idCreador'];
+    protected static $columnas_DB=['id','precio','año','mt2','mt2Construccion','escritura','idEstacionamiento','numEstacionamientos','numIdEstacionamiento','numPisos','piso','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision','numPredio','mantenimiento','categoria','creacion','idCreador'];
 
     public $id;
     public $precio;
     public $año;
     public $mt2;
     public $mt2Construccion;
-    public $idEscritura;
+    public $escritura;
     public $idEstacionamiento;
     public $numEstacionamientos;
     public $numIdEstacionamiento;
@@ -39,7 +39,7 @@ class Propiedad extends activeRecord{
         $this->año=$args['año']??0;
         $this->mt2=$args['mt2']??'';
         $this->mt2Construccion=$args['mt2Construccion']??0;
-        $this->idEscritura=$args['idEscritura']??'';
+        $this->escritura=$args['escritura']??'';
         $this->idEstacionamiento=$args['idEstacionamiento']??0;
         $this->numEstacionamientos=$args['numEstacionamientos']??0;
         $this->numIdEstacionamiento=$args['numIdEstacionamiento']??0;
@@ -81,8 +81,8 @@ class Propiedad extends activeRecord{
         if(!$this->mt2Construccion){
             self::$errores['mt2Construccion'] = "Los metros de construcción";
         }
-        if(!$this->idEscritura){
-            self::$errores['idEscritura'] = "El tipo de escritura es obligatorio";
+        if(!$this->escritura){
+            self::$errores['escritura'] = "El tipo de escritura es obligatorio";
         }
         if(!$this->idEstacionamiento){
             self::$errores['idEstacionamiento'] = "El tipo de estacionamiento es obligatorio";
@@ -131,8 +131,8 @@ class Propiedad extends activeRecord{
         if(!$this->mt2){
             self::$errores['mt2'] = "Los metros cuadrados son obligatorios";
         }
-        if(!$this->idEscritura){
-            self::$errores['idEscritura'] = "El tipo de escritura es obligatorio";
+        if(!$this->escritura){
+            self::$errores['escritura'] = "El tipo de escritura es obligatorio";
         }
         if(!$this->idEstacionamiento){
             self::$errores['idEstacionamiento'] = "El tipo de estacionamiento es obligatorio";
@@ -193,8 +193,8 @@ class Propiedad extends activeRecord{
         if(!$this->mt2){
             self::$errores['mt2'] = "Los metros cuadrados son obligatorios";
         }
-        if(!$this->idEscritura){
-            self::$errores['idEscritura'] = "El tipo de escritura es obligatorio";
+        if(!$this->escritura){
+            self::$errores['escritura'] = "El tipo de escritura es obligatorio";
         }
         if(!$this->comision){
             self::$errores['comision'] = "Especificar la comisión";
@@ -219,8 +219,8 @@ class Propiedad extends activeRecord{
         if(!$this->mt2){
             self::$errores['mt2'] = "Los metros cuadrados son obligatorios";
         }
-        if(!$this->idEscritura){
-            self::$errores['idEscritura'] = "El tipo de escritura es obligatorio";
+        if(!$this->escritura){
+            self::$errores['escritura'] = "El tipo de escritura es obligatorio";
         }
         if(!$this->idEstacionamiento){
             self::$errores['idEstacionamiento'] = "El tipo de estacionamiento es obligatorio";
@@ -257,8 +257,8 @@ class Propiedad extends activeRecord{
         if(!$this->mt2){
             self::$errores['mt2'] = "Los metros cuadrados son obligatorios";
         }
-        if(!$this->idEscritura){
-            self::$errores['idEscritura'] = "El tipo de escritura es obligatorio";
+        if(!$this->escritura){
+            self::$errores['escritura'] = "El tipo de escritura es obligatorio";
         }
         if(!$this->idEstacionamiento){
             self::$errores['idEstacionamiento'] = "El tipo de estacionamiento es obligatorio";
@@ -307,8 +307,8 @@ class Propiedad extends activeRecord{
         if(!$this->mt2){
             self::$errores['mt2'] = "Los metros cuadrados son obligatorios";
         }
-        if(!$this->idEscritura){
-            self::$errores['idEscritura'] = "El tipo de escritura es obligatorio";
+        if(!$this->escritura){
+            self::$errores['escritura'] = "El tipo de escritura es obligatorio";
         }
         if(!$this->idEstacionamiento){
             self::$errores['idEstacionamiento'] = "El tipo de estacionamiento es obligatorio";

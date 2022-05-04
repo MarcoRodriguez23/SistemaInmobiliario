@@ -32,7 +32,7 @@
         </div>
         <div>
             <label for="">Tipo de propiedad</label>
-            <p><?php echo s($tipoPropiedad->tipo); ?></p>
+            <p><?php echo s($propiedad->tipoPropiedad); ?></p>
         </div>
         
         <div>
@@ -163,7 +163,7 @@
         </div>
         <div>
             <input type="hidden" name="venta[idPropiedad]" value="<?php echo $propiedad->id; ?>">
-            <input type="hidden" name="propiedad[status]" value="2">
+            <input type="hidden" name="propiedad[status]" value="vendida">
         </div>
     </fieldset>
     <fieldset>
@@ -183,6 +183,6 @@
     </fieldset>
 
     
-    <?php echo ($propiedad->status==2 && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-azul">';?>
+    <?php echo ($propiedad->status=='vendida' && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-azul">';?>
 
 </form>

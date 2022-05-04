@@ -32,7 +32,7 @@
                 <?php
                     echo '<li>
                     <img src="/build/img/Iconos/icono_escrituras1.svg" alt="icono">
-                    <p>'.strtoupper($escritura->tipo).'</p>
+                    <p>'.strtoupper($propiedad->escritura).'</p>
                     </li>';
                 ?>
             </ul>

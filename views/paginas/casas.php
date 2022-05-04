@@ -18,7 +18,7 @@
     <div class="inmuebles contenedor">
     <?php foreach ($propiedades as $propiedad): ?>
         <?php foreach ($direcciones as $direccion): ?>
-            <?php if($propiedad->tipoPropiedad == 1 && $propiedad->id === $direccion->id && $propiedad->status!=2): ?>
+            <?php if($propiedad->tipoPropiedad == "Casa" && $propiedad->id === $direccion->id && $propiedad->status!='vendida'): ?>
                 <div class="plantilla">
                     <a href="/casa?id=<?php echo $propiedad->id; ?>">
                     <?php include 'propiedad.php'; ?>

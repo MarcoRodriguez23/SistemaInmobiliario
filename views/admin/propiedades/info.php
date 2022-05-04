@@ -4,8 +4,8 @@
 <main>
     <section class="datos-propiedad contenedor">
         <h3>
-            <?php echo $tipoPropiedad->tipo; ?>
-            <?php echo $categoria->tipo?>
+            <?php echo $propiedad->tipoPropiedad; ?>
+            <?php echo $propiedad->categoria?>
             en
             <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
             <?php echo $direccion->estado; ?>

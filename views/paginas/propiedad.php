@@ -12,19 +12,13 @@
                 <div class="info-inferior">
                     <p class="precio"><?php echo $propiedad->precio; ?></p>
                     <p class="campo-info">
-                        <?php foreach($tipoPropiedad as $tipo): ?>
-                            <?php echo $propiedad->tipoPropiedad === $tipo->id ? ucfirst($tipo->tipo) : '' ; ?>
-                        <?php endforeach; ?>
+                        <?php echo $propiedad->tipoPropiedad; ?>
                     </p>
                     <p class="campo-info">
-                        <?php foreach($categorias as $cat): ?>
-                            <?php echo $propiedad->categoria === $cat->id ? ucfirst($cat->tipo) : '' ; ?>
-                        <?php endforeach; ?>
+                        <?php echo $propiedad->categoria; ?>
                     </p>
                     <p class="estado">
-                        <?php foreach($status as $sts): ?>
-                            <?php echo $propiedad->status === $sts->id ? ucfirst($sts->estado) : '' ; ?>
-                        <?php endforeach; ?>
+                        <?php echo $propiedad->status ; ?>
                     </p>
                     <div class="beneficios">
                         <div class="beneficio">

@@ -8,13 +8,13 @@ use Model\Propiedad;
 use Model\Direccion;
 use Model\Amenidad;
 use Model\Mueble;
-use Model\TipoPropiedad;
+// use Model\TipoPropiedad;
 use Model\MetodosVenta;
 use Model\Foto;
-use Model\Escritura;
+// use Model\Escritura;
 use Model\Estacionamiento;
-use Model\Categoria;
-use Model\Status;
+// use Model\Categoria;
+// use Model\Status;
 
 use Model\Blog;
 use Model\Servicio;
@@ -30,7 +30,7 @@ require_once '../models/Mueble.php';
 require_once '../models/TipoPropiedad.php';
 require_once '../models/MetodosVenta.php';
 require_once '../models/Foto.php';
-require_once '../models/Escritura.php';
+// require_once '../models/Escritura.php';
 require_once '../models/Estacionamiento.php';
 require_once '../models/Categoria.php';
 require_once '../models/Status.php';
@@ -47,17 +47,17 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $fotos=Foto::all();
-        $status=Status::all();
-        $categorias=Categoria::all();
-        $tipoPropiedad=TipoPropiedad::all();
+        // $status=Status::all();
+        // $categorias=Categoria::all();
+        // $tipoPropiedad=TipoPropiedad::all();
         
         $router->view('/paginas/index',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'fotos'=>$fotos,
-            'status'=>$status,
-            'categorias'=>$categorias,
-            'tipoPropiedad'=>$tipoPropiedad
+            // 'status'=>$status,
+            // 'categorias'=>$categorias,
+            // 'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 
@@ -81,18 +81,18 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        $tipoPropiedad=TipoPropiedad::all();
+        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        $status = Status::all();
-        $categorias = Categoria::all();
+        // $status = Status::all();
+        // $categorias = Categoria::all();
 
         $router->view('/paginas/casas',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad,
-            'status'=>$status,
-            'categorias'=>$categorias,
+            // 'tipoPropiedad'=>$tipoPropiedad,
+            // 'status'=>$status,
+            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -101,18 +101,18 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        $tipoPropiedad=TipoPropiedad::all();
+        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        $status = Status::all();
-        $categorias = Categoria::all();
+        // $status = Status::all();
+        // $categorias = Categoria::all();
 
         $router->view('/paginas/departamentos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad,
-            'status'=>$status,
-            'categorias'=>$categorias,
+            // 'tipoPropiedad'=>$tipoPropiedad,
+            // 'status'=>$status,
+            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -121,18 +121,18 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        $tipoPropiedad=TipoPropiedad::all();
+        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        $status = Status::all();
-        $categorias = Categoria::all();
+        // $status = Status::all();
+        // $categorias = Categoria::all();
 
         $router->view('/paginas/terrenos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad,
-            'status'=>$status,
-            'categorias'=>$categorias,
+            // 'tipoPropiedad'=>$tipoPropiedad,
+            // 'status'=>$status,
+            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -155,7 +155,7 @@ class PaginasController{
 
     public static function contacto(Router $router){
         $mensaje = null;
-        $tipos = TipoPropiedad::all();
+        // $tipos = TipoPropiedad::all();
 
         if($_SERVER['REQUEST_METHOD']==="POST"){
             $respuestas=$_POST;
@@ -167,7 +167,7 @@ class PaginasController{
 
         $router->view('/paginas/contacto',[
             'mensaje'=>$mensaje,
-            'tipos'=>$tipos
+            // 'tipos'=>$tipos
         ]);
     }
 
@@ -175,18 +175,18 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        $tipoPropiedad=TipoPropiedad::all();
+        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        $status = Status::all();
-        $categorias = Categoria::all();
+        // $status = Status::all();
+        // $categorias = Categoria::all();
 
         $router->view('/paginas/comercial',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            'tipoPropiedad'=>$tipoPropiedad,
-            'status'=>$status,
-            'categorias'=>$categorias,
+            // 'tipoPropiedad'=>$tipoPropiedad,
+            // 'status'=>$status,
+            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -199,12 +199,11 @@ class PaginasController{
         $amenidad = Amenidad::find($id);
         $fotos = Foto::find($id);
         $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
-        $escritura = Escritura::find($propiedad->idEscritura);
         $metodosVenta = MetodosVenta::find($id);
 
-        $categoria = Categoria::find($propiedad->categoria);
+        // $categoria = Categoria::find($propiedad->categoria);
         // debuguear($metodosVenta);
-        $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
+        // $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
         $router->view('/paginas/infoPropiedad',[
             'propiedad'=>$propiedad,
@@ -213,10 +212,9 @@ class PaginasController{
             'amenidad'=>$amenidad,
             'fotos'=>$fotos,
             'estacionamiento'=>$estacionamiento,
-            'escritura'=>$escritura,
-            'metodosVenta'=>$metodosVenta,
-            'categoria'=>$categoria,
-            'tipoPropiedad'=>$tipoPropiedad
+            'metodosVenta'=>$metodosVenta
+            // 'categoria'=>$categoria,
+            // 'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 }

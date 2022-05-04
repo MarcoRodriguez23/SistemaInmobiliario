@@ -7,11 +7,42 @@
         <option value="" disabled 
         <?php echo ($propiedad->tipoPropiedad === "") ? 'selected' : ''; ?>
         >--Selecciona una opción--</option>
-        <?php foreach ($tipoPropiedad as $row) :?>
-            <option 
-            <?php echo ($propiedad->tipoPropiedad === $row->id) ? 'selected' : ''; ?>
-            value="<?php echo s($row->id); ?>"><?php echo s($row->tipo); ?></option>
-        <?php endforeach; ?>
+        <option 
+            value="Casa"
+            <?php echo ($propiedad->tipoPropiedad === "Casa") ? 'selected' : ''; ?>
+        >
+        Casa
+        </option>
+        <option 
+            value="Departamento"
+            <?php echo ($propiedad->tipoPropiedad === "Departamento") ? 'selected' : ''; ?>
+        >
+        Departamento
+        </option>
+        <option 
+            value="Terreno"
+            <?php echo ($propiedad->tipoPropiedad === "Terreno") ? 'selected' : ''; ?>
+        >
+        Terreno
+        </option>
+        <option 
+            value="Bodega"
+            <?php echo ($propiedad->tipoPropiedad === "Bodega") ? 'selected' : ''; ?>
+        >
+        Bodega
+        </option>
+        <option 
+            value="Local"
+            <?php echo ($propiedad->tipoPropiedad === "Local") ? 'selected' : ''; ?>
+        >
+        Local
+        </option>
+        <option 
+            value="Oficina"
+            <?php echo ($propiedad->tipoPropiedad === "Oficina") ? 'selected' : ''; ?>
+        >
+        Oficina
+        </option>
     </select>
     <?php echo isset($erroresPropiedad["tipoPropiedad"]) ? "<p>".$erroresPropiedad["tipoPropiedad"]."</p>" : "" ?>
     </div>
@@ -29,6 +60,24 @@
                 value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
             <?php endif; ?>
         <?php endforeach; ?>
+        <option
+            value="venta"
+            <?php echo ($propiedad->status === 'venta') ? 'selected' : ''; ?>
+        >
+        Venta
+        </option>
+        <option
+            value="preventa"
+            <?php echo ($propiedad->status === 'preventa') ? 'selected' : ''; ?>
+        >
+        Preventa
+        </option>
+        <option
+            value="renta"
+            <?php echo ($propiedad->status === 'renta') ? 'selected' : ''; ?>
+        >
+        Renta
+        </option>
     </select>
     <?php echo isset($erroresPropiedad["status"]) ? "<p>".$erroresPropiedad["status"]."</p>" : "" ?>
     </div>
@@ -39,13 +88,30 @@
     <div>
     <select name="propiedad[categoria]">
         <option value="" disabled selected>--Selecciona una opción--</option>
-        <?php foreach ($categorias as $row) :?>
-            <?php if($row->id !='0'): ?>
-                <option 
-                <?php echo ($propiedad->categoria === $row->id) ? 'selected' : ''; ?>
-                value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->tipo)); ?></option>
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <option 
+            value="Para construir"
+            <?php echo ($propiedad->categoria === "Para construir") ? 'selected' : ''; ?>
+        >
+        Para construir
+        </option>
+        <option 
+            value="Con remodelado"
+            <?php echo ($propiedad->categoria === "Con remodelado") ? 'selected' : ''; ?>
+        >
+        Con remodelado
+        </option>
+        <option 
+            value="Para remodelar"
+            <?php echo ($propiedad->categoria === "Para remodelar") ? 'selected' : ''; ?>
+        >
+        Para remodelar
+        </option>
+        <option 
+            value="Para laborar"
+            <?php echo ($propiedad->categoria === "Para laborar") ? 'selected' : ''; ?>
+        >
+        Para laborar
+        </option>
     </select>
     <?php echo isset($erroresPropiedad["categoria"]) ? "<p>".$erroresPropiedad["categoria"]."</p>" : "" ?>
     </div>
@@ -529,15 +595,28 @@
 <fieldset id="fieldSetEscritura">
     <legend>Escritura y opciones de venta</legend>
     <div>
-        <select name="propiedad[idEscritura]">
+        <select name="propiedad[escritura]">
             <option value="" disabled selected>--Selecciona un opción--</option>
-            <?php foreach ($escrituras as $escritura) :?>
-                <option 
-                <?php echo ($propiedad->idEscritura === $escritura->id) ? 'selected' : ''; ?>
-                value="<?php echo s($escritura->id); ?>"><?php echo s($escritura->tipo); ?></option>
-            <?php endforeach; ?>
+            <option 
+                value="Escritura"
+                <?php echo ($propiedad->escritura === "Escritura") ? 'selected' : ''; ?>
+            >
+            Escritura
+            </option>
+            <option 
+                value="Cesión de derechos"
+                <?php echo ($propiedad->escritura === "Cesión de derechos") ? 'selected' : ''; ?>
+            >
+            Cesión de derechos
+            </option>
+            <option 
+                value="Remate"
+                <?php echo ($propiedad->escritura === "Remate") ? 'selected' : ''; ?>
+            >
+            Remate
+            </option>
         </select>
-        <?php echo isset($erroresPropiedad["idEscritura"]) ? "<p>".$erroresPropiedad["idEscritura"]."</p>" : "" ?>
+        <?php echo isset($erroresPropiedad["escritura"]) ? "<p>".$erroresPropiedad["escritura"]."</p>" : "" ?>
     </div>
     
     
