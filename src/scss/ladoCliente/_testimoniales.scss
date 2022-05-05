@@ -1,0 +1,48 @@
+//DISEÑO PARA LOS TESTIMONIALES
+
+.testimoniales{
+    @include desktop{
+        @include grid(3,1rem);
+    }
+}
+.testimonial {
+    width: 80%;
+    margin: 2rem auto;
+    border: 1px solid $gris;
+    background-color: $blanco;
+    font-size: 1.2rem;
+    padding: 1rem;
+    color: $negro;
+    border-radius: 1rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    blockquote {
+        padding-left: 4rem;
+        position: relative;
+        text-align: center;
+
+        &::before {
+            content: '';
+            background-image: url(../img/comilla.svg);
+            background-repeat: no-repeat;
+            width: 3rem;
+            height: 5rem;
+            display: block;
+            position: absolute;
+            left: -2rem;
+            filter: invert(100);
+        }
+    }
+    p {
+        text-align: right;
+        color: $negro;
+        margin: 0 1rem;
+    }
+
+    @include tablet{
+        font-size: 1.6rem;
+        margin: 4rem;
+    }
+}

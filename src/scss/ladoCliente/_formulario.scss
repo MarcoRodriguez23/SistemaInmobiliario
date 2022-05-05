@@ -1,0 +1,78 @@
+//DISEÑO para el formulario de contacto
+.formulario-texto{
+    p{
+        font-size: 1.6rem;
+        text-align: center;
+        line-height: 1.6;
+    }
+}
+.color-formulario{
+    width: 90%;
+    margin: 0 auto;
+    background-color: $gris;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+
+}
+.formulario-user{
+    padding: 2rem;
+    label{
+        font-size: 1.4rem;
+        font-weight: $regular;
+        display: block;
+        color: $blanco;
+    }
+    input:not([type="submit"])
+    ,textarea,select{
+        border-radius: 0.5rem;
+        padding: 0.8rem;
+        display: block;
+        width: 100%;
+        border: none;
+        // margin-bottom: 1rem;
+        
+    }
+    textarea{
+        height: 20rem
+    }
+    @include tablet{
+        @include grid(2,3rem);
+
+        .mensaje-formulario,
+        .boton-formulario{
+            grid-column: 1/3;
+        }
+    }
+    
+}
+
+.login{
+    input[type="submit"]{
+        font-size: 1.8rem;
+        padding: 2rem;
+    }
+}
+
+.pantalla-login{
+    @include tablet{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        min-height: 100vh;
+    }
+
+    .imagen-login{
+        height: 20rem;
+        background-image: url('../img/vision.jpg');
+        background-size: cover;
+        background-position: center center;
+        @include tablet{
+            height: auto;
+        }
+    }
+
+    .login-plantilla{
+        width: 95%;
+        margin: 0 auto;
+        padding: 3rem 0;
+    }
+}

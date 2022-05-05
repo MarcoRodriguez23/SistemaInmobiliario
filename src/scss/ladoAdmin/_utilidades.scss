@@ -1,0 +1,166 @@
+@mixin boton($p, $s) {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-weight: $bold;
+    font-size: 1.6rem;
+    text-align: center;
+    color: $blanco !important;
+    background-color: $p;
+    border-radius: 6px;
+    border: 2px solid $s;
+    transition: all 0.6s ease;
+    &:hover{
+        color: $p !important;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+}
+
+.boton-rojo{
+    @include boton($rojo, $rojo-intenso);
+}
+
+.boton-amarillo{
+    @include boton($amarillo, $amarillo-intenso);
+}
+
+.boton-verde{
+    @include boton ($verde, $verde-intenso);
+}
+
+.boton-azul{
+    @include boton ($azul, $azul-intenso);
+}
+
+.boton-morado{
+    @include boton ($morado, $morado-intenso);
+}
+
+@mixin transicionBotones($colorIntenso){
+    
+    &:hover{
+        background-color: $colorIntenso;
+    }
+}
+
+.boton-volver{
+    @include boton($amarillo,$amarillo-intenso);
+    font-size: 2rem;
+    height: auto;
+    width: auto;
+    color: $negro;
+}
+
+.boton-aumento{
+    @include boton ($azul,$azul-intenso);
+    color: $negro;
+}
+
+.boton-tipo{
+    @include boton ($azul,$amarillo-intenso);
+    color: $negro;
+}
+
+.boton-superior{
+    background-color: $amarillo;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include transicionBotones($amarillo-intenso);
+    &:hover{
+        transform: scale(1.15);
+    }
+
+}
+
+.opcion-superior{
+    margin: 2rem auto;
+    display: flex;
+    justify-content: flex-end;
+    a{
+        img{
+            height: 60%;
+            width: 60%;
+            margin:auto;
+        }
+    }
+}
+
+.plantilla{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.tabla{
+    border: 1px solid $gris;
+    border-radius: 0.5rem;
+    background-color: $blanco-gris;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    table{
+        background-color: $blanco;
+        width: 98%;
+        margin: 2rem auto;
+        th,td{
+            border: 1px solid $gris;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+        }
+        td{
+            div{
+                display: grid;
+                grid-template-columns: 30% 70%;
+                justify-content: center;
+                align-items: center;
+                img{
+                    border: 1px solid blue;
+                }
+            }
+        }
+    }
+
+    @include tablet{
+        table{
+            th,td{
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
+.comision{
+    background-color: rgb(28, 255, 28) !important;
+}
+
+.alerta{
+    padding: .5rem;
+    margin: 2rem auto;
+    text-align: center;
+    color: $blanco;
+    font-weight: $bold;
+    text-transform: uppercase;
+    
+    &.error{
+        background-color: $rojo;
+    }
+    &.exito{
+        background-color: $verde;
+    }
+}
+
+.fotos-actuales{
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.enlace-tabla{
+    background-color: $morado;
+}
