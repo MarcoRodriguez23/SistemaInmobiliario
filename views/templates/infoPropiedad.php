@@ -93,10 +93,10 @@
                     <p>Núm. de predio: <?php echo $propiedad->numPredio; ?></p>
                 </li>
                 <?php endif; ?>
-                <?php if($estacionamiento->tipo!=""): ?>
+                <?php if($propiedad->estacionamiento!=""): ?>
                 <li>
                     <img src="/build/img/Iconos/icono_estacionamiento1.svg" alt="icono">
-                    <p>Tipo de estacionamiento: <?php echo $estacionamiento->tipo; ?></p>
+                    <p>Tipo de estacionamiento: <?php echo $propiedad->estacionamiento; ?></p>
                 </li>
                 <?php endif; ?>
                 <?php if($propiedad->numEstacionamientos!=0): ?>
@@ -113,10 +113,10 @@
     <h2>Info. y características extra</h2>
     <div class="extra-elementos">
         <ul>
-            <?php if($propiedad->categoria!=0): ?>
+            <?php if($propiedad->categoria!=""): ?>
             <li>
                 <img src="/build/img/Iconos/icono_edificio3.svg" alt="icono">
-                <p><?php echo $propiedad->categoria==='1' ? "Con remodelado" : "Para remodelación"; ?></p>
+                <p><?php echo $propiedad->categoria; ?></p>
             </li>
             <?php endif; ?>
             <?php if($propiedad->año!=0): ?>
@@ -258,7 +258,6 @@
                             </li>';
                     }
                 }
-                
             }
             ?>
         </ul>

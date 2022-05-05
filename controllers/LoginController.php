@@ -3,12 +3,12 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Usuario;
-use Classes\Email;
-
 require_once '../Router.php';
+use Model\Usuario;
 require_once '../models/Usuario.php';
+use Classes\Email;
 require_once '../classes/Email.php';
+
 
 class LoginController{
 

@@ -73,35 +73,6 @@ function carrousel(){
               ]
         });
     }
-    const admin = document.getElementById('C-admin');
-    if(admin){
-        new Glider(admin,{
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: '#indicadores-admin',
-            arrows: {
-                prev: '#anterior-admin',
-                next: '#siguiente-admin'},
-            // responsive: [
-            //     {
-            //       // screens greater than >= 775px
-            //       breakpoint: 740,
-            //       settings: {
-            //         // Set to `auto` and provide item width to adjust to viewport
-            //         slidesToShow: 2,
-            //         slidesToScroll: 2,
-            //       }
-            //     },{
-            //       // screens greater than >= 1024px
-            //       breakpoint: 1024,
-            //       settings: {
-            //         slidesToShow: 2,
-            //         slidesToScroll: 2,
-            //       }
-            //     }
-            //   ]
-        });
-    }
     const servicios = document.getElementById('C-servicios');
     if(servicios){
         new Glider(servicios,{
@@ -218,106 +189,6 @@ function carrousel(){
     
 }
 
-
-// function formularioInmueble(){
-//   const AumentoODisminucion = document.querySelectorAll('input[name="aumento-disminucion"]');
-  
-//   AumentoODisminucion.forEach(element => {
-//       element.addEventListener('click',DescuentoAumento);
-//   });
-// }
-
-// function DescuentoAumento(e){
-// const tipoAAgregar = document.querySelector('#tipo-a-agregar');
-
-// if(e.target.value === "Descuento"){
-//     tipoAAgregar.innerHTML=`
-//     <label>Descuento</label>
-//     <div class="opciones"> 
-//         <input name="tipo-a-agregar" type="radio" value="Porcentaje">
-//         <label for="porcentaje">Porcentaje</label>
-//         <input name="tipo-a-agregar" type="radio" value="Cantidad"> 
-//         <label for="cantidad">Cantidad</label>  
-//     </div>
-//     `;
-//     tipo="descuento";
-// }
-// else{
-//     tipoAAgregar.innerHTML=`
-//     <label>Aumento</label>
-//     <div class="opciones"> 
-//         <input name="tipo-a-agregar" type="radio" value="Porcentaje">
-//         <label for="porcentaje">Porcentaje</label>
-//         <input name="tipo-a-agregar" type="radio" value="Cantidad"> 
-//         <label for="cantidad">Cantidad</label>  
-//     </div>
-//     `;
-//     tipo="aumento";
-// }
-
-// const denominacion=document.querySelectorAll('input[name="tipo-a-agregar"]');
-// console.log(denominacion);
-
-// denominacion.forEach(element => {
-//     element.addEventListener('click',CantidadPorcentaje);
-// });
-// }
-
-// function CantidadPorcentaje(e){
-// const denominacion = document.querySelector('#denominacion');
-// denominacion.innerHTML="";
-// if(e.target.value === "Cantidad"){
-//     denominacion.innerHTML= `
-//     <label>Cantidad</label>
-//     <input type="number" placeholder="ejem: 1000" min="1" id="denominacion">
-//     `;
-//     unidad="cantidad";
-// }
-// else{
-//     denominacion.innerHTML= `
-//     <label>Porcentaje</label>
-//     <input type="number" placeholder="Del 1 al 100" min="1" max="100" id="denominacion">
-//     `;
-//     unidad="porcentaje";
-// }
-
-// operacion();
-// }
-
-// function operacion(){
-// const valorinicial = document.querySelector('#precio');
-// const valorFinal = document.querySelector('input[name="valor-final"]');
-// let inputDenominacion;
-// console.log(tipo);
-// console.log(unidad);
-// console.log(valorinicial.value);
-// if(tipo==="aumento"){
-//     if(unidad==="cantidad"){
-//         inputDenominacion =  document.querySelector('#denominacion').value;
-//         console.log(inputDenominacion);
-//     }
-//     else{
-//         inputDenominacion =  document.querySelector('#denominacion').value;
-//         console.log(inputDenominacion);
-//     }
-// }
-// if(tipo==="descuento"){
-//     if(unidad==="cantidad"){
-//         inputDenominacion =  document.querySelector('#denominacion').value;
-//         console.log(inputDenominacion);
-        
-//     }
-//     else{
-//         inputDenominacion =  document.querySelector('#denominacion').value;
-//         console.log(inputDenominacion);
-
-//     }
-// }
-
-// } 
-
-
-
 function cambiarSeccion() {
 const enlaces = document.querySelectorAll('.tabs button');
 
@@ -328,8 +199,6 @@ enlaces.forEach( enlace => {
 
         // Llamar la función de mostrar sección
         mostrarSeccion();
-
-        // botonesPaginador();
     })
 })
 }
@@ -356,23 +225,6 @@ const tab = document.querySelector(`[data-paso="${pagina}"]`);
 tab.classList.add('actual');
 }
 
-// function cambiarValorCheckbox(){
-//   const botones = document.querySelectorAll("input[type=checkbox]");
-
-//   botones.forEach(element => {
-//     element.setAttribute("value","1");
-//     element.addEventListener('click',()=>{
-      
-//       if(element.checked){
-//         element.setAttribute("value","1");
-//       }
-//       else{
-//         element.setAttribute("value","0");
-//       }
-//     });
-//   });
-
-// }
 
 function ConfirmDelete(){
   var respuesta = confirm("¿Esta seguro que desea eliminar el registro?");
@@ -493,7 +345,6 @@ function mostrarAlerta(mensaje, tipo, posicion) {
 function ocultarFieldsetsFormularioInmueble(){
   const formularioCreate = document.querySelector('#formulario-propiedad-create');
   const formularioUpdate = document.querySelector('#formulario-propiedad-update');
-
 
   const fieldSetStatus = document.querySelector('#fieldSetStatus');
   const fieldSetRemodelacion = document.querySelector('#fieldSetRemodelacion');

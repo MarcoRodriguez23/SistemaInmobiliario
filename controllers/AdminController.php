@@ -3,25 +3,24 @@
 namespace Controllers;
 
 use MVC\Router;
-
-use Model\Propiedad;
-use Model\Direccion;
-use Model\Usuario;
-use Model\Citas;
-use Model\Venta;
-use Model\Mueble;
-use Model\Amenidad;
-use Model\MetodosVenta;
-
 require_once '../Router.php';
 
+use Model\Propiedad;
 require_once '../models/Propiedad.php';
+use Model\Direccion;
 require_once '../models/Direccion.php';
+use Model\Citas;
 require_once '../models/Citas.php';
+use Model\Usuario;
 require_once '../models/Usuario.php';
+use Model\Mueble;
 require_once '../models/Mueble.php';
+use Model\Amenidad;
 require_once '../models/Amenidad.php';
+use Model\MetodosVenta;
 require_once '../models/MetodosVenta.php';
+use Model\Venta;
+require_once '../models/Venta.php';
 
 //CONTROLADOR CONCLUIDO
 class AdminController{
@@ -59,16 +58,7 @@ class AdminController{
         //POST para realizar el filtrado de citas
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             $filtro = $_POST['filtro'];
-
-            if($_SESSION['nivel']==1){
-                $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
-            }
-            elseif($_SESSION['nivel']==2){
-                $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
-            }
-            elseif($_SESSION['nivel']==3){
-                $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
-            }
+            $citas = Citas::filter($filtro,$_SESSION['id'],$_SESSION['nivel']);
         }
         else{
             if($_SESSION['nivel']==1){
@@ -77,7 +67,6 @@ class AdminController{
             elseif($_SESSION['nivel']>1){
                 //buscando todas las citas del agente en sesión y de sus vendedores o las citas del vendedor en sesión
                 $citas= Citas::CitasAgenteOVendedor($_SESSION['id']);
-
             }
         }
 

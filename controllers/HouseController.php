@@ -3,40 +3,28 @@
 namespace Controllers;
 
 use MVC\Router;
-
-use Model\Amenidad;
-use Model\Propiedad;
-use Model\Direccion;
-use Model\Estacionamiento;
-use Model\MetodosVenta;
-// use Model\Escritura;
-use Model\Mueble;
-// use Model\TipoPropiedad;
-use Model\Foto;
-// use Model\Categoria;
-
-use Model\Usuario;
-use Model\Citas;
-use Model\Venta;
-
-use Intervention\Image\ImageManagerStatic as Image;
-// use Model\Status;
-
 require_once '../Router.php';
 
+use Model\Amenidad;
 require_once '../models/Amenidad.php';
+use Model\Propiedad;
 require_once '../models/Propiedad.php';
+use Model\Direccion;
 require_once '../models/Direccion.php';
-require_once '../models/Estacionamiento.php';
+use Model\MetodosVenta;
 require_once '../models/MetodosVenta.php';
-// require_once '../models/Escritura.php';
+use Model\Mueble;
 require_once '../models/Mueble.php';
-// require_once '../models/TipoPropiedad.php';
+use Model\Foto;
 require_once '../models/Foto.php';
-// require_once '../models/Categoria.php';
-
+use Model\Usuario;
 require_once '../models/Usuario.php';
+use Model\Citas;
 require_once '../models/Citas.php';
+use Model\Venta;
+require_once '../models/Venta.php';
+
+use Intervention\Image\ImageManagerStatic as Image;
 
 class HouseController{
     
@@ -46,10 +34,7 @@ class HouseController{
 
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        // $status = Status::all();
-        // $categorias = Categoria::all();
 
         $filtro = [];
 
@@ -89,10 +74,7 @@ class HouseController{
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            // 'tipoPropiedad'=>$tipoPropiedad,
             'mensaje'=>$mensaje,
-            // 'status'=>$status,
-            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
             'filtro'=>$filtro
         ]);
@@ -106,14 +88,6 @@ class HouseController{
         $metodosVenta = new MetodosVenta();
         $muebles = new Mueble();
         $amenidades = new Amenidad();
-        
-
-        //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
-        $estacionamientos = Estacionamiento::all();
-        // $escrituras = Escritura::all();
-        // $tipoPropiedad = TipoPropiedad::all();
-        // $categorias = Categoria::all();
-        // $status = Status::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad = [];
@@ -122,7 +96,6 @@ class HouseController{
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            // debuguear($_POST);
 
             //creando nueva instancia de cada clase
             $propiedad = new Propiedad($_POST['propiedad']);        
@@ -194,15 +167,10 @@ class HouseController{
             'erroresDireccion'=>$erroresDireccion,
             'propiedad'=>$propiedad,
             'erroresPropiedad'=>$erroresPropiedad,
-            'estacionamientos'=>$estacionamientos,
-            // 'escrituras'=>$escrituras,
-            // 'tipoPropiedad'=>$tipoPropiedad,
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
-            "erroresMetodosVenta"=>$erroresMetodosVenta,
-            // "categorias"=>$categorias,
-            // "status"=>$status
+            "erroresMetodosVenta"=>$erroresMetodosVenta
         ]);
     }
 
@@ -216,15 +184,9 @@ class HouseController{
         $muebles =  Mueble::find($id);        
         $amenidades = Amenidad::find($id);        
         $metodosVenta = MetodosVenta::find($id); 
-        // debuguear($metodosVenta);   
         
         //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
-        $estacionamientos = Estacionamiento::all();
-        // $escrituras = Escritura::all();
-        // $tipoPropiedad = TipoPropiedad::all();
-        // $categorias = Categoria::all();
         $fotos = Foto::find($id);
-        // $status = Status::all();
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad= [];
@@ -323,16 +285,11 @@ class HouseController{
             'erroresDireccion'=>$erroresDireccion,
             'propiedad'=>$propiedad,
             'erroresPropiedad'=>$erroresPropiedad,
-            'estacionamientos'=>$estacionamientos,
-            // 'escrituras'=>$escrituras,
-            // 'tipoPropiedad'=>$tipoPropiedad,
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
             "erroresMetodosVenta"=>$erroresMetodosVenta,
-            // "categorias"=>$categorias,
             "fotos"=>$fotos,
-            // "status"=>$status,
             "erroresTamaño"=>$erroresTamaño
         ]);
     }
@@ -375,7 +332,6 @@ class HouseController{
 
             if($id){
                 $fotos = Foto::find($id);
-                
                 // para cada foto....
                 foreach ($fotos as $foto) {
                     //eliminando el archivo de la carpeta
@@ -394,13 +350,8 @@ class HouseController{
         $mueble = Mueble::find($id);
         $amenidad = Amenidad::find($id);
         $fotos = Foto::find($id);
-        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
-        // $escritura = Escritura::find($propiedad->idEscritura);
         $metodosVenta = MetodosVenta::find($id);
-        // $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
         $fotos = Foto::find($id);
-        // $categoria = Categoria::find($propiedad->categoria);
-
 
         $router->view('admin/propiedades/info',[
             'propiedad'=>$propiedad,
@@ -408,12 +359,8 @@ class HouseController{
             'mueble'=>$mueble,
             'amenidad'=>$amenidad,
             'fotos'=>$fotos,
-            'estacionamiento'=>$estacionamiento,
-            // 'escritura'=>$escritura,
             'metodosVenta'=>$metodosVenta,
-            // 'tipoPropiedad'=>$tipoPropiedad,
-            'fotos'=>$fotos,
-            // 'categoria'=>$categoria
+            'fotos'=>$fotos
         ]);
     }
 
@@ -435,7 +382,6 @@ class HouseController{
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
-            // debuguear($_POST);
 
             //creando nueva instancia de cada clase
             $cita = new Citas($_POST['cita']);        
@@ -468,14 +414,12 @@ class HouseController{
         $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
-        // $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
         $metodos = MetodosVenta::find($id);
         $amenidad = Amenidad::find($id);
         $mueble = Mueble::find($id);
         $vendedores = Usuario::all();
         $fotos = Foto::find($id);
         $venta = Venta::where('idPropiedad',$id);
-        // debuguear($venta);
 
         $erroresVenta = Venta::getErrores();
 
@@ -502,12 +446,10 @@ class HouseController{
                 
                 //asignando valores al objeto de foto
                 $venta->contrato = $nombreContrato;
-                // debuguear($venta);
             }
                     
             //validando la existencia de erroes en el formulario
             $erroresVenta = $venta->validar();
-            // debuguear($erroresVenta);
             
             //si no hay errores proceder a los queries hacia la base de datos
             if(empty($erroresVenta)){
@@ -528,8 +470,6 @@ class HouseController{
                     move_uploaded_file($_FILES['contrato']['tmp_name'],CARPETA_CONTRATOS . $nombreContrato);
                 }
 
-                // debuguear($file);
-                
                 // GUARDANDO EN LA BD
                 $guardarVenta=$venta->guardar();
                 if($guardarVenta){
@@ -544,7 +484,6 @@ class HouseController{
         $router->view('admin/propiedades/sell',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
-            // 'tipoPropiedad'=>$tipoPropiedad,
             'metodos'=>$metodos,
             'mueble'=>$mueble,
             'amenidad'=>$amenidad,

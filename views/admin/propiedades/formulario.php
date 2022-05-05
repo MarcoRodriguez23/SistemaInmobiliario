@@ -53,13 +53,7 @@
     <div>
     <select id="status" name="propiedad[status]">
         <option value="" disabled selected>--Selecciona una opción--</option>
-        <?php foreach ($status as $row) :?>
-            <?php if($row->id !=2): ?>
-                <option 
-                <?php echo ($propiedad->status === $row->id) ? 'selected' : ''; ?>
-                value="<?php echo s($row->id); ?>"><?php echo ucfirst(s($row->estado)); ?></option>
-            <?php endif; ?>
-        <?php endforeach; ?>
+
         <option
             value="venta"
             <?php echo ($propiedad->status === 'venta') ? 'selected' : ''; ?>
@@ -341,22 +335,41 @@
     </div>
 
     <div>
-        <label for="idEstacionamiento">Tipo de estacionamiento</label>
-        <select name="propiedad[idEstacionamiento]" id="idEstacionamiento">
+        <label for="estacionamiento">Tipo de estacionamiento</label>
+        <select name="propiedad[estacionamiento]" id="estacionamiento">
             <option value="" disabled selected>--Seleccione un tipo de estacionamiento--</option>
-            <?php
-                foreach ($estacionamientos as $estacionamiento):?>
-                <?php if($estacionamiento->id != '0'): ?>  
-                    <option
-                        <?php echo $propiedad->idEstacionamiento === $estacionamiento->id ? 'selected' : ''; ?>
-                        value="<?php echo s($estacionamiento->id); ?>"
-                    >
-                    <?php echo s($estacionamiento->tipo); ?>
-                    </option>
-                <?php endif; ?>
-            <?php endforeach; ?>
+            <option
+                value="No aplica"
+                <?php echo $propiedad->estacionamiento === "No aplica" ? 'selected' : ''; ?>
+            >
+            No aplica
+            </option>
+            <option
+                value="Techado"
+                <?php echo $propiedad->estacionamiento === "Techado" ? 'selected' : ''; ?>
+            >
+            Techado
+            </option>
+            <option
+                value="Sin techar"
+                <?php echo $propiedad->estacionamiento === "Sin techar" ? 'selected' : ''; ?>
+            >
+            Sin techar
+            </option>
+            <option
+                value="Calle"
+                <?php echo $propiedad->estacionamiento === "Calle" ? 'selected' : ''; ?>
+            >
+            Calle
+            </option>
+            <option
+                value="Mécanico"
+                <?php echo $propiedad->estacionamiento === "Mécanico" ? 'selected' : ''; ?>
+            >
+            Mécanico
+            </option>
         </select>
-        <?php echo isset($erroresPropiedad["idEstacionamiento"]) ? "<p>".$erroresPropiedad["idEstacionamiento"]."</p>" : "" ?>
+        <?php echo isset($erroresPropiedad["estacionamiento"]) ? "<p>".$erroresPropiedad["estacionamiento"]."</p>" : "" ?>
     </div>
 
 

@@ -76,8 +76,8 @@ header("Content-Disposition: attachment; filename=propiedades.xls");
             <td><?php echo $propiedad->servicioH; ?></td>
             <td><?php echo $propiedad->servicioP; ?></td>
             
-            <td><?php echo "tipo PROp"; ?></td>
-            <td><?php echo "escritura"; ?></td>
+            <td><?php echo $propiedad->tipoPropiedad; ?></td>
+            <td><?php echo $propiedad->escritura; ?></td>
 
             <td><?php echo $metodo->fovissste==1 ? "Aplica" : "No aplica"; ?></td>
             <td><?php echo $metodo->credito==1 ? "Aplica" : "No aplica"; ?></td>

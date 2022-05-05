@@ -3,41 +3,25 @@
 namespace Controllers;
 
 use MVC\Router;
-
-use Model\Propiedad;
-use Model\Direccion;
-use Model\Amenidad;
-use Model\Mueble;
-// use Model\TipoPropiedad;
-use Model\MetodosVenta;
-use Model\Foto;
-// use Model\Escritura;
-use Model\Estacionamiento;
-// use Model\Categoria;
-// use Model\Status;
-
-use Model\Blog;
-use Model\Servicio;
-
-use Classes\Email;
-
 require_once '../Router.php';
 
+use Model\Propiedad;
 require_once '../models/Propiedad.php';
+use Model\Direccion;
 require_once '../models/Direccion.php';
+use Model\Amenidad;
 require_once '../models/Amenidad.php';
+use Model\Mueble;
 require_once '../models/Mueble.php';
-require_once '../models/TipoPropiedad.php';
+use Model\MetodosVenta;
 require_once '../models/MetodosVenta.php';
+use Model\Foto;
 require_once '../models/Foto.php';
-// require_once '../models/Escritura.php';
-require_once '../models/Estacionamiento.php';
-require_once '../models/Categoria.php';
-require_once '../models/Status.php';
-
+use Model\Blog;
 require_once '../models/Blog.php';
+use Model\Servicio;
 require_once '../models/Servicio.php';
-
+use Classes\Email;
 require_once '../classes/Email.php';
 
 class PaginasController{
@@ -47,17 +31,11 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $fotos=Foto::all();
-        // $status=Status::all();
-        // $categorias=Categoria::all();
-        // $tipoPropiedad=TipoPropiedad::all();
         
         $router->view('/paginas/index',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'fotos'=>$fotos,
-            // 'status'=>$status,
-            // 'categorias'=>$categorias,
-            // 'tipoPropiedad'=>$tipoPropiedad
+            'fotos'=>$fotos
         ]);
     }
 
@@ -81,18 +59,12 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        // $status = Status::all();
-        // $categorias = Categoria::all();
 
         $router->view('/paginas/casas',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            // 'tipoPropiedad'=>$tipoPropiedad,
-            // 'status'=>$status,
-            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -101,18 +73,12 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        // $status = Status::all();
-        // $categorias = Categoria::all();
 
         $router->view('/paginas/departamentos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            // 'tipoPropiedad'=>$tipoPropiedad,
-            // 'status'=>$status,
-            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -121,18 +87,12 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        // $status = Status::all();
-        // $categorias = Categoria::all();
 
         $router->view('/paginas/terrenos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            // 'tipoPropiedad'=>$tipoPropiedad,
-            // 'status'=>$status,
-            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -155,7 +115,6 @@ class PaginasController{
 
     public static function contacto(Router $router){
         $mensaje = null;
-        // $tipos = TipoPropiedad::all();
 
         if($_SERVER['REQUEST_METHOD']==="POST"){
             $respuestas=$_POST;
@@ -166,8 +125,7 @@ class PaginasController{
         }
 
         $router->view('/paginas/contacto',[
-            'mensaje'=>$mensaje,
-            // 'tipos'=>$tipos
+            'mensaje'=>$mensaje
         ]);
     }
 
@@ -175,18 +133,12 @@ class PaginasController{
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
         $metodosVenta=MetodosVenta::all();
-        // $tipoPropiedad=TipoPropiedad::all();
         $fotos = Foto::all();
-        // $status = Status::all();
-        // $categorias = Categoria::all();
 
         $router->view('/paginas/comercial',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
             'metodosVenta'=>$metodosVenta,
-            // 'tipoPropiedad'=>$tipoPropiedad,
-            // 'status'=>$status,
-            // 'categorias'=>$categorias,
             'fotos'=>$fotos,
         ]);
     }
@@ -198,12 +150,7 @@ class PaginasController{
         $mueble = Mueble::find($id);
         $amenidad = Amenidad::find($id);
         $fotos = Foto::find($id);
-        $estacionamiento = Estacionamiento::find($propiedad->idEstacionamiento);
         $metodosVenta = MetodosVenta::find($id);
-
-        // $categoria = Categoria::find($propiedad->categoria);
-        // debuguear($metodosVenta);
-        // $tipoPropiedad = TipoPropiedad::find($propiedad->tipoPropiedad);
 
         $router->view('/paginas/infoPropiedad',[
             'propiedad'=>$propiedad,
@@ -211,10 +158,7 @@ class PaginasController{
             'mueble'=>$mueble,
             'amenidad'=>$amenidad,
             'fotos'=>$fotos,
-            'estacionamiento'=>$estacionamiento,
             'metodosVenta'=>$metodosVenta
-            // 'categoria'=>$categoria,
-            // 'tipoPropiedad'=>$tipoPropiedad
         ]);
     }
 }

@@ -114,7 +114,7 @@ class Email {
        //quien lo envia
        $mail->setFrom('Sistema inmobiliario');
        //A donde va
-       $mail->addAddress('marco_ben2010@hotmail.com');
+       $mail->addAddress($_ENV['EMAIL_USER']);
        $mail->Subject='Tienes un nuevo mensaje';
        //habilitar html
        $mail->isHTML(true);

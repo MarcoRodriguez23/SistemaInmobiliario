@@ -3,13 +3,14 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Usuario;
-use Model\DireccionUsuario;
-use Classes\Email;
-
 require_once '../Router.php';
+use Model\Usuario;
+require_once '../models/Usuario.php';
+use Model\DireccionUsuario;
 require_once '../models/DireccionUsuario.php';
 
+use Classes\Email;
+require_once '../classes/Email.php';
 
 // CONTROLLER CONCLUIDO
 class AgentController{
