@@ -13,7 +13,6 @@
             Con más de 10 años de experiencia en la industria inmobiliaria te ofrecemos los servicios de compra, venta y remodelación de casas, departamentos, terrenos y locales comerciales en la CDMX.
             <br>
             Vende o compra tu casa, departamento, terreno o local comercial con inmobiliaria Gallardo, somos especialistas en identificar las mejores zonas para que elijas tu hogar con nosotros.
-
             </p>
             <a href="/servicios" class="boton-morado">Explorar</a>
         </div>

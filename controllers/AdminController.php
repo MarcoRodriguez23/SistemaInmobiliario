@@ -35,15 +35,16 @@ class AdminController{
         //el agente inmobiliario puede ver sus ventas y la de sus vendedores
         elseif($_SESSION['nivel']==2){
             $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);           
-            $ventas[]= Venta::where('idEncargado',$_SESSION['id']);
+            $ventas= Venta::whereAll('idEncargado',$_SESSION['id']);
             foreach ($usuarios as $key) {
-                $ventas[]= Venta::where('idEncargado',$key->id);
+                $ventas[]= Venta::whereAll('idEncargado',$key->id);
             }
         }
 
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
-        $trabajadores = Usuario::all();
+        $trabajadores = Usuario::whereAll('idCreador',$_SESSION['id']);    
+        $trabajadores[] = Usuario::find($_SESSION['id']);    
 
         $router->view('admin/ganancias/lista',[
             'ventas'=>$ventas,

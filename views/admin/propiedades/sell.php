@@ -157,10 +157,17 @@
 <form action="" class="contenedor formulario form-venta" method="POST" enctype="multipart/form-data">
     <fieldset>
         <legend>Responsable de la venta</legend>
-        <div>
-            <input type="hidden" name="venta[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
-            <input type="text" disabled value="<?php echo $_SESSION['nombre']; ?>">
-        </div>
+        <?php if(!isset($responsable)): ?>
+            <div>
+                <input type="hidden" name="venta[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
+                <input type="text" disabled value="<?php echo $_SESSION['nombre']; ?>">
+            </div>
+        <?php endif; ?>
+        <?php if(isset($responsable)): ?>
+            <div>
+                <input type="text" disabled value="<?php echo $responsable->nombre." ".$responsable->apellido; ?>">
+            </div>
+        <?php endif; ?>
         <div>
             <input type="hidden" name="venta[idPropiedad]" value="<?php echo $propiedad->id; ?>">
             <input type="hidden" name="propiedad[status]" value="vendida">

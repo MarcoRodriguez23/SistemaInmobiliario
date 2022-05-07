@@ -420,6 +420,9 @@ class HouseController{
         $vendedores = Usuario::all();
         $fotos = Foto::find($id);
         $venta = Venta::where('idPropiedad',$id);
+        if($venta){
+            $responsable = Usuario::find($venta->idEncargado);
+        }
 
         $erroresVenta = Venta::getErrores();
 
@@ -490,7 +493,8 @@ class HouseController{
             'vendedores'=>$vendedores,
             'erroresVenta'=>$erroresVenta,
             'fotos'=>$fotos,
-            'venta'=>$venta
+            'venta'=>$venta,
+            'responsable'=>$responsable
         ]);
     }
 
