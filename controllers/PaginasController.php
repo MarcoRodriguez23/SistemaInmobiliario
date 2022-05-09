@@ -9,12 +9,6 @@ use Model\Propiedad;
 require_once '../models/Propiedad.php';
 use Model\Direccion;
 require_once '../models/Direccion.php';
-use Model\Amenidad;
-require_once '../models/Amenidad.php';
-use Model\Mueble;
-require_once '../models/Mueble.php';
-use Model\MetodosVenta;
-require_once '../models/MetodosVenta.php';
 use Model\Foto;
 require_once '../models/Foto.php';
 use Model\Blog;
@@ -32,6 +26,7 @@ class PaginasController{
         $direcciones=Direccion::all();
         $fotos=Foto::all();
         
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/index',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
@@ -41,6 +36,8 @@ class PaginasController{
 
     public static function servicios(Router $router){
         $servicios = Servicio::all();
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/servicios',[
             'servicios'=>$servicios
         ]);
@@ -50,6 +47,7 @@ class PaginasController{
         $id = validarORedireccionar('/servicios');
         $servicio = Servicio::find($id);
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/servicio',[
             'servicio'=>$servicio
         ]);
@@ -58,13 +56,12 @@ class PaginasController{
     public static function casas(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $metodosVenta=MetodosVenta::all();
         $fotos = Foto::all();
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/casas',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'metodosVenta'=>$metodosVenta,
             'fotos'=>$fotos,
         ]);
     }
@@ -72,13 +69,12 @@ class PaginasController{
     public static function departamentos(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $metodosVenta=MetodosVenta::all();
         $fotos = Foto::all();
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/departamentos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'metodosVenta'=>$metodosVenta,
             'fotos'=>$fotos,
         ]);
     }
@@ -86,19 +82,20 @@ class PaginasController{
     public static function terrenos(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $metodosVenta=MetodosVenta::all();
         $fotos = Foto::all();
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/terrenos',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'metodosVenta'=>$metodosVenta,
             'fotos'=>$fotos,
         ]);
     }
 
     public static function blog(Router $router){
         $blog=blog::all();
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/blog',[
             'blog'=>$blog
         ]);
@@ -108,6 +105,7 @@ class PaginasController{
         $id = validarORedireccionar('/blog');
         $entrada = Blog::find($id);
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/articulo',[
             'entrada'=>$entrada
         ]);
@@ -124,6 +122,7 @@ class PaginasController{
             $mensaje = $email->emailContacto($respuestas);           
         }
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/contacto',[
             'mensaje'=>$mensaje
         ]);
@@ -132,13 +131,12 @@ class PaginasController{
     public static function comercial(Router $router){
         $propiedades=Propiedad::all();
         $direcciones=Direccion::all();
-        $metodosVenta=MetodosVenta::all();
         $fotos = Foto::all();
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/comercial',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'metodosVenta'=>$metodosVenta,
             'fotos'=>$fotos,
         ]);
     }
@@ -147,18 +145,13 @@ class PaginasController{
         $id = validarORedireccionar('/inmuebles');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
-        $mueble = Mueble::find($id);
-        $amenidad = Amenidad::find($id);
         $fotos = Foto::find($id);
-        $metodosVenta = MetodosVenta::find($id);
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/infoPropiedad',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
-            'mueble'=>$mueble,
-            'amenidad'=>$amenidad,
             'fotos'=>$fotos,
-            'metodosVenta'=>$metodosVenta
         ]);
     }
 }

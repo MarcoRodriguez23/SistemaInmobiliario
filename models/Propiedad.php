@@ -4,7 +4,7 @@ namespace Model;
 
 class Propiedad extends activeRecord{
     protected static $tabla='propiedad';
-    protected static $columnas_DB=['id','precio','año','mt2','mt2Construccion','escritura','estacionamiento','numEstacionamientos','numIdEstacionamiento','numPisos','piso','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision','numPredio','mantenimiento','categoria','creacion','idCreador'];
+    protected static $columnas_DB=['id','precio','año','mt2','mt2Construccion','escritura','estacionamiento','numEstacionamientos','numIdEstacionamiento','numPisos','piso','numElevadores','habitaciones','baños','servicioH','servicioP','tipoPropiedad','status','comision','numPredio','mantenimiento','categoria','creacion','idCreador','muebles','amenidades','metodosVenta'];
 
     public $id;
     public $precio;
@@ -30,6 +30,9 @@ class Propiedad extends activeRecord{
     public $categoria;
     public $creacion;
     public $idCreador;
+    public $muebles;
+    public $amenidades;
+    public $metodosVenta;
 
 
     public function __construct($args=[])
@@ -58,6 +61,9 @@ class Propiedad extends activeRecord{
         $this->categoria=$args['categoria']??0;
         $this->creacion=date('Y/m/d');
         $this->idCreador=$args['idCreador']??1;
+        $this->muebles=$args['muebles']??'';
+        $this->amenidades=$args['amenidades']??'';
+        $this->metodosVenta=$args['metodosVenta']??'';
     }
 
     public function validar(){

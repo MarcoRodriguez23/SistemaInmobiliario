@@ -1,4 +1,3 @@
-
 <!--PARTE DONDE SE ESCOGE EL TIPO DE PROPIEDAD-->
 <fieldset id="fieldSetTipoPropiedad">
     <legend>Tipo de propiedad</legend>
@@ -488,8 +487,8 @@
                 <input 
                     type="checkbox" 
                     name="muebles[sala]" 
-                    value="1"
-                    <?php echo $muebles->sala==1 ? 'checked' : ''; ?>
+                    value="sala"
+                    <?php echo stristr($propiedad->muebles,"sala") ? 'checked' : '' ; ?>
                     >
                 <label>Sala</label>
             </div>
@@ -498,8 +497,8 @@
                 <input 
                     type="checkbox" 
                     name="muebles[lavadora]" 
-                    value="1"
-                    <?php echo $muebles->lavadora==1 ? 'checked' : ''; ?>
+                    value="lavadora"
+                    <?php echo stristr($propiedad->muebles,"lavadora") ? 'checked' : '' ; ?>
                     >
                 <label>Lavadora</label>
             </div>    
@@ -508,8 +507,8 @@
                 <input 
                     type="checkbox" 
                     name="muebles[cocina]" 
-                    value="1"
-                    <?php echo $muebles->cocina==1 ? 'checked' : ''; ?>
+                    value="cocina"
+                    <?php echo stristr($propiedad->muebles,"cocina") ? 'checked' : '' ; ?>
                     >
                 <label>Cocina</label>
             </div>  
@@ -518,8 +517,8 @@
                 <input 
                     type="checkbox" 
                     name="muebles[boiler]" 
-                    value="1"
-                    <?php echo $muebles->boiler==1 ? 'checked' : ''; ?>
+                    value="boiler"
+                    <?php echo stristr($propiedad->muebles,"boiler") ? 'checked' : '' ; ?>
                     >
                 <label>Boiler</label>
             </div>  
@@ -528,8 +527,9 @@
                 <input 
                     type="checkbox" 
                     name="muebles[camas]" 
-                    value="1"
-                    <?php echo $muebles->camas==1 ? 'checked' : ''; ?>
+                    value="camas"
+                    <?php echo $muebles->camas=="camas" ? 'checked' : ''; ?>
+                    <?php echo stristr($propiedad->muebles,"camas") ? 'checked' : '' ; ?>
                     >
                 <label>Camas</label>
             </div>  
@@ -538,8 +538,8 @@
                 <input 
                     type="checkbox" 
                     name="muebles[roperos]" 
-                    value="1"
-                    <?php echo $muebles->roperos==1 ? 'checked' : ''; ?>
+                    value="roperos"
+                    <?php echo stristr($propiedad->muebles,"roperos") ? 'checked' : '' ; ?>
                     >
                 <label>Roperos</label>
             </div>  
@@ -550,8 +550,8 @@
                 <input 
                     type="checkbox" 
                     name="amenidades[roffGarden]" 
-                    value="1"
-                    <?php echo $amenidades->roffGarden==1 ? 'checked' : ''; ?>
+                    value="roff garden"
+                    <?php echo stristr($propiedad->amenidades,"roff garden") ? 'checked' : '' ; ?>
                     >
                 <label>Roff Garden</label>
             </div>     
@@ -559,8 +559,8 @@
                 <input 
                     type="checkbox" 
                     name="amenidades[salaDeUsosMultiples]" 
-                    value="1"
-                    <?php echo $amenidades->salaDeUsosMultiples==1 ? 'checked' : ''; ?>
+                    value="sala de usos multiples"
+                    <?php echo stristr($propiedad->amenidades,"sala de usos multiples") ? 'checked' : '' ; ?>
                     >
                 <label>Sala de usos multiples</label>
             </div>   
@@ -568,8 +568,8 @@
                 <input 
                     type="checkbox" 
                     name="amenidades[gimnasio]" 
-                    value="1"
-                    <?php echo $amenidades->gimnasio==1 ? 'checked' : ''; ?>
+                    value="gimnasio"
+                    <?php echo stristr($propiedad->amenidades,"gimnasio") ? 'checked' : '' ; ?>
                     >
                 <label>Gimnasio</label>
             </div>   
@@ -577,8 +577,9 @@
                 <input 
                     type="checkbox" 
                     name="amenidades[cancha]" 
-                    value="1"
-                    <?php echo $amenidades->cancha==1 ? 'checked' : ''; ?>
+                    value="cancha"
+                    <?php echo $amenidades->cancha=="cancha" ? 'checked' : ''; ?>
+                    <?php echo stristr($propiedad->amenidades,"cancha") ? 'checked' : '' ; ?>
                     >
                 <label>Cancha</label>
             </div>   
@@ -586,8 +587,8 @@
                 <input 
                     type="checkbox" 
                     name="amenidades[calentadorSolar]" 
-                    value="1"
-                    <?php echo $amenidades->calentadorSolar==1 ? 'checked' : ''; ?>
+                    value="calentador solar"
+                    <?php echo stristr($propiedad->amenidades,"calentador solar") ? 'checked' : '' ; ?>
                     >
                 <label>Calentador Solar</label>
             </div>   
@@ -595,8 +596,8 @@
                 <input 
                     type="checkbox" 
                     name="amenidades[alberca]" 
-                    value="1"
-                    <?php echo $amenidades->alberca==1 ? 'checked' : ''; ?>
+                    value="alberca"
+                    <?php echo stristr($propiedad->amenidades,"alberca") ? 'checked' : '' ; ?>
                     >
                 <label>Alberca</label>
             </div> 
@@ -638,8 +639,10 @@
             <input 
                 type="checkbox" 
                 name="metodosventa[fovissste]" 
-                value="1"
-                <?php echo $metodosVenta->fovissste==1 ? 'checked' : '' ; ?>
+                value="fovissste"
+                <?php echo stristr($propiedad->metodosVenta,"fovissste") ? 'checked' : '' ; ?>
+                
+                
                 >
             <label>FOVISSSTE</label>
         </div> 
@@ -647,8 +650,8 @@
             <input 
                 type="checkbox" 
                 name="metodosventa[infonavit]" 
-                value="1"
-                <?php echo $metodosVenta->infonavit==1 ? 'checked' : '' ; ?>
+                value="infonavit"
+                <?php echo stristr($propiedad->metodosVenta,"infonavit") ? 'checked' : '' ; ?>
                 >
             <label>INFONAVIT</label>
         </div> 
@@ -656,8 +659,8 @@
             <input 
                 type="checkbox" 
                 name="metodosventa[credito]" 
-                value="1"
-                <?php echo $metodosVenta->credito==1 ? 'checked' : '' ; ?>
+                value="credito bancario"
+                <?php echo stristr($propiedad->metodosVenta,"credito bancario") ? 'checked' : '' ; ?>
                 >
             <label>Credito bancario</label>
         </div> 
@@ -665,8 +668,8 @@
             <input 
                 type="checkbox" 
                 name="metodosventa[efectivo]" 
-                value="1"
-                <?php echo $metodosVenta->efectivo==1 ? 'checked' : '' ; ?>
+                value="efectivo"
+                <?php echo stristr($propiedad->metodosVenta,"efectivo") ? 'checked' : '' ; ?>
                 >
             <label>Efectivo</label>
         </div> 

@@ -13,12 +13,6 @@ use Model\Citas;
 require_once '../models/Citas.php';
 use Model\Usuario;
 require_once '../models/Usuario.php';
-use Model\Mueble;
-require_once '../models/Mueble.php';
-use Model\Amenidad;
-require_once '../models/Amenidad.php';
-use Model\MetodosVenta;
-require_once '../models/MetodosVenta.php';
 use Model\Venta;
 require_once '../models/Venta.php';
 
@@ -34,13 +28,20 @@ class AdminController{
         }
         //el agente inmobiliario puede ver sus ventas y la de sus vendedores
         elseif($_SESSION['nivel']==2){
-            $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);           
-            $ventas[]= Venta::where('idEncargado',$_SESSION['id']);
-            foreach ($usuarios as $key) {
-                $ventas[]= Venta::where('idEncargado',$key->id);
-            }
+            //buscando a los vendedores que registrados por el agente en sesión
+            $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
+            //buscando las ventas del agente en sesión           
+            $ventas= Venta::whereAll('idEncargado',$_SESSION['id']);
+            //foreach para buscar las ventas concretadas por cada vendedor del agente en sesión
+            foreach ($usuarios as $usuario) {
+                $venta=Venta::whereAll('idEncargado',$usuario->id);
+                //foreach para agregar al arreglo de ventas, las ventas de cada vendedor
+                foreach ($venta as $key) {
+                    $ventas[]=$key;
+                }
+            }            
         }
-
+        
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
         $trabajadores = Usuario::all();
@@ -87,15 +88,11 @@ class AdminController{
     public static function excel(Router $router){
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
-        $muebles = Mueble::all();
-        $amenidades = Amenidad::all();
-        $metodosVenta = MetodosVenta::all();
+
+
         $router->view('../views/generarExcel',[
             "propiedades"=>$propiedades,
-            "direcciones"=>$direcciones,
-            "muebles"=>$muebles,
-            "amenidades"=>$amenidades,
-            "metodosVenta"=>$metodosVenta
+            "direcciones"=>$direcciones
         ]);
     }
 }

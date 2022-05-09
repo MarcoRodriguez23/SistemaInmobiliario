@@ -5,16 +5,10 @@ namespace Controllers;
 use MVC\Router;
 require_once '../Router.php';
 
-use Model\Amenidad;
-require_once '../models/Amenidad.php';
 use Model\Propiedad;
 require_once '../models/Propiedad.php';
 use Model\Direccion;
 require_once '../models/Direccion.php';
-use Model\MetodosVenta;
-require_once '../models/MetodosVenta.php';
-use Model\Mueble;
-require_once '../models/Mueble.php';
 use Model\Foto;
 require_once '../models/Foto.php';
 use Model\Usuario;
@@ -28,19 +22,17 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class HouseController{
     
-    //funciones para las paginas de las propiedades
-    //VERIFICAR FOTOGRAFIAS
+    //TODO BIEN
     public static function index(Router $router){
-
+        //CREANDO LOS OBJETOS Y VARIABLES QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
         $direcciones=Direccion::all();
-        $metodosVenta=MetodosVenta::all();
         $fotos = Foto::all();
-
         $filtro = [];
-
         $mensaje=$_GET['mensaje']??null;
 
+        //METODO POST PARA EL FILTRO DE BUSQUEDA
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+
             $filtro = $_POST['filtro'];
 
             if($_SESSION['nivel']==1){
@@ -56,12 +48,15 @@ class HouseController{
             }
         }
         else{
+            //EL SUPERADMINISTRADOR PUEDE VER TODAS LAS PROPIEDADES
             if($_SESSION['nivel']==1){
                 $propiedades = Propiedad::all();
             }
+            //EL AGENTE INMOBILIARIO PUEDE VER LAS PROPIEDADES CREADAS POR EL Y POR EL SUPERADMINISTRADOR
             elseif($_SESSION['nivel']==2){
                 $propiedades = Propiedad::allXCreador($_SESSION['id']);
             }
+            //EL VENDEDOR PUEDE VER LAS PROPIEADADES CREADAS POR EL SUPERADMINISTRADOR O POR SU AGENTE A CARGO
             elseif($_SESSION['nivel']==3){
                 $usuario = Usuario::find($_SESSION['id']);
                 $creador = $usuario->idCreador;
@@ -69,11 +64,10 @@ class HouseController{
             }
         }
         
-        
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/propiedades/lista',[
             'propiedades'=>$propiedades,
             'direcciones'=>$direcciones,
-            'metodosVenta'=>$metodosVenta,
             'mensaje'=>$mensaje,
             'fotos'=>$fotos,
             'filtro'=>$filtro
@@ -82,29 +76,54 @@ class HouseController{
 
     //VERIFICAR FOTOGRAFIAS
     public static function createHouse(Router $router){
-        //CREANDO LOS OBJETOS QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
+        //CREANDO LOS OBJETOS Y VARIABLES QUE ALMACENARAN LA INFORMACION EN LAS DIFERENTES TABLAS
         $propiedad = new Propiedad();
         $direccion = new Direccion();
-        $metodosVenta = new MetodosVenta();
-        $muebles = new Mueble();
-        $amenidades = new Amenidad();
+        $muebles = "";
+        $amenidades = "";
+        $metodosVenta = "";
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad = [];
-        $erroresDireccion = [];
-        $erroresMetodosVenta = [];
+        $erroresDireccion = [];        
 
         //COMENZANDO EL METODO POST
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
 
             //creando nueva instancia de cada clase
             $propiedad = new Propiedad($_POST['propiedad']);        
-            $direccion = new Direccion($_POST['direccion']);        
-            $muebles = new  Mueble($_POST['muebles']);
-            $amenidades = new Amenidad($_POST['amenidades']);                 
-            $metodosVenta = new MetodosVenta($_POST['metodosventa']);
+            $direccion = new Direccion($_POST['direccion']);   
+            foreach ($_POST['muebles'] as $key) {
+                if($muebles === ""){
+                    $muebles .= $key;
+                }
+                else{
+                    $muebles .= ", ".$key;
+                }
+            } 
+            foreach ($_POST['amenidades'] as $key) {
+                if($amenidades === ""){
+                    $amenidades .= $key;
+                }
+                else{
+                    $amenidades .= ", ".$key;
+                }
+            }    
+            foreach ($_POST['metodosventa'] as $key) {
+                if($metodosVenta === ""){
+                    $metodosVenta .= $key;
+                }
+                else{
+                    $metodosVenta .= ", ".$key;
+                }
+            }
+            
+            $propiedad->muebles=$muebles;
+            $propiedad->amenidades=$amenidades;
+            $propiedad->metodosVenta=$metodosVenta;
 
             $erroresPropiedad = $propiedad->validar();
+
             if($propiedad->tipoPropiedad){
                 switch ($propiedad->tipoPropiedad) {
                     //Casa
@@ -135,10 +154,9 @@ class HouseController{
             }
             //validando la existencia de erroes en el formulario
             $erroresDireccion = $direccion->validar();
-            $erroresMetodosVenta = $metodosVenta->validar();
             
             //si no hay errores proceder a los queries hacia la base de datos
-            if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta)){
+            if(empty($erroresPropiedad) &&  empty($erroresDireccion)){
                 
                 // GUARDANDO EN LA BD
                 $guardarPropiedad=$propiedad->guardar();
@@ -146,22 +164,15 @@ class HouseController{
                 if($guardarPropiedad){
                     $guardarDireccion=$direccion->guardar();
                     if($guardarDireccion){
-                        $guardarMuebles=$muebles->guardar();
-                        if($guardarMuebles){
-                            $guardarAmenidades=$amenidades->guardar();
-                            if($guardarAmenidades){
-                                $guardarMetodoVenta=$metodosVenta->guardar();
-                                if($guardarMetodoVenta){
-                                    //mensaje que indica que se creo exitosamente
-                                    header("Location: /admin?mensaje=1");
-                                }
-                            }
-                        }
+                        //mensaje que indica que se creo exitosamente
+                        header("Location: /admin?mensaje=1");
                     }
                     
                 }
             }        
         }
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/propiedades/create',[
             'direccion'=>$direccion,
             'erroresDireccion'=>$erroresDireccion,
@@ -169,21 +180,20 @@ class HouseController{
             'erroresPropiedad'=>$erroresPropiedad,
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
-            "metodosVenta"=>$metodosVenta,
-            "erroresMetodosVenta"=>$erroresMetodosVenta
+            "metodosVenta"=>$metodosVenta
         ]);
     }
 
     //VERIFICAR CHECKBOXES
     public static function updateHouse(Router $router){
 
-        //buscando en todas las tablas la propiedad
+        //buscando en todas las tablas la propiedad e iniciando las variables necesarias
         $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);    
         $direccion = Direccion::find($id);        
-        $muebles =  Mueble::find($id);        
-        $amenidades = Amenidad::find($id);        
-        $metodosVenta = MetodosVenta::find($id); 
+        $muebles =  "";        
+        $amenidades = "";        
+        $metodosVenta = ""; 
         
         //TRAYENDO LAS DIFERENTES OPCIONES CON LAS QUE SE CUENTA
         $fotos = Foto::find($id);
@@ -191,7 +201,6 @@ class HouseController{
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
         $erroresPropiedad= [];
         $erroresDireccion = [];
-        $erroresMetodosVenta=[];
         $erroresTamaño = [];
     
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
@@ -199,16 +208,37 @@ class HouseController{
             //asignar atributos
             $argsPropiedad = $_POST['propiedad'];        
             $argsDireccion = $_POST['direccion'];        
-            $muebles = new Mueble($_POST['muebles']);
-            $muebles->id = $id;
-            $amenidades = new Amenidad($_POST['amenidades']);
-            $amenidades->id = $id;              
-
-            $metodosVenta = new MetodosVenta($_POST['metodosventa']);
-            $metodosVenta->id = $id; 
+            foreach ($_POST['muebles'] as $key) {
+                if($muebles === ""){
+                    $muebles .= $key;
+                }
+                else{
+                    $muebles .= ", ".$key;
+                }
+            } 
+            foreach ($_POST['amenidades'] as $key) {
+                if($amenidades === ""){
+                    $amenidades .= $key;
+                }
+                else{
+                    $amenidades .= ", ".$key;
+                }
+            }    
+            foreach ($_POST['metodosventa'] as $key) {
+                if($metodosVenta === ""){
+                    $metodosVenta .= $key;
+                }
+                else{
+                    $metodosVenta .= ", ".$key;
+                }
+            }
             
-            $propiedad->sincronizar($argsPropiedad) ;       
+            //sincronizando la nueva información
             $direccion->sincronizar($argsDireccion) ;
+            $propiedad->sincronizar($argsPropiedad) ;       
+            $propiedad->muebles=$muebles;
+            $propiedad->amenidades=$amenidades;
+            $propiedad->metodosVenta=$metodosVenta;
 
             $sizeTotal=0;
                 //ciclo para obtener los MB'S totales que el usuario subira
@@ -225,10 +255,9 @@ class HouseController{
 
             $erroresPropiedad= $propiedad->validar();
             $erroresDireccion = $direccion->validar();
-            $erroresMetodosVenta=$metodosVenta->validar();
     
             //si no hay errores proceder a los queries hacia la base de datos y la subida de las imagenes
-            if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresMetodosVenta) && empty($erroresTamaño)){
+            if(empty($erroresPropiedad) &&  empty($erroresDireccion) && empty($erroresTamaño)){
                 
                 // GUARDANDO EN LA BD
                 $guardarPropiedad=$propiedad->guardar();
@@ -236,50 +265,40 @@ class HouseController{
                 if($guardarPropiedad){
                     $guardarDireccion=$direccion->guardar();
                     if($guardarDireccion){
-                        $guardarMuebles=$muebles->guardar();
-                        if($guardarMuebles){
-                            $guardarAmenidades=$amenidades->guardar();
-                            if($guardarAmenidades){
-                                $guardarMetodoVenta=$metodosVenta->guardar();
-                                if($guardarMetodoVenta){
+                        //IMAGENES
+                        if($_FILES['fotos']['tmp_name'][0]){
 
-                                    //IMAGENES
-                                    if($_FILES['fotos']['tmp_name'][0]){
-
-                                        foreach ($_FILES['fotos']['tmp_name'] as $key) {
-                                            //generando un nombre unico
-                                            // echo $key;
-                                            $nombreFoto = md5(uniqid(rand(),true)).".jpg";
-                                            
-                                            //creando el objeto para hacer referencia en la base de datos
-                                            $foto = new Foto();
-                                            
-                                            //asignando valores al objeto de foto
-                                            $foto->idPropiedad=$id;
-                                            $foto->foto = $nombreFoto;
-                        
-                                            if(!is_dir(CARPETA_IMAGENES)){
-                                                mkdir(CARPETA_IMAGENES);
-                                            }
-                        
-                                            //creando el archivo de la foto
-                                            $img = Image::make($key)->fit(800,600);
-                                            
-                                            $img->save(CARPETA_IMAGENES . $nombreFoto);
-                        
-                                            $foto->guardar();
-                                        }
-                                    }
-
-                                    //mensaje que indica que se actualizo exitosamente
-                                    header("Location: /admin?mensaje=2");
+                            foreach ($_FILES['fotos']['tmp_name'] as $key) {
+                                //generando un nombre unico
+                                // echo $key;
+                                $nombreFoto = md5(uniqid(rand(),true)).".jpg";
+                                
+                                //creando el objeto para hacer referencia en la base de datos
+                                $foto = new Foto();
+                                
+                                //asignando valores al objeto de foto
+                                $foto->idPropiedad=$id;
+                                $foto->foto = $nombreFoto;
+            
+                                if(!is_dir(CARPETA_IMAGENES)){
+                                    mkdir(CARPETA_IMAGENES);
                                 }
+            
+                                //creando el archivo de la foto
+                                $img = Image::make($key)->fit(800,600);
+                                
+                                $img->save(CARPETA_IMAGENES . $nombreFoto);
+            
+                                $foto->guardar();
                             }
                         }
+                        //mensaje que indica que se actualizo exitosamente
+                        header("Location: /admin?mensaje=2");
                     }   
                 }
             }   
         }
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/propiedades/update',[
             'direccion'=>$direccion,
             'erroresDireccion'=>$erroresDireccion,
@@ -288,7 +307,6 @@ class HouseController{
             "muebles"=>$muebles,
             "amenidades"=>$amenidades,
             "metodosVenta"=>$metodosVenta,
-            "erroresMetodosVenta"=>$erroresMetodosVenta,
             "fotos"=>$fotos,
             "erroresTamaño"=>$erroresTamaño
         ]);
@@ -309,14 +327,8 @@ class HouseController{
                     //eliminando objeto
                     $Propiedad= Propiedad::find($id);
                     $Propiedad->eliminar();
-                    $mueble = Mueble::find($id);
-                    $mueble->eliminar();
-                    $amenidad = Amenidad::find($id);
-                    $amenidad->eliminar();
                     $direccion = Direccion::find($id);
                     $direccion->eliminar();
-                    $metodosVenta = MetodosVenta::find($id);
-                    $metodosVenta->eliminar();
                 }
             }
         }
@@ -347,19 +359,14 @@ class HouseController{
         $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
-        $mueble = Mueble::find($id);
-        $amenidad = Amenidad::find($id);
         $fotos = Foto::find($id);
-        $metodosVenta = MetodosVenta::find($id);
         $fotos = Foto::find($id);
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/propiedades/info',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
-            'mueble'=>$mueble,
-            'amenidad'=>$amenidad,
             'fotos'=>$fotos,
-            'metodosVenta'=>$metodosVenta,
             'fotos'=>$fotos
         ]);
     }
@@ -401,6 +408,7 @@ class HouseController{
             }        
         }
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/propiedades/visita',[
             "direccion"=>$direccion,
             "cita"=>$cita,
@@ -414,9 +422,6 @@ class HouseController{
         $id = validarORedireccionar('/admin');
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
-        $metodos = MetodosVenta::find($id);
-        $amenidad = Amenidad::find($id);
-        $mueble = Mueble::find($id);
         $vendedores = Usuario::all();
         $fotos = Foto::find($id);
         $venta = Venta::where('idPropiedad',$id);
@@ -481,12 +486,10 @@ class HouseController{
             }        
         }
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/propiedades/sell',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
-            'metodos'=>$metodos,
-            'mueble'=>$mueble,
-            'amenidad'=>$amenidad,
             'vendedores'=>$vendedores,
             'erroresVenta'=>$erroresVenta,
             'fotos'=>$fotos,

@@ -6,23 +6,17 @@
     <div class="opciones-compra">
         <div>
             <h3>Opciones de Compra</h3>
+            
             <ul>
-                <?php foreach ($metodosVenta as $clave => $val) {
-                    if($val==1 && $clave!="id"){
-                        if($clave === "credito"){
-                            echo '<li>
-                            <img src="/build/img/Iconos/efectivo.svg" alt="icono">
-                            <p>CRÉDITO BANCARIO</p>
-                            </li>';
-                        }
-                        else{
-                            echo '<li>
-                            <img src="/build/img/Iconos/'.$clave.'.svg" alt="icono">
-                            <p>'.strtoupper($clave).'</p>
-                            </li>';
-                        }
+                <?php
+                    $arreglo = explode(", ",$propiedad->metodosVenta);
+                    for ($i=0; $i < sizeof($arreglo); $i++) { 
+                        echo 
+                        '<li>
+                            <img src="/build/img/Iconos/'.$arreglo[$i].'.svg" alt="icono">
+                            <p>'.ucfirst($arreglo[$i]).'</p>
+                        </li>';
                     }
-                }
                 ?>
             </ul>  
         </div>
@@ -169,47 +163,15 @@
     <div>
         <h3>Muebles</h3>
         <ul>
-            <?php 
-            foreach ($mueble as $clave => $val) {
-                if($val==1 && $clave!="id"){
-                    if($clave==="sala"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_sala1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
-                    if($clave==="lavadora"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_lavadora1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
-                    if($clave==="boiler"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_boiler1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
-                    if($clave==="cocina"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_cocina1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
-                    if($clave==="camas"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_cama1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
-                    if($clave==="roperos"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_closet1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
+            <?php
+                $arreglo = explode(", ",$propiedad->muebles);
+                for ($i=0; $i < sizeof($arreglo); $i++) { 
+                    echo 
+                    '<li>
+                        <img src="/build/img/Iconos/'.$arreglo[$i].'.svg" alt="icono">
+                        '.strtoupper($arreglo[$i]).'
+                    </li>';
                 }
-            }
             ?>
         </ul>
     </div>
@@ -218,47 +180,14 @@
         <h3>Amenidades</h3>
         <ul>
             <?php
-            foreach ($amenidad as $clave => $val) {
-                if($val==1 && $clave!="id"){
-                    
-                    if($clave==="roffGarden"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_patio1.svg" alt="icono">
-                            Roff Garden
-                            </li>';
-                    }
-                    if($clave==="salaDeUsosMultiples"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_sala2.svg" alt="icono">
-                            Sala de usos Multiples
-                            </li>';
-                    }
-                    if($clave==="calentadorSolar"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_calentadorsolar1.svg" alt="icono">
-                            Calentador Solar
-                            </li>';
-                    }
-                    if($clave==="gimnasio"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_gym1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
-                    if($clave==="cancha"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/icono_cancha1.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
-                    if($clave==="alberca"){
-                        echo '<li>
-                            <img src="/build/img/Iconos/alberca.svg" alt="icono">
-                            '.ucfirst($clave).'
-                            </li>';
-                    }
+                $arreglo = explode(", ",$propiedad->amenidades);
+                for ($i=0; $i < sizeof($arreglo); $i++) { 
+                    echo 
+                    '<li>
+                        <img src="/build/img/Iconos/'.$arreglo[$i].'.svg" alt="icono">
+                        '.strtoupper($arreglo[$i]).'
+                    </li>';
                 }
-            }
             ?>
         </ul>
     </div>
