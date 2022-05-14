@@ -46,6 +46,7 @@ class AdminController{
         $direcciones = Direccion::all();
         $trabajadores = Usuario::all();
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/ganancias/lista',[
             'ventas'=>$ventas,
             'propiedades'=>$propiedades,
@@ -76,6 +77,7 @@ class AdminController{
         $trabajadores = Usuario::all();
         $filtro = [];
         
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/citas/lista',[
             "citas"=>$citas,
             "direcciones"=>$direcciones,
@@ -89,7 +91,7 @@ class AdminController{
         $propiedades = Propiedad::all();
         $direcciones = Direccion::all();
 
-
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('../views/generarExcel',[
             "propiedades"=>$propiedades,
             "direcciones"=>$direcciones

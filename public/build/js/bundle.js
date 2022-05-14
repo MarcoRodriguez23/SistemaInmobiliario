@@ -354,7 +354,7 @@ function ocultarFieldsetsFormularioInmueble(){
   const fieldSetComision = document.querySelector('#fieldSetComision');
   const fieldSetMueblesAmenidades = document.querySelector('#fieldSetMueblesAmenidades');
   const fieldSetPredio = document.querySelector('#fieldSetPredio');
-
+  
   if(fieldSetStatus){
     fieldSetStatus.classList.add('ocultar');
   }
@@ -383,6 +383,7 @@ function ocultarFieldsetsFormularioInmueble(){
 
   if(formularioUpdate || formularioCreate){
     const tipoPropiedad = document.querySelector('#tipoPropiedad');
+    vaciarInputsOcultos();
     switch (tipoPropiedad.selectedIndex) {
       case 1:
         fieldSetStatus.classList.remove('ocultar');
@@ -546,6 +547,21 @@ function enlacesInmuebles(){
     });
 
   }
+}
+
+function vaciarInputsOcultos(){
+  const fieldSetStatus = document.querySelector('#fieldSetStatus');
+  if(fieldSetStatus.classList.contains('ocultar')){
+    console.log("tiene la clase de ocultar");
+  }
+  const fieldSetRemodelacion = document.querySelector('#fieldSetRemodelacion');
+  const fieldSetDescripcionPropiedad = document.querySelector('#fieldSetDescripcionPropiedad');
+  const fieldSetPrecio = document.querySelector('#fieldSetPrecio');
+  const fieldSetDepartamento = document.querySelector('#fieldSetDepartamento');
+  const fieldSetComision = document.querySelector('#fieldSetComision');
+  const fieldSetMueblesAmenidades = document.querySelector('#fieldSetMueblesAmenidades');
+  const fieldSetPredio = document.querySelector('#fieldSetPredio');
+
 }
 /* @preserve
     _____ __ _     __                _

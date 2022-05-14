@@ -24,8 +24,8 @@ class SellerController{
         }
         $direcciones = DireccionUsuario::all();
         $mensaje=$_GET['mensaje']??null;
-        // debuguear($vendedores);
         
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/vendedores/lista',[
             "vendedores"=>$vendedores,
             "direcciones"=>$direcciones,
@@ -84,6 +84,7 @@ class SellerController{
             }     
         }
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/vendedores/create',[
             "vendedor"=>$vendedor,
             "erroresVendedor"=>$erroresVendedor,
@@ -138,6 +139,7 @@ class SellerController{
         $erroresVendedor= Usuario::getErrores();
         $erroresDireccion= DireccionUsuario::getErrores();
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/vendedores/update',[
             "vendedor"=>$vendedor,
             "erroresVendedor"=>$erroresVendedor,

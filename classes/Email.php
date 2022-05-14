@@ -43,18 +43,17 @@ class Email {
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> tu cuenta ha sido creada en el Sistema inmobiliario, solo debes confirmarla presionando el siguiente enlace</p>";
-         $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
-         $contenido .= "<p>Si tu no solicitaste este registro, puedes ignorar el mensaje</p>";
-         $contenido .= '</html>';
-         $mail->Body = $contenido;
+        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> tu cuenta ha sido creada en el Sistema inmobiliario, solo debes confirmarla presionando el siguiente enlace</p>";
+        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
+        $contenido .= "<p>Si tu no solicitaste este registro, puedes ignorar el mensaje</p>";
+        $contenido .= '</html>';
+        $mail->Body = $contenido;
 
-         $mail->Body = $contenido;
-         $mail->AltBody = "texto alternativo";
+        $mail->Body = $contenido;
+        $mail->AltBody = "texto alternativo";
 
-         //Enviar el mail
-         $mail->send();
-
+        //Enviar el mail
+        $mail->send();
     }
 
     //funcion para enviar el correo que enviara las instrucciones para reestablecer la contraseña
@@ -83,17 +82,17 @@ class Email {
        $mail->CharSet = 'UTF-8';
 
        $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Reestablecer password</a>";        
-        $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
-        $contenido .= '</html>';
-        $mail->Body = $contenido;
+       $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace</p>";
+       $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Reestablecer password</a>";        
+       $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
+       $contenido .= '</html>';
+       $mail->Body = $contenido;
 
-        $mail->Body = $contenido;
-        $mail->AltBody = "texto alternativo";
-
-        //Enviar el mail
-        $mail->send();
+       $mail->Body = $contenido;
+       $mail->AltBody = "texto alternativo";
+       
+       //Enviar el mail
+       $mail->send();
    }
    
    //funcion para enviar el correo que escribiran en la pagina de /contacto
@@ -152,5 +151,4 @@ class Email {
 
        return $mensaje;
    }
-
 }

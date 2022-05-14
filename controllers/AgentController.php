@@ -22,6 +22,7 @@ class AgentController{
         $direcciones = DireccionUsuario::all();
         $mensaje=$_GET['mensaje']??null;
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/agentes/lista',[
             "agentes"=>$agentes,
             "direcciones"=>$direcciones,
@@ -82,6 +83,8 @@ class AgentController{
 
         $erroresAgente = Usuario::getErrores();
         $erroresDireccion = DireccionUsuario::getErrores();
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/agentes/create',[
             "agente"=>$agente,
             "erroresAgente"=>$erroresAgente,
@@ -138,6 +141,7 @@ class AgentController{
         $erroresAgente= Usuario::getErrores();
         $erroresDireccion= DireccionUsuario::getErrores();
 
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/agentes/update',[
             "agente"=>$agente,
             "erroresAgente"=>$erroresAgente,
