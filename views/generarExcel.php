@@ -31,7 +31,7 @@ header("Content-Disposition: attachment; filename=propiedades.xls");
         <th>Escritura</th>
         
         <th>FOVISSSTE</th>
-        <th>COFINAVIT</th>
+        <th>INFONAVIT</th>
         <th>Crédito Bancario</th>
         <th>Efectivo</th>
 
@@ -50,11 +50,8 @@ header("Content-Disposition: attachment; filename=propiedades.xls");
     </tr>
     <?php foreach ($propiedades as $propiedad): ?>
     <?php foreach ($direcciones as $direccion): ?>
-    <?php foreach ($muebles as $mueble): ?>
-    <?php foreach ($metodosVenta as $metodo): ?>
-    <?php foreach ($amenidades as $amenidad): ?>
     
-        <?php if($propiedad->id == $direccion->id && $propiedad->id === $mueble->id && $propiedad->id === $metodo->id && $propiedad->id === $amenidad->id): ?>
+        <?php if($propiedad->id == $direccion->id): ?>
         <tr>
             <td><?php echo $propiedad->id; ?></td>
             <td><?php echo $direccion->estado; ?></td>
@@ -79,26 +76,25 @@ header("Content-Disposition: attachment; filename=propiedades.xls");
             <td><?php echo $propiedad->tipoPropiedad; ?></td>
             <td><?php echo $propiedad->escritura; ?></td>
 
-            <td><?php echo $metodo->fovissste==1 ? "Aplica" : "No aplica"; ?></td>
-            <td><?php echo $metodo->credito==1 ? "Aplica" : "No aplica"; ?></td>
-            <td><?php echo $metodo->efectivo==1 ? "Aplica" : "No aplica"; ?></td>
-            <td><?php echo $metodo->fovissste==1 ? "Aplica" : "No aplica"; ?></td>
-            <td><?php echo $mueble->sala==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $mueble->lavadora==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $mueble->boiler==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $mueble->cocina==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $mueble->camas==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $mueble->roperos==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $amenidad->roffGarden==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $amenidad->salaDeUsosMultiples==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $amenidad->gimnasio==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $amenidad->cancha==1 ? "Si" : "No"; ?></td>
-            <td><?php echo $amenidad->calentadorSolar==1 ? "Si" : "No"; ?></td>
+            <td><?php echo stristr($propiedad->metodosVenta,"fovissste") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->metodosVenta,"infonavit") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->metodosVenta,"credito") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->metodosVenta,"efectivo") ? 'Si' : 'No' ; ?>
+
+            <td><?php echo stristr($propiedad->muebles,"sala") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->muebles,"lavadora") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->muebles,"boiler") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->muebles,"cocina") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->muebles,"camas") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->muebles,"roperos") ? 'Si' : 'No' ; ?>
+
+            <td><?php echo stristr($propiedad->amenidades,"roff garden") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->amenidades,"sala de usos multiples") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->amenidades,"gimnasio") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->amenidades,"cancha") ? 'Si' : 'No' ; ?>
+            <td><?php echo stristr($propiedad->amenidades,"calentador solar") ? 'Si' : 'No' ; ?>
         </tr>
         <?php endif; ?>
-    <?php endforeach; ?>
-    <?php endforeach; ?>
-    <?php endforeach; ?>
     <?php endforeach; ?>
     <?php endforeach; ?>
 </table>

@@ -528,7 +528,6 @@
                     type="checkbox" 
                     name="muebles[camas]" 
                     value="camas"
-                    <?php echo $muebles->camas=="camas" ? 'checked' : ''; ?>
                     <?php echo stristr($propiedad->muebles,"camas") ? 'checked' : '' ; ?>
                     >
                 <label>Camas</label>
@@ -578,7 +577,6 @@
                     type="checkbox" 
                     name="amenidades[cancha]" 
                     value="cancha"
-                    <?php echo $amenidades->cancha=="cancha" ? 'checked' : ''; ?>
                     <?php echo stristr($propiedad->amenidades,"cancha") ? 'checked' : '' ; ?>
                     >
                 <label>Cancha</label>
