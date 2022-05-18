@@ -1,0 +1,46 @@
+//CODIGO DE DISEÑO DE LA PAGINA INDIVIDUAL PARA LOS ARTICULOS DEL BLOG
+.imagen-articulo{
+    background-position: center center;
+    background-size: cover;
+    max-height: 400px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    h2{
+        color: $azul-principal;
+        text-shadow: $negro 0.2rem 0.1rem 0.2rem;
+        font-weight: $delgada;
+        padding: 0;
+        font-size: 4.2rem;
+        @include tablet{
+            font-size: 8rem;
+        }
+    }
+}
+
+.articulos-blog{
+    margin: 0 auto;
+    width: 92%;
+
+    @include tablet{
+        @include grid(1,1rem);
+    }
+}
+
+.info-articulo{
+    max-width: 80%;
+    margin: 30px auto;
+    text-align: center;
+    h1{
+        text-align: center;
+        font-size: 6rem;
+        margin: 0;
+    } 
+    @include tablet{
+        p{
+            font-size: 2.4rem;
+            text-align: center;
+        }
+    }
+}

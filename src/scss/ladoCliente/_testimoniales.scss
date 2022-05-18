@@ -1,0 +1,49 @@
+//DISEÑO PARA LOS TESTIMONIALES
+.seccion-testimoniales{
+    margin: 30px
+}
+
+.testimoniales{
+    @include desktop{
+        @include grid(2, 1rem);
+    }
+}
+
+.img-texto{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.img-testimonio{
+    width: 150px !important;
+    height: 140px !important;
+    border-radius: 16px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+.testimonial {
+    margin: 0 auto;
+    max-width: 520px;
+    height: 200px;
+    background-color: $azul-principal;
+    font-size: 1.2rem;
+    color: $blanco;
+    border-radius: 16px; 
+    justify-content: space-around;
+    blockquote {
+        font-size: 16px;
+        text-align: justify;
+        display: block;
+        margin: 30px 30px 0px 16px;
+        .autor{
+            float: right;
+            color: $blanco;
+            padding-top: 20px;
+            margin-bottom: 30px;
+        }
+    }
+}
+

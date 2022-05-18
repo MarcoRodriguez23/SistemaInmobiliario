@@ -1,0 +1,24 @@
+{
+    "name": "marco/bienesraices_poo_inicio",
+    "description": "Pasando el proyecto a POO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marco Rodriguez",
+            "email": "cv5233@innovaccion.mx"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7",
+        "phpmailer/phpmailer": "^6.6",
+        "vlucas/phpdotenv": "^5.4"
+    },
+    "autoload":{
+        "psr-4": {
+            "Model\\":"./models",
+            "MVC\\":"./",
+            "Controllers\\": "./controllers",
+            "Classes\\": "./classes"
+        }
+    }
+}

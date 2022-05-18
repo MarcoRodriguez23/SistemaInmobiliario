@@ -1,0 +1,80 @@
+// Estilos de botones
+.boton-principal{
+    background-color: $azul-secundario;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+//Linea para resaltar titulos
+hr{
+    border-radius: 8px;
+    height: 4px;
+    background-color: $azul-secundario;
+}
+
+//Estilo de imagenes que tienen texto lateral
+.imagenes-texto-lateral{
+    border-radius: 40px;
+}
+
+//Estilos para cards de inmuebles
+.img-card-inmueble{
+    border-radius: 8px 8px 0 0;
+}
+
+.div-p-card-inmueble{
+    border: 4px $azul-principal solid !important;
+    border-radius: 0 0 8px 8px;
+    background-color: $blanco;
+    padding: 16px 40px;
+}
+
+.p-card-inmueble{
+    margin: 0px auto 29px auto !important;
+}
+
+.btn-more{
+    text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.icono-more{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    fill: $blanco;
+    background-color: $azul-secundario;
+    transform: rotate(90deg);
+    border-radius: 50%;
+    transition: all 0.5s;
+}
+
+.icono-more:hover{
+    text-align: center !important;
+    fill: $azul-secundario;
+    background-color: $blanco;
+    border: 4px solid $azul-secundario;
+    border-radius: 50%;
+}
+
+//Estilos del texto y hr de los inmuebles
+.texto-principal-2{
+    text-align: center;
+    margin-top: 4rem;
+    width: 70%;
+    margin: 0 auto;
+    color: $dorado;
+}
+
+.divisior{
+    width: 100% !important;
+}
+
+.hr-inmuebles{
+    width: 80%;
+    color: $azul-secundario;
+    margin-top: 30px !important;
+    margin-bottom: 60px !important;
+}

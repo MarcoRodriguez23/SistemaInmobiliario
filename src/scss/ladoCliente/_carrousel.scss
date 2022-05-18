@@ -1,0 +1,107 @@
+//DISEÑO DE LOS CARROUSELES DEL INDEX
+
+.carrousel-contenedor{
+    position: relative;
+    .carrousel__anterior,.carrousel__siguiente{
+        z-index: 1;
+        position: absolute;
+        display: block;
+        border: none;
+        width: 2.4rem;
+        height: 10rem;
+        top:calc(30% -1rem);
+        
+        cursor: pointer;
+        line-height: 3rem;
+        text-align: center;
+        color: $negro;
+        border-radius: 1rem;
+        opacity: 0.4;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+    .carrousel__anterior{
+        left: 1rem;
+        @include desktop{
+            left: -2rem;
+        }
+    }
+    .carrousel__siguiente{
+        right: 1rem;
+        @include desktop{
+            right: -2rem;
+        }
+    }
+    .carrousel-items{
+        overflow: hidden;
+        border-radius: 1rem;
+        
+        
+        .imagen-texto{
+            display: flex;
+            flex-direction: column;
+            margin: 1rem;
+            img{      
+                max-height: 20rem;
+                background-position: center center !important;
+                object-fit: contain;
+                @include tablet{
+                    max-height: 40rem;
+                }
+            }
+            p{
+                text-align: center;
+                font-weight: $bold;
+            }
+        }
+    }
+}
+
+.carrousel{
+    display: flex;
+    flex-direction: column;
+
+    a{
+        display: inline-block;
+        margin: 2rem auto;
+    }
+    p{
+        text-align: justify;
+        margin: 0 2rem;
+    }
+    @include tablet{
+        p{
+            margin-top: 2rem;
+            text-align: center;
+        }
+    }
+}
+
+.carrousel__anterior,#anterior-seleccion{
+    top:calc(40% -1rem);
+
+}
+.carrousel__siguiente,#siguiente-seleccion{
+    top:calc(40% -1rem);
+}
+
+#C-seleccion{
+    width: 95%;
+    .glider-track{
+        // background-color: $blanco;
+        width: 2rem; 
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+}
+
+.contenedor-carrousel-admin{
+    width: 40%;
+    margin: auto;
+}
+#C-admin{
+    margin: auto;
+}

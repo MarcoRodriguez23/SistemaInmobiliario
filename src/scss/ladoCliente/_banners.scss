@@ -1,0 +1,52 @@
+//AGREGANDO LOS BANNERS DESDE EL CSS
+.banner{
+    background-repeat: no-repeat;
+    background-position: 0% 80%;
+    background-size: cover ;
+    height: 12rem;
+    width: auto;
+    @include tablet{
+        // background-position: 0% 100%;
+        height: 21rem;
+    }
+    @include desktop{
+        // background-position: 0% 100% ;
+        background-size: cover ;
+        height: 35rem;
+    }
+}
+
+#bannerIndex{
+    background-image: url(../../../build/img/MAIN.jpg);
+}
+
+#bannerServicios{
+    background-image: url(../../../build/img/SERVICIOS.jpg);
+}
+
+#bannerInmuebles{
+    background-image: url(../../../build/img/INMUEBLES.jpg);
+}
+
+#bannerDepartamentos{
+    background-image: url(../../../build/img/DEPARTAMENTOS.jpg);
+}
+
+#bannerTerrenos{
+    background-image: url(../../../build/img/TERRENOS.jpg);
+}
+
+#bannerBlog{
+    background-image: url(../../../build/img/BLOG.jpg);
+}
+
+#bannerContacto{
+    background-image: url(../../../build/img/contacto.jpg);
+    background-position: 50% 0%;
+    @include tablet{
+        background-position: 50% 0%;
+    }
+    @include desktop{
+        background-position: 50% 0%;
+    }
+}

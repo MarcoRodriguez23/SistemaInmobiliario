@@ -1,0 +1,92 @@
+//DISEÑO GENERAL PARA EL LISTADO DE SERVICIOS Y BLOG
+.card{
+    background-color: $azul-secundario;
+    height: 446px;
+    width: 346px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    transition: all 0.6s ease;
+        &:hover{
+            transform: scale(1.05);
+        }
+}
+
+.servicios{
+    width: 100%;
+    a{
+        .imagen-texto{
+            img{
+                height: 35rem !important;
+                object-fit: cover;
+                border-radius: 8px 8px 0 0;
+            }
+            p{
+                font-family: $fuente-principal;
+                color: $blanco;
+                font-size: 1rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+        transition: all 0.6s ease;
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+    @include tablet{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 4rem;
+        width: 90%;
+        a{
+            .imagen-texto{
+                p{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+
+//DISEÑO PARA LA IMAGEN EN LAS LISTAS DE BLOG
+.imagen-blog{
+    width: 420px;
+    margin: 30px auto;
+    border-radius: 1rem;
+    img{
+        border-radius: 1rem;
+        width: 50%;
+    }
+    @include tablet{
+        width: 95%;
+        img{
+            height: 60rem;
+        }
+    }
+}
+//CAMBIOS EN EL TAMAÑO DE LA IMAGEN PARA EL BLOG
+.imagen-blog{
+    @include tablet{
+        img{
+            height: 20rem;
+        }
+    }
+}
+
+// diseño individual del servicio
+.info-servicios{
+    margin: 30px auto;
+}
+
+.imagen-servicios img{
+    max-height: 500px;
+    border-radius: 16px;
+}
+
+.texto-servicios{
+    text-align: center;
+}
+
+.boton-servicio{
+    text-align: center;
+}

@@ -1,0 +1,239 @@
+//DISEÑO PARA LA BARRA DE NAVEGACION
+
+.navegacion{
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition:  opacity .3s linear, height 0.5s linear;
+    margin-bottom: 2rem;
+    a.menu{
+        color: $blanco;
+        font-size: 1.4rem;
+        font-weight: $bold;
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        color: $blanco;
+        text-decoration: none;
+        margin-right: 50px;
+        position: relative;
+        font-family: $fuente_principal;
+        padding: 16px 0;
+        margin: 0 12px;
+        transition: color 0.1s, background-color 0.1s, padding 0.2s ease-out;
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: $blanco;
+            transform-origin: right top;
+            transform: scale(0, 1);
+            transition: color 0.1s, transform 0.2s ease-out;
+            }
+        &:hover::before,
+         :focus::before{
+            transform-origin: left top;
+            transform: scale(1,1);
+        }
+    }
+    a.submenu{
+        color: $blanco;
+        font-size: 1.4rem;
+        font-weight: $bold;
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        color: $blanco;
+        text-decoration: none;
+        margin-right: 50px;
+        position: relative;
+        font-family: $fuente_principal;
+        padding: 16px 0;
+        margin: 0 12px;
+        transition: color 0.1s, background-color 0.1s, padding 0.2s ease-out;
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: $blanco;
+            transform-origin: right top;
+            transform: scale(0, 1);
+            transition: color 0.1s, transform 0.2s ease-out;
+            }
+        &:hover::before,
+         :focus::before{
+            transform-origin: left top;
+            transform: scale(1,1);
+        }
+    }
+    span{
+        color: $blanco;
+        font-size: 2.4rem;
+        font-weight: $bold;
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        color: $blanco;
+        text-decoration: none;
+        margin-right: 50px;
+        position: relative;
+        font-family: $fuente_principal;
+        padding: 16px 0;
+        margin: 0 12px;
+        transition: color 0.1s, background-color 0.1s, padding 0.2s ease-out;
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: $blanco;
+            transform-origin: right top;
+            transform: scale(0, 1);
+            transition: color 0.1s, transform 0.2s ease-out;
+            }
+        &:hover::before,
+         :focus::before{
+            transform-origin: left top;
+            transform: scale(1,1);
+        }
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tablet{
+        margin-bottom: 0;
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+        flex-direction: row;
+        a{
+            font-size: 1.4rem;
+        }
+        span{
+            font-size: 1.4rem;
+        }
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+    }
+
+}
+
+// .navegacion::before{
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     bottom: 3px;
+//     left: 0;
+//     height: 3px;
+//     width: 100%;
+//     background-color: $blanco;
+//     transform-origin: right top;
+//     transform: scale(0, 1);
+//     transition: color 0.1s, transform 0.2s ease-out;
+// }
+
+// .navegacion:hover::before,
+// .navegacion:focus::before{
+//     transform-origin: left top;
+//     transform: scale(1,1);
+// }
+
+/*Menu de hamburguesa*/
+.mobile-menu{
+    width: 5rem;
+    margin: 1rem auto 0 auto;
+    margin-top: 1rem;
+    @include tablet{
+        display: none;
+    }
+    img{
+        width: 5rem;
+        margin: auto;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.mostrar{
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    @include tablet{
+        flex-direction: row;
+    }
+}
+
+.header{
+    background-color: $azul-principal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    #enlaces-inmuebles{
+        display: none;
+        list-style: none;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+        li{
+            width: 100%;
+        }
+    }
+    @include tablet{
+        min-height: 10vh;
+        height: auto;
+        #enlaces-inmuebles{
+            background-color: $azul-principal;
+            position: absolute;
+            top: 52%;
+            left: 56%;
+            width: auto;
+            padding: 1rem 2rem;
+        }
+    }
+}
+
+.logotipo{
+    filter: invert(100%);
+    display: block;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    img{
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    @include tablet{
+        width: 35%;
+    }
+}
+
+.barra{
+    .logotipo{
+        width: 40%;
+        min-width: 10rem;
+        max-width: 20rem;
+        padding: 1rem;
+    }
+    @include tablet{
+        display: grid;
+        grid-template-columns: 25% 75%;
+    }
+}
+
+.mostrar-enlaces{
+    display: block !important ;
+}

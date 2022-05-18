@@ -1,0 +1,180 @@
+// DISEÑO PARA EL LISTADO DE LAS PROPIEADADES EN EL INDEX DEL ADMINISTRADOR
+// ESTE CODIGO TAMBIEN SE USA PARA EL DISEÑO DE LAS PROPIEADADES DEL LADO DE LA WEB COMERCIAL
+.inmuebles{
+    @include grid(2,2rem);
+    margin-bottom: 60px;
+
+    .inmueble{
+        width: 346px;
+        border-radius: 8px;
+        height: auto;
+        padding: 30px;
+        border: 4px solid $azul-principal;
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+        }
+        transition: all 300ms ease;
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        .info-inmueble{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            // border: 1px solid blue;
+            
+            .direccion{
+                color: $negro;
+                font-weight: 400;
+                font-style: italic;
+                padding: 1rem;
+                text-align: center;
+                font-size: 1.1rem;
+                line-height: auto;
+                height: 7rem;
+                &::before{
+                    content: '';
+                    display: block;
+                    height: 4px;
+                    width: 100%;
+                    background-color: $azul-secundario;
+                    margin: auto;
+                    border-radius: 8px;
+                    margin-bottom: 16px;
+                }
+            }
+            .info-inferior{
+                width: 100%;
+                margin: auto;
+                .campo-info,.estado{
+                    margin: 0 auto;
+                    text-align: center;
+                    font-size: 1.2rem;
+                    font-weight: $bold;
+                }
+                .precio{
+                    margin: 0 auto;
+                    text-align: center;
+                    font-size: 1.2rem;
+                    font-weight: $bold;
+                    color: $azul-principal;
+                }
+                .estado{
+                    color: $blanco;
+                    font-weight: $bold;
+                    background-color: $azul-secundario;
+                    margin-bottom: 0.5rem;
+                    border-radius: 8px;
+                }
+                .campo-info{
+                    font-weight: $regular;
+                }
+            }
+        }
+    }
+    @include desktop{
+        @include grid(4,2rem);
+        .inmueble{
+            .info-inmueble{
+                .direccion{
+                    font-size: 1.3rem;
+                }
+                .info-inferior{
+                    width: 98%;
+                    margin: auto;
+                    .precio,.campo-info,.estado{
+                        margin: 0 auto;
+                        text-align: center;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.buscador{
+    margin: 1rem auto;
+}
+
+.beneficios{
+    margin:1rem 0;
+    @include grid(2,1rem);
+    width: 100%;
+    .beneficio{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        &:last-of-type{
+            border-right: none;
+        }
+        img{
+            height: 35%;
+            width: 35%;
+            margin: auto;
+            border-radius: 0;
+        }
+        p{
+            font-size: 1.2rem;
+            margin: auto 0.8rem; 
+        }
+    }
+}
+.opciones{
+    margin-top: 1.2rem;
+    @include grid(2,0.5rem);
+    a{
+        font-size: 1rem;
+        width: 100%;
+        height: auto;
+        margin: auto;
+        color: $negro;
+        &:hover{
+            color: $blanco;
+        }
+    }
+    form{
+        height: 100%;
+        input{
+            height: 100%;
+            width: 100%;
+            font-size: 1rem;
+        }
+    }
+    @include tablet{
+        a{
+            font-size: 1.5rem;
+        }
+        form{
+            input{
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+.aviso-opciones{
+    font-size: 1rem;
+}
+
+.ubicacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    iframe{
+        width: 90%;
+        margin: auto;
+    }
+}
+
+
+.precio{
+    color: $verde;
+}

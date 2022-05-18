@@ -1,0 +1,40 @@
+//importe de tipografia e iconos
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');;
+
+// Fuentes
+$fuente_principal: 'Poppins', sans-serif;
+
+// Tamaño de Media Queries
+$telefono: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+// Colores
+$negro: #1e1e1e;
+$blanco: #FFFFFF;
+$dorado: #D29B26;
+$azul-principal: #1F456E;
+$azul-secundario: #022D36;
+$gris: rgb(170, 186, 194);
+$blanco-gris: #f3f3f3;
+$azul: #396c8a;
+$azul-intenso: #0003b6c7;
+$rojo: #be1022;
+$rojo-intenso: #790a15;
+$verde: rgb(17, 159, 17);
+$verde-intenso: #1c762e;
+$amarillo: #fdaf1c;
+$amarillo-intenso: #f3f63a;
+$morado: #592fa9;
+$morado-intenso: #2d125f;
+$cafe :#9c7761;
+$naranja: #E88C15;
+
+
+$separacion: 5rem;
+
+// Fuentes
+$delgada: 300;
+$regular : 400;
+$bold: 700;
+$black: 900;
