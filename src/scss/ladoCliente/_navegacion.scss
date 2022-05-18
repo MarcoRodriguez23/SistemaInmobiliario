@@ -6,7 +6,7 @@
     height: 0;
     transition:  opacity .3s linear, height 0.5s linear;
     margin-bottom: 2rem;
-    a.menu{
+    a.menu,span.menu{
         color: $blanco;
         font-size: 1.4rem;
         font-weight: $bold;
@@ -107,7 +107,11 @@
             transform-origin: left top;
             transform: scale(1,1);
         }
+        &:hover{
+            cursor: pointer;
+        }
     }
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,25 +133,6 @@
 
 }
 
-// .navegacion::before{
-//     content: "";
-//     display: block;
-//     position: absolute;
-//     bottom: 3px;
-//     left: 0;
-//     height: 3px;
-//     width: 100%;
-//     background-color: $blanco;
-//     transform-origin: right top;
-//     transform: scale(0, 1);
-//     transition: color 0.1s, transform 0.2s ease-out;
-// }
-
-// .navegacion:hover::before,
-// .navegacion:focus::before{
-//     transform-origin: left top;
-//     transform: scale(1,1);
-// }
 
 /*Menu de hamburguesa*/
 .mobile-menu{

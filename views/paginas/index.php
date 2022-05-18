@@ -45,14 +45,20 @@ para que elijas tu hogar con nosotros.
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             <div  class="div-p-card-inmueble">
-                            <p class="p-card-inmueble">
-                                <?php echo $propiedad->tipoPropiedad; ?>
-                                en
-                                <?php echo $propiedad->status; ?>
-                                ,
-                                <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
-                            </p>
-                            <a href="infoPropiedad.php" class="btn-more"><svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="icono-more"><path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg></a>
+                                <p class="p-card-inmueble">
+                                    <?php echo $propiedad->tipoPropiedad; ?>
+                                    en
+                                    <?php echo $propiedad->status; ?>
+                                    ,
+                                    <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                                </p>
+                                <a 
+                                    href="/casa?id=<?php echo $propiedad->id; ?>" class="btn-more">
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                        height="48" width="48" 
+                                        class="icono-more">
+                                    <path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg>
+                                </a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -93,14 +99,20 @@ para que elijas tu hogar con nosotros.
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             <div  class="div-p-card-inmueble">
-                            <p class="p-card-inmueble">
-                                <?php echo $propiedad->tipoPropiedad; ?>
-                                <?php echo $propiedad->categoria; ?>
-                                en
-                                <?php echo $propiedad->status; ?>
-                                <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
-                            </p>
-                            <a href="infoPropiedad.php" class="btn-more"><svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="icono-more"><path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg></a>
+                                <p class="p-card-inmueble">
+                                    <?php echo $propiedad->tipoPropiedad; ?>
+                                    <?php echo $propiedad->categoria; ?>
+                                    en
+                                    <?php echo $propiedad->status; ?>
+                                    <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                                </p>
+                                <a 
+                                    href="/departamento?id=<?php echo $propiedad->id; ?>" class="btn-more">
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                        height="48" width="48" 
+                                        class="icono-more">
+                                    <path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg>
+                                </a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -142,15 +154,21 @@ para que elijas tu hogar con nosotros.
                                 <?php endif; ?>
                             <?php endforeach; ?>
                             <div  class="div-p-card-inmueble">
-                            <p class="p-card-inmueble">
-                                <?php echo $propiedad->tipoPropiedad; ?>
-                                <?php echo $propiedad->categoria; ?>
-                                para
-                                <?php echo $propiedad->status; ?>
-                                en
-                                <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
-                            </p>
-                            <a href="infoPropiedad.php" class="btn-more"><svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="icono-more"><path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg></a>
+                                <p class="p-card-inmueble">
+                                    <?php echo $propiedad->tipoPropiedad; ?>
+                                    <?php echo $propiedad->categoria; ?>
+                                    para
+                                    <?php echo $propiedad->status; ?>
+                                    en
+                                    <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                                </p>
+                                <a 
+                                    href="/terreno?id=<?php echo $propiedad->id; ?>" class="btn-more">
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                        height="48" width="48" 
+                                        class="icono-more">
+                                    <path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg>
+                                </a>
                             </div>
                         </div>
                     <?php endif; ?>

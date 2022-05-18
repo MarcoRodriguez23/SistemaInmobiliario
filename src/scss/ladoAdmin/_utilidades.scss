@@ -24,6 +24,10 @@
     @include boton($amarillo, $amarillo-intenso);
 }
 
+.boton-dorado{
+    @include boton($dorado, $dorado-intenso);
+}
+
 .boton-verde{
     @include boton ($verde, $verde-intenso);
 }

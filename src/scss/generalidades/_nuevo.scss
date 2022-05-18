@@ -18,22 +18,6 @@ hr{
     border-radius: 40px;
 }
 
-//Estilos para cards de inmuebles
-.img-card-inmueble{
-    border-radius: 8px 8px 0 0;
-}
-
-.div-p-card-inmueble{
-    border: 4px $azul-principal solid !important;
-    border-radius: 0 0 8px 8px;
-    background-color: $blanco;
-    padding: 16px 40px;
-}
-
-.p-card-inmueble{
-    margin: 0px auto 29px auto !important;
-}
-
 .btn-more{
     text-align: center;
   display: inline-block;
@@ -49,15 +33,14 @@ hr{
     transform: rotate(90deg);
     border-radius: 50%;
     transition: all 0.5s;
+    &:hover{
+        transform: scale(1.05);
+        fill: $azul-secundario;
+        background-color: $blanco;
+        border: 1px solid $azul-secundario;
+    }
 }
 
-.icono-more:hover{
-    text-align: center !important;
-    fill: $azul-secundario;
-    background-color: $blanco;
-    border: 4px solid $azul-secundario;
-    border-radius: 50%;
-}
 
 //Estilos del texto y hr de los inmuebles
 .texto-principal-2{
