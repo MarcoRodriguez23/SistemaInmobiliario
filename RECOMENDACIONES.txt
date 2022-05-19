@@ -1,0 +1,18 @@
+Para agregar la base de datos 
+importar el archivo "InmobiliariaGallardo-prod.sql"
+editar las variables de entorno que se encuentran en el archivo ".env" en la carpeta "includes"
+
+Para poder dar de alta nuevos usuarios
+Editar las variables de entorno de correo y contraseña que se encuentran en el archivo ".env" en la carpeta "includes", para hacer el envio de los correos electronicos que se generan al registrar usuarios
+
+*Si se cambia de administrador de correo electronico editar lo necesario en el archivo "Email.php" de la carpeta "classes"*
+por ejemplo la configuracion smtp:
+$mail->isSMTP();
+$mail->Host='smtp.gmail.com'; //este se usa por usar correo de gmail
+$mail->SMTPAuth= true;
+$mail->Username=$_ENV['EMAIL_USER'];
+$mail->Password=$_ENV['EMAIL_PASSWORD'];
+$mail->SMTPSecure='tls';
+$mail->Port='587';
+
+si se cambia la configuracion smtp procurar hacerlo en las 3 funciones que componen al archivo "Email.php" (emailContacto, enviarConfirmacion, enviarInstrucciones).
