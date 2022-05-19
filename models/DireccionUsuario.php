@@ -38,6 +38,3 @@ class DireccionUsuario extends activeRecord{
         return self::$errores;
     }
 }
-
-
-

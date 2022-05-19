@@ -54,7 +54,8 @@ class PaginasController{
     }
 
     public static function casas(Router $router){
-        $propiedades=Propiedad::all();
+        // $propiedades=Propiedad::all();
+        $propiedades=Propiedad::whereAll('tipoPropiedad','Casa');
         $direcciones=Direccion::all();
         $fotos = Foto::all();
 
@@ -67,7 +68,8 @@ class PaginasController{
     }
 
     public static function departamentos(Router $router){
-        $propiedades=Propiedad::all();
+        // $propiedades=Propiedad::all();
+        $propiedades=Propiedad::whereAll('tipoPropiedad','Departamento');
         $direcciones=Direccion::all();
         $fotos = Foto::all();
 
@@ -80,7 +82,8 @@ class PaginasController{
     }
 
     public static function terrenos(Router $router){
-        $propiedades=Propiedad::all();
+        // $propiedades=Propiedad::all();
+        $propiedades=Propiedad::whereAll('tipoPropiedad','Terreno');
         $direcciones=Direccion::all();
         $fotos = Foto::all();
 
@@ -129,7 +132,19 @@ class PaginasController{
     }
 
     public static function comercial(Router $router){
-        $propiedades=Propiedad::all();
+        $oficinas=Propiedad::whereAll('tipoPropiedad','Oficina');
+        $locales=Propiedad::whereAll('tipoPropiedad','Local');
+        $bodegas=Propiedad::whereAll('tipoPropiedad','Bodega');
+        foreach ($locales as $key) {
+            $propiedades[]=$key;
+        }
+        foreach ($oficinas as $key) {
+            $propiedades[]=$key;
+        }
+        foreach ($bodegas as $key) {
+            $propiedades[]=$key;
+        }
+
         $direcciones=Direccion::all();
         $fotos = Foto::all();
 

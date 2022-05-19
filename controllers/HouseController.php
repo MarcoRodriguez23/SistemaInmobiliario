@@ -127,27 +127,27 @@ class HouseController{
             if($propiedad->tipoPropiedad){
                 switch ($propiedad->tipoPropiedad) {
                     //Casa
-                    case '1':
+                    case 'Casa':
                         $erroresPropiedad = $propiedad->validarCasa();
                         break;
                     //Departamento
-                    case '2':
+                    case 'Departamento':
                         $erroresPropiedad = $propiedad->validarDepartamento();
                         break;
                     //Terreno
-                    case '3':
+                    case 'Terreno':
                         $erroresPropiedad = $propiedad->validarTerreno();
                         break;
                     //Bodega
-                    case '4':
+                    case 'Bodega':
                         $erroresPropiedad = $propiedad->validarBodega();
                         break;
                     //Local
-                    case '5':
+                    case 'Local':
                         $erroresPropiedad = $propiedad->validarLocal();
                         break;
                     //Oficina
-                    case '6':
+                    case 'Oficina':
                         $erroresPropiedad = $propiedad->validarOficina();
                         break;
                 }
@@ -199,9 +199,9 @@ class HouseController{
         $fotos = Foto::find($id);
 
         //TRAYENDO LAS VALIDACIONES PARA EL FORMULARIO
-        $erroresPropiedad= [];
         $erroresDireccion = [];
         $erroresTamaño = [];
+        $erroresPropiedad= [];
     
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
 
@@ -241,19 +241,46 @@ class HouseController{
             $propiedad->metodosVenta=$metodosVenta;
 
             $sizeTotal=0;
-                //ciclo para obtener los MB'S totales que el usuario subira
-                if($_FILES['fotos']['size'][0]){
-                    foreach ($_FILES['fotos']['size'] as $peso) {
-                        $sizeTotal += $peso;
-                    }
-                    //1MB = 1048576
-                    $sizeLimite = 8 * 1048576;
-                    if($sizeTotal >= $sizeLimite){
-                        $erroresTamaño="Acaba de superar el limite de 8MB";
-                    }
+            //ciclo para obtener los MB'S totales que el usuario subira
+            if($_FILES['fotos']['size'][0]){
+                foreach ($_FILES['fotos']['size'] as $peso) {
+                    $sizeTotal += $peso;
                 }
+                //1MB = 1048576
+                $sizeLimite = 8 * 1048576;
+                if($sizeTotal >= $sizeLimite){
+                    $erroresTamaño="Acaba de superar el limite de 8MB";
+                }
+            }
 
-            $erroresPropiedad= $propiedad->validar();
+            if($propiedad->tipoPropiedad){
+                switch ($propiedad->tipoPropiedad) {
+                    //Casa
+                    case 'Casa':
+                        $erroresPropiedad = $propiedad->validarCasa();
+                        break;
+                    //Departamento
+                    case 'Departamento':
+                        $erroresPropiedad = $propiedad->validarDepartamento();
+                        break;
+                    //Terreno
+                    case 'Terreno':
+                        $erroresPropiedad = $propiedad->validarTerreno();
+                        break;
+                    //Bodega
+                    case 'Bodega':
+                        $erroresPropiedad = $propiedad->validarBodega();
+                        break;
+                    //Local
+                    case 'Local':
+                        $erroresPropiedad = $propiedad->validarLocal();
+                        break;
+                    //Oficina
+                    case 'Oficina':
+                        $erroresPropiedad = $propiedad->validarOficina();
+                        break;
+                }
+            }
             $erroresDireccion = $direccion->validar();
     
             //si no hay errores proceder a los queries hacia la base de datos y la subida de las imagenes

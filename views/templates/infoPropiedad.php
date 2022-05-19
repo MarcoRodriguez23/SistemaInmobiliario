@@ -26,7 +26,7 @@
                 <?php
                     echo '<li>
                     <img src="/build/img/Iconos/icono_escrituras1.svg" alt="icono">
-                    <p>'.strtoupper($propiedad->escritura).'</p>
+                    <p>'.ucfirst($propiedad->escritura).'</p>
                     </li>';
                 ?>
             </ul>
@@ -168,8 +168,8 @@
                 for ($i=0; $i < sizeof($arreglo); $i++) { 
                     echo 
                     '<li>
-                        <img src="/build/img/Iconos/icono_closet1.svg" alt="icono">
-                        Closet
+                        <img src="/build/img/Iconos/icono_'.$arreglo[$i].'1.svg" alt="icono">
+                        '.strtoupper($arreglo[$i]).'
                     </li>';
                 }
             ?>
@@ -184,8 +184,8 @@
                 for ($i=0; $i < sizeof($arreglo); $i++) { 
                     echo 
                     '<li>
-                        <img src="/build/img/Iconos/icono_elevador1.svg" alt="icono">
-                        Elevador
+                        <img src="/build/img/Iconos/icono_'.$arreglo[$i].'1.svg" alt="icono">
+                        '.strtoupper($arreglo[$i]).'
                     </li>';
                 }
             ?>

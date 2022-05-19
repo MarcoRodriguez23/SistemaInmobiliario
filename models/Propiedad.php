@@ -448,6 +448,3 @@ class Propiedad extends activeRecord{
         return $resultado;
     }
 }
-
-
-

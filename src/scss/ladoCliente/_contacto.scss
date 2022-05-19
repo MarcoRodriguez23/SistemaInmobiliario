@@ -1,10 +1,26 @@
 .esquema-contacto{
+    border: 1px solid brow;
 
     @include tablet{
         display: grid;
-        grid-template-columns: 45% 55%;
+        grid-template-columns: 50% 50%;
         // gap: 2rem;
     
+    }
+}
+
+.esquema-maps{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2rem;
+    iframe{
+        width: 90%;
+        height: 30rem;
+        @include tablet{
+            height: 90%;
+        }
     }
 }
 
@@ -24,5 +40,4 @@
 .contacto-maps{
     border-radius: 16px;
     max-width: 600px;
-    max-height: 600px;
 }

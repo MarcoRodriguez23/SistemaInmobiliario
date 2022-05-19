@@ -60,6 +60,3 @@ class Direccion extends activeRecord{
         return self::$errores;
     }
 }
-
-
-

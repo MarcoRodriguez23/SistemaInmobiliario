@@ -49,6 +49,8 @@ class LoginController{
         }
         
         $errores = Usuario::getErrores();
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('auth/login',[
             'errores'=>$errores
         ]);
@@ -86,6 +88,8 @@ class LoginController{
         }
 
         $errores=Usuario::getErrores();
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('auth/confirmar-cuenta',[
             'errores'=>$errores
         ]);
@@ -127,6 +131,8 @@ class LoginController{
         }
 
         $alertas = Usuario::getErrores();
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('auth/recuperar',[
             'alertas'=>$alertas,
             'error'=>$error
@@ -165,6 +171,8 @@ class LoginController{
         }
 
         $alertas = Usuario::getErrores();
+
+        //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('auth/olvide',[
             'alertas'=>$alertas
         ]);

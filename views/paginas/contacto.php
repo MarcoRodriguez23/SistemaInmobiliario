@@ -1,32 +1,3 @@
-<!-- <section>
-    <div class="contenedor principal-izq">
-        <div class="texto-principal">
-            <h2>Misión</h2>
-            <p>
-                Ofrecemos las mejores opciones para el patrimonio inmobiliario de las familias mexicanas, asesorándote durante todo el proceso de compra.
-            </p>
-        </div>
-        <div class="imagen-principal">
-            <picture>
-                <img loading="lazy" src="build/img/mision.webp" alt="misión">
-            </picture>
-        </div>
-    </div>
-
-    <div class="contenedor principal-der">
-        <div class="texto-principal">
-            <h2>Visión</h2>
-            <p>
-                Ser la primera opción en la búsqueda de inmuebles para las familias mexicanas, por nuestro profesionalismo, valor y confianza.
-            </p>
-        </div>
-        <div class="imagen-principal">
-            <picture>
-                <img loading="lazy" src="build/img/vision.webp" alt="visión">
-            </picture>
-        </div>
-    </div>
-</section> -->
 <main>
     <h1>Contáctanos</h1>
     <?php
@@ -52,7 +23,8 @@
     <div class="esquema-contacto contenedor">
     <div class="esquema-maps">
         <h2>Ubicación</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240863.68495049782!2d-99.28370025945254!3d19.391003841697536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0026db097507%3A0x54061076265ee841!2sCiudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1652757452174!5m2!1ses-419!2smx" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="contacto-maps"></iframe>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.7417938243834!2d-99.137508!3d19.4235592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fed0f79ff145%3A0x5dab52a25b54f7a1!2sIsabel%20La%20Cat%C3%B3lica%20156%2C%20Obrera%2C%20Cuauht%C3%A9moc%2C%2006800%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1652902143354!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="contacto-maps"></iframe>
     </div>
     <div class="div-formulario-contacto">
         <!-- <div class="banner" id="bannerContacto">
@@ -91,7 +63,7 @@
                 <div>
                     <label for="asunto">Asunto</label>
                     <select name="asunto">
-                        <option value="" disabled selected>--Selecciona una opción--</option>
+                        <option value="" disabled selected>--Elige una opción--</option>
                         <option value="Casa">Casa</option>
                         <option value="Departmaneto">Departmaneto</option>
                         <option value="Terreno">Terreno</option>

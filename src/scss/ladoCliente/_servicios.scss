@@ -79,8 +79,11 @@
 }
 
 .imagen-servicios img{
-    max-height: 500px;
+    max-height: 600px;
+    width: 90%;
     border-radius: 16px;
+    margin: auto;
+    object-fit: cover;
 }
 
 .texto-servicios{
