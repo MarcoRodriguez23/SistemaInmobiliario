@@ -24,7 +24,7 @@ class LoginController{
             if(empty($errores)){
                 //verificar si el usuario existe
                 $usuario = Usuario::where('email',$auth->email);
-                
+
                 if($usuario){
                     //verificar password
                     if($usuario->comprobarPasswordAndVerificado($auth)){
@@ -38,16 +38,16 @@ class LoginController{
 
                         //redireccionar
                         header('Location: /admin');
-                        
+
                     }
                 }
                 else{
-                    Usuario::setAlerta('error','Usuario no encontrado');
+                    $errores = Usuario::UsuarioExiste();
                 }
-                
+
             }
         }
-        
+
         $errores = Usuario::getErrores();
 
         //ENVIANDO LAS VARIABLES A LA VISTA
@@ -70,9 +70,9 @@ class LoginController{
 
         //recogiendo el token por GET
         $token = s($_GET['token']);
-        
+
         $usuario = Usuario::where('token',$token);
-        
+
         if(empty($usuario)){
             //mostrar mensaje
             Usuario::setAlerta("error","token no válido");
@@ -100,7 +100,7 @@ class LoginController{
         $alertas = [];
         $error = false;
         $token = s($_GET['token']);
-        
+
         //buscar usuario por el token
         $usuario = Usuario::where('token',$token);
 
@@ -110,10 +110,10 @@ class LoginController{
         }
         else{
             if($_SERVER['REQUEST_METHOD']==='POST'){
-    
+
                 $password = new Usuario($_POST);
                 $alertas = $password->validarPassword();
-    
+
                 if(empty($alertas)){
                     //quitando la antigua contraseña
                     $usuario->password = null;
@@ -145,15 +145,15 @@ class LoginController{
 
         if($_SERVER['REQUEST_METHOD']==='POST'){
             $auth = new Usuario($_POST);
-            
+
             $auth->validarEmail();
 
             if (empty($errores)) {
 
                 $usuario = Usuario::where('email',$auth->email);
-                
+
                 if($usuario && $usuario->confirmado === "1"){
-                    
+
                     $usuario->Creartoken();
                     $usuario->guardar();
 
@@ -166,7 +166,7 @@ class LoginController{
                 }
                 else{
                     Usuario::setAlerta('error','El usuario no existe o no esta confirmado');
-                }   
+                }
             }
         }
 

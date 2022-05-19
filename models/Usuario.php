@@ -134,6 +134,11 @@ class Usuario extends activeRecord{
     return $resultado;
     }
 
+    //validacion
+    public static function usuarioExiste(){
+        return static::$errores[]="El usuario no existe en el sistema";
+    }
+
     //metodo para des hashear el password y para comprobar que el correo ya esta verificado
     public function comprobarPasswordAndVerificado($auth){
         $resultado = password_verify($auth->password,$this->password);
@@ -167,5 +172,4 @@ class Usuario extends activeRecord{
         return $resultado;
     }
 
-    
 }
