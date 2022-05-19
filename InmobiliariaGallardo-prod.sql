@@ -62,9 +62,9 @@ CREATE TABLE `citas` (
   `idEncargado` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Id_Encargado_FK_idx` (`idEncargado`),
-  KEY `Id_propiedadCita_FK_idx` (`idPropiedad`),
+  KEY `Id_PropiedadCita_FK_idx` (`idPropiedad`),
   CONSTRAINT `Id_EncargadoCita_FK` FOREIGN KEY (`idEncargado`) REFERENCES `usuario` (`id`),
-  CONSTRAINT `Id_propiedadCita_FK` FOREIGN KEY (`idPropiedad`) REFERENCES `propiedad` (`id`)
+  CONSTRAINT `Id_PropiedadCita_FK` FOREIGN KEY (`idPropiedad`) REFERENCES `propiedad` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,7 +124,7 @@ CREATE TABLE `direccionusuario` (
   `colonia` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `Id_DireccionUsuario_FK` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,6 +133,7 @@ CREATE TABLE `direccionusuario` (
 
 LOCK TABLES `direccionusuario` WRITE;
 /*!40000 ALTER TABLE `direccionusuario` DISABLE KEYS */;
+INSERT INTO `direccionusuario` VALUES (1,'CDMX','Benito Juarez','Centenario','San Simón');
 /*!40000 ALTER TABLE `direccionusuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,8 +149,8 @@ CREATE TABLE `foto` (
   `foto` varchar(200) DEFAULT NULL,
   `idPropiedad` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IdFoto_FK_idx` (`idPropiedad`),
-  CONSTRAINT `IdFoto_FK` FOREIGN KEY (`idPropiedad`) REFERENCES `propiedad` (`id`)
+  KEY `Id_FotosPropiedad_FK_idx` (`idPropiedad`),
+  CONSTRAINT `Id_FotosPropiedad_FK` FOREIGN KEY (`idPropiedad`) REFERENCES `propiedad` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -201,7 +202,7 @@ CREATE TABLE `propiedad` (
   PRIMARY KEY (`id`),
   KEY `IdCategoria_FK_idx` (`categoria`),
   KEY `IdEscritura_FK_idx` (`escritura`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +211,6 @@ CREATE TABLE `propiedad` (
 
 LOCK TABLES `propiedad` WRITE;
 /*!40000 ALTER TABLE `propiedad` DISABLE KEYS */;
-INSERT INTO `propiedad` VALUES (1,1700000,0,80.90,0.00,'Escritura','No aplica',0,0,0,0,0,0,0,0,0,0,'Terreno','venta',10,'3456765',0,'Para construir','2022-04-01',1,'','','fovissste, infonavit, credito bancario'),(3,1900000,2000,65.40,0.00,'Remate','Mécanico',2,280,1,2,34,2,2,2,1,1,'Departamento','vendida',10,'456787653',4000,'Con remodelado','2022-04-02',2,NULL,NULL,NULL),(4,2400000,2005,70.40,70.40,'Escritura','Techado',2,0,1,0,0,0,4,2,0,0,'Casa','preventa',18,'23456765432',4000,'Con remodelado','2022-04-03',3,NULL,NULL,NULL),(5,1800000,2005,90.80,90.80,'Remate','Calle',5,0,1,0,0,0,0,0,0,0,'Bodega','vendida',20,'76543212345',3000,'Para laborar','2022-04-04',6,NULL,NULL,NULL),(6,3000000,1990,70.80,70.80,'Escritura','Calle',1,0,1,0,0,0,2,3,0,0,'Local','vendida',20,'345676543',4000,'Para laborar','2022-04-05',7,NULL,NULL,NULL),(8,600000,1950,70.20,0.00,'Remate','Mécanico',2,280,0,3,0,1,0,3,0,0,'Oficina','vendida',30,'2345676543',500,'Con remodelado','2022-04-06',14,NULL,NULL,NULL),(9,1200000,0,90.40,0.00,'Cesión de derechos','No aplica',0,0,0,0,0,0,0,0,0,0,'Terreno','vendida',14,'345676543',0,'Para construir','2022-04-22',2,NULL,NULL,NULL),(10,1800000,0,90.32,0.00,'Escritura','No aplica',0,0,0,0,0,0,0,0,0,0,'Terreno','vendida',5,'3456787654',0,'Para construir','2022-04-26',2,NULL,NULL,NULL),(11,2200000,1970,90.32,0.00,'Escritura','Techado',2,280,1,234,0,2,3,3,1,1,'Departamento','vendida',25,'3456787654',5000,'Con remodelado','2022-04-26',2,NULL,NULL,NULL),(12,2400000,1980,120.70,90.64,'Escritura','Calle',5,0,1,0,0,0,0,0,0,0,'Bodega','vendida',13,'345678987654',3000,'Para laborar','2022-05-01',1,NULL,NULL,NULL),(13,1900000,1900,80.30,80.30,'Cesión de derechos','Calle',2,0,0,2,0,2,3,2,1,1,'Departamento','venta',10,'23456787654',2000,'Con remodelado','2022-05-09',2,'sala, lavadora, cocina, boiler, camas, roperos','roff garden, sala de usos multiples, gimnasio, cancha, calentador solar, alberca','fovissste'),(14,2000000,2004,120.10,110.20,'Escritura','Mécanico',2,0,3,0,0,0,3,2,1,1,'Casa','venta',11,'345676543d',3000,'Con remodelado','2022-05-18',1,'sala, lavadora, cocina, boiler, camas, roperos','roff garden, sala de usos multiples, gimnasio, cancha, calentador solar, alberca','fovissste, infonavit, credito bancario, efectivo');
 /*!40000 ALTER TABLE `propiedad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-19 13:48:06
+-- Dump completed on 2022-05-19 18:57:29
