@@ -60,7 +60,11 @@ CREATE TABLE `citas` (
   `fecha` date DEFAULT NULL,
   `hora` time DEFAULT NULL,
   `idEncargado` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `Id_Encargado_FK_idx` (`idEncargado`),
+  KEY `Id_propiedadCita_FK_idx` (`idPropiedad`),
+  CONSTRAINT `Id_EncargadoCita_FK` FOREIGN KEY (`idEncargado`) REFERENCES `usuario` (`id`),
+  CONSTRAINT `Id_propiedadCita_FK` FOREIGN KEY (`idPropiedad`) REFERENCES `propiedad` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -91,7 +95,8 @@ CREATE TABLE `direccion` (
   `linkGoogle` varchar(200) DEFAULT NULL,
   `link360` varchar(200) DEFAULT NULL,
   `CP` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `Id_DireccionPropiedad_FK` FOREIGN KEY (`id`) REFERENCES `propiedad` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -117,7 +122,8 @@ CREATE TABLE `direccionusuario` (
   `municipioDelegacion` varchar(60) DEFAULT NULL,
   `calle` varchar(45) DEFAULT NULL,
   `colonia` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `Id_DireccionUsuario_FK` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -280,7 +286,11 @@ CREATE TABLE `venta` (
   `idPropiedad` int DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `contrato` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `Id_EncargadoVenta_FK_idx` (`idEncargado`),
+  KEY `Id_PropiedadVenta_FK_idx` (`idPropiedad`),
+  CONSTRAINT `Id_EncargadoVenta_FK` FOREIGN KEY (`idEncargado`) REFERENCES `usuario` (`id`),
+  CONSTRAINT `Id_PropiedadVenta_FK` FOREIGN KEY (`idPropiedad`) REFERENCES `propiedad` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -302,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-19 11:15:27
+-- Dump completed on 2022-05-19 13:48:06

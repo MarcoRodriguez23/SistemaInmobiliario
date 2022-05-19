@@ -352,10 +352,10 @@ class HouseController{
         
                 if(validarTipoContenido($tipo)){
                     //eliminando objeto
-                    $Propiedad= Propiedad::find($id);
-                    $Propiedad->eliminar();
                     $direccion = Direccion::find($id);
                     $direccion->eliminar();
+                    $Propiedad= Propiedad::find($id);
+                    $Propiedad->eliminar();
                 }
             }
         }

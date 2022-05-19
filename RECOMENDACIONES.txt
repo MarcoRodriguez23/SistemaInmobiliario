@@ -16,3 +16,6 @@ $mail->SMTPSecure='tls';
 $mail->Port='587';
 
 si se cambia la configuracion smtp procurar hacerlo en las 3 funciones que componen al archivo "Email.php" (emailContacto, enviarConfirmacion, enviarInstrucciones).
+
+Cambiar la URL "<a href='http://localhost:3000/confirmar-cuenta?token=" que se encuentra en las funciones "enviarConfirmacion, enviarInstrucciones" dentro del archivo "Email.php" de la carpeta Classes, por ejemplo: 
+<a href='http://nombreDelSitioWeb.com/confirmar-cuenta?token=
