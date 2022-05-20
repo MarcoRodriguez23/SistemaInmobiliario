@@ -14,16 +14,36 @@
                 <legend>Email y password</legend>
                 <div>
                     <label for="email">E-mail</label>
-                    <input type="email" placeholder="Tu email" id="email" name="email" required>
+                    <input 
+                        type="email" 
+                        placeholder="Tu email" 
+                        id="email" 
+                        name="email" 
+                        required
+                        maxlength="30"
+                        oninput=
+                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9@.]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"      
+                    >
                 </div>
 
                 <div>
                     <label for="password">password</label>
-                    <input type="password" placeholder="Tu password" id="password" name="password" required>
+                    <input 
+                        type="password" 
+                        placeholder="Tu password" 
+                        id="password" 
+                        name="password" 
+                        required
+                        maxlength="20"
+                        oninput=
+                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"     
+                    >
                 </div>
             </fieldset>
 
-            <input type="submit" value="Iniciar Sesión" class="boton-morado">
+            <input type="submit" value="Iniciar Sesión" class="boton-principal">
         </form>
         <div class="enlace-login contenedor">
             <a href="/olvide">¿Olvidaste tu password? Clic aqui para reestablecer.</a>

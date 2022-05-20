@@ -160,6 +160,7 @@
 </section>
 
 <div class="muebles-amenidades">
+    <?php if(!empty($propiedad->muebles)): ?>
     <div>
         <h3>Muebles</h3>
         <ul>
@@ -175,7 +176,9 @@
             ?>
         </ul>
     </div>
+    <?php endif; ?>
 
+    <?php if(!empty($propiedad->amenidades)): ?>
     <div>
         <h3>Amenidades</h3>
         <ul>
@@ -191,4 +194,5 @@
             ?>
         </ul>
     </div>
+    <?php endif; ?>
 </div>

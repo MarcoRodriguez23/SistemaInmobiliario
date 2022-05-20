@@ -4,6 +4,13 @@
     padding: 8px 16px;
     border-radius: 8px;
     font-weight: bold;
+    transition: all 250ms ease;
+    &:hover{
+        background-color: $blanco;
+        color: $azul-secundario;
+        border: 1px solid $azul-secundario;
+        cursor: pointer;
+    }
 }
 
 //Linea para resaltar titulos
@@ -19,25 +26,29 @@ hr{
 }
 
 .btn-more{
-    text-align: center;
-  display: inline-block;
-  width: 100%;
+    width: 100%;
+    padding: 0.5rem;
 }
 
+
 .icono-more{
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    fill: $blanco;
     background-color: $azul-secundario;
-    transform: rotate(90deg);
-    border-radius: 50%;
-    transition: all 0.5s;
+    border-radius: 50% !important;
+    height: 5.2rem !important;
+    width: 5.2rem !important;
+    padding: 0.3rem 0.2rem;
+    margin: auto;
+    transition: all 0.25s ease;
+    img{
+        filter: invert(100%);
+    }
     &:hover{
-        transform: scale(1.05);
-        fill: $azul-secundario;
+        border: 2px solid $azul-secundario;
+        transform: scale(1.2);
         background-color: $blanco;
-        border: 1px solid $azul-secundario;
+        img{
+            filter: invert(0%);
+        }
     }
 }
 

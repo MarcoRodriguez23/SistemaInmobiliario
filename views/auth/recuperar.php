@@ -14,8 +14,17 @@
             <fieldset>
                 <legend>Credenciales</legend>
                 <div class="campo">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Tu nuevo password">
+                    <label for="password">Password (unicamente se aceptan letras y números)</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password" 
+                        placeholder="Tu nuevo password"
+                        maxlength="20"
+                        oninput=
+                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"      
+                    >
                 </div>
             </fieldset>
         

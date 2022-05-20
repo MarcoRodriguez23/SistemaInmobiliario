@@ -37,27 +37,75 @@
             <form class="formulario-user contenedor" action="/contacto" method="POST">
                 <div>
                     <label for="nombre">Nombre y apellido</label>
-                    <input type="text" name="nombre" placeholder="Nombre Completo" id="nombre" required>
+                    <input 
+                        type="text" 
+                        name="nombre" 
+                        placeholder="Nombre Completo" 
+                        id="nombre" 
+                        maxlength="35"
+                        required
+                        oninput=
+                        "this.value = this.value.replace(/[^a-zA-Z áéíóúñÁÉÍÓÚÑ]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"    
+                    >
                 </div>
                 
                 <div>
                     <label for="Correo">Correro</label>
-                    <input type="email" name="correo" placeholder="ejemplo@empresa.com" id="Correo" required>
+                    <input 
+                        type="email" 
+                        name="correo" 
+                        placeholder="ejemplo@empresa.com" 
+                        id="Correo" 
+                        maxlength="35"
+                        required
+                        oninput=
+                        "this.value = this.value.replace(/[^0-9a-zA-ZáéíóúñÁÉÍÓÚÑ@_.]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"     
+                    >
                 </div>
 
                 <div>
                     <label for="telefono">Whatsapp</label>
-                    <input type="tel" name="telefono" placeholder="Número de 10 digitos" id="telefono" required>
+                    <input 
+                        type="tel" 
+                        name="telefono" 
+                        placeholder="Número de 10 digitos" 
+                        id="telefono" 
+                        required
+                        maxlength="10"
+                        oninput=
+                        "this.value = this.value.replace(/[^0-9]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"       
+                    >
                 </div>
                 
                 <div>
                     <label for="empresa">Nombre de la empresa (opcional)</label>
-                    <input type="text" name="empresa" placeholder="Nombre de la empresa" id="empresa">
+                    <input 
+                        type="text" 
+                        name="empresa" 
+                        placeholder="Nombre de la empresa" 
+                        id="empresa"
+                        maxlength="30"
+                        oninput=
+                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ 0-9]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"      
+                    >
                 </div>
 
                 <div>
                     <label for="puesto">Puesto (opcional)</label>
-                    <input type="text" name="puesto" placeholder="Puesto en la empresa" id="puesto">
+                    <input 
+                        type="text" 
+                        name="puesto" 
+                        placeholder="Puesto en la empresa" 
+                        id="puesto"
+                        maxlength="20"
+                        oninput=
+                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+                        if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"      
+                    >
                 </div>
 
                 <div>
@@ -75,7 +123,14 @@
                 
                 <div class="mensaje-formulario">
                     <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje"></textarea>
+                    <textarea 
+                        id="mensaje" 
+                        name="mensaje" 
+                        placeholder="Tu mensaje"
+                        oninput=
+                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9 ]/,'')" 
+                        >
+                    </textarea>
                 </div>
                 <div class="boton-formulario">
                     <input type="submit" value="Enviar" class="boton-principal">

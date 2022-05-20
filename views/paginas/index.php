@@ -3,7 +3,7 @@
     </div>
     <div class="contenedor principal-izq">
         <div class="imagen-principal">
-            <img loading="lazy" src="build/img/conocenos.jpg" alt="familia feliz" class="imagenes-texto-lateral">
+            <img loading="lazy" src="build/img/conocenos.jpg" alt="familia feliz" class="imagenes-texto-lateral" lazy="loading">
         </div>
         <div class="texto-principal">
             <!-- <h2>Gallardo <span>Holdings</span></h2> -->
@@ -40,11 +40,11 @@ para que elijas tu hogar con nosotros.
                             <?php $unaImagen = true; ?>
                             <?php foreach($fotos as $foto): ?>
                                 <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
-                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Casa" class="img-card-inmueble">
+                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Casa" class="img-card-inmueble" lazy="loading">
                                 <?php $unaImagen = false; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
-                            <div  class="div-p-card-inmueble">
+                            <div class="div-p-card-inmueble">
                                 <p class="p-card-inmueble">
                                     <?php echo $propiedad->tipoPropiedad; ?>
                                     en
@@ -52,13 +52,11 @@ para que elijas tu hogar con nosotros.
                                     ,
                                     <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
                                 </p>
-                                <a 
-                                    href="/casa?id=<?php echo $propiedad->id; ?>" class="btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" 
-                                        height="48" width="48" 
-                                        class="icono-more">
-                                    <path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg>
-                                </a>
+                                <a href="/casa?id=<?php echo $propiedad->id; ?>" class="btn-more">
+                                    <div class="icono-more">
+                                        <img  src="/build/img/Iconos/flecha.svg" alt="">
+                                    </div>
+                                </a> 
                             </div>
                         </div>
                     <?php endif; ?>
@@ -94,25 +92,23 @@ para que elijas tu hogar con nosotros.
                             <?php $unaImagen = true; ?>
                             <?php foreach($fotos as $foto): ?>
                                 <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
-                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Departamento" class="img-card-inmueble">
+                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Departamento" class="img-card-inmueble" lazy="loading">
                                 <?php $unaImagen = false; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
-                            <div  class="div-p-card-inmueble">
+                            <div class="div-p-card-inmueble">
                                 <p class="p-card-inmueble">
                                     <?php echo $propiedad->tipoPropiedad; ?>
-                                    <?php echo $propiedad->categoria; ?>
                                     en
                                     <?php echo $propiedad->status; ?>
+                                    ,
                                     <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
                                 </p>
-                                <a 
-                                    href="/departamento?id=<?php echo $propiedad->id; ?>" class="btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" 
-                                        height="48" width="48" 
-                                        class="icono-more">
-                                    <path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg>
-                                </a>
+                                <a href="/departamento?id=<?php echo $propiedad->id; ?>" class="btn-more">
+                                    <div class="icono-more">
+                                        <img  src="/build/img/Iconos/flecha.svg" alt="">
+                                    </div>
+                                </a> 
                             </div>
                         </div>
                     <?php endif; ?>
@@ -149,26 +145,23 @@ para que elijas tu hogar con nosotros.
                         <?php $unaImagen = true; ?>
                             <?php foreach($fotos as $foto): ?>
                                 <?php if($propiedad->id === $foto->idPropiedad && $unaImagen===true): ?>
-                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Terreno" class="img-card-inmueble">
+                                <img src="/imagenes/<?php echo $foto->foto;?>" alt="Terreno" class="img-card-inmueble" lazy="loading">
                                 <?php $unaImagen = false; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
-                            <div  class="div-p-card-inmueble">
+                            <div class="div-p-card-inmueble">
                                 <p class="p-card-inmueble">
                                     <?php echo $propiedad->tipoPropiedad; ?>
-                                    <?php echo $propiedad->categoria; ?>
-                                    para
-                                    <?php echo $propiedad->status; ?>
                                     en
+                                    <?php echo $propiedad->status; ?>
+                                    ,
                                     <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
                                 </p>
-                                <a 
-                                    href="/terreno?id=<?php echo $propiedad->id; ?>" class="btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" 
-                                        height="48" width="48" 
-                                        class="icono-more">
-                                    <path d="M15.2 43.9 12.4 41.05 29.55 23.9 12.4 6.75 15.2 3.9 35.2 23.9Z"/></svg>
-                                </a>
+                                <a href="/terreno?id=<?php echo $propiedad->id; ?>" class="btn-more">
+                                    <div class="icono-more">
+                                        <img  src="/build/img/Iconos/flecha.svg" alt="">
+                                    </div>
+                                </a> 
                             </div>
                         </div>
                     <?php endif; ?>
@@ -197,7 +190,7 @@ para que elijas tu hogar con nosotros.
         <div class="testimonial">
 
             <div class="img-texto">
-            <img src="build/img/mujer.jpg" alt="" class="img-testimonio">
+            <img src="/build/img/mujer.webp" alt="" class="img-testimonio" lazy="loading">
             <blockquote>
                 Tras 3 años buscando departamento y no concretar nada, Inmobiliaria Gallardo me ayudó a encontrar mi espacio ideal
                 <br>
@@ -209,7 +202,7 @@ para que elijas tu hogar con nosotros.
         <div class="testimonial">
 
         <div class="img-texto">
-        <img src="build/img/hombre.jpg" alt="" class="img-testimonio">
+        <img src="/build/img/hombre.webp" alt="" class="img-testimonio" lazy="loading">
             <blockquote>
                 Logré vender mi terreno con ayuda de sus asesores, su profesionalismo es evidente.
                 <br>

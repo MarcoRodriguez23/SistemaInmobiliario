@@ -18,18 +18,26 @@
                     placeholder="Correo"
                     name="agente[email]"
                     value="<?php echo s($agente->email); ?>"
+                    maxlength="30"
+                    oninput=
+                    "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9@.]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
                     >
                 <?php echo isset($erroresAgente["email"]) ? "<p>".$erroresAgente["email"]."</p>" : ""; ?>
                 <?php echo isset($erroresAgente["yaExiste"]) ? "<p>".$erroresAgente["yaExiste"]."</p>" : ""; ?>
             </div>
 
             <div>
-                <label for="password">Password</label>
+                <label for="password">Password (unicamente se aceptan letras y números)</label>
                 <input 
                     type="password" 
                     id="password" 
                     placeholder="Contraseña"
                     name="agente[password]"
+                    maxlength="20"
+                    oninput=
+                    "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"      
                     >
                 <?php echo isset($erroresAgente["password"]) ? "<p>".$erroresAgente["password"]."</p>" : ""; ?>
             </div>

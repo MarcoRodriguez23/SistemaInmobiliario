@@ -120,6 +120,10 @@
             placeholder="Ej: CDMX" 
             name="direccion[estado]" id="estado" 
             value="<?php echo s($direccion->estado); ?>"
+            maxlength="45"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["estado"]) ? "<p>".$erroresDireccion["estado"]."</p>" : "" ?>
     </div>
@@ -132,6 +136,10 @@
             name="direccion[municipioDelegacion]" 
             id="municipioDelegacion" 
             value="<?php echo s($direccion->municipioDelegacion); ?>"
+            maxlength="60"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["municipioDelegacion"]) ? "<p>".$erroresDireccion["municipioDelegacion"]."</p>" : "" ?>
     </div>
@@ -144,6 +152,10 @@
             name="direccion[calle]" 
             id="calle"
             value="<?php echo s($direccion->calle); ?>"
+            maxlength="45"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9# ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["calle"]) ? "<p>".$erroresDireccion["calle"]."</p>" : "" ?>
     </div>
@@ -156,6 +168,10 @@
             name="direccion[colonia]" 
             id="colonia"
             value="<?php echo s($direccion->colonia); ?>"
+            maxlength="30"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9 ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["colonia"]) ? "<p>".$erroresDireccion["colonia"]."</p>" : "" ?>
     </div>
@@ -169,6 +185,10 @@
             name="direccion[numInterior]" 
             id="numInterior"
             value="<?php echo s($direccion->numInterior); ?>"
+            maxlength="4"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["numInterior"]) ? "<p>".$erroresDireccion["numInterior"]."</p>" : "" ?>
     </div>
@@ -182,6 +202,10 @@
             name="direccion[numExterior]" 
             id="numExterior"
             value="<?php echo s($direccion->numExterior); ?>"
+            maxlength="4"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["numExterior"]) ? "<p>".$erroresDireccion["numExterior"]."</p>" : "" ?>
     </div>
@@ -194,6 +218,9 @@
             name="direccion[linkGoogle]" 
             id="linkGoogle"
             value="<?php echo s($direccion->linkGoogle); ?>"
+            maxlength="200"
+            oninput=
+            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["linkGoogle"]) ? "<p>".$erroresDireccion["linkGoogle"]."</p>" : "" ?>
     </div>
@@ -206,6 +233,9 @@
             name="direccion[link360]" 
             id="link360"
             value="<?php echo s($direccion->link360); ?>"
+            maxlength="200"
+            oninput=
+            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["link360"]) ? "<p>".$erroresDireccion["link360"]."</p>" : "" ?>
     </div>
@@ -218,6 +248,10 @@
             name="direccion[CP]" 
             id="CP"
             value="<?php echo s($direccion->CP); ?>"
+            maxlength="6"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["CP"]) ? "<p>".$erroresDireccion["CP"]."</p>" : "" ?>
     </div>
@@ -232,6 +266,9 @@
             id="mt2" 
             step=".01"
             value="<?php echo s($propiedad->mt2); ?>"
+            maxlength="6"
+            oninput=
+            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["mt2"]) ? "<p>".$erroresPropiedad["mt2"]."</p>" : "" ?>
     </div>
@@ -245,6 +282,9 @@
             id="mt2Construccion" 
             step=".01"
             value="<?php echo s($propiedad->mt2Construccion); ?>"
+            maxlength="6"
+            oninput=
+            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["mt2Construccion"]) ? "<p>".$erroresPropiedad["mt2Construccion"]."</p>" : "" ?>
     </div>
@@ -264,6 +304,10 @@
             name="propiedad[numPisos]" 
             id="numPisos"
             value="<?php echo s($propiedad->numPisos); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["numPisos"]) ? "<p>".$erroresPropiedad["numPisos"]."</p>" : "" ?>
     </div>
@@ -277,6 +321,10 @@
             name="propiedad[año]" 
             id="año"
             value="<?php echo s($propiedad->año); ?>"
+            maxlength="4"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["año"]) ? "<p>".$erroresPropiedad["año"]."</p>" : "" ?>
     </div>
@@ -290,6 +338,10 @@
             name="propiedad[habitaciones]" 
             id="habitaciones"
             value="<?php echo s($propiedad->habitaciones); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["habitaciones"]) ? "<p>".$erroresPropiedad["habitaciones"]."</p>" : "" ?>
     </div>
@@ -303,6 +355,10 @@
             name="propiedad[baños]" 
             id="baños"
             value="<?php echo s($propiedad->baños); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["baños"]) ? "<p>".$erroresPropiedad["baños"]."</p>" : "" ?>
     </div>
@@ -316,6 +372,10 @@
             name="propiedad[servicioH]" 
             id="servicioH"
             value="<?php echo s($propiedad->servicioH); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["servicioH"]) ? "<p>".$erroresPropiedad["servicioH"]."</p>" : "" ?>
     </div>
@@ -329,6 +389,10 @@
             name="propiedad[servicioP]" 
             id="servicioP"
             value="<?php echo s($propiedad->servicioP); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
             >
         <?php echo isset($erroresPropiedad["servicioP"]) ? "<p>".$erroresPropiedad["servicioP"]."</p>" : "" ?>
     </div>
@@ -381,6 +445,10 @@
             name="propiedad[numEstacionamientos]" 
             id="numEstacionamientos"
             value="<?php echo s($propiedad->numEstacionamientos); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["numEstacionamientos"]) ? "<p>".$erroresPropiedad["numEstacionamientos"]."</p>" : "" ?>
     </div>
@@ -394,6 +462,10 @@
             name="propiedad[numIdEstacionamiento]" 
             id="numIdEstacionamiento"
             value="<?php echo s($propiedad->numIdEstacionamiento); ?>"
+            maxlength="4"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["numIdEstacionamiento"]) ? "<p>".$erroresPropiedad["numIdEstacionamiento"]."</p>" : "" ?>
     </div>
@@ -413,11 +485,15 @@
             name="propiedad[precio]" 
             id="precio"
             value="<?php echo s($propiedad->precio); ?>"
+            maxlength="9"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["precio"]) ? "<p>".$erroresPropiedad["precio"]."</p>" : "" ?>
     </div>
     <div>
-        <label for="mantenimiento">Precio de mantenimiento</label>
+        <label for="mantenimiento">Precio de mantenimiento (mensual)</label>
         <input 
             type="number" 
             placeholder="Ej: 5000" 
@@ -425,6 +501,10 @@
             name="propiedad[mantenimiento]" 
             id="mantenimiento"
             value="<?php echo s($propiedad->mantenimiento); ?>"
+            maxlength="6"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["mantenimiento"]) ? "<p>".$erroresPropiedad["mantenimiento"]."</p>" : "" ?>
     </div>
@@ -443,6 +523,10 @@
             name="propiedad[piso]" 
             id="piso"
             value="<?php echo s($propiedad->piso); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["piso"]) ? "<p>".$erroresPropiedad["piso"]."</p>" : "" ?>
     </div>
@@ -456,6 +540,10 @@
             name="propiedad[numElevadores]" 
             id="numElevadores"
             value="<?php echo s($propiedad->numElevadores); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["numElevadores"]) ? "<p>".$erroresPropiedad["numElevadores"]."</p>" : "" ?>
     </div>
@@ -473,6 +561,10 @@
             name="propiedad[comision]"
             max="50"
             value="<?php echo s($propiedad->comision); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["comision"]) ? "<p>".$erroresPropiedad["comision"]."</p>" : "" ?>
     </div>
@@ -689,6 +781,10 @@
             min="1" 
             name="propiedad[numPredio]"
             value="<?php echo s($propiedad->numPredio); ?>"
+            maxlength="20"
+            oninput=
+            "this.value = this.value.replace(/[^-0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresPropiedad["numPredio"]) ? "<p>".$erroresPropiedad["numPredio"]."</p>" : "" ?>
     </div>

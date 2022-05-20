@@ -8,6 +8,10 @@
             id="nombre"
             name="vendedor[nombre]"
             value="<?php echo s($vendedor->nombre); ?>"
+            maxlength="60"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
             >
         <?php echo isset($erroresVendedor["nombre"]) ? "<p>".$erroresVendedor["nombre"]."</p>" : ""; ?>
     </div>
@@ -19,6 +23,10 @@
             id="apellido"
             name="vendedor[apellido]"
             value="<?php echo s($vendedor->apellido); ?>"
+            maxlength="60"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
             >
         <?php echo isset($erroresVendedor["apellido"]) ? "<p>".$erroresVendedor["apellido"]."</p>" : ""; ?>
     </div>
@@ -31,6 +39,10 @@
             min="15"
             name="vendedor[edad]"
             value="<?php echo s($vendedor->edad); ?>"
+            maxlength="2"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
             >
         <?php echo isset($erroresVendedor["edad"]) ? "<p>".$erroresVendedor["edad"]."</p>" : ""; ?>
     </div>
@@ -44,6 +56,11 @@
             max="5599999999"
             min="5500000000"
             value="<?php echo s($vendedor->telefono); ?>"
+            maxlength="10"
+            oninput=
+            "this.value = this.value.replace(/[^0-9]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+            
             >
         <?php echo isset($erroresVendedor["telefono"]) ? "<p>".$erroresVendedor["telefono"]."</p>" : ""; ?>
         <?php echo isset($erroresVendedor["formatoTelefono"]) ? "<p>".$erroresVendedor["formatoTelefono"]."</p>" : ""; ?>
@@ -60,6 +77,10 @@
             name="direccion[estado]" 
             id="estado" 
             value="<?php echo s($direccion->estado); ?>"
+            maxlength="45"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["estado"]) ? "<p>".$erroresDireccion["estado"]."</p>" : ""; ?>
         
@@ -73,6 +94,10 @@
             name="direccion[municipioDelegacion]" 
             id="municipioDelegacion" 
             value="<?php echo s($direccion->municipioDelegacion); ?>"
+            maxlength="60"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
         >
         <?php echo isset($erroresDireccion["municipioDelegacion"]) ? "<p>".$erroresDireccion["municipioDelegacion"]."</p>" : ""; ?>
     </div>
@@ -85,6 +110,10 @@
             name="direccion[calle]" 
             id="calle"
             value="<?php echo s($direccion->calle); ?>"
+            maxlength="45"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9# ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
             >
         <?php echo isset($erroresDireccion["calle"]) ? "<p>".$erroresDireccion["calle"]."</p>" : ""; ?>
     </div>
@@ -97,6 +126,10 @@
             name="direccion[colonia]" 
             id="colonia"
             value="<?php echo s($direccion->colonia); ?>"
+            maxlength="30"
+            oninput=
+            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9 ]/,'')
+            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
             >
         <?php echo isset($erroresDireccion["colonia"]) ? "<p>".$erroresDireccion["colonia"]."</p>" : ""; ?>
     </div>
