@@ -4,9 +4,9 @@
             <?php echo $propiedad->tipoPropiedad; ?>
             <?php echo $propiedad->categoria; ?>
             en
-            <?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion; ?>
-            <?php echo $direccion->estado; ?>
-            <?php echo "CP:".$direccion->CP; ?>
+            <?php echo $propiedad->calle.", ".$propiedad->colonia.", ".$propiedad->municipioDelegacion; ?>
+            <?php echo $propiedad->estado; ?>
+            <?php echo "CP:".$propiedad->CP; ?>
         </h3>
     </section>
     <section class="carrousel contenedor">

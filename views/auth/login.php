@@ -37,7 +37,7 @@
                         required
                         maxlength="20"
                         oninput=
-                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9]/,'')
+                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9+]/,'')
                         if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"     
                     >
                 </div>

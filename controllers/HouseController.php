@@ -32,6 +32,7 @@ class HouseController{
 
         //METODO POST PARA EL FILTRO DE BUSQUEDA
         if ($_SERVER['REQUEST_METHOD']  === 'POST') {
+            // debuguear($_POST);
 
             $filtro = $_POST['filtro'];
 
@@ -48,19 +49,26 @@ class HouseController{
             }
         }
         else{
+            $filtro=[
+    
+                'precio'=>'',
+                'tipoPropiedad'=>'',
+                'status'=>'',
+                'categoria'=>'',
+                'orden'=>'1'
+                
+            ];
             //EL SUPERADMINISTRADOR PUEDE VER TODAS LAS PROPIEDADES
             if($_SESSION['nivel']==1){
-                $propiedades = Propiedad::all();
+                $propiedades = Propiedad::filter($filtro,$_SESSION['id']);
             }
-            //EL AGENTE INMOBILIARIO PUEDE VER LAS PROPIEDADES CREADAS POR EL Y POR EL SUPERADMINISTRADOR
             elseif($_SESSION['nivel']==2){
-                $propiedades = Propiedad::allXCreador($_SESSION['id']);
+                $propiedades = Propiedad::filter($filtro,$_SESSION['id']);
             }
-            //EL VENDEDOR PUEDE VER LAS PROPIEADADES CREADAS POR EL SUPERADMINISTRADOR O POR SU AGENTE A CARGO
             elseif($_SESSION['nivel']==3){
                 $usuario = Usuario::find($_SESSION['id']);
                 $creador = $usuario->idCreador;
-                $propiedades = Propiedad::allXCreador($creador);
+                $propiedades = Propiedad::filter($filtro,$creador);
             }
         }
         

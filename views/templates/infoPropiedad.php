@@ -1,7 +1,7 @@
 <div class="dos-columnas contenedor">
     <div class="enlaces">
-        <a class="boton-principal" target="_blank" href="<?php echo $direccion->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
-        <a class="boton-principal" target="_blank" href="<?php echo $direccion->link360; ?>">Recorre la propiedad en 360°</a>
+        <a class="boton-principal" target="_blank" href="<?php echo $propiedad->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
+        <a class="boton-principal" target="_blank" href="<?php echo $propiedad->link360; ?>">Recorre la propiedad en 360°</a>
     </div>
     <div class="opciones-compra">
         <div>
@@ -119,16 +119,16 @@
                 <p>Año de construcción: <?php echo $propiedad->año; ?></p>
             </li>
             <?php endif; ?>
-            <?php if($direccion->numExterior!=0): ?>
+            <?php if($propiedad->numExterior!=0): ?>
             <li>
                 <img src="/build/img/Iconos/icono_casa1.svg" alt="icono">
-                <p>Núm. exterior: <?php echo $direccion->numExterior; ?></p>
+                <p>Núm. exterior: <?php echo $propiedad->numExterior; ?></p>
             </li>
             <?php endif; ?>
-            <?php if($direccion->numInterior!=0): ?>
+            <?php if($propiedad->numInterior!=0): ?>
             <li>
                 <img src="/build/img/Iconos/interior.svg" alt="icono">
-                <p>Núm. interior: <?php echo $direccion->numInterior; ?></p>
+                <p>Núm. interior: <?php echo $propiedad->numInterior; ?></p>
             </li>
             <?php endif; ?>
             <?php if($propiedad->piso!=0): ?>

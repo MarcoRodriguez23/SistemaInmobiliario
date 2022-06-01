@@ -13,17 +13,12 @@
         <hr class="hr-inmuebles">
         </div>
     <div class="inmuebles contenedor">
-    <?php foreach ($propiedades as $propiedad): ?>
-        <?php foreach ($direcciones as $direccion): ?>
-            <?php if($propiedad->tipoPropiedad == "Casa" && $propiedad->id === $direccion->id && $propiedad->status!='vendida'): ?>
-                <div class="plantilla">
-                    <a href="/casa?id=<?php echo $propiedad->id; ?>">
-                    <?php include 'propiedad.php'; ?>
-                
-
-            <?php endif; ?>
+        <?php foreach ($propiedades as $propiedad): ?>
+            <div class="plantilla">
+                <a href="/casa?id=<?php echo $propiedad->id; ?>">
+                <?php include 'propiedad.php'; ?>
+                </a>
+            </div>
         <?php endforeach; ?>
-    <?php endforeach; ?>
-    </div>
     </div><!--fin de inmubles -->
 </main>

@@ -166,6 +166,12 @@ class activeRecord{
         return array_shift( $resultado ) ;
     }
 
+    // FUNCION PARA INGRESAR SQL LIBRE
+    public static function SQL($query) {
+        $resultado = self::consultarSQL($query);
+        return $resultado ;
+    }
+
      // Busca todos los registros por un columna
      public static function whereAll($columna,$valor) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";

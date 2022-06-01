@@ -34,8 +34,7 @@ para que elijas tu hogar con nosotros.
         <div class="carrousel-items" id="C-inmuebles">
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
-                <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == "Casa" && $propiedad->id === $direccion->id && $propiedad->status != 'vendida'): ?>
+                    <?php if($propiedad->tipoPropiedad == "Casa"): ?>
                         <div class="imagen-texto">
                             <?php $unaImagen = true; ?>
                             <?php foreach($fotos as $foto): ?>
@@ -50,7 +49,7 @@ para que elijas tu hogar con nosotros.
                                     en
                                     <?php echo $propiedad->status; ?>
                                     ,
-                                    <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                                    <?php echo $propiedad->estado .", ".$propiedad->municipioDelegacion; ?>
                                 </p>
                                 <a href="/casa?id=<?php echo $propiedad->id; ?>" class="btn-more">
                                     <div class="icono-more">
@@ -60,7 +59,6 @@ para que elijas tu hogar con nosotros.
                             </div>
                         </div>
                     <?php endif; ?>
-                <?php endforeach; ?>
             <?php endforeach; ?> 
         </div>
         <button aria-label="Siguiente" class="carrousel__siguiente" id="siguiente1">
@@ -86,8 +84,7 @@ para que elijas tu hogar con nosotros.
         <div class="carrousel-items" id="C-departamentos">
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
-                <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == "Departamento" && $propiedad->id === $direccion->id && $propiedad->status != "vendida"): ?>
+                    <?php if($propiedad->tipoPropiedad == "Departamento"): ?>
                         <div class="imagen-texto">
                             <?php $unaImagen = true; ?>
                             <?php foreach($fotos as $foto): ?>
@@ -102,7 +99,7 @@ para que elijas tu hogar con nosotros.
                                     en
                                     <?php echo $propiedad->status; ?>
                                     ,
-                                    <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                                    <?php echo $propiedad->estado .", ".$propiedad->municipioDelegacion; ?>
                                 </p>
                                 <a href="/departamento?id=<?php echo $propiedad->id; ?>" class="btn-more">
                                     <div class="icono-more">
@@ -112,7 +109,6 @@ para que elijas tu hogar con nosotros.
                             </div>
                         </div>
                     <?php endif; ?>
-                <?php endforeach; ?>
             <?php endforeach; ?>
             
         </div>
@@ -139,8 +135,7 @@ para que elijas tu hogar con nosotros.
         <div class="carrousel-items" id="C-terrenos">
             <!-- <aqui se van a ir agregando las imagenes -->
             <?php foreach($propiedades as $propiedad): ?>
-                <?php foreach($direcciones as $direccion): ?>
-                    <?php if($propiedad->tipoPropiedad == "Terreno" && $propiedad->id === $direccion->id && $propiedad->status != "vendida"): ?>
+                    <?php if($propiedad->tipoPropiedad == "Terreno"): ?>
                         <div class="imagen-texto">
                         <?php $unaImagen = true; ?>
                             <?php foreach($fotos as $foto): ?>
@@ -155,7 +150,7 @@ para que elijas tu hogar con nosotros.
                                     en
                                     <?php echo $propiedad->status; ?>
                                     ,
-                                    <?php echo $direccion->estado .", ".$direccion->municipioDelegacion; ?>
+                                    <?php echo $propiedad->estado .", ".$propiedad->municipioDelegacion; ?>
                                 </p>
                                 <a href="/terreno?id=<?php echo $propiedad->id; ?>" class="btn-more">
                                     <div class="icono-more">
@@ -166,7 +161,6 @@ para que elijas tu hogar con nosotros.
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
-            <?php endforeach; ?>
         </div>
         <button aria-label="Siguiente" class="carrousel__siguiente" id="siguiente3">
             <img src="build/img/flecha-correcta.png" alt="">

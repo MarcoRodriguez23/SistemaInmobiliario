@@ -17,19 +17,26 @@ use Model\Servicio;
 require_once '../models/Servicio.php';
 use Classes\Email;
 require_once '../classes/Email.php';
+use Model\PropiedadDireccion;
+require_once '../models/PropiedadDireccion.php';
 
 class PaginasController{
 
     //función para recolectar la información que se mostrara en la pagina /index
     public static function index(Router $router){
-        $propiedades=Propiedad::all();
-        $direcciones=Direccion::all();
+        
+        $query = "SELECT propiedad.id,precio,año,mt2,mt2Construccion,escritura,estacionamiento,numEstacionamientos,
+        numIdEstacionamiento,numPisos,piso,numDepartamento,numElevadores,habitaciones,baños,servicioH,servicioP,
+        tipoPropiedad,status,comision,numPredio,mantenimiento,categoria,creacion,idCreador,muebles,amenidades,metodosVenta,
+        estado,municipioDelegacion,calle,colonia,numExterior,numInterior,linkGoogle,link360,cp
+        FROM propiedad INNER JOIN direccion ON propiedad.id=direccion.id WHERE status != 'vendida'";
+
+        $propiedades = PropiedadDireccion::SQL($query);
         $fotos=Foto::all();
         
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/index',[
             'propiedades'=>$propiedades,
-            'direcciones'=>$direcciones,
             'fotos'=>$fotos
         ]);
     }
@@ -54,43 +61,55 @@ class PaginasController{
     }
 
     public static function casas(Router $router){
-        // $propiedades=Propiedad::all();
-        $propiedades=Propiedad::whereAll('tipoPropiedad','Casa');
-        $direcciones=Direccion::all();
+
+        $query = "SELECT propiedad.id,precio,año,mt2,mt2Construccion,escritura,estacionamiento,numEstacionamientos,
+        numIdEstacionamiento,numPisos,piso,numDepartamento,numElevadores,habitaciones,baños,servicioH,servicioP,
+        tipoPropiedad,status,comision,numPredio,mantenimiento,categoria,creacion,idCreador,muebles,amenidades,metodosVenta,
+        estado,municipioDelegacion,calle,colonia,numExterior,numInterior,linkGoogle,link360,cp
+        FROM propiedad INNER JOIN direccion ON propiedad.id=direccion.id WHERE tipoPropiedad='Casa' AND status != 'vendida'";
+
+        $propiedades = PropiedadDireccion::SQL($query);
+        // debuguear($propiedades);
         $fotos = Foto::all();
 
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/casas',[
             'propiedades'=>$propiedades,
-            'direcciones'=>$direcciones,
             'fotos'=>$fotos,
         ]);
     }
 
     public static function departamentos(Router $router){
-        // $propiedades=Propiedad::all();
-        $propiedades=Propiedad::whereAll('tipoPropiedad','Departamento');
-        $direcciones=Direccion::all();
+
+        $query = "SELECT propiedad.id,precio,año,mt2,mt2Construccion,escritura,estacionamiento,numEstacionamientos,
+        numIdEstacionamiento,numPisos,piso,numDepartamento,numElevadores,habitaciones,baños,servicioH,servicioP,
+        tipoPropiedad,status,comision,numPredio,mantenimiento,categoria,creacion,idCreador,muebles,amenidades,metodosVenta,
+        estado,municipioDelegacion,calle,colonia,numExterior,numInterior,linkGoogle,link360,cp
+        FROM propiedad INNER JOIN direccion ON propiedad.id=direccion.id WHERE tipoPropiedad='Departamento' AND status != 'vendida'";
+
+        $propiedades = PropiedadDireccion::SQL($query);
         $fotos = Foto::all();
 
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/departamentos',[
             'propiedades'=>$propiedades,
-            'direcciones'=>$direcciones,
             'fotos'=>$fotos,
         ]);
     }
 
     public static function terrenos(Router $router){
-        // $propiedades=Propiedad::all();
-        $propiedades=Propiedad::whereAll('tipoPropiedad','Terreno');
-        $direcciones=Direccion::all();
+        $query = "SELECT propiedad.id,precio,año,mt2,mt2Construccion,escritura,estacionamiento,numEstacionamientos,
+        numIdEstacionamiento,numPisos,piso,numDepartamento,numElevadores,habitaciones,baños,servicioH,servicioP,
+        tipoPropiedad,status,comision,numPredio,mantenimiento,categoria,creacion,idCreador,muebles,amenidades,metodosVenta,
+        estado,municipioDelegacion,calle,colonia,numExterior,numInterior,linkGoogle,link360,cp
+        FROM propiedad INNER JOIN direccion ON propiedad.id=direccion.id WHERE tipoPropiedad='Terreno' AND status != 'vendida'";
+
+        $propiedades = PropiedadDireccion::SQL($query);
         $fotos = Foto::all();
 
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/terrenos',[
             'propiedades'=>$propiedades,
-            'direcciones'=>$direcciones,
             'fotos'=>$fotos,
         ]);
     }
@@ -132,40 +151,37 @@ class PaginasController{
     }
 
     public static function comercial(Router $router){
-        $oficinas=Propiedad::whereAll('tipoPropiedad','Oficina');
-        $locales=Propiedad::whereAll('tipoPropiedad','Local');
-        $bodegas=Propiedad::whereAll('tipoPropiedad','Bodega');
-        foreach ($locales as $key) {
-            $propiedades[]=$key;
-        }
-        foreach ($oficinas as $key) {
-            $propiedades[]=$key;
-        }
-        foreach ($bodegas as $key) {
-            $propiedades[]=$key;
-        }
+        $query = "SELECT propiedad.id,precio,año,mt2,mt2Construccion,escritura,estacionamiento,numEstacionamientos,
+        numIdEstacionamiento,numPisos,piso,numDepartamento,numElevadores,habitaciones,baños,servicioH,servicioP,
+        tipoPropiedad,status,comision,numPredio,mantenimiento,categoria,creacion,idCreador,muebles,amenidades,metodosVenta,
+        estado,municipioDelegacion,calle,colonia,numExterior,numInterior,linkGoogle,link360,cp
+        FROM propiedad INNER JOIN direccion ON propiedad.id=direccion.id WHERE tipoPropiedad IN ('Oficina','Local','Bodega') AND status != 'vendida'";
 
-        $direcciones=Direccion::all();
+        $propiedades = PropiedadDireccion::SQL($query);
         $fotos = Foto::all();
 
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/comercial',[
             'propiedades'=>$propiedades,
-            'direcciones'=>$direcciones,
             'fotos'=>$fotos,
         ]);
     }
 
     public static function infoPropiedad(Router $router){
         $id = validarORedireccionar('/inmuebles');
-        $propiedad = Propiedad::find($id);
-        $direccion = Direccion::find($id);
+        
+        $query = "SELECT propiedad.id,precio,año,mt2,mt2Construccion,escritura,estacionamiento,numEstacionamientos,
+        numIdEstacionamiento,numPisos,piso,numDepartamento,numElevadores,habitaciones,baños,servicioH,servicioP,
+        tipoPropiedad,status,comision,numPredio,mantenimiento,categoria,creacion,idCreador,muebles,amenidades,metodosVenta,
+        estado,municipioDelegacion,calle,colonia,numExterior,numInterior,linkGoogle,link360,cp
+        FROM propiedad INNER JOIN direccion ON propiedad.id=direccion.id WHERE propiedad.id = ${id}";
+        
+        $propiedad = PropiedadDireccion::SQL($query);
         $fotos = Foto::find($id);
 
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('/paginas/infoPropiedad',[
-            'propiedad'=>$propiedad,
-            'direccion'=>$direccion,
+            'propiedad'=>$propiedad[0],
             'fotos'=>$fotos,
         ]);
     }

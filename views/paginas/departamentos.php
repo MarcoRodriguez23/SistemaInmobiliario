@@ -13,15 +13,11 @@
         
     <div class="inmuebles contenedor">
     <?php foreach ($propiedades as $propiedad): ?>
-        <?php foreach ($direcciones as $direccion): ?>
-            <?php if($propiedad->tipoPropiedad == "Departamento" && $propiedad->id === $direccion->id && $propiedad->status!='vendida'): ?>
-                <div class="plantilla">
-                    <a href="/departamento?id=<?php echo $propiedad->id; ?>">
-                    <?php include 'propiedad.php'; ?>
-                
-
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <div class="plantilla">
+            <a href="/departamento?id=<?php echo $propiedad->id; ?>">
+            <?php include 'propiedad.php'; ?>
+            </a>
+        </div>
     <?php endforeach; ?>
     </div><!--fin de inmubles -->
 </main>

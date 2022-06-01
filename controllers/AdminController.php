@@ -15,6 +15,8 @@ use Model\Usuario;
 require_once '../models/Usuario.php';
 use Model\Venta;
 require_once '../models/Venta.php';
+use Model\TablaVentas;
+require_once '../models/TablaVentas.php';
 
 //CONTROLADOR CONCLUIDO
 class AdminController{
@@ -24,34 +26,23 @@ class AdminController{
 
         //el superadministrador puede ver todas las ventas generadas
         if($_SESSION['nivel']==1){
-            $ventas = Venta::all();
+            $query = "SELECT venta.id,nombre,apellido,calle,colonia,municipioDelegacion,estado,precio,comision,fecha,contrato,nivel 
+            FROM venta LEFT JOIN propiedad ON venta.idPropiedad=propiedad.id LEFT JOIN direccion ON propiedad.id=direccion.id 
+            LEFT JOIN usuario ON venta.idEncargado=usuario.id";
         }
         //el agente inmobiliario puede ver sus ventas y la de sus vendedores
         elseif($_SESSION['nivel']==2){
-            //buscando a los vendedores que registrados por el agente en sesión
-            $usuarios = Usuario::whereAll('idCreador',$_SESSION['id']);
-            //buscando las ventas del agente en sesión           
-            $ventas= Venta::whereAll('idEncargado',$_SESSION['id']);
-            //foreach para buscar las ventas concretadas por cada vendedor del agente en sesión
-            foreach ($usuarios as $usuario) {
-                $venta=Venta::whereAll('idEncargado',$usuario->id);
-                //foreach para agregar al arreglo de ventas, las ventas de cada vendedor
-                foreach ($venta as $key) {
-                    $ventas[]=$key;
-                }
-            }            
+            
+            $query = "SELECT venta.id,nombre,apellido,calle,colonia,municipioDelegacion,estado,precio,comision,fecha,contrato,nivel,usuario.idCreador 
+            FROM venta LEFT JOIN propiedad ON venta.idPropiedad=propiedad.id LEFT JOIN direccion ON propiedad.id=direccion.id 
+            LEFT JOIN usuario ON venta.idEncargado=usuario.id WHERE idEncargado=${_SESSION['id']} OR usuario.idCreador=${_SESSION['id']}";            
         }
         
-        $propiedades = Propiedad::all();
-        $direcciones = Direccion::all();
-        $trabajadores = Usuario::all();
+        $ventas = TablaVentas::SQL($query);
 
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/ganancias/lista',[
-            'ventas'=>$ventas,
-            'propiedades'=>$propiedades,
-            'direcciones'=>$direcciones,
-            'trabajadores'=>$trabajadores
+            'ventas'=>$ventas
         ]);
     }
 
