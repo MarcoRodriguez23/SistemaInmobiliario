@@ -1,5 +1,5 @@
 <main id="index">
-    <div class="banner container-xxl" id="bannerIndex">
+    <div class="banner" id="bannerIndex">
     </div>
     <div class="container-xl">
         <div class="row py-3 align-items-center mx-2 mx-md-0">

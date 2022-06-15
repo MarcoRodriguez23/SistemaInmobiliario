@@ -3,6 +3,8 @@
 
 // //DISEÑO DEL FOOTER
 // .footer{
+//     margin-left: 0;
+//     margin-right: 0;
 //     // margin-top: 2rem;
 //     background-color: $azul-principal;
 //     padding-top: 0.2rem;
@@ -31,7 +33,7 @@
         .footer__socialMedia{
             // margin: auto;
             h4{
-                margin: 0 auto;
+                // margin: 0 auto;
                 color: $blanco;
             }
             .socialMedia-imagenes{
