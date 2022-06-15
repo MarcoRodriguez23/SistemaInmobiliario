@@ -17,7 +17,7 @@
     <title>Inmobiliaria Gallardo</title>
 </head>
 <body>
-    <header class="header">
+<header class="header container-xxl">
         <div class="contenedor barra">
             <a href="/" class="logotipo">
                 <img  src="/build/img/GALLARDO SVG.svg" alt="Logotipo">
@@ -45,40 +45,49 @@
     echo $contenido;
     ?>
 
-<footer class="footer">
-    <div class="footer-superior">
-        <div class="footer-logo">
-            <a href="/login" class="logotipo">
-                <img  src="/build/img/GALLARDO SVG.svg" alt="Logotipo">
-            </a>
-        </div>
-        <div class="footer-informacion">
-            <p>
-                Cuauhtémoc, Ciudad de México
-            </p>
-            <p>
-                tel: 55-7379-2800
-            </p>
-        </div>
-        <div class="footer-socialMedia">
-            <h4>Encuentranos en:</h4>
-            <div class="socialMedia-imagenes">
-                <a href="#">
-                    <img src="/build/img/Iconos/facebook.png" alt="Facebook">
-                </a>
-                <a href="#">
-                    <img src="/build/img/Iconos/mercadolibre.png" alt="Mercado libre">
-                </a>
-                <a href="https://wa.me/5573792800" target="_blank">
-                    <img src="/build/img/Iconos/whatsapp.png" alt="whatsapp">
+    <footer class="bg-primary mt-3 text-white container-xxl pt-2">
+        
+        <div class="row align-items-center justify-content-center pb-2">
+
+            <div class="col-md-4 mb-2 mb-md-0">
+                <a href="/login" class="logotipo">
+                    <img  src="/build/img/GALLARDO SVG.svg" alt="Logotipo">
                 </a>
             </div>
-        </div>
-    </div>
-    <p class="copyright">
-        Todos los derechos reservados <?php echo date('Y'); ?> &copy;
-    </p>
+
+            <div class="col-md-4 mb-2 mb-md-0 fw-bold text-center">
+                <p>
+                    Cuauhtémoc, Ciudad de México
+                </p>
+                <p>
+                    tel: 55-7379-2800
+                </p>
+            </div>
+
+            <div class="col-md-4 footer__socialMedia">
+                <h4 class="text-center">Encuentranos en:</h4>
+                <div class="socialMedia-imagenes mx-3 ">
+                    <a href="#">
+                        <img src="/build/img/Iconos/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="#">
+                        <img src="/build/img/Iconos/mercadolibre.png" alt="Mercado libre">
+                    </a>
+                    <a href="https://wa.me/5573792800" target="_blank">
+                        <img src="/build/img/Iconos/whatsapp.png" alt="whatsapp">
+                    </a>
+                </div>
+            </div>
+
+        </div> <!--fin row-->
+
+        <p class="text-center mb-0 copyright">
+            Todos los derechos reservados <?php echo date('Y'); ?> &copy;
+        </p>
+    
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="build/js/bundle.js"></script>
 </body>
 </html>

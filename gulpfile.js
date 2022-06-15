@@ -1,5 +1,5 @@
 const { src, dest, watch , parallel } = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('autoprefixer');
 const postcss    = require('gulp-postcss')
 const sourcemaps = require('gulp-sourcemaps')
@@ -19,7 +19,7 @@ const paths = {
 }
 
 // css es una función que se puede llamar automaticamente
-function css() {
+function css(done) {
     return src(paths.scss)
         .pipe(sourcemaps.init())
         .pipe(sass())
@@ -27,10 +27,12 @@ function css() {
         // .pipe(postcss([autoprefixer()]))
         .pipe(sourcemaps.write('.'))
         .pipe( dest('./public/build/css') );
+
+    done();
 }
 
 
-function javascript() {
+function javascript(done) {
     return src(paths.js)
     //   .pipe(sourcemaps.init())
       .pipe(concat('bundle.js')) // final output file name
@@ -38,29 +40,38 @@ function javascript() {
     //   .pipe(sourcemaps.write('.'))
     //   .pipe(rename({ suffix: '.min' }))
       .pipe(dest('./public/build/js'))
+
+    done();
 }
 
-function imagenes() {
+function imagenes(done) {
     return src(paths.imagenes)
         .pipe(cache(imagemin({ optimizationLevel: 3})))
         .pipe(dest('./public/build/img'))
         .pipe(notify({ message: 'Imagen Completada'}));
+
+    done();
 }
 
-function versionWebp() {
+function versionWebp(done) {
     return src(paths.imagenes)
         .pipe( webp() )
         .pipe(dest('./public/build/img'))
         .pipe(notify({ message: 'Imagen Completada'}));
+
+    done();
 }
 
 
-function watchArchivos() {
+function watchArchivos(done) {
     watch( paths.scss, css );
     watch( paths.js, javascript );
     watch( paths.imagenes, imagenes );
     watch( paths.imagenes, versionWebp );
+
+    done();
 }
   
 // exports.default = parallel(css, javascript,  imagenes, versionWebp, watchArchivos ); 
-exports.default = parallel(css, javascript, watchArchivos ); 
+exports.default = parallel(css, javascript, watchArchivos );
+exports.imagenes = parallel(imagenes, versionWebp);

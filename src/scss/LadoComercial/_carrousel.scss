@@ -1,0 +1,131 @@
+@use '../custom' as *;
+//DISEÑO DE LOS CARROUSELES DEL INDEX
+
+.carrousel-contenedor{
+    position: relative;
+    .carrousel__anterior,.carrousel__siguiente{
+        z-index: 1;
+        position: absolute;
+        display: block;
+        border: none;
+        width: 2.4rem;
+        height: 10rem;
+        top:calc(30% - 1rem);
+        
+        cursor: pointer;
+        line-height: 3rem;
+        text-align: center;
+        color: black;
+        border-radius: 1rem;
+        opacity: 0.4;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+    .carrousel__anterior{
+        left: 1rem;
+        @include media-breakpoint-up(lg){
+            left: -2rem;
+        }
+    }
+    .carrousel__siguiente{
+        right: 1rem;
+        @include media-breakpoint-up(lg){
+            right: -2rem;
+        }
+    }
+    .carrousel-items{
+        overflow: hidden;
+        border-radius: 1rem;
+        
+        
+        .imagen-texto{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 1rem;
+            padding: 0.5rem;
+            img{  
+                width: 80%;
+                margin: auto;
+                max-height: 20rem;
+                background-position: center center !important;
+                object-fit: cover;
+                border-radius: 1rem 1rem 0 0 ;
+                @include media-breakpoint-up(md){
+                    max-height: 40rem;
+                    width: 100%;
+                }
+            }
+            .div-p-card-inmueble{
+                padding-top: 1rem;
+                height: 100%;
+                border: 0.2rem $primary solid;
+                border-top: none;
+                border-radius: 0 0 1rem 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                width: 80%;
+                margin: auto;
+                .p-card-inmueble{
+                    margin: 0px auto 29px auto;
+                    text-align: center;
+                    font-weight: bold;
+                    padding: 0 1rem;
+                }
+                @include media-breakpoint-up(md){
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.carrousel{
+    display: flex;
+    flex-direction: column;
+
+    a{
+        display: inline-block;
+        margin: 2rem auto;
+    }
+    p{
+        text-align: justify;
+        margin: 0 2rem;
+    }
+    @include media-breakpoint-up(md){
+        p{
+            margin-top: 2rem;
+            text-align: center;
+        }
+    }
+}
+
+.carrousel__anterior,#anterior-seleccion{
+    top:calc(40% - 1rem);
+
+}
+.carrousel__siguiente,#siguiente-seleccion{
+    top:calc(40% - 1rem);
+}
+
+#C-seleccion{
+    width: 95%;
+    .glider-track{
+        // background-color: $blanco;
+        width: 2rem; 
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+}
+
+.contenedor-carrousel-admin{
+    width: 40%;
+    margin: auto;
+}
+#C-admin{
+    margin: auto;
+}
