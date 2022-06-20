@@ -39,7 +39,7 @@ picture {
 
 h1, h2, h3 {
     font-family: $fuente_principal;
-    margin: $separacion / 4 0;
+    margin: calc($separacion / 4) 0;
     font-weight: $regular;
     text-align: center;
     color: $dorado;
