@@ -2,7 +2,23 @@
 $azulUno: #022D36;
 $azulDos: #1F456E;
 $blanco: #FFFFFF;
+$negro: #1e1e1e;
 $dorado: #D39F2F;
+$dorado-intenso: #af8220;
+$azul: #396c8a;
+$azul-intenso: #0003b6c7;
+$rojo: #be1022;
+$rojo-intenso: #790a15;
+$verde: rgb(17, 159, 17);
+$verde-intenso: #1c762e;
+$amarillo: #fdaf1c;
+$amarillo-intenso: #f3f63a;
+$morado: #592fa9;
+$morado-intenso: #2d125f;
+$cafe :#9c7761;
+$naranja: #E88C15;
+$gris: rgb(170, 186, 194);
+$blanco-gris: #f3f3f3;
 
 $primary: $azulUno;
 $secondary: $azulDos;
@@ -14,11 +30,12 @@ $font-size-root:62.5%;
 $h1-font-size: 4.5rem;
 $h2-font-size: 3.6rem;
 $h3-font-size: 3rem;
-$font-size-base: 1.8rem;
+$font-size-base: 1.5rem;
 
 
 //espaciado
 $spacer: 5rem;
+$border-radius: 3rem;
 
 //importanto boostrap
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';

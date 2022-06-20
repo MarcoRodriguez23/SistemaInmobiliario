@@ -10,7 +10,7 @@
             <?php echo $servicio->descripcion; ?>
         </p>
 
-        <a href="/servicios" class="btn btn-secondary p-1">Volver</a>
+        <a href="/servicios" class="botonComercial p-1">Volver</a>
 
     </div>
 </main>

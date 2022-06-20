@@ -1,3 +1,4 @@
+@use '../custom' as *;
 //clases para los formularios del lado del admministrador
 .formulario{
     fieldset, .dosColumnas{
@@ -8,7 +9,7 @@
         align-items: center;
         border-radius: 1rem;
         legend{
-            font-weight: $bold;
+            font-weight: bold;
         }
         div{
             width: 100%;
@@ -52,16 +53,20 @@
                     line-height: 2rem;
                 }
             }
-            @include grid(2,0.5rem);
+            display: grid;
+            gap: 0.5rem;
+            grid-template-columns: repeat(2, 1fr);
            
-            @include tablet{
-                @include grid(4,0.5rem);
+            @include media-breakpoint-up(md){
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: repeat(4, 1fr);
             }
         }
         
     }
     fieldset + .dosColumnas{
-        @include tablet{
+        @include media-breakpoint-up(md){
             display: grid;
             grid-template-columns: repeat(2,1fr);
             gap: 2rem;

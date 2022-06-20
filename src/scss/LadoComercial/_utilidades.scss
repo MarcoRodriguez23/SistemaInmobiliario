@@ -3,9 +3,9 @@
 .tituloDorado{
     text-align: center;
     color: $dorado;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    font-weight: 200;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .textoDorado{
@@ -19,5 +19,50 @@
         font-size: 3rem;
         padding: 0;
         
+    }
+}
+
+.tituloDoradoLinea{
+    @extend .tituloDorado;
+    margin-bottom: 0;
+    &::after{
+        content: '';
+        margin: 1rem auto;
+        border-radius: 8px;
+        height: 4px;
+        width: 100%;
+        background-color: $secondary;
+        display: block;
+    }
+
+}
+
+.justificar{
+    text-align: justify;
+    margin: 2rem auto;
+    line-height: 2;
+}
+
+.botonComercial{
+    @include button-variant($secondary, $secondary, $blanco, $blanco, $secondary, $secondary);
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    transition: all 200ms ease;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
+    border-style: solid;
+
+    @include media-breakpoint-up(md){
+        width: auto;
+        display: inline-block;
     }
 }

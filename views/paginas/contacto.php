@@ -1,5 +1,5 @@
 <main class="container-xl">
-    <h1>Contáctanos</h1>
+    <h1 class="tituloDorado">Contáctanos</h1>
     <?php
         if ($mensaje) {
             echo "<p class='alerta exito contenedor'>".$mensaje."</p>";

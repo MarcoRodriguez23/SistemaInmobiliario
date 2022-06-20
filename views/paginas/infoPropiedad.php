@@ -1,5 +1,5 @@
-<main>
-    <section class="datos-propiedad contenedor">
+<main class="container-xl">
+    <section class="datos-propiedad">
         <h3>
             <?php echo $propiedad->tipoPropiedad; ?>
             <?php echo $propiedad->categoria; ?>
@@ -9,13 +9,13 @@
             <?php echo "CP:".$propiedad->CP; ?>
         </h3>
     </section>
-    <section class="carrousel contenedor">
+    <!-- <section class="carrousel contenedor">
         <div class="carrousel-contenedor">
             <button aria-label="Anterior" class="carrousel__anterior" id="anterior-seleccion">
                 <img src="/build/img/flecha-izquierda.png" alt="">
             </button>
             <div class="carrousel-items" id="C-seleccion">
-                <!-- <aqui se van a ir agregando las imagenes -->
+
                 <?php foreach($fotos as $foto): ?>
                     <img class=
                     "carrousel-item propiedad" src="/imagenes/<?php echo $foto->foto;?>" alt="foto del inmueble">
@@ -26,7 +26,7 @@
             </button>
             <div class="carrousel-indicadores" role="tablist" id="indicadores-seleccion"></div>
         </div>
-    </section>
+    </section> -->
 </main>
 <?php
     require_once __DIR__."/../templates/infoPropiedad.php";

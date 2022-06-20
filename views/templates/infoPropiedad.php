@@ -1,4 +1,4 @@
-<div class="dos-columnas contenedor">
+<div class="dos-columnas container-xl">
     <div class="enlaces">
         <a class="boton-principal" target="_blank" href="<?php echo $propiedad->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
         <a class="boton-principal" target="_blank" href="<?php echo $propiedad->link360; ?>">Recorre la propiedad en 360°</a>
@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<section  class="extra-propiedad contenedor">
+<section  class="extra-propiedad container-xl">
     <h2>Características</h2>
 
     <div class="extra-elementos">
@@ -103,7 +103,7 @@
     </div>
 </section>
 
-<section  class="extra-propiedad contenedor">
+<section  class="extra-propiedad container-xl">
     <h2>Info. y características extra</h2>
     <div class="extra-elementos">
         <ul>

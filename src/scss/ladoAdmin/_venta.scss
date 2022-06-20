@@ -1,3 +1,4 @@
+@use '../custom' as *;
 //CSS PARA LA PAGINA DE VENTA DE PROPIEDAD
 .info-propiedad-venta{
     display: grid;
@@ -18,7 +19,7 @@
             font-size: 1rem;
         }
     }
-    @include tablet{
+    @include media-breakpoint-up(md){
         div{
             label{
                 font-size: 1.4rem;

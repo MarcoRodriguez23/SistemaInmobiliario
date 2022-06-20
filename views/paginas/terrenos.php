@@ -4,12 +4,7 @@
     <div class="container-xl">
         <h4 class="textoDorado">
             Una de las mejores inversiones que podrías hacer está a solo un clic de distancia, recuerda que uno de nuestros asesores especializados en venta o renta de departamentos siempre estará disponible para brindarte ayuda personalizada.
-        </h4>
-
-        <div class="divisor">
-            <hr class="hr-inmuebles">
-        </div>
-            
+        </h4>            
     </div>
 
     <div class="inmuebles contenedor">

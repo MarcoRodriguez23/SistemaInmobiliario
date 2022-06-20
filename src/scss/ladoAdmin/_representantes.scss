@@ -1,7 +1,10 @@
+@use '../custom' as *;
 // cuadricula y diseño para los agentes y vendedores tanto grupal como individual
 
 .trabajadores{
-    @include grid(2,1rem);
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
     .trabajador{
         display: flex;
         flex-direction: column;
@@ -22,8 +25,10 @@
             font-size: 1.2rem;
         }
     }
-    @include tablet{
-        @include grid(3,re4m);
+    @include media-breakpoint-up(md){
+        display: grid;
+        gap: 4rem;
+        grid-template-columns: repeat(3, 1fr);
         .trabajador{
             p{
                 font-size: 1.6rem;

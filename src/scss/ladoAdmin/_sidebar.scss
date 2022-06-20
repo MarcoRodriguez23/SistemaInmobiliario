@@ -1,7 +1,7 @@
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
-
+@use '../custom' as *;
 a,
 a:hover,
 a:focus {
@@ -19,7 +19,7 @@ a:focus {
 #sidebar {
     min-width: 25%;
     max-width: 25%;
-    background: $azul-principal;
+    background: $primary;
     color: #fff;
     transition: all 0.3s;
     ul{
@@ -29,11 +29,11 @@ a:focus {
                 padding: 0.4rem;
                 font-size: 0.8em;
                 display: block;
-                font-weight: $bold;
+                font-weight: bold;
             }
         }
     }
-    @include tablet{
+    @include media-breakpoint-up(md){
         ul{
             li{
                 a{
@@ -52,7 +52,7 @@ a:focus {
 #sidebar{
     .sidebar-header{
         padding: 1rem;
-        background: $azul-principal;
+        background: $primary;
         h3{
             font-size: 1rem;
             font-weight: $black;
@@ -60,11 +60,11 @@ a:focus {
         p{
             color: $blanco;
             text-align: center;
-            font-weight: $bold;
+            font-weight: bold;
             font-size: 1.2rem;
             font-style: italic;
         }
-        @include tablet{
+        @include media-breakpoint-up(md){
             h3{
                 font-size: 2.4rem;
             }
@@ -163,7 +163,7 @@ a.article:hover {
     span{
         font-size: 1.4rem;
     }
-    @include tablet{
+    @include media-breakpoint-up(md){
         width: 8rem;
     }
 }
@@ -171,18 +171,18 @@ a.article:hover {
 #sidebarCollapse{
     border-radius: 0.5rem;
     padding: auto;
-    background-color: $azul-principal;
+    background-color: $primary;
     // border: 1px solid $azul !important;
     span{
         margin: 0;
-        font-weight: $bold;
+        font-weight: bold;
     }
 }
 
 .descargar{
     height: auto !important;
     font-size: 1.6rem;
-    @include tablet{
+    @include media-breakpoint-up(md){
         margin: 1rem 2rem;
     }
 }

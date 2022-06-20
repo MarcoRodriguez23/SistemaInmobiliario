@@ -16,12 +16,14 @@
         overflow: hidden;
         margin-bottom: 2rem;
         a{
+            text-decoration: none;
             img{
                 height: 80%;
                 width: 100%;
                 object-fit: cover;
             }
             p{
+                font-size: 1.8rem;
                 height: 20%;
                 text-decoration: none;
                 color: $blanco;
