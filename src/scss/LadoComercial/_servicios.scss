@@ -1,0 +1,69 @@
+@use '../custom' as *;
+
+.servicios{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .servicio{
+        background-color: $secondary;
+        height: 100%;
+        width: auto;
+        border-radius: 2rem;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        a{
+            img{
+                height: 80%;
+                width: 100%;
+                object-fit: cover;
+            }
+            p{
+                height: 20%;
+                text-decoration: none;
+                color: $blanco;
+                text-align: center;
+                padding: 1rem;
+            }
+        }
+        transition: all 200ms ease;
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+    }
+    
+    
+    @include media-breakpoint-up(md){
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 4rem;
+        .servicio{
+            &:hover{
+                transform: scale(1.05);
+            }
+            margin-bottom: 0;
+        }
+    }
+}
+
+.info-servicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 90%;
+        border-radius: 2rem;
+        max-height: 60rem;
+        object-fit: cover;
+    }
+    p{
+        font-size: 1.6rem;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}

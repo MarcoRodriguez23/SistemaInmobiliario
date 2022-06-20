@@ -1,14 +1,16 @@
-<main class="contenedor">
-    <div class="info-servicios">
-        <h1> <?php echo $servicio->titulo; ?></h1>
-        <picture class="imagen-servicios">
-            <img loading="lazy" src="/build/img/<?php echo s($servicio->imagen); ?>" alt="<?php echo "Imagen Servicio ".$servicio->id; ?>">
-        </picture>
-        <p class="texto-servicios">
+<main class="container-xl">
+    <div class="info-servicio">
+
+        <h1 class="tituloDorado"> <?php echo $servicio->titulo; ?></h1>
+
+
+        <img class="img-fluid" loading="lazy" src="/build/img/<?php echo s($servicio->imagen); ?>" alt="<?php echo "Imagen Servicio ".$servicio->id; ?>">
+
+        <p>
             <?php echo $servicio->descripcion; ?>
         </p>
-        <div class="boton-servicio">
-        <a href="/servicios" class="boton-principal">Volver</a>
-        </div>
+
+        <a href="/servicios" class="btn btn-secondary p-1">Volver</a>
+
     </div>
 </main>

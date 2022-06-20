@@ -1,0 +1,23 @@
+@use '../custom' as *;
+
+.tituloDorado{
+    text-align: center;
+    color: $dorado;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-weight: 200;
+}
+
+.textoDorado{
+    @extend .tituloDorado;
+    font-size: 2rem;
+    line-height: 1.5;
+    padding: 1rem;
+    
+    @include media-breakpoint-up(md){
+        line-height: 2;
+        font-size: 3rem;
+        padding: 0;
+        
+    }
+}

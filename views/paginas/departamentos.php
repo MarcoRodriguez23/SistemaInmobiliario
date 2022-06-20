@@ -1,8 +1,8 @@
 <main>
-    <div class="banner container-xxl" id="bannerDepartamentos">
+    <div class="banner" id="bannerDepartamentos">
     </div>
     <div class="container-xl">
-        <h4 class="introduccion">
+        <h4 class="textoDorado">
             Tu siguiente departamento espera por ti, recuerda que uno de nuestros asesores especializados en venta o renta de departamentos siempre estará disponible para brindarte la mejor ayuda personalizada.
         </h4>
         <div class="divisor">

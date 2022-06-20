@@ -47,7 +47,7 @@
 
     <footer class="bg-primary mt-3 text-white pt-2">
         
-        <div class="row align-items-center justify-content-center pb-2">
+        <div class="row align-items-center justify-content-center pb-2 m-0">
 
             <div class="col-md-4 mb-2 mb-md-0">
                 <a href="/login" class="logotipo">

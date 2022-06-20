@@ -122,13 +122,9 @@
                 
                 <div class="mensaje-formulario">
                     <label for="mensaje">Mensaje:</label>
-                    <textarea 
-                        id="mensaje" 
-                        name="mensaje" 
-                        placeholder="Tu mensaje"
-                        oninput=
-                        "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9 ]/,'')" 
-                        >
+
+                    <textarea name="mensaje" id="mensaje" placeholder="Tu mensaje">
+
                     </textarea>
                 </div>
                 <div class="boton-formulario">

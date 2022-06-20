@@ -1,9 +1,9 @@
 @use '../custom' as *;
 //DISEÑO DE LOS CARROUSELES DEL INDEX
 
-.carrousel-contenedor{
+.slider-contenedor{
     position: relative;
-    .carrousel__anterior,.carrousel__siguiente{
+    .slider__anterior,.slider__siguiente{
         z-index: 1;
         position: absolute;
         display: block;
@@ -15,7 +15,7 @@
         cursor: pointer;
         line-height: 3rem;
         text-align: center;
-        color: black;
+        // color: $negro;
         border-radius: 1rem;
         opacity: 0.4;
 
@@ -23,19 +23,19 @@
             opacity: 1;
         }
     }
-    .carrousel__anterior{
+    .slider__anterior{
         left: 1rem;
         @include media-breakpoint-up(lg){
             left: -2rem;
         }
     }
-    .carrousel__siguiente{
+    .slider__siguiente{
         right: 1rem;
         @include media-breakpoint-up(lg){
             right: -2rem;
         }
     }
-    .carrousel-items{
+    .slider-items{
         overflow: hidden;
         border-radius: 1rem;
         
@@ -61,7 +61,7 @@
             .div-p-card-inmueble{
                 padding-top: 1rem;
                 height: 100%;
-                border: 0.2rem $primary solid;
+                // border: 0.2rem $azul-principal solid;
                 border-top: none;
                 border-radius: 0 0 1rem 1rem;
                 display: flex;
@@ -72,7 +72,7 @@
                 .p-card-inmueble{
                     margin: 0px auto 29px auto;
                     text-align: center;
-                    font-weight: bold;
+                    // font-weight: $bold;
                     padding: 0 1rem;
                 }
                 @include media-breakpoint-up(md){
@@ -83,7 +83,7 @@
     }
 }
 
-.carrousel{
+.slider{
     display: flex;
     flex-direction: column;
 
@@ -103,11 +103,11 @@
     }
 }
 
-.carrousel__anterior,#anterior-seleccion{
+.slider__anterior,#anterior-seleccion{
     top:calc(40% - 1rem);
 
 }
-.carrousel__siguiente,#siguiente-seleccion{
+.slider__siguiente,#siguiente-seleccion{
     top:calc(40% - 1rem);
 }
 
@@ -122,7 +122,7 @@
 
 }
 
-.contenedor-carrousel-admin{
+.contenedor-slider-admin{
     width: 40%;
     margin: auto;
 }

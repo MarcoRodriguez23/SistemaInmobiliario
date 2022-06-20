@@ -135,6 +135,8 @@
 
 /*Menu de hamburguesa*/
 .mobile-menu{
+    display: flex;
+    justify-content: center;
     width: 5rem;
     margin: 1rem auto 0 auto;
     margin-top: 1rem;
@@ -142,7 +144,8 @@
         display: none;
     }
     img{
-        width: 5rem;
+        filter: invert(1);
+        width: 4rem;
         margin: auto;
         &:hover{
             cursor: pointer;

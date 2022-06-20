@@ -1,8 +1,8 @@
 <main>
-    <div class="banner container-xxl" id="bannerBlog">
+    <div class="banner" id="bannerBlog">
     </div>
     <div class="container-xl">
-        <h4 class="introduccion">
+        <h4 class="textoDorado">
             ¿Buscas consejos para tu próxima mudanza?, ¿No sabes cuáles son los pasos a seguir para concretar la renta o venta de una casa?, ¿Quieres conocer las mejores noticias del sector inmobiliario?, nuestro blog está al día con la mejor información que te ayudará a guiar tus próximos pasos a tu siguiente gran inversión.
         </h4>
         <div class="divisor">
