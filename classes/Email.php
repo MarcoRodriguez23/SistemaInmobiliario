@@ -121,15 +121,16 @@ class Email {
 
        //definir el contenido
        $contenido = '<html>';
-       $contenido .= '<p>Tienes un nuevo mensaje</p>';
+       $contenido .= '<p>Hola que tal, has solicitado contactarte con Inmobiliaria Gallardo.</p>';
+       $contenido .= '<p>La información que proporcionaste fue:</p>';
        $contenido .= '<p>Nombre:'. $respuestas['nombre'] . '</p>';
        
        //enviar de forma condicional algunos campos
        if($respuestas['empresa']!=""){
-           $contenido .= '<p>De la empresa: '.$respuestas['empresa'].'</p>';
-           $contenido .= '<p>Con el puesto de: '.$respuestas['puesto'].'</p>';
+           $contenido .= '<p>Empresa: '.$respuestas['empresa'].'</p>';
+           $contenido .= '<p>Puesto: '.$respuestas['puesto'].'</p>';
        }
-       $contenido .= '<p>Esta interesado en adquirir '.$respuestas['asunto'].'</p>';
+       $contenido .= '<p>Estas interesado en adquirir '.$respuestas['asunto'].'</p>';
        $contenido .= '<p>Medios de contacto proporcionados</p>';
        $contenido .= '<p>Email: '.$respuestas['correo'].'</p>';
        $contenido .= '<p>Whatsapp: '.$respuestas['telefono'].'</p>';
@@ -140,7 +141,7 @@ class Email {
        $contenido .= '</html>';
 
        $mail->Body = $contenido;
-       $mail->AltBody = "texto alternativo";
+    //    $mail->AltBody = "texto alternativo";
 
        if($mail->send()){
            $mensaje= "mensaje enviado";
