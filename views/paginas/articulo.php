@@ -1,15 +1,13 @@
-<main>
-    <div class="info-articulo">
-        <h1 class="texto-principal">
-            <?php echo $entrada->titulo; ?>
-        </h1>
+<main class="container-xl">
+    <div class="info-servicio">
+        <h1 class="tituloDorado"><?php echo $entrada->titulo; ?></h1>
 
-        <img src="build/img/conocenos.jpg" alt="<?php echo 'imagen del articulo '.$entrada->id; ?>" class="imagen-articulo">
+        <img class="img-fluid" src="build/img/conocenos.jpg" alt="<?php echo 'imagen del articulo '.$entrada->id; ?>">
 
         <p>
             <?php echo $entrada->descripcion; ?>
         </p>
 
-        <a href="/blog" class="boton-principal">Volver a los articulos</a>
+        <a href="/blog" class="botonComercial p-1">Volver a los artículos</a>
     </div>
 </main>

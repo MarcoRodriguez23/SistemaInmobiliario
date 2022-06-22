@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 function iniciarApp(){
-    carrousel();
+    // carrousel();
     eventListeners();
     cambiarSeccion();
     fechaCita();
