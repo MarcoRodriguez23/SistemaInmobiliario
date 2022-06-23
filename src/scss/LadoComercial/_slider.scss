@@ -1,7 +1,27 @@
 @use '../custom' as *;
 //DISEÑO DE LOS CARROUSELES DEL INDEX
 
-.slider-contenedor{
+.slider{
+    display: flex;
+    flex-direction: column;
+
+    a{
+        display: inline-block;
+        margin: 2rem auto;
+    }
+    p{
+        text-align: justify;
+        margin: 0 2rem;
+    }
+    @include media-breakpoint-up(md){
+        p{
+            margin-top: 2rem;
+            text-align: center;
+        }
+    }
+}
+
+.slider__contenedor{
     position: relative;
     .slider__anterior,.slider__siguiente{
         z-index: 1;
@@ -83,25 +103,7 @@
     }
 }
 
-.slider{
-    display: flex;
-    flex-direction: column;
 
-    a{
-        display: inline-block;
-        margin: 2rem auto;
-    }
-    p{
-        text-align: justify;
-        margin: 0 2rem;
-    }
-    @include media-breakpoint-up(md){
-        p{
-            margin-top: 2rem;
-            text-align: center;
-        }
-    }
-}
 
 .slider__anterior,#anterior-seleccion{
     top:calc(40% - 1rem);

@@ -7,7 +7,7 @@
             background-color: $blanco-gris;
             border-radius: 1rem;
             padding: 1rem;
-            width: 95%;
+            // width: 95%;
             margin: auto;
             list-style: none;
             li{
@@ -133,10 +133,11 @@
         &::after{
             content: '';
             display: block;
-            height: 1px;
+            height: 2px;
             width: 90%;
             background-color: $gris;
             margin: auto;
+            margin-top: 1.5rem;
         }
     }
     div{

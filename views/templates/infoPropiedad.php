@@ -1,11 +1,13 @@
 <div class="dos-columnas container-xl">
+    
     <div class="enlaces">
-        <a class="boton-principal" target="_blank" href="<?php echo $propiedad->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
-        <a class="boton-principal" target="_blank" href="<?php echo $propiedad->link360; ?>">Recorre la propiedad en 360°</a>
+        <a class="botonComercial" target="_blank" href="<?php echo $propiedad->linkGoogle; ?>">Conoce la ubicación mediante Google Maps</a>
+        <a class="botonComercial" target="_blank" href="<?php echo $propiedad->link360; ?>">Recorre la propiedad en 360°</a>
     </div>
+   
     <div class="opciones-compra">
         <div>
-            <h3>Opciones de Compra</h3>
+            <h3 class="tituloDorado fs-4">Opciones de compra</h3>
             
             <ul>
                 <?php
@@ -21,7 +23,7 @@
             </ul>  
         </div>
         <div>
-            <h3>Documentación</h3>
+            <h3 class="tituloDorado fs-4">Documentación</h3>
             <ul>
                 <?php
                     echo '<li>
@@ -35,7 +37,7 @@
 </div>
 
 <section  class="extra-propiedad container-xl">
-    <h2>Características</h2>
+    <h2 class="tituloDorado text-start">Características</h2>
 
     <div class="extra-elementos">
     <ul>
@@ -104,7 +106,7 @@
 </section>
 
 <section  class="extra-propiedad container-xl">
-    <h2>Info. y características extra</h2>
+    <h2 class="tituloDorado text-start">Info. y características extra</h2>
     <div class="extra-elementos">
         <ul>
             <?php if($propiedad->categoria!=""): ?>
@@ -159,10 +161,10 @@
     </div>
 </section>
 
-<div class="muebles-amenidades">
+<div class="muebles-amenidades container-xl">
     <?php if(!empty($propiedad->muebles)): ?>
     <div>
-        <h3>Muebles</h3>
+        <h3 class="tituloDorado">Muebles</h3>
         <ul>
             <?php
                 $arreglo = explode(", ",$propiedad->muebles);
@@ -180,7 +182,7 @@
 
     <?php if(!empty($propiedad->amenidades)): ?>
     <div>
-        <h3>Amenidades</h3>
+        <h3 class="tituloDorado">Amenidades</h3>
         <ul>
             <?php
                 $arreglo = explode(", ",$propiedad->amenidades);
