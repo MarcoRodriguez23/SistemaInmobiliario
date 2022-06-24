@@ -18,7 +18,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Panel de administración</h3>
+                <h3 class="tituloDorado fw-bold">Panel de administración</h3>
                 <p>Hola <?php echo $_SESSION['nombre']; ?></p>
             </div>
             <ul class="list-unstyled components">
@@ -63,7 +63,7 @@
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <!-- <i class="fas fa-align-left"></i> -->
-                        <span>Menú</span>
+                        <span class="text-light">Menú</span>
                     </button>
                 </div>
             </nav>

@@ -22,6 +22,7 @@ $blanco-gris: #f3f3f3;
 
 $primary: $azulUno;
 $secondary: $azulDos;
+$light: $blanco-gris;
 
 $headings-font-family: 'Poppins',sans-serif;
 $font-family-sans-serif: 'Poppins',sans-serif;
@@ -38,6 +39,10 @@ $spacer: 5rem;
 $border-radius: 3rem;
 
 $card-border-radius: 0;
+
+$input-border-radius: 1rem;
+$input-padding-y: 0.5rem;
+$input-padding-x: 0.5rem;
 
 //importanto boostrap
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';

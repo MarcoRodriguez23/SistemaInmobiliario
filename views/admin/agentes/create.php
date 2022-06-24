@@ -2,7 +2,7 @@
     <div class="contenedor opcion-superior contenido-centrado">
         <a href="/admin/agentes" class="boton-volver">Volver</a>
     </div>
-    <h1>Nuevo agente inmobiliario</h1>
+    <h1 class="tituloDorado">Nuevo agente inmobiliario</h1>
     <form action="" class="contenedor formulario contenido-centrado" method="POST" enctype="multipart/form-data">
         <?php
             include __DIR__. '/formulario.php';

@@ -3,7 +3,7 @@
 </div>
 <main>
     <section class="datos-propiedad contenedor">
-        <h3>
+        <h3 class="tituloDorado">
             <?php echo $propiedad->tipoPropiedad; ?>
             <?php echo $propiedad->categoria?>
             en

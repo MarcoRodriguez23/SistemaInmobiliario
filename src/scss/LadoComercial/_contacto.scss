@@ -1,0 +1,18 @@
+@use '../custom' as *;
+
+.mapaContacto{
+    width: 90%;
+    height: 90%;
+}
+
+.formularioComercial{
+    border-radius: 1rem;
+    .elemento{
+        margin-top: 1.2rem !important;
+        margin-bottom: 1.2rem !important;
+        
+    }
+    textarea{
+        resize: none;
+    }
+}

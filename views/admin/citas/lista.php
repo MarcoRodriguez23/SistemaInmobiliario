@@ -1,5 +1,5 @@
 <main>
-    <h2>Citas agendadas</h2>
+    <h2 class="tituloDorado">Citas agendadas</h2>
 
     <!--FILTRO-->
     <form action="/admin/agenda" method="post" class="filtro">

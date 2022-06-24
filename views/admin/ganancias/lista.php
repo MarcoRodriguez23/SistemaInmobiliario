@@ -2,7 +2,7 @@
     // debuguear($ventas);
 ?>
 <main>
-    <h2>Ventas</h2>
+    <h2 class="tituloDorado">Ventas</h2>
     <div class=" tabla contenedor table-responsive">
         
         <table>

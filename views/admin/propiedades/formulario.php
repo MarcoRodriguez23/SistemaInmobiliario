@@ -112,7 +112,7 @@
 
 <!--PARTE DONDE SE AGREGA INFORMACION SOBRE LA UBICACION DE LA PROPIEDAD-->
 <fieldset id="fieldSetUbicacion" class="dosColumnas">
-    <legend>Ubicación</legend>
+    <h5>Ubicación</h5>
     <div>
         <label for="estado">Estado</label>
         <input 

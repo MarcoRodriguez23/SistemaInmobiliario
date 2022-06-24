@@ -11,7 +11,7 @@
     <div class="opcion-superior contenedor">
             <a href="/admin/vendedores/create" class="boton-superior"><img src="/build/img/persona.svg" alt="trabajador"></a>
     </div>
-    <h1>Vendedores</h1>
+    <h1 class="tituloDorado">Vendedores</h1>
     <div class="trabajadores contenedor">
         <?php
         foreach ($vendedores as $vendedor) {

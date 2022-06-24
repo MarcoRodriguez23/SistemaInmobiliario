@@ -1,7 +1,7 @@
 <div class="opcion-superior contenedor">
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
-<h1>Actualizar propiedad</h1>
+<h1 class="tituloDorado">Actualizar propiedad</h1>
 <form method="POST" class="w-100" action="/admin/propiedades/deleteFotos">
     <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
     <input type="submit" value="Eliminar Fotos actuales" class="boton-rojo" onclick="return ConfirmDelete()">

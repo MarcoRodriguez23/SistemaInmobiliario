@@ -1,7 +1,7 @@
 <div class="opcion-superior contenedor">
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
-<h1 class="titulo-venta">Proceso de venta</h1>
+<h1 class="tituloDorado">Proceso de venta</h1>
 
 <main class="contenedor">
     <h4>Información sobre la propiedad</h4>

@@ -14,7 +14,7 @@
 </div>
 <?php endif; ?>
 <main>
-    <h1>Propiedades en lista</h1>
+    <h1 class="tituloDorado">Propiedades en lista</h1>
     <!--FILTRO-->
     <form action="/admin" method="post" class="filtro">
 
