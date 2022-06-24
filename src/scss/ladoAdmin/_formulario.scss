@@ -1,94 +1,5 @@
 @use '../custom' as *;
-//clases para los formularios del lado del admministrador
-.formulario{
-    
-    fieldset, .dosColumnas{
-        margin: 1rem auto;
-        background-color: $blanco-gris;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 1rem;
-        legend{
-            font-weight: bold;
-        }
-        div{
-            padding: 2rem;
-            width: 100%;
-            margin: 0.6rem auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            input{
-                padding: 1rem;
-                border-radius: 1rem;
-                border: none;
-            }
-            label,input{
-                width: 100%;
-
-                margin: auto;
-            }
-            p{
-                color: red;
-                font-size: 1.2rem;
-                text-align: start;
-            }
-        }
-        
-        .opciones{
-            display: grid;
-            div{
-                padding: 1rem;
-                display: grid;
-                grid-template-columns: 20% 80%;
-                border: 2px solid $blanco;
-                border-radius: 0.5rem;
-                input{
-                    width: 2rem;
-                    height: auto;
-                    margin-right: 2rem;
-                }
-                label{
-                    text-align: center;
-                    margin: auto;
-                    line-height: 2rem;
-                }
-            }
-            display: grid;
-            gap: 0.5rem;
-            grid-template-columns: repeat(2, 1fr);
-           
-            @include media-breakpoint-up(md){
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        
-    }
-    fieldset + .dosColumnas{
-        @include media-breakpoint-up(md){
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 2rem;
-        }
-    }
-    button{
-        width: auto;
-        height: auto;
-        padding: 1rem;
-        font-size: 2rem;
-        display: block;
-        margin: auto;
-    }
-    select{
-        padding: 1rem 0;
-        border: 1px solid rgb(165, 164, 164);
-        border-radius: 1rem;
-        background-color: $blanco;
-    }
-}
+// //clases para los formularios del lado del admministrador
 
 .login{
     margin: 5.2rem 0;
@@ -104,16 +15,6 @@
     
 }
 
-form{
-    input[type="submit"]{
-        color: $blanco;
-        font-size: 1.6rem;
-        display: block;
-        height: auto;
-        padding: 1rem;
-        margin: auto;
-    }
-}
 
 .enlace-login{
     a{
@@ -127,4 +28,14 @@ form{
 
 .descripcion-pagina{
     text-align: center;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ocultar{
+    display: none !important;
 }

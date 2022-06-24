@@ -11,6 +11,7 @@ const imagemin = require('gulp-imagemin');
 const notify = require('gulp-notify');
 const cache = require('gulp-cache');
 const webp = require('gulp-webp');
+const purgecss = require('gulp-purgecss');
 
 const paths = {
     scss: 'src/scss/**/*.scss',
@@ -71,7 +72,21 @@ function watchArchivos(done) {
 
     done();
 }
+
+function cssBuild(done){
+
+    src('./public/build/css/app.css')
+    .pipe(rename({
+        suffix: '.min'
+    }))
+    .pipe(purgecss({
+        content: ['src/**/*.php']
+    }))
+    .pipe(dest('build/css'))
+    done();
+}
   
 // exports.default = parallel(css, javascript,  imagenes, versionWebp, watchArchivos ); 
 exports.default = parallel(css, javascript, watchArchivos );
 exports.imagenes = parallel(imagenes, versionWebp);
+exports.cssbuild = cssBuild

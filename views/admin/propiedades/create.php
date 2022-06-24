@@ -3,7 +3,7 @@
 </div>
 <h1 class="tituloDorado" >Crear propiedad</h1>
 <main>
-    <form id="formulario-propiedad-create" action="" class="contenedor formulario" method="POST" enctype="multipart/form-data">
+    <form id="formulario-propiedad-create" action="" class="contenedor formularioComercial" method="POST" enctype="multipart/form-data">
         <?php
             include __DIR__. '/formulario.php';
         ?>
@@ -11,6 +11,6 @@
             <input type="hidden" name="propiedad[idCreador]" value="<?php echo $_SESSION['id']; ?>">
         </div>
         
-        <input type="submit" value="Crear Propiedad" class="boton-azul">  
+        <input type="submit" value="Crear Propiedad" class="botonComercial">  
     </form>
 </main>

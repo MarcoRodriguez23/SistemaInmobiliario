@@ -121,7 +121,7 @@
                     </div>
 
                     <div class="elemento">
-                        <label class="form-label" for="asunto">Asunto</label>
+                        <label class="form-label" for="asunto">Estoy interesado en</label>
                         <select name="asunto" class="form-control">
                             <option value="" disabled selected>--Elige una opción--</option>
                             <option value="Casa">Casa</option>

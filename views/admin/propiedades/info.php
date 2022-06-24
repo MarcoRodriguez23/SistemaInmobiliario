@@ -12,11 +12,13 @@
             <?php echo "CP:".$direccion->CP; ?>
         </h3>
     </section>
-    <div class="fotos-actuales contenedor">
-        <?php foreach($fotos as $foto): ?>
-            <img src="/imagenes/<?php echo $foto->foto;?>" alt="" class="imagen-small">
-        <?php endforeach; ?>
-    </div>   
+    <div class="container-xl px-2">
+        <div class="fotosActuales">
+            <?php foreach($fotos as $foto): ?>
+                <img src="/imagenes/<?php echo $foto->foto;?>" alt="" class="fotoActual img-fluid">
+            <?php endforeach; ?>
+        </div>   
+    </div>
 </main>
 
 <?php

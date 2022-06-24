@@ -8,14 +8,14 @@
         <!--Inicio del formulario para la visita-->
         <form action="" class="formulario" method="POST" enctype="multipart/form-data">
             <fieldset>
-                <div>
-                    <label>Propiedad</label>
+                <div class="py-1">
+                    <label class="mb-1">Propiedad</label>
                     <input type="hidden" name="cita[idPropiedad]" value="<?php echo $direccion->id; ?>">
-                    <input disabled type="text" value="<?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>">
+                    <input class="form-control" disabled type="text" value="<?php echo $direccion->calle.", ".$direccion->colonia.", ".$direccion->municipioDelegacion.", ".$direccion->estado; ?>">
                 </div>
 
-                <div>
-                    <label for="nombre">Nombre(s) del visitante</label>
+                <div class="py-1">
+                    <label class="mb-1" for="nombre">Nombre(s) del visitante</label>
                     <input 
                         id="nombre" 
                         type="text" 
@@ -26,9 +26,8 @@
                     <?php echo isset($erroresCita['nombres']) ?"<p>".$erroresCita["nombres"]."</p>" : "" ?>
                 </div>
                 
-                
-                <div>
-                    <label for="apellido">Apellidos del visitante</label>
+                <div class="py-1">
+                    <label class="mb-1" for="apellido">Apellidos del visitante</label>
                     <input 
                         id="apellido"
                         type="text"
@@ -39,8 +38,8 @@
                     <?php echo isset($erroresCita['apellidos']) ?"<p>".$erroresCita["apellidos"]."</p>" : "" ?>
                 </div>
 
-                <div>
-                    <label for="telefono">Teléfono del visitante</label>
+                <div class="py-1">
+                    <label class="mb-1" for="telefono">Teléfono del visitante</label>
                     <input 
                         type="number" 
                         placeholder="ejem: 5546782345" 
@@ -54,8 +53,8 @@
                     <?php echo isset($erroresCita['formatoTelefono']) ?"<p>".$erroresCita["formatoTelefono"]."</p>" : "" ?>
                 </div>
 
-                <div id="campo-fecha" class="campo">
-                    <label for="fecha">Fecha</label>
+                <div id="campo-fecha" class="campo py-1">
+                    <label class="mb-1" for="fecha">Fecha</label>
                     <input 
                         id="fecha" 
                         type="date"
@@ -65,8 +64,8 @@
                     <?php echo isset($erroresCita['fecha']) ?"<p>".$erroresCita["fecha"]."</p>" : "" ?>
                 </div>
                 
-                <div id="campo-hora" class="campo">
-                    <label for="hora">Hora (FORMATO 24 HRS)</label>
+                <div id="campo-hora" class="campo py-1">
+                    <label class="mb-1" for="hora">Hora (FORMATO 24 HRS)</label>
                     <input 
                         id="hora" 
                         type="time"
@@ -76,8 +75,8 @@
                     <?php echo isset($erroresCita['hora']) ?"<p>".$erroresCita["hora"]."</p>" : "" ?>
                 </div>
 
-                <div>
-                    <label for="idEcargado">Responsable de la visita</label>
+                <div class="py-1">
+                    <label class="mb-1" for="idEcargado">Responsable de la visita</label>
                     
                     <select id="idEncargado" name="cita[idEncargado]">
                         <option value="" disabled 
@@ -110,7 +109,7 @@
 
             </fieldset>
            
-        <input type="submit" value="Crear visita" class="boton-azul">  
+        <input type="submit" value="Crear visita" class="botonComercial">  
     </form>
     <!--fin del formulario para la visita-->
     </div>

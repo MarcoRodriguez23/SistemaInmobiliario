@@ -1,557 +1,570 @@
-<!--PARTE DONDE SE ESCOGE EL TIPO DE PROPIEDAD-->
-<fieldset id="fieldSetTipoPropiedad">
-    <legend>Tipo de propiedad</legend>
-    <div>
-    <select id="tipoPropiedad" name="propiedad[tipoPropiedad]">
-        <option value="" disabled 
-        <?php echo ($propiedad->tipoPropiedad === "") ? 'selected' : ''; ?>
-        >--Selecciona una opción--</option>
-        <option 
-            value="Casa"
-            <?php echo ($propiedad->tipoPropiedad === "Casa") ? 'selected' : ''; ?>
-        >
-        Casa
-        </option>
-        <option 
-            value="Departamento"
-            <?php echo ($propiedad->tipoPropiedad === "Departamento") ? 'selected' : ''; ?>
-        >
-        Departamento
-        </option>
-        <option 
-            value="Terreno"
-            <?php echo ($propiedad->tipoPropiedad === "Terreno") ? 'selected' : ''; ?>
-        >
-        Terreno
-        </option>
-        <option 
-            value="Bodega"
-            <?php echo ($propiedad->tipoPropiedad === "Bodega") ? 'selected' : ''; ?>
-        >
-        Bodega
-        </option>
-        <option 
-            value="Local"
-            <?php echo ($propiedad->tipoPropiedad === "Local") ? 'selected' : ''; ?>
-        >
-        Local
-        </option>
-        <option 
-            value="Oficina"
-            <?php echo ($propiedad->tipoPropiedad === "Oficina") ? 'selected' : ''; ?>
-        >
-        Oficina
-        </option>
-    </select>
-    <?php echo isset($erroresPropiedad["tipoPropiedad"]) ? "<p>".$erroresPropiedad["tipoPropiedad"]."</p>" : "" ?>
+
+<fieldset>
+    <legend class="pt-1 fw-bold">Tipo de propiedad</legend>
+    <div class="elemento">
+        <select class="py-0" id="tipoPropiedad" name="propiedad[tipoPropiedad]">
+            <option value="" disabled 
+            <?php echo ($propiedad->tipoPropiedad === "") ? 'selected' : ''; ?>
+            >--Selecciona una opción--</option>
+            <option 
+                value="Casa"
+                <?php echo ($propiedad->tipoPropiedad === "Casa") ? 'selected' : ''; ?>
+            >
+            Casa
+            </option>
+            <option 
+                value="Departamento"
+                <?php echo ($propiedad->tipoPropiedad === "Departamento") ? 'selected' : ''; ?>
+            >
+            Departamento
+            </option>
+            <option 
+                value="Terreno"
+                <?php echo ($propiedad->tipoPropiedad === "Terreno") ? 'selected' : ''; ?>
+            >
+            Terreno
+            </option>
+            <option 
+                value="Bodega"
+                <?php echo ($propiedad->tipoPropiedad === "Bodega") ? 'selected' : ''; ?>
+            >
+            Bodega
+            </option>
+            <option 
+                value="Local"
+                <?php echo ($propiedad->tipoPropiedad === "Local") ? 'selected' : ''; ?>
+            >
+            Local
+            </option>
+            <option 
+                value="Oficina"
+                <?php echo ($propiedad->tipoPropiedad === "Oficina") ? 'selected' : ''; ?>
+            >
+            Oficina
+            </option>
+        </select>
+        <?php echo isset($erroresPropiedad["tipoPropiedad"]) ? "<p>".$erroresPropiedad["tipoPropiedad"]."</p>" : "" ?>
     </div>
 </fieldset>
 
 <fieldset id="fieldSetStatus">
-    <legend>Disponible para: </legend>
-    <div>
-    <select id="status" name="propiedad[status]">
-        <option value="" disabled selected>--Selecciona una opción--</option>
+    <legend class="pt-1 fw-bold">Disponible para</legend>
+    <div class="elemento">
+        <select class="py-0" id="status" name="propiedad[status]">
+            <option value="" disabled selected>--Selecciona una opción--</option>
 
-        <option
-            value="venta"
-            <?php echo ($propiedad->status === 'venta') ? 'selected' : ''; ?>
-        >
-        Venta
-        </option>
-        <option
-            value="preventa"
-            <?php echo ($propiedad->status === 'preventa') ? 'selected' : ''; ?>
-        >
-        Preventa
-        </option>
-        <option
-            value="renta"
-            <?php echo ($propiedad->status === 'renta') ? 'selected' : ''; ?>
-        >
-        Renta
-        </option>
-    </select>
-    <?php echo isset($erroresPropiedad["status"]) ? "<p>".$erroresPropiedad["status"]."</p>" : "" ?>
+            <option
+                value="venta"
+                <?php echo ($propiedad->status === 'venta') ? 'selected' : ''; ?>
+            >
+            Venta
+            </option>
+            <option
+                value="preventa"
+                <?php echo ($propiedad->status === 'preventa') ? 'selected' : ''; ?>
+            >
+            Preventa
+            </option>
+            <option
+                value="renta"
+                <?php echo ($propiedad->status === 'renta') ? 'selected' : ''; ?>
+            >
+            Renta
+            </option>
+        </select>
+        <?php echo isset($erroresPropiedad["status"]) ? "<p>".$erroresPropiedad["status"]."</p>" : "" ?>
     </div>
 </fieldset>
 
 <fieldset id="fieldSetRemodelacion">
-    <legend>Remodelación</legend>
-    <div>
-    <select name="propiedad[categoria]">
-        <option value="" disabled selected>--Selecciona una opción--</option>
-        <option 
-            value="Para construir"
-            <?php echo ($propiedad->categoria === "Para construir") ? 'selected' : ''; ?>
-        >
-        Para construir
-        </option>
-        <option 
-            value="Con remodelado"
-            <?php echo ($propiedad->categoria === "Con remodelado") ? 'selected' : ''; ?>
-        >
-        Con remodelado
-        </option>
-        <option 
-            value="Para remodelar"
-            <?php echo ($propiedad->categoria === "Para remodelar") ? 'selected' : ''; ?>
-        >
-        Para remodelar
-        </option>
-        <option 
-            value="Para laborar"
-            <?php echo ($propiedad->categoria === "Para laborar") ? 'selected' : ''; ?>
-        >
-        Para laborar
-        </option>
-    </select>
-    <?php echo isset($erroresPropiedad["categoria"]) ? "<p>".$erroresPropiedad["categoria"]."</p>" : "" ?>
-    </div>
-</fieldset>
-
-<!--PARTE DONDE SE AGREGA INFORMACION SOBRE LA UBICACION DE LA PROPIEDAD-->
-<fieldset id="fieldSetUbicacion" class="dosColumnas">
-    <h5>Ubicación</h5>
-    <div>
-        <label for="estado">Estado</label>
-        <input 
-            type="text" 
-            placeholder="Ej: CDMX" 
-            name="direccion[estado]" id="estado" 
-            value="<?php echo s($direccion->estado); ?>"
-            maxlength="45"
-            oninput=
-            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["estado"]) ? "<p>".$erroresDireccion["estado"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="municipioDelegacion">Municipio / Alcaldía</label>
-        <input 
-            type="text" 
-            placeholder="Ej: Iztacalco"
-            name="direccion[municipioDelegacion]" 
-            id="municipioDelegacion" 
-            value="<?php echo s($direccion->municipioDelegacion); ?>"
-            maxlength="60"
-            oninput=
-            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["municipioDelegacion"]) ? "<p>".$erroresDireccion["municipioDelegacion"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="calle">Calle</label>
-        <input 
-            type="text" 
-            placeholder="Ej: Avenida Patria" 
-            name="direccion[calle]" 
-            id="calle"
-            value="<?php echo s($direccion->calle); ?>"
-            maxlength="45"
-            oninput=
-            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9# ]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["calle"]) ? "<p>".$erroresDireccion["calle"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="colonia">Colonia</label>
-        <input 
-            type="text" 
-            placeholder="Ej: Solidaridad" 
-            name="direccion[colonia]" 
-            id="colonia"
-            value="<?php echo s($direccion->colonia); ?>"
-            maxlength="30"
-            oninput=
-            "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9 ]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["colonia"]) ? "<p>".$erroresDireccion["colonia"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="numInterior">Número interior</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 325" 
-            min="0" 
-            name="direccion[numInterior]" 
-            id="numInterior"
-            value="<?php echo s($direccion->numInterior); ?>"
-            maxlength="4"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["numInterior"]) ? "<p>".$erroresDireccion["numInterior"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="numExterior">Número exterior</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 230" 
-            min="0" 
-            name="direccion[numExterior]" 
-            id="numExterior"
-            value="<?php echo s($direccion->numExterior); ?>"
-            maxlength="4"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["numExterior"]) ? "<p>".$erroresDireccion["numExterior"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="linkGoogle">Enlace de Google Maps (opcional)</label>
-        <input 
-            type="text" 
-            placeholder="Link de Google Maps" 
-            name="direccion[linkGoogle]" 
-            id="linkGoogle"
-            value="<?php echo s($direccion->linkGoogle); ?>"
-            maxlength="200"
-            oninput=
-            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["linkGoogle"]) ? "<p>".$erroresDireccion["linkGoogle"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="link360">Enlace de recorrido 360° (opcional)</label>
-        <input 
-            type="text" 
-            placeholder="Link de recorrido" 
-            name="direccion[link360]" 
-            id="link360"
-            value="<?php echo s($direccion->link360); ?>"
-            maxlength="200"
-            oninput=
-            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["link360"]) ? "<p>".$erroresDireccion["link360"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="CP">Código Postal</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 56432" 
-            name="direccion[CP]" 
-            id="CP"
-            value="<?php echo s($direccion->CP); ?>"
-            maxlength="6"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresDireccion["CP"]) ? "<p>".$erroresDireccion["CP"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="mt2">Metros Cuadrados</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 80.30" 
-            min="0" 
-            name="propiedad[mt2]" 
-            id="mt2" 
-            step=".01"
-            value="<?php echo s($propiedad->mt2); ?>"
-            maxlength="6"
-            oninput=
-            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["mt2"]) ? "<p>".$erroresPropiedad["mt2"]."</p>" : "" ?>
-    </div>
-    <div>
-        <label for="mt2Construccion">Metros Cuadrados Construidos</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 69.40" 
-            min="0" 
-            name="propiedad[mt2Construccion]" 
-            id="mt2Construccion" 
-            step=".01"
-            value="<?php echo s($propiedad->mt2Construccion); ?>"
-            maxlength="6"
-            oninput=
-            "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["mt2Construccion"]) ? "<p>".$erroresPropiedad["mt2Construccion"]."</p>" : "" ?>
-    </div>
-</fieldset>
-
-<!--PARTE DONDE SE DESCRIBE LA PROPIEDAD-->
-<fieldset id="fieldSetDescripcionPropiedad" class="dosColumnas">
-    <legend>
-        Descripción de la propiedad
-    </legend>
-    <div>
-        <label for="numPisos">Pisos</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 3" 
-            min="0" 
-            name="propiedad[numPisos]" 
-            id="numPisos"
-            value="<?php echo s($propiedad->numPisos); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["numPisos"]) ? "<p>".$erroresPropiedad["numPisos"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="año">Año de construcción</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 2020" 
-            min="0" 
-            name="propiedad[año]" 
-            id="año"
-            value="<?php echo s($propiedad->año); ?>"
-            maxlength="4"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["año"]) ? "<p>".$erroresPropiedad["año"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="habitaciones">Habitaciones</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 4" 
-            min="0" 
-            name="propiedad[habitaciones]" 
-            id="habitaciones"
-            value="<?php echo s($propiedad->habitaciones); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["habitaciones"]) ? "<p>".$erroresPropiedad["habitaciones"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="baños">Baños</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 3" 
-            min="0" 
-            name="propiedad[baños]" 
-            id="baños"
-            value="<?php echo s($propiedad->baños); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["baños"]) ? "<p>".$erroresPropiedad["baños"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="servicioH">Habitaciones de servicio (opcional)</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 1" 
-            min="0" 
-            name="propiedad[servicioH]" 
-            id="servicioH"
-            value="<?php echo s($propiedad->servicioH); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["servicioH"]) ? "<p>".$erroresPropiedad["servicioH"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="servicioP">Patio de servicio (opcional)</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 1" 
-            min="0" 
-            name="propiedad[servicioP]" 
-            id="servicioP"
-            value="<?php echo s($propiedad->servicioP); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+    <legend class="pt-1 fw-bold">Remodelación</legend>
+    <div class="elemento">
+        <select class="py-0" name="propiedad[categoria]">
+            <option value="" disabled selected>--Selecciona una opción--</option>
+            <option 
+                value="Para construir"
+                <?php echo ($propiedad->categoria === "Para construir") ? 'selected' : ''; ?>
             >
-        <?php echo isset($erroresPropiedad["servicioP"]) ? "<p>".$erroresPropiedad["servicioP"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="estacionamiento">Tipo de estacionamiento</label>
-        <select name="propiedad[estacionamiento]" id="estacionamiento">
-            <option value="" disabled selected>--Seleccione un tipo de estacionamiento--</option>
-            <option
-                value="No aplica"
-                <?php echo $propiedad->estacionamiento === "No aplica" ? 'selected' : ''; ?>
-            >
-            No aplica
+            Para construir
             </option>
-            <option
-                value="Techado"
-                <?php echo $propiedad->estacionamiento === "Techado" ? 'selected' : ''; ?>
+            <option 
+                value="Con remodelado"
+                <?php echo ($propiedad->categoria === "Con remodelado") ? 'selected' : ''; ?>
             >
-            Techado
+            Con remodelado
             </option>
-            <option
-                value="Sin techar"
-                <?php echo $propiedad->estacionamiento === "Sin techar" ? 'selected' : ''; ?>
+            <option 
+                value="Para remodelar"
+                <?php echo ($propiedad->categoria === "Para remodelar") ? 'selected' : ''; ?>
             >
-            Sin techar
+            Para remodelar
             </option>
-            <option
-                value="Calle"
-                <?php echo $propiedad->estacionamiento === "Calle" ? 'selected' : ''; ?>
+            <option 
+                value="Para laborar"
+                <?php echo ($propiedad->categoria === "Para laborar") ? 'selected' : ''; ?>
             >
-            Calle
-            </option>
-            <option
-                value="Mécanico"
-                <?php echo $propiedad->estacionamiento === "Mécanico" ? 'selected' : ''; ?>
-            >
-            Mécanico
+            Para laborar
             </option>
         </select>
-        <?php echo isset($erroresPropiedad["estacionamiento"]) ? "<p>".$erroresPropiedad["estacionamiento"]."</p>" : "" ?>
+        <?php echo isset($erroresPropiedad["categoria"]) ? "<p>".$erroresPropiedad["categoria"]."</p>" : "" ?>
     </div>
-
-
-    <div>
-        <label for="numEstacionamientos">Número de cajones</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 2" 
-            min="0" 
-            name="propiedad[numEstacionamientos]" 
-            id="numEstacionamientos"
-            value="<?php echo s($propiedad->numEstacionamientos); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["numEstacionamientos"]) ? "<p>".$erroresPropiedad["numEstacionamientos"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="numIdEstacionamiento">Número de estacionamiento (opcional)</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 280" 
-            min="0" 
-            name="propiedad[numIdEstacionamiento]" 
-            id="numIdEstacionamiento"
-            value="<?php echo s($propiedad->numIdEstacionamiento); ?>"
-            maxlength="4"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["numIdEstacionamiento"]) ? "<p>".$erroresPropiedad["numIdEstacionamiento"]."</p>" : "" ?>
-    </div>
-
-    
 </fieldset>
 
-<!--PRECIO DE LA PROPIEDAD-->
+<fieldset>
+    <legend class="pt-1 fw-bold">Ubicación</legend>
+    <div class="row justify-content-around py-1 bg-light">
+        <div class="col-md-5">
+            <div class="elemento">
+                <labelfor="estado">Estado</label>
+                <input
+                    type="text" 
+                    placeholder="Ej: CDMX" 
+                    name="direccion[estado]" id="estado" 
+                    value="<?php echo s($direccion->estado); ?>"
+                    maxlength="45"
+                    oninput=
+                    "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["estado"]) ? "<p>".$erroresDireccion["estado"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="calle">Calle</label>
+                <input 
+                    type="text" 
+                    placeholder="Ej: Avenida Patria" 
+                    name="direccion[calle]" 
+                    id="calle"
+                    value="<?php echo s($direccion->calle); ?>"
+                    maxlength="45"
+                    oninput=
+                    "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9# ]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["calle"]) ? "<p>".$erroresDireccion["calle"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="numInterior">Número interior</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 325" 
+                    min="0" 
+                    name="direccion[numInterior]" 
+                    id="numInterior"
+                    value="<?php echo s($direccion->numInterior); ?>"
+                    maxlength="4"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["numInterior"]) ? "<p>".$erroresDireccion["numInterior"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="linkGoogle">Enlace de Google Maps (opcional)</label>
+                <input 
+                    type="text" 
+                    placeholder="Link de Google Maps" 
+                    name="direccion[linkGoogle]" 
+                    id="linkGoogle"
+                    value="<?php echo s($direccion->linkGoogle); ?>"
+                    maxlength="200"
+                    oninput=
+                    "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["linkGoogle"]) ? "<p>".$erroresDireccion["linkGoogle"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="CP">Código Postal</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 56432" 
+                    name="direccion[CP]" 
+                    id="CP"
+                    value="<?php echo s($direccion->CP); ?>"
+                    maxlength="6"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["CP"]) ? "<p>".$erroresDireccion["CP"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="mt2Construccion">Metros Cuadrados Construidos</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 69.40" 
+                    min="0" 
+                    name="propiedad[mt2Construccion]" 
+                    id="mt2Construccion" 
+                    step=".01"
+                    value="<?php echo s($propiedad->mt2Construccion); ?>"
+                    maxlength="6"
+                    oninput=
+                    "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["mt2Construccion"]) ? "<p>".$erroresPropiedad["mt2Construccion"]."</p>" : "" ?>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="elemento">
+                <label for="municipioDelegacion">Municipio / Alcaldía</label>
+                <input 
+                    type="text" 
+                    placeholder="Ej: Iztacalco"
+                    name="direccion[municipioDelegacion]" 
+                    id="municipioDelegacion" 
+                    value="<?php echo s($direccion->municipioDelegacion); ?>"
+                    maxlength="60"
+                    oninput=
+                    "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["municipioDelegacion"]) ? "<p>".$erroresDireccion["municipioDelegacion"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="colonia">Colonia</label>
+                <input 
+                    type="text" 
+                    placeholder="Ej: Solidaridad" 
+                    name="direccion[colonia]" 
+                    id="colonia"
+                    value="<?php echo s($direccion->colonia); ?>"
+                    maxlength="30"
+                    oninput=
+                    "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ0-9 ]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["colonia"]) ? "<p>".$erroresDireccion["colonia"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="numExterior">Número exterior</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 230" 
+                    min="0" 
+                    name="direccion[numExterior]" 
+                    id="numExterior"
+                    value="<?php echo s($direccion->numExterior); ?>"
+                    maxlength="4"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["numExterior"]) ? "<p>".$erroresDireccion["numExterior"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="link360">Enlace de recorrido 360° (opcional)</label>
+                <input 
+                    type="text" 
+                    placeholder="Link de recorrido" 
+                    name="direccion[link360]" 
+                    id="link360"
+                    value="<?php echo s($direccion->link360); ?>"
+                    maxlength="200"
+                    oninput=
+                    "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresDireccion["link360"]) ? "<p>".$erroresDireccion["link360"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="mt2">Metros Cuadrados</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 80.30" 
+                    min="0" 
+                    name="propiedad[mt2]" 
+                    id="mt2" 
+                    step=".01"
+                    value="<?php echo s($propiedad->mt2); ?>"
+                    maxlength="6"
+                    oninput=
+                    "if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["mt2"]) ? "<p>".$erroresPropiedad["mt2"]."</p>" : "" ?>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset id="fieldSetDescripcionPropiedad">
+    <legend class="pt-1 fw-bold">Descripción de la propiedad</legend>
+    <div class="row justify-content-around py-1 bg-light">
+        <div class="col-md-5">
+            <div class="elemento">
+                <label for="numPisos">Pisos</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 3" 
+                    min="0" 
+                    name="propiedad[numPisos]" 
+                    id="numPisos"
+                    value="<?php echo s($propiedad->numPisos); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["numPisos"]) ? "<p>".$erroresPropiedad["numPisos"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="habitaciones">Habitaciones</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 4" 
+                    min="0" 
+                    name="propiedad[habitaciones]" 
+                    id="habitaciones"
+                    value="<?php echo s($propiedad->habitaciones); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["habitaciones"]) ? "<p>".$erroresPropiedad["habitaciones"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="baños">Baños</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 3" 
+                    min="0" 
+                    name="propiedad[baños]" 
+                    id="baños"
+                    value="<?php echo s($propiedad->baños); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["baños"]) ? "<p>".$erroresPropiedad["baños"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="servicioP">Patio de servicio (opcional)</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 1" 
+                    min="0" 
+                    name="propiedad[servicioP]" 
+                    id="servicioP"
+                    value="<?php echo s($propiedad->servicioP); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                    >
+                <?php echo isset($erroresPropiedad["servicioP"]) ? "<p>".$erroresPropiedad["servicioP"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="numEstacionamientos">Número de cajones</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 2" 
+                    min="0" 
+                    name="propiedad[numEstacionamientos]" 
+                    id="numEstacionamientos"
+                    value="<?php echo s($propiedad->numEstacionamientos); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["numEstacionamientos"]) ? "<p>".$erroresPropiedad["numEstacionamientos"]."</p>" : "" ?>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="elemento">
+                <label for="año">Año de construcción</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 2020" 
+                    min="0" 
+                    name="propiedad[año]" 
+                    id="año"
+                    value="<?php echo s($propiedad->año); ?>"
+                    maxlength="4"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["año"]) ? "<p>".$erroresPropiedad["año"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="baños">Baños</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 3" 
+                    min="0" 
+                    name="propiedad[baños]" 
+                    id="baños"
+                    value="<?php echo s($propiedad->baños); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["baños"]) ? "<p>".$erroresPropiedad["baños"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                    <label for="servicioH">Habitaciones de servicio (opcional)</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 1" 
+                    min="0" 
+                    name="propiedad[servicioH]" 
+                    id="servicioH"
+                    value="<?php echo s($propiedad->servicioH); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["servicioH"]) ? "<p>".$erroresPropiedad["servicioH"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="estacionamiento">Tipo de estacionamiento</label>
+                <select name="propiedad[estacionamiento]" id="estacionamiento">
+                    <option value="" disabled selected>--Seleccione un tipo de estacionamiento--</option>
+                    <option
+                        value="No aplica"
+                        <?php echo $propiedad->estacionamiento === "No aplica" ? 'selected' : ''; ?>
+                    >
+                    No aplica
+                    </option>
+                    <option
+                        value="Techado"
+                        <?php echo $propiedad->estacionamiento === "Techado" ? 'selected' : ''; ?>
+                    >
+                    Techado
+                    </option>
+                    <option
+                        value="Sin techar"
+                        <?php echo $propiedad->estacionamiento === "Sin techar" ? 'selected' : ''; ?>
+                    >
+                    Sin techar
+                    </option>
+                    <option
+                        value="Calle"
+                        <?php echo $propiedad->estacionamiento === "Calle" ? 'selected' : ''; ?>
+                    >
+                    Calle
+                    </option>
+                    <option
+                        value="Mécanico"
+                        <?php echo $propiedad->estacionamiento === "Mécanico" ? 'selected' : ''; ?>
+                    >
+                    Mécanico
+                    </option>
+                </select>
+                <?php echo isset($erroresPropiedad["estacionamiento"]) ? "<p>".$erroresPropiedad["estacionamiento"]."</p>" : "" ?>
+            </div>
+            <div class="elemento">
+                <label for="numIdEstacionamiento">Número de estacionamiento (opcional)</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 280" 
+                    min="0" 
+                    name="propiedad[numIdEstacionamiento]" 
+                    id="numIdEstacionamiento"
+                    value="<?php echo s($propiedad->numIdEstacionamiento); ?>"
+                    maxlength="4"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["numIdEstacionamiento"]) ? "<p>".$erroresPropiedad["numIdEstacionamiento"]."</p>" : "" ?>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
 <fieldset id="fieldSetPrecio">
-    <legend>Precio</legend>
-    <div>
-        <label for="precio">Cantidad</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 1800000" 
-            min="10000" 
-            name="propiedad[precio]" 
-            id="precio"
-            value="<?php echo s($propiedad->precio); ?>"
-            maxlength="9"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["precio"]) ? "<p>".$erroresPropiedad["precio"]."</p>" : "" ?>
-    </div>
-    <div>
-        <label for="mantenimiento">Precio de mantenimiento (mensual)</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 5000" 
-            min="0" 
-            name="propiedad[mantenimiento]" 
-            id="mantenimiento"
-            value="<?php echo s($propiedad->mantenimiento); ?>"
-            maxlength="6"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["mantenimiento"]) ? "<p>".$erroresPropiedad["mantenimiento"]."</p>" : "" ?>
-    </div>
-</fieldset>
+    <legend class="pt-1 fw-bold">Precio</legend>
+    <div class="row justify-content-around py-1 bg-light">
+        <div class="col-md-5">
+            <div class="elemento">
+                <label for="precio">Cantidad</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 1800000" 
+                    min="10000" 
+                    name="propiedad[precio]" 
+                    id="precio"
+                    value="<?php echo s($propiedad->precio); ?>"
+                    maxlength="9"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["precio"]) ? "<p>".$erroresPropiedad["precio"]."</p>" : "" ?>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="elemento">
+                <label for="mantenimiento">Precio de mantenimiento (mensual)</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 5000" 
+                    min="0" 
+                    name="propiedad[mantenimiento]" 
+                    id="mantenimiento"
+                    value="<?php echo s($propiedad->mantenimiento); ?>"
+                    maxlength="6"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["mantenimiento"]) ? "<p>".$erroresPropiedad["mantenimiento"]."</p>" : "" ?>
+            </div>
+        </div>
 
-<!--INFORMACION ADICIONAL EN CASO DE QUE SEA DEPARTAMENTO-->
-<fieldset id="fieldSetDepartamento" class="dosColumnas">
-    <legend>Departamento</legend>
-
-    <div>
-        <label for="piso">Número de piso</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 1" 
-            min="0" 
-            name="propiedad[piso]" 
-            id="piso"
-            value="<?php echo s($propiedad->piso); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["piso"]) ? "<p>".$erroresPropiedad["piso"]."</p>" : "" ?>
-    </div>
-
-    <div>
-        <label for="numElevadores">Elevadores</label>
-        <input 
-            type="number" 
-            placeholder="Ej: 1" 
-            min="0" 
-            name="propiedad[numElevadores]" 
-            id="numElevadores"
-            value="<?php echo s($propiedad->numElevadores); ?>"
-            maxlength="2"
-            oninput=
-            "this.value = this.value.replace(/[^0-9]/,'')
-            if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-        >
-        <?php echo isset($erroresPropiedad["numElevadores"]) ? "<p>".$erroresPropiedad["numElevadores"]."</p>" : "" ?>
     </div>
 </fieldset>
 
-<fieldset id="fieldSetComision" class="comision">
-    <legend>Comisión de venta</legend>
-    <div>
+<fieldset id="fieldSetDepartamento">
+    <legend class="pt-1 fw-bold">Departamento</legend>
+    <div class="row justify-content-around bg-light py-1">
+        <div class="col-md-5">
+            <div class="elemento">
+                <label for="piso">Número de piso</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 1" 
+                    min="0" 
+                    name="propiedad[piso]" 
+                    id="piso"
+                    value="<?php echo s($propiedad->piso); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["piso"]) ? "<p>".$erroresPropiedad["piso"]."</p>" : "" ?>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="elemento">
+                <label for="numElevadores">Elevadores</label>
+                <input 
+                    type="number" 
+                    placeholder="Ej: 1" 
+                    min="0" 
+                    name="propiedad[numElevadores]" 
+                    id="numElevadores"
+                    value="<?php echo s($propiedad->numElevadores); ?>"
+                    maxlength="2"
+                    oninput=
+                    "this.value = this.value.replace(/[^0-9]/,'')
+                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                >
+                <?php echo isset($erroresPropiedad["numElevadores"]) ? "<p>".$erroresPropiedad["numElevadores"]."</p>" : "" ?>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset id="fieldSetComision" >
+    <legend class="pt-1 fw-bold">Comisión de venta</legend>
+    <div class="elemento comision p-2">
         <label for="comision">Porcentaje de comisión (1 a 50)</label>
         <input 
             type="number" 
@@ -570,11 +583,10 @@
     </div>
 </fieldset>
 
-<!--PARTE DONDE SE AGREGAN LOS MUEBLES Y AMENIDADES QUE TIENE LA PROPIEDAD-->
 <fieldset id="fieldSetMueblesAmenidades">
-    <legend>Muebles y amenidades</legend>
-    <div>
-        <div class="opciones"><!--Div para tener las opciones de los muebles-->
+    <legend class="pt-1 fw-bold">Muebles y amenidades</legend>
+    <div class="row justify-content-around bg-light py-1">
+        <div class="opciones col-md-5"><!--Div para tener las opciones de los muebles-->
             <div>
                 <input 
                     type="checkbox" 
@@ -637,7 +649,7 @@
             </div>  
         </div>
         
-        <div class="opciones"><!--Div para tener las opciones de las amenidades-->
+        <div class="opciones col-md-5"><!--Div para tener las opciones de las amenidades-->
             <div>
                 <input 
                     type="checkbox" 
@@ -697,10 +709,9 @@
     </div>
 </fieldset>
 
-<!--PARTE DONDE SE AGREGAN LAS OPCIONES DE VENTA Y EL PAPEL DE LA PROPIEDAD-->
 <fieldset id="fieldSetEscritura">
-    <legend>Escritura y opciones de venta</legend>
-    <div>
+    <legend class="pt-1 fw-bold">Escritura y opciones de venta</legend>
+    <div class="elemento bg-light py-1">
         <select name="propiedad[escritura]">
             <option value="" disabled selected>--Selecciona un opción--</option>
             <option 
@@ -725,8 +736,7 @@
         <?php echo isset($erroresPropiedad["escritura"]) ? "<p>".$erroresPropiedad["escritura"]."</p>" : "" ?>
     </div>
     
-    
-    <div class="opciones">
+    <div class="d-flex justify-content-around align-items-center bg-light py-1">
         <div>
             <input 
                 type="checkbox" 
@@ -765,14 +775,17 @@
                 >
             <label>Efectivo</label>
         </div> 
-        <?php echo isset($erroresMetodosVenta["metodosVenta"]) ? "<p>".$erroresMetodosVenta["metodosVenta"]."</p>" : "" ?>
     </div>
-    <p style="color:black">(puede marcar más de una opción)</p>
+
+        
+        <?php echo isset($erroresMetodosVenta["metodosVenta"]) ? "<p>".$erroresMetodosVenta["metodosVenta"]."</p>" : "" ?>
+
+    <p class="text-center" style="color:black">(puede marcar más de una opción)</p>
 </fieldset>
 
 <fieldset id="fieldSetPredio">
-    <legend>Número de predio</legend>
-    <div>
+    <legend class="pt-1 fw-bold">Número de predio</legend>
+    <div class="elemento bg-light py-1">
         <label for="numPredio">Número de predio</label>
         <input 
             type="text" 

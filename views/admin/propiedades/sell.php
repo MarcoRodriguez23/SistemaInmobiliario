@@ -1,10 +1,10 @@
-<div class="opcion-superior contenedor">
+<div class="opcion-superior container-xl">
     <a href="/admin" class="boton-volver">Volver</a>
 </div>
 <h1 class="tituloDorado">Proceso de venta</h1>
 
-<main class="contenedor">
-    <h4>Información sobre la propiedad</h4>
+<main class="container-xl px-1">
+    <h4 class="px-1">Información sobre la propiedad</h4>
     <section class="info-propiedad-venta">
         <div>
             <label for="">Calle</label>
@@ -46,48 +46,52 @@
     </section>
 </main>
 
-<div class="muebles-amenidades contenedor">
+<div class="muebles-amenidades container-xl">
+    <?php if(!empty($propiedad->muebles)): ?>
     <div>
-        <h3>Muebles</h3>
+        <h3 class="tituloDorado">Muebles</h3>
         <ul>
             <?php
                 $arreglo = explode(", ",$propiedad->muebles);
                 for ($i=0; $i < sizeof($arreglo); $i++) { 
                     echo 
                     '<li>
-                        <img src="/build/img/Iconos/'.$arreglo[$i].'.svg" alt="icono">
+                        <img src="/build/img/Iconos/icono_'.$arreglo[$i].'1.svg" alt="icono">
                         '.strtoupper($arreglo[$i]).'
                     </li>';
                 }
             ?>
         </ul>
     </div>
+    <?php endif; ?>
 
+    <?php if(!empty($propiedad->amenidades)): ?>
     <div>
-        <h3>Amenidades</h3>
+        <h3 class="tituloDorado">Amenidades</h3>
         <ul>
-        <?php
+            <?php
                 $arreglo = explode(", ",$propiedad->amenidades);
                 for ($i=0; $i < sizeof($arreglo); $i++) { 
                     echo 
                     '<li>
-                        <img src="/build/img/Iconos/'.$arreglo[$i].'.svg" alt="icono">
+                        <img src="/build/img/Iconos/icono_'.$arreglo[$i].'1.svg" alt="icono">
                         '.strtoupper($arreglo[$i]).'
                     </li>';
                 }
             ?>
         </ul>
     </div>
+    <?php endif; ?>
 </div>
 
-<section class="contenedor">
+<div class="container-xl px-2 mb-2">
     <h4>Fotografías</h4>
-    <div class="fotos-actuales contenedor">
+    <div class="fotosActuales">
         <?php foreach($fotos as $foto): ?>
-            <img src="/imagenes/<?php echo $foto->foto;?>" alt="" class="imagen-small">
+            <img src="/imagenes/<?php echo $foto->foto;?>" alt="" class="fotoActual img-fluid">
         <?php endforeach; ?>
-    </div> 
-</section>
+    </div>   
+</div>
     
 <form action="" class="contenedor formulario form-venta" method="POST" enctype="multipart/form-data">
     <fieldset>
@@ -96,7 +100,7 @@
             <input type="hidden" name="venta[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
             <input type="text" disabled value="<?php echo $_SESSION['nombre']; ?>">
         </div>
-        <div>
+        <div class="d-none">
             <input type="hidden" name="venta[idPropiedad]" value="<?php echo $propiedad->id; ?>">
             <input type="hidden" name="propiedad[status]" value="vendida">
         </div>
@@ -111,7 +115,7 @@
     <fieldset>
         <legend>Contrato de venta</legend>
         <div>
-            <label for="contrato">PDF o imágen(Limite de 8MB)</label>
+            <label for="contrato">PDF o imágen (Limite de 8MB)</label>
             <input type="file" id="contrato" accept="image/jpeg, image/png, .pdf" name="contrato">
         </div>
         <?php echo isset($erroresVenta["contrato"]) ? "<p>".$erroresVenta["contrato"]."</p>" : "" ?>

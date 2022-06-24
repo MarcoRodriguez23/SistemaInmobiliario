@@ -4,7 +4,7 @@
 
     <div class=" seccion contenido-centrado login-plantilla">
 
-        <h1 class="tituloDorado">Iniciar Sesión</h1>
+        <h1 class="tituloDorado">Iniciar sesión</h1>
         <?php foreach ($errores as $error): ?>
             <div class="alerta error"><?php echo $error;?></div>
         <?php endforeach; ?>
@@ -44,7 +44,7 @@
             <input type="submit" value="Iniciar Sesión" class="botonComercial mt-1">
         </form>
         <div class="enlace-login contenedor">
-            <a href="/olvide">¿Olvidaste tu password? Clic aqui para reestablecer.</a>
+            <a class="mt-2" href="/olvide">¿Olvidaste tu password? Clic aqui para reestablecer.</a>
         </div>
     </div>
     

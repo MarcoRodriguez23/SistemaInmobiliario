@@ -7,6 +7,6 @@
         <?php
             require 'formulario.php';
         ?>
-        <input class="boton-azul" type="submit" value="Actualizar vendedor">
+        <input class="botonComercial mt-2" type="submit" value="Actualizar vendedor">
     </form>
 </main>

@@ -395,14 +395,13 @@ class HouseController{
         $propiedad = Propiedad::find($id);
         $direccion = Direccion::find($id);
         $fotos = Foto::find($id);
-        $fotos = Foto::find($id);
+
 
         //ENVIANDO LAS VARIABLES A LA VISTA
         $router->view('admin/propiedades/info',[
             'propiedad'=>$propiedad,
             'direccion'=>$direccion,
             'fotos'=>$fotos,
-            'fotos'=>$fotos
         ]);
     }
 

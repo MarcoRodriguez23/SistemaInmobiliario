@@ -1,6 +1,6 @@
-// /*! modernizr 3.6.0 (Custom Build) | MIT *
-//  * https://modernizr.com/download/?-webp-setclasses !*/
-//  !function(e,n,A){function o(e,n){return typeof e===n}function t(){var e,n,A,t,a,i,l;for(var f in r)if(r.hasOwnProperty(f)){if(e=[],n=r[f],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(A=0;A<n.options.aliases.length;A++)e.push(n.options.aliases[A].toLowerCase());for(t=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)i=e[a],l=i.split("."),1===l.length?Modernizr[l[0]]=t:(!Modernizr[l[0]]||Modernizr[l[0]]instanceof Boolean||(Modernizr[l[0]]=new Boolean(Modernizr[l[0]])),Modernizr[l[0]][l[1]]=t),s.push((t?"":"no-")+l.join("-"))}}function a(e){var n=u.className,A=Modernizr._config.classPrefix||"";if(c&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+A+"no-js(\\s|$)");n=n.replace(o,"$1"+A+"js$2")}Modernizr._config.enableClasses&&(n+=" "+A+e.join(" "+A),c?u.className.baseVal=n:u.className=n)}function i(e,n){if("object"==typeof e)for(var A in e)f(e,A)&&i(A,e[A]);else{e=e.toLowerCase();var o=e.split("."),t=Modernizr[o[0]];if(2==o.length&&(t=t[o[1]]),"undefined"!=typeof t)return Modernizr;n="function"==typeof n?n():n,1==o.length?Modernizr[o[0]]=n:(!Modernizr[o[0]]||Modernizr[o[0]]instanceof Boolean||(Modernizr[o[0]]=new Boolean(Modernizr[o[0]])),Modernizr[o[0]][o[1]]=n),a([(n&&0!=n?"":"no-")+o.join("-")]),Modernizr._trigger(e,n)}return Modernizr}var s=[],r=[],l={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var A=this;setTimeout(function(){n(A[e])},0)},addTest:function(e,n,A){r.push({name:e,fn:n,options:A})},addAsyncTest:function(e){r.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=l,Modernizr=new Modernizr;var f,u=n.documentElement,c="svg"===u.nodeName.toLowerCase();!function(){var e={}.hasOwnProperty;f=o(e,"undefined")||o(e.call,"undefined")?function(e,n){return n in e&&o(e.constructor.prototype[n],"undefined")}:function(n,A){return e.call(n,A)}}(),l._l={},l.on=function(e,n){this._l[e]||(this._l[e]=[]),this._l[e].push(n),Modernizr.hasOwnProperty(e)&&setTimeout(function(){Modernizr._trigger(e,Modernizr[e])},0)},l._trigger=function(e,n){if(this._l[e]){var A=this._l[e];setTimeout(function(){var e,o;for(e=0;e<A.length;e++)(o=A[e])(n)},0),delete this._l[e]}},Modernizr._q.push(function(){l.addTest=i}),Modernizr.addAsyncTest(function(){function e(e,n,A){function o(n){var o=n&&"load"===n.type?1==t.width:!1,a="webp"===e;i(e,a&&o?new Boolean(o):o),A&&A(n)}var t=new Image;t.onerror=o,t.onload=o,t.src=n}var n=[{uri:"data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=",name:"webp"},{uri:"data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==",name:"webp.alpha"},{uri:"data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA",name:"webp.animation"},{uri:"data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=",name:"webp.lossless"}],A=n.shift();e(A.name,A.uri,function(A){if(A&&"load"===A.type)for(var o=0;o<n.length;o++)e(n[o].name,n[o].uri)})}),t(),a(s),delete l.addTest,delete l.addAsyncTest;for(var p=0;p<Modernizr._q.length;p++)Modernizr._q[p]();e.Modernizr=Modernizr}(window,document);
+/*! modernizr 3.6.0 (Custom Build) | MIT *
+ * https://modernizr.com/download/?-webp-setclasses !*/
+ !function(e,n,A){function o(e,n){return typeof e===n}function t(){var e,n,A,t,a,i,l;for(var f in r)if(r.hasOwnProperty(f)){if(e=[],n=r[f],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(A=0;A<n.options.aliases.length;A++)e.push(n.options.aliases[A].toLowerCase());for(t=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)i=e[a],l=i.split("."),1===l.length?Modernizr[l[0]]=t:(!Modernizr[l[0]]||Modernizr[l[0]]instanceof Boolean||(Modernizr[l[0]]=new Boolean(Modernizr[l[0]])),Modernizr[l[0]][l[1]]=t),s.push((t?"":"no-")+l.join("-"))}}function a(e){var n=u.className,A=Modernizr._config.classPrefix||"";if(c&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+A+"no-js(\\s|$)");n=n.replace(o,"$1"+A+"js$2")}Modernizr._config.enableClasses&&(n+=" "+A+e.join(" "+A),c?u.className.baseVal=n:u.className=n)}function i(e,n){if("object"==typeof e)for(var A in e)f(e,A)&&i(A,e[A]);else{e=e.toLowerCase();var o=e.split("."),t=Modernizr[o[0]];if(2==o.length&&(t=t[o[1]]),"undefined"!=typeof t)return Modernizr;n="function"==typeof n?n():n,1==o.length?Modernizr[o[0]]=n:(!Modernizr[o[0]]||Modernizr[o[0]]instanceof Boolean||(Modernizr[o[0]]=new Boolean(Modernizr[o[0]])),Modernizr[o[0]][o[1]]=n),a([(n&&0!=n?"":"no-")+o.join("-")]),Modernizr._trigger(e,n)}return Modernizr}var s=[],r=[],l={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var A=this;setTimeout(function(){n(A[e])},0)},addTest:function(e,n,A){r.push({name:e,fn:n,options:A})},addAsyncTest:function(e){r.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=l,Modernizr=new Modernizr;var f,u=n.documentElement,c="svg"===u.nodeName.toLowerCase();!function(){var e={}.hasOwnProperty;f=o(e,"undefined")||o(e.call,"undefined")?function(e,n){return n in e&&o(e.constructor.prototype[n],"undefined")}:function(n,A){return e.call(n,A)}}(),l._l={},l.on=function(e,n){this._l[e]||(this._l[e]=[]),this._l[e].push(n),Modernizr.hasOwnProperty(e)&&setTimeout(function(){Modernizr._trigger(e,Modernizr[e])},0)},l._trigger=function(e,n){if(this._l[e]){var A=this._l[e];setTimeout(function(){var e,o;for(e=0;e<A.length;e++)(o=A[e])(n)},0),delete this._l[e]}},Modernizr._q.push(function(){l.addTest=i}),Modernizr.addAsyncTest(function(){function e(e,n,A){function o(n){var o=n&&"load"===n.type?1==t.width:!1,a="webp"===e;i(e,a&&o?new Boolean(o):o),A&&A(n)}var t=new Image;t.onerror=o,t.onload=o,t.src=n}var n=[{uri:"data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=",name:"webp"},{uri:"data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==",name:"webp.alpha"},{uri:"data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA",name:"webp.animation"},{uri:"data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=",name:"webp.lossless"}],A=n.shift();e(A.name,A.uri,function(A){if(A&&"load"===A.type)for(var o=0;o<n.length;o++)e(n[o].name,n[o].uri)})}),t(),a(s),delete l.addTest,delete l.addAsyncTest;for(var p=0;p<Modernizr._q.length;p++)Modernizr._q[p]();e.Modernizr=Modernizr}(window,document);
 // /* @preserve
 //     _____ __ _     __                _
 //    / ___// /(_)___/ /___  ____      (_)___
@@ -576,6 +576,7 @@ function iniciarApp(){
     ocultarFieldsetsFormularioInmueble();
     formatoPrecios();
     enlacesInmuebles();
+    sliderComercial();
 }
 // funcion para poder utilizar el icono de menu movil y poder ver las opciones del navegador
 // APROBADO
@@ -599,128 +600,6 @@ function navegacionResponsive(){
     }
 }
 
-// //genera las clases necesarias para que se generen los carrouseles en el INDEX y las paginas individuales
-// // APROBADO
-// function carrousel(){
-//     const seleccion = document.getElementById('C-seleccion');
-//     const index = document.getElementById('index');
-    
-//     if(seleccion){
-//       console.log("propiedad seleccionada");
-//       new Glider(seleccion,{
-//             slidesToShow: 1,
-//             slidesToScroll: 1,
-//             dots: '#indicadores-seleccion',
-//             arrows: {
-//                 prev: '#anterior-seleccion',
-//                 next: '#siguiente-seleccion'},
-//             responsive: [
-//                 {
-//                   // screens greater than >= 775px
-//                   breakpoint: 740,
-//                   settings: {
-//                     // Set to `auto` and provide item width to adjust to viewport
-//                     slidesToShow: 2,
-//                     slidesToScroll: 2,
-//                   }
-//                 },{
-//                   // screens greater than >= 1024px
-//                   breakpoint: 1024,
-//                   settings: {
-//                     slidesToShow: 2,
-//                     slidesToScroll: 2,
-//                   }
-//                 }
-//               ]
-//         });
-//     }
-  
-//     if(index){
-//         new Glider(document.getElementById('C-inmuebles'),{
-//             slidesToShow: 1,
-//             slidesToScroll: 1,
-//             dots: '#indicadores1',
-//             arrows: {
-//                 prev: '#anterior1',
-//                 next: '#siguiente1'},
-//             responsive: [
-//                 {
-//                   // screens greater than >= 775px
-//                   breakpoint: 740,
-//                   settings: {
-//                     // Set to `auto` and provide item width to adjust to viewport
-//                     slidesToShow: 3,
-//                     slidesToScroll: 3,
-//                   }
-//                 },{
-//                   // screens greater than >= 1024px
-//                   breakpoint: 1024,
-//                   settings: {
-//                     slidesToShow: 4,
-//                     slidesToScroll: 4,
-//                   }
-//                 }
-//               ]
-                
-//         });
-    
-//         new Glider(document.getElementById('C-departamentos'),{
-//             slidesToShow: 1,
-//             slidesToScroll: 1,
-//             dots: '#indicadores2',
-//             arrows: {
-//                 prev: '#anterior2',
-//                 next: '#siguiente2'},
-//             responsive: [
-//                 {
-//                   // screens greater than >= 775px
-//                   breakpoint: 740,
-//                   settings: {
-//                     // Set to `auto` and provide item width to adjust to viewport
-//                     slidesToShow: 3,
-//                     slidesToScroll: 3,
-//                   }
-//                 },{
-//                   // screens greater than >= 1024px
-//                   breakpoint: 1024,
-//                   settings: {
-//                     slidesToShow: 4,
-//                     slidesToScroll: 4,
-//                   }
-//                 }
-//               ]
-                
-//         });
-    
-//         new Glider(document.getElementById('C-terrenos'),{
-//             slidesToShow: 1,
-//             slidesToScroll: 1,
-//             dots: '#indicadores3',
-//             arrows: {
-//                 prev: '#anterior3',
-//                 next: '#siguiente3'},
-//             responsive: [
-//                 {
-//                   // screens greater than >= 775px
-//                   breakpoint: 740,
-//                   settings: {
-//                     // Set to `auto` and provide item width to adjust to viewport
-//                     slidesToShow: 3,
-//                     slidesToScroll: 3,
-//                   }
-//                 },{
-//                   // screens greater than >= 1024px
-//                   breakpoint: 1024,
-//                   settings: {
-//                     slidesToShow: 4,
-//                     slidesToScroll: 4,
-//                   }
-//                 }
-//               ]  
-//         });
-//     }
-    
-// }
 
 function cambiarSeccion() {
 const enlaces = document.querySelectorAll('.tabs button');
@@ -878,7 +757,6 @@ function mostrarAlerta(mensaje, tipo, posicion) {
 function ocultarFieldsetsFormularioInmueble(){
   const formularioCreate = document.querySelector('#formulario-propiedad-create');
   const formularioUpdate = document.querySelector('#formulario-propiedad-update');
-
   const fieldSetStatus = document.querySelector('#fieldSetStatus');
   const fieldSetRemodelacion = document.querySelector('#fieldSetRemodelacion');
   const fieldSetDescripcionPropiedad = document.querySelector('#fieldSetDescripcionPropiedad');
@@ -1080,36 +958,44 @@ function enlacesInmuebles(){
 
   }
 }
-$('#owl-carousel-seleccion').owlCarousel({
-    loop:false,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:2
-        },
-        1000:{
-            items:2
-        }
+function sliderComercial(){
+    const sliderIndex = document.querySelector('.slider-index');
+    if(sliderIndex){
+        $('.slider-index').owlCarousel({
+            loop:false,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1000:{
+                    items:4
+                }
+            }
+        })
     }
-})
 
-$('.slider-index').owlCarousel({
-    loop:false,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:2
-        },
-        1000:{
-            items:4
-        }
+    const sliderSeleccion= document.querySelector('#owl-carousel-seleccion');
+    if(sliderSeleccion){
+        $('#owl-carousel-seleccion').owlCarousel({
+            loop:false,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1000:{
+                    items:4
+                }
+            }
+        })
     }
-})
+}

@@ -10,9 +10,21 @@
     .elemento{
         margin-top: 1.2rem !important;
         margin-bottom: 1.2rem !important;
-        
+        p{
+            font-size: 1.2rem;
+            color: $rojo;
+        }
+        label{
+            @extend .form-label;
+        }
+        input, select{
+            @extend .form-control;
+        }
     }
     textarea{
         resize: none;
     }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

@@ -160,12 +160,6 @@
     }
 }
 
-.fotos-actuales{
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-}
-
 .enlace-tabla{
     background-color: $morado;
 }
