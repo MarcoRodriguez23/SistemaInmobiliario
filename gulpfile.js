@@ -80,9 +80,9 @@ function cssBuild(done){
         suffix: '.min'
     }))
     .pipe(purgecss({
-        content: ['src/**/*.php']
+        content: ['views/**/*.php']
     }))
-    .pipe(dest('build/css'))
+    .pipe(dest('./public/build/css'))
     done();
 }
   

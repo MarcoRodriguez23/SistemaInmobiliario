@@ -17,7 +17,7 @@
     <!--HOJAS DE ESTILO-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="build/css/app.min.css">
     <!--Icon-->
     <link rel="icon" type="image/jpg" href="/build/img/GALLARDO SVG.svg"/>
     <title>Inmobiliaria Gallardo</title>
@@ -32,6 +32,9 @@
                 <img src="/build/img/barras.svg" alt="icono-responsive">
             </div>
             <nav class="navegacion">
+                <!--DIV para inicializar las clases en purgeCss-->
+                <div class="mostrar-enlaces ocultar"></div>
+                
                 <a href="/" class="menu">HOME</a>
                 <a href="/servicios" class="menu">SERVICIOS</a>
                 <span id="span-inmuebles" class="menu">INMUEBLES</span>

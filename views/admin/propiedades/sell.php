@@ -5,7 +5,7 @@
 
 <main class="container-xl px-1">
     <h4 class="px-1">Información sobre la propiedad</h4>
-    <section class="info-propiedad-venta">
+    <section class="info-propiedad-venta bg-light">
         <div>
             <label for="">Calle</label>
             <p><?php echo s($direccion->calle); ?></p>
@@ -93,10 +93,10 @@
     </div>   
 </div>
     
-<form action="" class="contenedor formulario form-venta" method="POST" enctype="multipart/form-data">
+<form action="" class="contenedor formularioComercial form-venta" method="POST" enctype="multipart/form-data">
     <fieldset>
         <legend>Responsable de la venta</legend>
-        <div>
+        <div class="elemento">
             <input type="hidden" name="venta[idEncargado]" value="<?php echo $_SESSION['id']; ?>">
             <input type="text" disabled value="<?php echo $_SESSION['nombre']; ?>">
         </div>
@@ -107,14 +107,14 @@
     </fieldset>
     <fieldset>
         <legend>Fecha de la venta</legend>
-        <div>
+        <div class="elemento">
             <input type="text" disabled value="<?php echo date('d/m/Y'); ?>">
         </div>
     </fieldset>
     
     <fieldset>
         <legend>Contrato de venta</legend>
-        <div>
+        <div class="elemento">
             <label for="contrato">PDF o imágen (Limite de 8MB)</label>
             <input type="file" id="contrato" accept="image/jpeg, image/png, .pdf" name="contrato">
         </div>
@@ -122,6 +122,6 @@
     </fieldset>
 
     
-    <?php echo ($propiedad->status=='vendida' && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="boton-azul">';?>
+    <?php echo ($propiedad->status=='vendida' && (empty($erroresVenta))) ? "<h4 class='aviso-venta'>esta propiedad ya fue vendida</h4>"  :  '<input type="submit" value="vender propiedad" class="botonComercial mt-2">';?>
 
 </form>
