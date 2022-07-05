@@ -160,6 +160,13 @@ class HouseController{
                         break;
                 }
             }
+            //haciendo 0 a todos los valores del objeto que esten vacios
+            foreach ($propiedad as &$key) {
+                if($key == 'id') continue;
+                if($key===""){
+                    $key = "0";
+                }                
+            }
             //validando la existencia de erroes en el formulario
             $erroresDireccion = $direccion->validar();
             

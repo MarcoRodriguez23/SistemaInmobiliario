@@ -1,4 +1,3 @@
-
 <main class="pantalla-login">
     <div class="imagen-login"></div>
 
@@ -9,6 +8,7 @@
             <div class="alerta error"><?php echo $error;?></div>
         <?php endforeach; ?>
         <?php include_once __DIR__ .'/../templates/alertas.php'; ?>
+        
         <form class="formularioComercial contenedor bg-light p-1" action="/login" method="POST">
             <legend class="fw-bold fs-5">Email y password</legend>
             <div class="elemento">

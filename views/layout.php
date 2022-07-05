@@ -33,7 +33,7 @@
             </div>
             <nav class="navegacion">
                 <!--DIV para inicializar las clases en purgeCss-->
-                <div class="mostrar-enlaces ocultar"></div>
+                <div class="mostrar-enlaces ocultar mostrar"></div>
                 
                 <a href="/" class="menu">HOME</a>
                 <a href="/servicios" class="menu">SERVICIOS</a>
@@ -69,21 +69,21 @@
                     Cuauhtémoc, Ciudad de México
                 </p>
                 <p>
-                    tel: 55-7379-2800
+                    tel: 55-6535-8941
                 </p>
             </div>
 
             <div class="col-md-4 footer__socialMedia">
                 <h4 class="text-center">Encuentranos en:</h4>
                 <div class="socialMedia-imagenes mx-3 ">
-                    <a href="#">
-                        <img src="/build/img/Iconos/facebook.png" alt="Facebook">
+                    <a href="https://www.facebook.com/gallardoholdingsmx/">
+                        <img src="/build/img/Iconos/facebook.png" alt="icono facebook">
                     </a>
-                    <a href="#">
-                        <img src="/build/img/Iconos/mercadolibre.png" alt="Mercado libre">
+                    <a href="https://www.instagram.com/gallardoholdings/?igshid=YmMyMTA2M2Y%3D">
+                        <img src="/build/img/Iconos/instagram.svg" alt="icono instagram">
                     </a>
-                    <a href="https://wa.me/5573792800" target="_blank">
-                        <img src="/build/img/Iconos/whatsapp.png" alt="whatsapp">
+                    <a href="https://wa.me/5565358941" target="_blank">
+                        <img src="/build/img/Iconos/whatsapp.png" alt="icono whatsapp">
                     </a>
                 </div>
             </div>

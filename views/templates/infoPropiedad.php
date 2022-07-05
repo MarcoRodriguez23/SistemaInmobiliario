@@ -170,7 +170,7 @@
                 $arreglo = explode(", ",$propiedad->muebles);
                 for ($i=0; $i < sizeof($arreglo); $i++) { 
                     echo 
-                    '<li>
+                    '<li class="text-uppercase">
                         <img src="/build/img/Iconos/icono_'.$arreglo[$i].'1.svg" alt="icono">
                         '.strtoupper($arreglo[$i]).'
                     </li>';
@@ -188,7 +188,7 @@
                 $arreglo = explode(", ",$propiedad->amenidades);
                 for ($i=0; $i < sizeof($arreglo); $i++) { 
                     echo 
-                    '<li>
+                    '<li class="text-uppercase">
                         <img src="/build/img/Iconos/icono_'.$arreglo[$i].'1.svg" alt="icono">
                         '.strtoupper($arreglo[$i]).'
                     </li>';

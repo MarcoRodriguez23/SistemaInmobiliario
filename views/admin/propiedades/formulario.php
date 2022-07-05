@@ -1,8 +1,7 @@
-
 <fieldset>
     <legend class="pt-1 fw-bold">Tipo de propiedad</legend>
-    <div class="elemento">
-        <select class="py-0" id="tipoPropiedad" name="propiedad[tipoPropiedad]">
+    <div class="elemento bg-light py-1">
+        <select id="tipoPropiedad" name="propiedad[tipoPropiedad]">
             <option value="" disabled 
             <?php echo ($propiedad->tipoPropiedad === "") ? 'selected' : ''; ?>
             >--Selecciona una opción--</option>
@@ -49,8 +48,8 @@
 
 <fieldset id="fieldSetStatus">
     <legend class="pt-1 fw-bold">Disponible para</legend>
-    <div class="elemento">
-        <select class="py-0" id="status" name="propiedad[status]">
+    <div class="elemento bg-light py-1">
+        <select id="status" name="propiedad[status]">
             <option value="" disabled selected>--Selecciona una opción--</option>
 
             <option
@@ -77,9 +76,9 @@
 </fieldset>
 
 <fieldset id="fieldSetRemodelacion">
-    <legend class="pt-1 fw-bold">Remodelación</legend>
-    <div class="elemento">
-        <select class="py-0" name="propiedad[categoria]">
+    <legend class="pt-1 fw-bold">Condiciones</legend>
+    <div class="elemento bg-light py-1">
+        <select name="propiedad[categoria]">
             <option value="" disabled selected>--Selecciona una opción--</option>
             <option 
                 value="Para construir"
@@ -100,10 +99,10 @@
             Para remodelar
             </option>
             <option 
-                value="Para laborar"
-                <?php echo ($propiedad->categoria === "Para laborar") ? 'selected' : ''; ?>
+                value="Nuevo"
+                <?php echo ($propiedad->categoria === "Nuevo") ? 'selected' : ''; ?>
             >
-            Para laborar
+            Nuevo
             </option>
         </select>
         <?php echo isset($erroresPropiedad["categoria"]) ? "<p>".$erroresPropiedad["categoria"]."</p>" : "" ?>
@@ -115,17 +114,205 @@
     <div class="row justify-content-around py-1 bg-light">
         <div class="col-md-5">
             <div class="elemento">
-                <labelfor="estado">Estado</label>
-                <input
-                    type="text" 
-                    placeholder="Ej: CDMX" 
-                    name="direccion[estado]" id="estado" 
-                    value="<?php echo s($direccion->estado); ?>"
-                    maxlength="45"
-                    oninput=
-                    "this.value = this.value.replace(/[^A-Za-záéíóúñÁÉÍÓÚÑ ]/,'')
-                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-                >
+                <label for="estado">Estado</label>
+                <select id="estado" name="direccion[estado]">
+                    <option value="" disabled 
+                    <?php echo ($direccion->estado === "") ? 'selected' : ''; ?>
+                    >--Selecciona una opción--</option>
+                    <option 
+                        value="Aguascalientes"
+                        <?php echo ($direccion->estado === "Aguascalientes") ? 'selected' : ''; ?>
+                    >
+                    Aguascalientes
+                    </option>
+                    <option 
+                        value="Baja California"
+                        <?php echo ($direccion->estado === "Baja California") ? 'selected' : ''; ?>
+                    >
+                    Baja California
+                    </option>
+                    <option 
+                        value="Baja California Sur"
+                        <?php echo ($direccion->estado === "Baja California Sur") ? 'selected' : ''; ?>
+                    >
+                    Baja California Sur
+                    </option>
+                    <option 
+                        value="Campeche"
+                        <?php echo ($direccion->estado === "Campeche") ? 'selected' : ''; ?>
+                    >
+                    Campeche
+                    </option>
+                    <option 
+                        value="Chiapas"
+                        <?php echo ($direccion->estado === "Chiapas") ? 'selected' : ''; ?>
+                    >
+                    Chiapas
+                    </option>
+                    <option 
+                        value="Chihuahua"
+                        <?php echo ($direccion->estado === "Chihuahua") ? 'selected' : ''; ?>
+                    >
+                    Chihuahua
+                    </option>
+                    <option 
+                        value="Coahuila"
+                        <?php echo ($direccion->estado === "Coahuila") ? 'selected' : ''; ?>
+                    >
+                    Coahuila
+                    </option>
+                    <option 
+                        value="CDMX"
+                        <?php echo ($direccion->estado === "CDMX") ? 'selected' : ''; ?>
+                    >
+                    CDMX
+                    </option>
+                    <option 
+                        value="Colima"
+                        <?php echo ($direccion->estado === "Colima") ? 'selected' : ''; ?>
+                    >
+                    Colima
+                    </option>
+                    <option 
+                        value="Durango"
+                        <?php echo ($direccion->estado === "Durango") ? 'selected' : ''; ?>
+                    >
+                    Durango
+                    </option>
+                    <option 
+                        value="Guanajuato"
+                        <?php echo ($direccion->estado === "Guanajuato") ? 'selected' : ''; ?>
+                    >
+                    Guanajuato
+                    </option>
+                    <option 
+                        value="Guerrero"
+                        <?php echo ($direccion->estado === "Guerrero") ? 'selected' : ''; ?>
+                    >
+                    Guerrero
+                    </option>
+                    <option 
+                        value="Hidalgo"
+                        <?php echo ($direccion->estado === "Hidalgo") ? 'selected' : ''; ?>
+                    >
+                    Hidalgo
+                    </option>
+                    <option 
+                        value="Jalisco"
+                        <?php echo ($direccion->estado === "Jalisco") ? 'selected' : ''; ?>
+                    >
+                    Jalisco
+                    </option>
+                    <option 
+                        value="Estado de México"
+                        <?php echo ($direccion->estado === "Estado de México") ? 'selected' : ''; ?>
+                    >
+                    Estado de México
+                    </option>
+                    <option 
+                        value="Michoacán"
+                        <?php echo ($direccion->estado === "Michoacán") ? 'selected' : ''; ?>
+                    >
+                    Michoacán
+                    </option>
+                    <option 
+                        value="Morelos"
+                        <?php echo ($direccion->estado === "Morelos") ? 'selected' : ''; ?>
+                    >
+                    Morelos
+                    </option>
+                    <option 
+                        value="Nayarit"
+                        <?php echo ($direccion->estado === "Nayarit") ? 'selected' : ''; ?>
+                    >
+                    Nayarit
+                    </option>
+                    <option 
+                        value="Nuevo León"
+                        <?php echo ($direccion->estado === "Nuevo León") ? 'selected' : ''; ?>
+                    >
+                    Nuevo León
+                    </option>
+                    <option 
+                        value="Oaxaca"
+                        <?php echo ($direccion->estado === "Oaxaca") ? 'selected' : ''; ?>
+                    >
+                    Oaxaca
+                    </option>
+                    <option 
+                        value="Puebla"
+                        <?php echo ($direccion->estado === "Puebla") ? 'selected' : ''; ?>
+                    >
+                    Puebla
+                    </option>
+                    <option 
+                        value="Querétaro"
+                        <?php echo ($direccion->estado === "Querétaro") ? 'selected' : ''; ?>
+                    >
+                    Querétaro
+                    </option>
+                    <option 
+                        value="Quintana Roo"
+                        <?php echo ($direccion->estado === "Quintana Roo") ? 'selected' : ''; ?>
+                    >
+                    Quintana Roo
+                    </option>
+                    <option 
+                        value="San Luis Potosí"
+                        <?php echo ($direccion->estado === "San Luis Potosí") ? 'selected' : ''; ?>
+                    >
+                    San Luis Potosí
+                    </option>
+                    <option 
+                        value="Sinaloa"
+                        <?php echo ($direccion->estado === "Sinaloa") ? 'selected' : ''; ?>
+                    >
+                    Sinaloa
+                    </option>
+                    <option 
+                        value="Sonora"
+                        <?php echo ($direccion->estado === "Sonora") ? 'selected' : ''; ?>
+                    >
+                    Sonora
+                    </option>
+                    <option 
+                        value="Tabasco"
+                        <?php echo ($direccion->estado === "Tabasco") ? 'selected' : ''; ?>
+                    >
+                    Tabasco
+                    </option>
+                    <option 
+                        value="Tamaulipas"
+                        <?php echo ($direccion->estado === "Tamaulipas") ? 'selected' : ''; ?>
+                    >
+                    Tamaulipas
+                    </option>
+                    <option 
+                        value="Tlaxcala"
+                        <?php echo ($direccion->estado === "Tlaxcala") ? 'selected' : ''; ?>
+                    >
+                    Tlaxcala
+                    </option>
+                    <option 
+                        value="Veracruz"
+                        <?php echo ($direccion->estado === "Veracruz") ? 'selected' : ''; ?>
+                    >
+                    Veracruz
+                    </option>
+                    <option 
+                        value="Yucatán"
+                        <?php echo ($direccion->estado === "Yucatán") ? 'selected' : ''; ?>
+                    >
+                    Yucatán
+                    </option>
+                    <option 
+                        value="Zacatecas"
+                        <?php echo ($direccion->estado === "Zacatecas") ? 'selected' : ''; ?>
+                    >
+                    Zacatecas
+                    </option>
+                    
+                </select>
                 <?php echo isset($erroresDireccion["estado"]) ? "<p>".$erroresDireccion["estado"]."</p>" : "" ?>
             </div>
             <div class="elemento">
@@ -327,13 +514,15 @@
                 <input 
                     type="number" 
                     placeholder="Ej: 3" 
-                    min="0" 
+                    min="0"
+                    max="10" 
                     name="propiedad[baños]" 
                     id="baños"
                     value="<?php echo s($propiedad->baños); ?>"
-                    maxlength="2"
+                    maxlength="3"
+                    step=".5"
                     oninput=
-                    "this.value = this.value.replace(/[^0-9]/,'')
+                    "this.value = this.value.replace(/[^0-9 .]/,'')
                     if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
                 >
                 <?php echo isset($erroresPropiedad["baños"]) ? "<p>".$erroresPropiedad["baños"]."</p>" : "" ?>
@@ -387,22 +576,6 @@
                     if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
                 >
                 <?php echo isset($erroresPropiedad["año"]) ? "<p>".$erroresPropiedad["año"]."</p>" : "" ?>
-            </div>
-            <div class="elemento">
-                <label for="baños">Baños</label>
-                <input 
-                    type="number" 
-                    placeholder="Ej: 3" 
-                    min="0" 
-                    name="propiedad[baños]" 
-                    id="baños"
-                    value="<?php echo s($propiedad->baños); ?>"
-                    maxlength="2"
-                    oninput=
-                    "this.value = this.value.replace(/[^0-9]/,'')
-                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
-                >
-                <?php echo isset($erroresPropiedad["baños"]) ? "<p>".$erroresPropiedad["baños"]."</p>" : "" ?>
             </div>
             <div class="elemento">
                     <label for="servicioH">Habitaciones de servicio (opcional)</label>
@@ -542,20 +715,15 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="elemento">
-                <label for="numElevadores">Elevadores</label>
-                <input 
-                    type="number" 
-                    placeholder="Ej: 1" 
-                    min="0" 
-                    name="propiedad[numElevadores]" 
-                    id="numElevadores"
-                    value="<?php echo s($propiedad->numElevadores); ?>"
-                    maxlength="2"
-                    oninput=
-                    "this.value = this.value.replace(/[^0-9]/,'')
-                    if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+            <div class="py-1">
+                <input
+                class="checkbox-lg"
+                type="checkbox" 
+                name="propiedad[numElevadores]" 
+                id="numElevadores"
+                value="si"
                 >
+                <label for="numElevadores">Con elevador</label>
                 <?php echo isset($erroresPropiedad["numElevadores"]) ? "<p>".$erroresPropiedad["numElevadores"]."</p>" : "" ?>
             </div>
         </div>
@@ -632,11 +800,10 @@
                     type="checkbox" 
                     name="muebles[camas]" 
                     value="camas"
-                    <?php echo $muebles->camas=="camas" ? 'checked' : ''; ?>
                     <?php echo stristr($propiedad->muebles,"camas") ? 'checked' : '' ; ?>
                     >
-                <label>Camas</label>
-            </div>  
+                <label>camas</label>
+            </div> 
 
             <div>
                 <input 
@@ -653,11 +820,11 @@
             <div>
                 <input 
                     type="checkbox" 
-                    name="amenidades[roffGarden]" 
-                    value="roff garden"
-                    <?php echo stristr($propiedad->amenidades,"roff garden") ? 'checked' : '' ; ?>
+                    name="amenidades[balcon]" 
+                    value="balcón"
+                    <?php echo stristr($propiedad->amenidades,"balcón") ? 'checked' : '' ; ?>
                     >
-                <label>Roff Garden</label>
+                <label>Balcón</label>
             </div>     
             <div>
                 <input 
@@ -680,13 +847,12 @@
             <div>
                 <input 
                     type="checkbox" 
-                    name="amenidades[cancha]" 
-                    value="cancha"
-                    <?php echo $amenidades->cancha=="cancha" ? 'checked' : ''; ?>
-                    <?php echo stristr($propiedad->amenidades,"cancha") ? 'checked' : '' ; ?>
+                    name="amenidades[gimnasio]" 
+                    value="gimnasio"
+                    <?php echo stristr($propiedad->amenidades,"gimnasio") ? 'checked' : '' ; ?>
                     >
-                <label>Cancha</label>
-            </div>   
+                <label>Gimnasio</label>
+            </div> 
             <div>
                 <input 
                     type="checkbox" 

@@ -25,12 +25,12 @@ class Email {
 
         //Configurando SMTP
        $mail->isSMTP();
-       $mail->Host='smtp.gmail.com';
+       $mail->Host='smtp.longbit.mx';
        $mail->SMTPAuth= true;
        $mail->Username=$_ENV['EMAIL_USER'];
        $mail->Password=$_ENV['EMAIL_PASSWORD'];
-       $mail->SMTPSecure='tls';
-       $mail->Port='587';
+       $mail->SMTPSecure='ssl';
+       $mail->Port='465';
 
        //configurando el contenido  del Email
        //quien lo envia
@@ -44,7 +44,7 @@ class Email {
 
         $contenido = '<html>';
         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> tu cuenta ha sido creada en el Sistema inmobiliario, solo debes confirmarla presionando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aquí: <a href='https://whispering-ocean-12791.herokuapp.com/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
+        $contenido .= "<p>Presiona aquí: <a href='https://inmobiliaria.longbit.mx/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
         $contenido .= "<p>Si tu no solicitaste este registro, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
@@ -62,14 +62,14 @@ class Email {
         //crear una instancia de PHPMailer
        $mail = new PHPMailer();
 
-       //Configurando SMTP
+        //Configurando SMTP
        $mail->isSMTP();
-       $mail->Host='smtp.gmail.com';
+       $mail->Host='smtp.longbit.mx';
        $mail->SMTPAuth= true;
        $mail->Username=$_ENV['EMAIL_USER'];
        $mail->Password=$_ENV['EMAIL_PASSWORD'];
-       $mail->SMTPSecure='tls';
-       $mail->Port='587';
+       $mail->SMTPSecure='ssl';
+       $mail->Port='465';
 
        //configurando el contenido  del Email
        //quien lo envia
@@ -83,7 +83,7 @@ class Email {
 
        $contenido = '<html>';
        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace</p>";
-       $contenido .= "<p>Presiona aquí: <a href='https://whispering-ocean-12791.herokuapp.com/recuperar?token=" . $this->token . "'>Reestablecer password</a>";        
+       $contenido .= "<p>Presiona aquí: <a href='https://inmobiliaria.longbit.mx/recuperar?token=" . $this->token . "'>Reestablecer password</a>";        
        $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
        $contenido .= '</html>';
        $mail->Body = $contenido;
@@ -100,20 +100,20 @@ class Email {
        //crear una instancia de PHPMailer
        $mail = new PHPMailer();
 
-       //Configurando SMTP
+        //Configurando SMTP
        $mail->isSMTP();
-       $mail->Host='smtp.gmail.com';
+       $mail->Host='smtp.longbit.mx';
        $mail->SMTPAuth= true;
        $mail->Username=$_ENV['EMAIL_USER'];
        $mail->Password=$_ENV['EMAIL_PASSWORD'];
-       $mail->SMTPSecure='tls';
-       $mail->Port='587';
+       $mail->SMTPSecure='ssl';
+       $mail->Port='465';
 
        //configurando el contenido  del Email
        //quien lo envia
-       $mail->setFrom('Sistema inmobiliario');
+       $mail->setFrom($_ENV['EMAIL_USER']);
        //A donde va
-       $mail->addAddress($_ENV['EMAIL_USER']);
+       $mail->addAddress($respuestas['correo']);
        $mail->Subject='Tienes un nuevo mensaje';
        //habilitar html
        $mail->isHTML(true);
@@ -121,15 +121,16 @@ class Email {
 
        //definir el contenido
        $contenido = '<html>';
-       $contenido .= '<p>Tienes un nuevo mensaje</p>';
+       $contenido .= '<p>Hola que tal, has solicitado contactarte con Inmobiliaria Gallardo.</p>';
+       $contenido .= '<p>La información que proporcionaste fue:</p>';
        $contenido .= '<p>Nombre:'. $respuestas['nombre'] . '</p>';
        
        //enviar de forma condicional algunos campos
        if($respuestas['empresa']!=""){
-           $contenido .= '<p>De la empresa: '.$respuestas['empresa'].'</p>';
-           $contenido .= '<p>Con el puesto de: '.$respuestas['puesto'].'</p>';
+           $contenido .= '<p>Empresa: '.$respuestas['empresa'].'</p>';
+           $contenido .= '<p>Puesto: '.$respuestas['puesto'].'</p>';
        }
-       $contenido .= '<p>Esta interesado en adquirir '.$respuestas['asunto'].'</p>';
+       $contenido .= '<p>Estas interesado en adquirir '.$respuestas['asunto'].'</p>';
        $contenido .= '<p>Medios de contacto proporcionados</p>';
        $contenido .= '<p>Email: '.$respuestas['correo'].'</p>';
        $contenido .= '<p>Whatsapp: '.$respuestas['telefono'].'</p>';
@@ -140,7 +141,7 @@ class Email {
        $contenido .= '</html>';
 
        $mail->Body = $contenido;
-       $mail->AltBody = "texto alternativo";
+        $mail->AltBody = "texto alternativo";
 
        if($mail->send()){
            $mensaje= "mensaje enviado";
